@@ -418,6 +418,132 @@
 
             </div>
         </section>
+
+        <section id="news" class="w-full bg-[#FFFFFF] py-10 px-20">
+            <div class="max-w-[1280px] mx-auto h-[740px]">
+
+                <!-- Heading -->
+                <div class="w-full text-center mb-12">
+                    <h2 class="text-[36px] font-bold leading-[40px] text-[#29303D] font-playfair">
+                        News
+                    </h2>
+                    <p class="mt-4 text-[20px] leading-[28px] font-inter font-light text-[#29303DB2]">
+                        Stay updated with the latest international activities and achievements
+                        from Universitas Brawijaya
+                    </p>
+                </div>
+
+                <!-- Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                    <!-- Left Big Card -->
+                    <div class="flex flex-col gap-4">
+                        <div class=" h-[239px] rounded-[12px] overflow-hidden">
+                            <img src="{{ asset('images/rektorat.png') }}" alt="Main News"
+                                class="w-full h-full object-cover">
+                        </div>
+
+                        <h3 class="text-[24px] text-[#29303D] font-playfair font-extrabold">
+                            UB Signs MOU with Stanford University for Joint Research Program
+                        </h3>
+
+                        <p class="text-[18px] font-inter font-light leading-[29px] text-[#29303DB2]">
+                            Universitas Brawijaya establishes new partnership with Stanford University
+                            focusing on sustainable technology research and stude ..
+                        </p>
+                        <div class="flex items-center justify-between text-[14px] text-[#29303DB2]">
+                            <div class="flex gap-4">
+                                <span class="flex items-center gap-1">
+                                    <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
+                                    1/15/2024
+                                </span>
+                                <span class="flex items-center gap-1">
+                                    <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
+                                    3 min read
+                                </span>
+                            </div>
+                            <div>
+                                <img src="{{ asset('icons/arrow-right.svg') }}" class="w-5 h-5" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Small List -->
+                    <div class="flex flex-col gap-8">
+                        <!-- Item -->
+                        <div class="flex gap-4">
+                            <img src="{{ asset('images/conference.jpg') }}" alt=""
+                                class="w-[96px] h-[86px] rounded-lg object-cover">
+                            <div>
+                                <span
+                                    class="text-[12px] font-inter font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Event</span>
+                                <h4 class="text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
+                                    International Conference on Climate Change hosted by UB
+                                </h4>
+                                <p class="text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/12/2024 • 4 min
+                                    read</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <img src="{{ asset('images/branch.jpg') }}" alt=""
+                                class="w-[96px] h-[86px] rounded-lg object-cover">
+                            <div>
+                                <span
+                                    class="text-[12px] font-inter font-medium text-yellow-700 bg-yellow-100 px-2 py-0.5 rounded-full">Achievement</span>
+                                <h4 class="text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
+                                    UB Students Win Gold at International Innovation Competition
+                                </h4>
+                                <p class="text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/10/2024 • 2 min
+                                    read</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <img src="{{ asset('images/student.jpg') }}" alt=""
+                                class="w-[96px] h-[86px] rounded-lg object-cover">
+                            <div>
+                                <span
+                                    class="text-[12px] font-inter font-medium text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">Academic</span>
+                                <h4 class="text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
+                                    New Double Degree Program with University of Melbourne
+                                </h4>
+                                <p class="text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/8/2024 • 3 min
+                                    read</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <img src="{{ asset('images/work.jpg') }}" alt=""
+                                class="w-[96px] h-[86px] rounded-lg object-cover">
+                            <div>
+                                <span
+                                    class="text-[12px] font-inter font-medium text-pink-700 bg-pink-100 px-2 py-0.5 rounded-full">Alumni</span>
+                                <h4 class="text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
+                                    Global Alumni Network Reaches 10,000 Members Worldwide
+                                </h4>
+                                <p class="text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/5/2024 • 2 min
+                                    read</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Button -->
+                <div class="flex justify-center mt-16">
+                    <a href="#"
+                        class="w-[193px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-[14px] leading-[20px]">
+                        View All News
+                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+
     </div>
 </body>
 
