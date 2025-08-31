@@ -419,7 +419,7 @@
             </div>
         </section>
 
-        <section id="news" class="w-full bg-[#FFFFFF] py-10 px-20">
+        <section id="news" class="w-full bg-[#FFFFFF] py-10 px-[112px]">
             <div class="max-w-[1280px] mx-auto h-[740px]">
 
                 <!-- Heading -->
@@ -438,7 +438,7 @@
 
                     <!-- Left Big Card -->
                     <div class="flex flex-col gap-4">
-                        <div class=" h-[239px] rounded-[12px] overflow-hidden">
+                        <div class="w-[592px] h-[239px] rounded-[12px] overflow-hidden">
                             <img src="{{ asset('images/rektorat.png') }}" alt="Main News"
                                 class="w-full h-full object-cover">
                         </div>
@@ -542,7 +542,382 @@
             </div>
         </section>
 
+        <!-- Study in UB -->
+        <section id="study-in-ub"
+            class="w-full h-[992px] bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] px-[80px] py-[80px]">
+            <!-- inner container 1280 / px-32 -->
+            <div class="max-w-[1280px] h-[832px] mx-auto px-[32px] flex flex-col gap-[64px]">
 
+                <!-- Heading -->
+                <div class="w-full flex flex-col items-center gap-4">
+                    <h2
+                        class="w-[1216px] text-center font-playfair font-bold text-[36px] leading-[40px] text-[#29303D]">
+                        Study in UB
+                    </h2>
+                    <p
+                        class="max-w-[768px] text-center font-inter font-light text-[20px] leading-[28px] text-[#29303DB2]">
+                        Discover world-class education opportunities and join our diverse international
+                        academic community
+                    </p>
+                </div>
+
+                <!-- Metrics row -->
+                <div class="w-[1216px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-[32px] place-items-center">
+                    <!-- item -->
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-[280px] text-center font-inter font-bold text-[36px] leading-[40px] text-[#0000FF]">
+                            150+
+                        </div>
+                        <span class="mt-1 text-[#29303DB2] font-inter text-[14px] leading-[20px]">Study Programs</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-[280px] text-center font-inter font-bold text-[36px] leading-[40px] text-[#0000FF]">
+                            15
+                        </div>
+                        <span class="mt-1 text-[#29303DB2] font-inter text-[14px] leading-[20px]">Faculties</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-[280px] text-center font-inter font-bold text-[36px] leading-[40px] text-[#0000FF]">
+                            100+
+                        </div>
+                        <span class="mt-1 text-[#29303DB2] font-inter text-[14px] leading-[20px]">Partner
+                            Universities</span>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="w-[280px] text-center font-inter font-bold text-[36px] leading-[40px] text-[#0000FF]">
+                            4,500+
+                        </div>
+                        <span class="mt-1 text-[#29303DB2] font-inter text-[14px] leading-[20px]">International
+                            Students</span>
+                    </div>
+                </div>
+
+                <!-- Cards Section -->
+                <div class="w-[1216px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[32px]">
+
+                    <!-- Card 1 -->
+                    <div
+                        class="w-[384px] h-[550px] bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-[32px] flex flex-col gap-[24px]">
+                        <!-- Icon -->
+                        <div
+                            class="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
+                            <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon" class="w-8 h-8">
+                        </div>
+
+                        <!-- Title -->
+                        <h3 class="font-playfair font-bold text-[20px] leading-[28px] text-[#29303D]">
+                            International Undergraduate Program
+                        </h3>
+
+                        <!-- Description -->
+                        <p class="font-inter font-normal text-[16px] leading-[24px] text-[#29303DB2]">
+                            Comprehensive bachelor’s degree programs taught in English with global perspectives
+                        </p>
+
+                        <!-- Meta -->
+                        <div class="flex justify-between items-center text-[14px] leading-[20px]">
+                            <span class="flex items-center gap-2 text-[#29303DB2]">
+                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
+                                2,500+ students
+                            </span>
+                            <span class="text-[#0000FF] font-medium">4 years</span>
+                        </div>
+
+                        <!-- List -->
+                        <ul class="flex flex-col gap-2 mt-2 text-[14px] leading-[20px] font-inter text-[#29303D]">
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> English-taught courses</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> International faculty</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Exchange opportunities</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Industry partnerships</li>
+                        </ul>
+
+                        <!-- Button -->
+                        <a href="#"
+                            class="mt-auto w-[320px] h-[40px] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[17px] py-[10px] font-medium text-[#29303D] text-[14px] leading-[20px]">
+                            Learn More
+                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                        </a>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div
+                        class="w-[384px] h-[550px] bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-[32px] flex flex-col gap-[24px]">
+                        <div
+                            class="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
+                            <img src="{{ asset('icons/globe.svg') }}" alt="Program Icon" class="w-8 h-8">
+                        </div>
+                        <h3 class="font-playfair font-bold text-[20px] leading-[28px] text-[#29303D]">
+                            Double Degree Programs
+                        </h3>
+                        <p class="font-inter font-normal text-[16px] leading-[24px] text-[#29303DB2]">
+                            Earn degrees from both UB and partner universities worldwide
+                        </p>
+                        <div class="flex justify-between items-center text-[14px] leading-[20px]">
+                            <span class="flex items-center gap-2 text-[#29303DB2]">
+                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
+                                800+ students
+                            </span>
+                            <span class="text-[#0000FF] font-medium">4–5 years</span>
+                        </div>
+                        <ul class="flex flex-col gap-2 mt-2 text-[14px] leading-[20px] font-inter text-[#29303D]">
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Two university degrees</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Study abroad experience</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Global network access</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Enhanced career prospects</li>
+                        </ul>
+                        <a href="#"
+                            class="mt-auto w-[320px] h-[40px] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[17px] py-[10px] font-medium text-[#29303D] text-[14px] leading-[20px]">
+                            Learn More
+                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                        </a>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div
+                        class="w-[384px] h-[550px] bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-[32px] flex flex-col gap-[24px]">
+                        <div
+                            class="w-[64px] h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
+                            <img src="{{ asset('icons/book.svg') }}" alt="Program Icon" class="w-8 h-8">
+                        </div>
+                        <h3 class="font-playfair font-bold text-[20px] leading-[28px] text-[#29303D]">
+                            International Master’s
+                        </h3>
+                        <p class="font-inter font-normal text-[16px] leading-[24px] text-[#29303DB2]">
+                            Advanced graduate programs with research focus and global collaboration
+                        </p>
+                        <div class="flex justify-between items-center text-[14px] leading-[20px]">
+                            <span class="flex items-center gap-2 text-[#29303DB2]">
+                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
+                                1,200+ students
+                            </span>
+                            <span class="text-[#0000FF] font-medium">2 years</span>
+                        </div>
+                        <ul class="flex flex-col gap-2 mt-2 text-[14px] leading-[20px] font-inter text-[#29303D]">
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Research opportunities</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> International supervision</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Conference participation</li>
+                            <li class="flex items-center gap-2"><span
+                                    class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Publication support</li>
+                        </ul>
+                        <a href="#"
+                            class="mt-auto w-[320px] h-[40px] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[17px] py-[10px] font-medium text-[#29303D] text-[14px] leading-[20px]">
+                            Learn More
+                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                        </a>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Upcoming Events -->
+        <section id="events" class="w-full h-[1082px] bg-[#FFFFFF] px-[80px] py-[80px]">
+            <div class="max-w-[1280px] h-[878px] mx-auto px-[32px] flex flex-col gap-[64px]">
+
+                <!-- Heading -->
+                <div class="w-full flex flex-col items-center gap-[16px]">
+                    <h2
+                        class="w-[1216px] text-center font-playfair font-bold text-[36px] leading-[40px] text-[#29303D]">
+                        Upcoming Events
+                    </h2>
+                    <p
+                        class="max-w-[672px] text-center font-inter text-[20px] leading-[28px] font-light text-[#29303DB2]">
+                        Join our international events and connect with the global academic
+                        community
+                    </p>
+                </div>
+
+                <!-- Cards -->
+                <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[32px]">
+
+                    <!-- Card 1 -->
+                    <article
+                        class="w-[384px] h-[648px] bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                        <!-- Top image -->
+                        <div class="w-full h-[288px]">
+                            <img src="{{ asset('images/conference.jpg') }}" alt="International Education Fair 2024"
+                                class="w-full h-full object-cover">
+                        </div>
+
+                        <!-- Bottom content (360px) -->
+                        <div class="w-full h-[360px] p-[24px] flex flex-col gap-[16px]">
+                            <!-- badges -->
+                            <div class="w-[336px] flex items-center justify-between">
+                                <span
+                                    class="inline-flex items-center rounded-full px-[12px] py-[4px] text-[12px] leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
+                                    Education Fair
+                                </span>
+                                <span
+                                    class="inline-flex items-center rounded-full px-[12px] py-[4px] text-[12px] leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
+                                    upcoming
+                                </span>
+                            </div>
+
+                            <!-- title -->
+                            <h3 class="w-[312px] font-playfair font-bold text-[20px] leading-[28px] text-[#29303D]">
+                                International Education Fair 2024
+                            </h3>
+
+                            <!-- description -->
+                            <p class="w-[336px] font-inter text-[16px] leading-[24px] text-[#29303DB2]">
+                                Meet representatives from top universities worldwide and explore study abroad...
+                            </p>
+
+                            <!-- meta -->
+                            <div class="flex flex-col gap-2 text-[14px] leading-[20px] text-[#29303D99] font-inter">
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
+                                    Thursday, February 15, 2024
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
+                                    09:00 - 17:00
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
+                                    UB Convention Center
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
+                                    500+ expected attendees
+                                </div>
+                            </div>
+
+                            <!-- CTA -->
+                            <a href="#"
+                                class="mt-auto w-[336px] h-[40px] rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-[8px] px-[17px] pt-[9.5px] pb-[10.5px] bg-white text-[#29303D] font-medium text-[14px] leading-[20px]">
+                                Register Now
+                                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4"
+                                    alt="">
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article
+                        class="w-[384px] h-[648px] bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                        <div class="w-full h-[288px]">
+                            <img src="{{ asset('images/present.jpg') }}" alt="Global Research Symposium"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full h-[360px] p-[24px] flex flex-col gap-[16px]">
+                            <div class="w-[336px] flex items-center justify-between">
+                                <span
+                                    class="inline-flex items-center rounded-full px-[12px] py-[4px] text-[12px] leading-[16px] font-medium bg-[#EDE9FE] text-[#6D28D9]">
+                                    Symposium
+                                </span>
+                                <span
+                                    class="inline-flex items-center rounded-full px-[12px] py-[4px] text-[12px] leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
+                                    upcoming
+                                </span>
+                            </div>
+                            <h3 class="w-[312px] font-playfair font-bold text-[20px] leading-[28px] text-[#29303D]">
+                                Global Research Symposium
+                            </h3>
+                            <p class="w-[336px] font-inter text-[16px] leading-[24px] text-[#29303DB2]">
+                                Leading researchers present cutting-edge findings in sustainability and innovation
+                            </p>
+                            <div class="flex flex-col gap-2 text-[14px] leading-[20px] text-[#29303D99] font-inter">
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
+                                    Thursday, February 22, 2024
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
+                                    08:30 - 16:00
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
+                                    Academic Hall UB
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
+                                    300+ expected attendees
+                                </div>
+                            </div>
+                            <a href="#"
+                                class="mt-auto w-[336px] h-[40px] rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-[8px] px-[17px] pt-[9.5px] pb-[10.5px] bg-white text-[#29303D] font-medium text-[14px] leading-[20px]">
+                                Register Now
+                                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4"
+                                    alt="">
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article
+                        class="w-[384px] h-[648px] bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                        <div class="w-full h-[288px]">
+                            <img src="{{ asset('images/festival.jpg') }}" alt="International Cultural Festival"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full h-[360px] p-[24px] flex flex-col gap-[16px]">
+                            <div class="w-[336px] flex items-center justify-between">
+                                <span
+                                    class="inline-flex items-center rounded-full px-[12px] py-[4px] text-[12px] leading-[16px] font-medium bg-[#FCE7F3] text-[#DB2777]">
+                                    Cultural Event
+                                </span>
+                                <span
+                                    class="inline-flex items-center rounded-full px-[12px] py-[4px] text-[12px] leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
+                                    upcoming
+                                </span>
+                            </div>
+                            <h3 class="w-[312px] font-playfair font-bold text-[20px] leading-[28px] text-[#29303D]">
+                                International Cultural Festival
+                            </h3>
+                            <p class="w-[336px] font-inter text-[16px] leading-[24px] text-[#29303DB2]">
+                                Celebrate diversity with cultural performances, food, and traditions from...
+                            </p>
+                            <div class="flex flex-col gap-2 text-[14px] leading-[20px] text-[#29303D99] font-inter">
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
+                                    Friday, March 1, 2024
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
+                                    10:00 - 22:00
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
+                                    UB Campus Plaza
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
+                                    1000+ expected attendees
+                                </div>
+                            </div>
+                            <a href="#"
+                                class="mt-auto w-[336px] h-[40px] rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-[8px] px-[17px] pt-[9.5px] pb-[10.5px] bg-white text-[#29303D] font-medium text-[14px] leading-[20px]">
+                                Register Now
+                                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4"
+                                    alt="">
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
 
     </div>
 </body>
