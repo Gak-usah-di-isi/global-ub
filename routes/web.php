@@ -15,6 +15,10 @@ Route::get('/news', function () {
     return view('landing.news');
 });
 
+Route::get('/event', function () {
+    return view('landing.event');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
