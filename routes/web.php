@@ -19,6 +19,10 @@ Route::get('/event', function () {
     return view('landing.event');
 });
 
+Route::get('/study', function () {
+    return view('landing.study');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
