@@ -74,6 +74,10 @@
         format("truetype");
 }
 
+body {
+    zoom: 110%;
+}
+
 /* @font-face {
     font-family: "Playfair Display";
     src: url("/fonts/static/PlayfairDisplay-SemiBold.ttf") format("truetype");
