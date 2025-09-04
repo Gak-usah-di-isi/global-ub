@@ -23,6 +23,10 @@ Route::get('/study', function () {
     return view('landing.study');
 });
 
+Route::get('/detail-study', function () {
+    return view('landing.detail-study');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
