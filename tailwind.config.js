@@ -12,6 +12,8 @@ export default {
     theme: {
         fontFamily: {
             sans: ["Outfit", "Inter", "ui-sans-serif", "system-ui"],
+            playfair: ["Playfair Display", "serif"],
+            inter: ["Inter", "sans-serif"],
         },
         extend: {
             colors: {
