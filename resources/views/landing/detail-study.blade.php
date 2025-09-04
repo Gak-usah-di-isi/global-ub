@@ -443,18 +443,18 @@
                 </div>
 
                 <div class="flex justify-between items-center mt-8">
-                    <div class="text-white text-sm font-inter font-normal leading-[20px]">
+                    <div class="text-white text-sm font-inter font-light leading-[20px]">
                         © 2024 Universitas Brawijaya Direktorat Kerjasama, All Right Reserved.
                     </div>
 
                     <div class="flex gap-[20px]">
-                        <a href="#" class="text-white text-sm font-['Font 2'] font-normal leading-[20px]">
+                        <a href="#" class="text-white text-sm font-inter font-light leading-[20px]">
                             Privacy Policy
                         </a>
-                        <a href="#" class="text-white text-sm font-['Font 2'] font-normal leading-[20px]">
+                        <a href="#" class="text-white text-sm font-inter font-light leading-[20px]">
                             Terms of Service
                         </a>
-                        <a href="#" class="text-white text-sm font-['Font 2'] font-normal leading-[20px]">
+                        <a href="#" class="text-white text-sm font-inter font-light leading-[20px]">
                             Sitemap
                         </a>
                     </div>
@@ -462,7 +462,6 @@
 
             </div>
         </footer>
-
 
     </div>
 
