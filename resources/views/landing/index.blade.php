@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Landing Page</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
- </head>
- <body class="bg-[#FFFFFF] w-full min-h-screen">
+</head>
+
+<body class="bg-[#FFFFFF] w-full min-h-screen">
     <div class="max-w-[1440px] mx-auto">
 
-        <nav class="w-full h-20 flex justify-between items-center bg-[#FFFFFFF2] border-b px-4 md:px-8 lg:px-28">
+        <nav
+            class="w-full h-20 flex justify-between items-center bg-[#FFFFFFF2] border-b px-4 md:px-8 lg:px-28 sticky top-0 z-50">
 
             <div class="flex items-center space-x-4">
                 <img src="{{ asset('/images/ub.png') }}" alt="Logo UB" class="h-6 md:h-8">
@@ -79,19 +82,23 @@
             </div>
             <div
                 class="absolute top-1/2 transform -translate-y-1/2 w-full flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 md:px-12 lg:px-[120px] gap-8 md:gap-0">
-                <div class="text-container flex flex-col gap-4 sm:gap-6 w-full md:w-1/2 lg:w-[779px] max-w-full md:max-w-[896px] text-center md:text-left">
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold leading-tight md:leading-[72px] tracking-normal text-white font-playfair">
+                <div
+                    class="text-container flex flex-col gap-4 sm:gap-6 w-full md:w-1/2 lg:w-[779px] max-w-full md:max-w-[896px] text-center md:text-left">
+                    <h1
+                        class="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold leading-tight md:leading-[72px] tracking-normal text-white font-playfair">
                         Inspiring Change,<br><span class="text-[#6699FF]">Uniting Civilizations</span>
                     </h1>
-                    <h2 class="text-lg sm:text-xl md:text-[24px] font-light leading-relaxed md:leading-[24px] text-white font-inter tracking-normal">
+                    <h2
+                        class="text-lg sm:text-xl md:text-[24px] font-light leading-relaxed md:leading-[24px] text-white font-inter tracking-normal">
                         Leading research and innovation on the global stage
                     </h2>
                     <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
                         <button
                             class="bg-[#FFFFFF1A] border border-[#FFFFFF33] shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px] text-[#0000FF] py-2 px-4 sm:px-[33px] rounded-[12px] w-full sm:w-[220px] h-[56px] flex items-center justify-center gap-2">
-                            <span class="font-medium font-inter text-sm sm:text-[14px] leading-[24px] text-white">Explore
+                            <span
+                                class="font-medium font-inter text-sm sm:text-[14px] leading-[24px] text-white">Explore
                                 Programs</span>
-                            <img src="{{ asset('icons/play.svg') }}" alt="Play Icon" class="w-6 h-6">
+                            <img src="{{ asset('icons/play.svg') }}" alt="Play Icon" class="w-4 h-4">
                         </button>
 
                         <button
@@ -101,7 +108,8 @@
                         </button>
                     </div>
                 </div>
-                <div class="image-container w-full md:w-1/2 lg:w-[380px] h-[300px] sm:h-[350px] md:h-[390px] rounded-[20px] overflow-hidden mt-4 md:mt-0">
+                <div
+                    class="image-container w-full md:w-1/2 lg:w-[380px] h-[300px] sm:h-[350px] md:h-[390px] rounded-[20px] overflow-hidden mt-4 md:mt-0">
                     <img src="{{ asset('/images/hero-content.jpg') }}" alt="Image"
                         class="w-full h-full object-cover">
                 </div>
@@ -129,21 +137,26 @@
             </div>
         </section>
 
-        <section class="w-full h-auto bg-[#F0F2F4] py-12 md:py-20">
-            <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8">
+        <section class="w-full h-auto bg-[#F0F2F4] py-12 md:py-20 lg:px-[112px]">
+            <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[0px]">
                 <h1 class="text-2xl sm:text-3xl md:text-[38px] font-extrabold text-center text-[#29303D] font-playfair">
                     University Ranking
                 </h1>
-                <h2 class="text-base sm:text-lg md:text-[20px] font-inter font-normal text-center text-[#29303DB2] mt-2 mb-6 md:mb-8">
+                <h2
+                    class="text-base sm:text-lg md:text-[20px] font-inter font-normal text-center text-[#29303DB2] mt-2 mb-6 md:mb-8">
                     Recognized globally for academic excellence and research innovation
                 </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mt-8 md:mt-16">
-                    <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
-                        <div class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mt-8 md:mt-16">
+                    <div
+                        class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
+                        <div
+                            class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
                             <img src="{{ asset('icons/trophy.svg') }}" alt="Icon 1"
                                 class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                         </div>
-                        <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">Top 5</h3>
+                        <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
+                            Top 5</h3>
                         <p class="font-inter font-bold text-center mb-2 text-[#29303DCC]">Indonesia Universities</p>
                         <p
                             class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
@@ -152,12 +165,15 @@
                         <span class="font-medium text-[#0000FF]">2024</span>
                     </div>
 
-                    <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
-                        <div class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
+                    <div
+                        class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
+                        <div
+                            class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
                             <img src="{{ asset('icons/globe-blue.svg') }}" alt="Icon 2"
                                 class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                         </div>
-                        <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">#401-450</h3>
+                        <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
+                            #401-450</h3>
                         <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">World Universities</p>
                         <p
                             class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
@@ -166,12 +182,15 @@
                         <span class="font-medium text-[#0000FF]">2024</span>
                     </div>
 
-                    <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
-                        <div class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
+                    <div
+                        class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
+                        <div
+                            class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
                             <img src="{{ asset('icons/up.svg') }}" alt="Icon 3"
                                 class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                         </div>
-                        <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">Top 3</h3>
+                        <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
+                            Top 3</h3>
                         <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">Research Impact</p>
                         <p
                             class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
@@ -179,13 +198,17 @@
                         </p>
                         <span class="font-medium text-[#0000FF]">2024</span>
                     </div>
- 
-                    <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
-                        <div class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
+
+                    <div
+                        class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
+                        <div
+                            class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
                             <img src="{{ asset('icons/star.svg') }}" alt="Icon 4"
                                 class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                         </div>
-                        <h3 class="text-xl md:text-[24px] font-inter font-extrabold text-[#29303D] text-center mt-2 mb-2">5 Stars
+                        <h3
+                            class="text-xl md:text-[24px] font-inter font-extrabold text-[#29303D] text-center mt-2 mb-2">
+                            5 Stars
                         </h3>
                         <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">Overall Rating</p>
                         <p
@@ -212,10 +235,13 @@
         <section class="w-full h-auto md:h-[665px] bg-white pt-12 md:pt-20 px-4 sm:px-8 md:px-12 lg:px-[112px]">
             <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-[64px]">
                 <div class="w-full md:w-1/2 lg:w-[576px]">
-                    <h2 class="text-2xl sm:text-3xl md:text-[36px] font-playfair font-extrabold leading-tight md:leading-[48px] text-[#29303D]">About
+                    <h2
+                        class="text-2xl sm:text-3xl md:text-[36px] font-playfair font-extrabold leading-tight md:leading-[48px] text-[#29303D]">
+                        About
                         Globalizing UB
                     </h2>
-                    <p class="mt-4 text-base sm:text-lg md:text-[18px] font-light font-inter leading-relaxed md:leading-[29.25px] text-[#29303DB2]">
+                    <p
+                        class="mt-4 text-base sm:text-lg md:text-[18px] font-light font-inter leading-relaxed md:leading-[29.25px] text-[#29303DB2]">
                         Brawijaya University is one of Indonesia's leading universities, committed to becoming a
                         world-class university. Through the Globalizing UB program, we provide international-quality
                         education that connects students with global opportunities. With over 60 years of experience in
@@ -284,20 +310,26 @@
 
                 </div>
 
-                <div class="w-full md:w-1/2 lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden flex justify-center items-center mt-6 md:mt-24 relative">
-                    <img src="{{ asset('/images/about-shadow.png') }}" alt="UB Image" class="w-full h-full object-cover">
+                <div
+                    class="w-full md:w-1/2 lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden flex justify-center items-center mt-6 md:mt-24 relative">
+                    <img src="{{ asset('/images/about-shadow.png') }}" alt="UB Image"
+                        class="w-full h-full object-cover">
 
-                    <div class="absolute -bottom-20 md:-bottom-100 right-4 md:right-12 w-[180px] md:w-[220.08px] h-[70px] md:h-[80px] max-w-[220px] rounded-[16px] bg-white p-3 md:p-4 shadow-[0px_8px_25px_-8px_#0000FF4D] mt-72">
+                    <div
+                        class="absolute -bottom-20 md:-bottom-100 right-4 md:right-12 w-[180px] md:w-[220.08px] h-[70px] md:h-[80px] max-w-[220px] rounded-[16px] bg-white p-3 md:p-4 shadow-[0px_8px_25px_-8px_#0000FF4D] mt-72">
                         <div class="w-full flex items-center gap-3">
-                            <div class="w-10 h-10 md:w-[48px] md:h-[48px] rounded-full flex items-center justify-center bg-[linear-gradient(135deg,#0000FF_0%,#6699FF_100%)]">
+                            <div
+                                class="w-10 h-10 md:w-[48px] md:h-[48px] rounded-full flex items-center justify-center bg-[linear-gradient(135deg,#0000FF_0%,#6699FF_100%)]">
                                 <img src="{{ asset('icons/partner.svg') }}" alt="Global Network Icon"
                                     class="w-5 h-5 md:w-6 md:h-6">
                             </div>
                             <div class="w-[calc(100%-60px)] leading-none">
-                                <p class="font-inter font-semibold text-xs md:text-[14px] leading-tight md:leading-[24px] text-[#29303D]">
+                                <p
+                                    class="font-inter font-semibold text-xs md:text-[14px] leading-tight md:leading-[24px] text-[#29303D]">
                                     Global Network
                                 </p>
-                                <p class="font-inter font-normal text-xs md:text-[12px] leading-tight md:leading-[20px] text-[#29303DB2]">
+                                <p
+                                    class="font-inter font-normal text-xs md:text-[12px] leading-tight md:leading-[20px] text-[#29303DB2]">
                                     Connected worldwide
                                 </p>
                             </div>
@@ -312,10 +344,12 @@
         <section id="news" class="w-full bg-[#FFFFFF] py-10 px-4 sm:px-8 md:px-12 lg:px-[112px]">
             <div class="max-w-[1280px] mx-auto h-auto md:h-[740px]">
                 <div class="w-full text-center mb-8 md:mb-12">
-                    <h2 class="text-2xl sm:text-3xl md:text-[36px] font-bold leading-tight md:leading-[40px] text-[#29303D] font-playfair">
+                    <h2
+                        class="text-2xl sm:text-3xl md:text-[36px] font-bold leading-tight md:leading-[40px] text-[#29303D] font-playfair">
                         News
                     </h2>
-                    <p class="mt-2 md:mt-4 text-base sm:text-lg md:text-[20px] leading-relaxed md:leading-[28px] font-inter font-light text-[#29303DB2]">
+                    <p
+                        class="mt-2 md:mt-4 text-base sm:text-lg md:text-[20px] leading-relaxed md:leading-[28px] font-inter font-light text-[#29303DB2]">
                         Stay updated with the latest international activities and achievements
                         from Universitas Brawijaya
                     </p>
@@ -332,7 +366,8 @@
                             UB Signs MOU with Stanford University for Joint Research Program
                         </h3>
 
-                        <p class="text-base sm:text-lg md:text-[18px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
+                        <p
+                            class="text-base sm:text-lg md:text-[18px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
                             Universitas Brawijaya establishes new partnership with Stanford University
                             focusing on sustainable technology research and stude ..
                         </p>
@@ -363,7 +398,8 @@
                                 <h4 class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
                                     International Conference on Climate Change hosted by UB
                                 </h4>
-                                <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/12/2024 • 4 min
+                                <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/12/2024
+                                    • 4 min
                                     read</p>
                             </div>
                         </div>
@@ -377,7 +413,8 @@
                                 <h4 class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
                                     UB Students Win Gold at International Innovation Competition
                                 </h4>
-                                <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/10/2024 • 2 min
+                                <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/10/2024
+                                    • 2 min
                                     read</p>
                             </div>
                         </div>
@@ -391,7 +428,8 @@
                                 <h4 class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
                                     New Double Degree Program with University of Melbourne
                                 </h4>
-                                <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/8/2024 • 3 min
+                                <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/8/2024
+                                    • 3 min
                                     read</p>
                             </div>
                         </div>
@@ -405,7 +443,8 @@
                                 <h4 class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
                                     Global Alumni Network Reaches 10,000 Members Worldwide
                                 </h4>
-                                <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/5/2024 • 2 min
+                                <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/5/2024
+                                    • 2 min
                                     read</p>
                             </div>
                         </div>
@@ -424,61 +463,81 @@
             </div>
         </section>
 
-        <section id="study-in-ub" class="w-full h-auto bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] px-4 sm:px-6 md:px-8 lg:px-[80px] py-8 md:py-[80px]">
-            <div class="max-w-[1280px] h-auto mx-auto px-4 sm:px-6 md:px-8 lg:px-[32px] flex flex-col gap-8 md:gap-[64px]">
+        <section id="study-in-ub"
+            class="w-full h-auto bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] px-4 sm:px-6 md:px-8 lg:px-[80px] py-8 md:py-[80px]">
+            <div
+                class="max-w-[1280px] h-auto mx-auto px-4 sm:px-6 md:px-8 lg:px-[32px] flex flex-col gap-8 md:gap-[64px]">
                 <div class="w-full flex flex-col items-center gap-4">
-                    <h2 class="w-full text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
+                    <h2
+                        class="w-full text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
                         Study in UB
                     </h2>
-                    <p class="max-w-full md:max-w-[768px] text-center font-inter font-light text-base sm:text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303DB2]">
+                    <p
+                        class="max-w-full md:max-w-[768px] text-center font-inter font-light text-base sm:text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303DB2]">
                         Discover world-class education opportunities and join our diverse international
                         academic community
                     </p>
                 </div>
 
-                <div class="w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-[32px] place-items-center">
+                <div
+                    class="w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-[32px] place-items-center">
                     <div class="flex flex-col items-center">
-                        <div class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        <div
+                            class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                             150+
                         </div>
-                        <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Study Programs</span>
+                        <span
+                            class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Study
+                            Programs</span>
                     </div>
 
                     <div class="flex flex-col items-center">
-                        <div class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        <div
+                            class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                             15
                         </div>
-                        <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Faculties</span>
+                        <span
+                            class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Faculties</span>
                     </div>
 
                     <div class="flex flex-col items-center">
-                        <div class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        <div
+                            class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                             100+
                         </div>
-                        <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Partner
+                        <span
+                            class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Partner
                             Universities</span>
                     </div>
 
                     <div class="flex flex-col items-center">
-                        <div class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        <div
+                            class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                             4,500+
                         </div>
-                        <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">International
+                        <span
+                            class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">International
                             Students</span>
                     </div>
                 </div>
 
-                <div class="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[32px]">
-                    <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
-                        <div class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                            <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
+                <div
+                    class="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[32px]">
+                    <div
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
+                        <div
+                            class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
+                            <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon"
+                                class="w-6 h-6 md:w-8 md:h-8">
                         </div>
 
-                        <h3 class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
+                        <h3
+                            class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
                             International Undergraduate Program
                         </h3>
 
-                        <p class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
+                        <p
+                            class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
                             Comprehensive bachelor’s degree programs taught in English with global perspectives
                         </p>
 
@@ -490,7 +549,8 @@
                             <span class="text-[#0000FF] font-medium">4 years</span>
                         </div>
 
-                        <ul class="flex flex-col gap-2 mt-2 text-xs md:text-[14px] leading-[20px] font-inter text-[#29303D]">
+                        <ul
+                            class="flex flex-col gap-2 mt-2 text-xs md:text-[14px] leading-[20px] font-inter text-[#29303D]">
                             <li class="flex items-center gap-2"><span
                                     class="w-2 h-2 bg-[#0000FF] rounded-full"></span> English-taught courses</li>
                             <li class="flex items-center gap-2"><span
@@ -508,14 +568,19 @@
                         </a>
                     </div>
 
-                    <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
-                        <div class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                            <img src="{{ asset('icons/globe.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
+                    <div
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
+                        <div
+                            class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
+                            <img src="{{ asset('icons/globe.svg') }}" alt="Program Icon"
+                                class="w-6 h-6 md:w-8 md:h-8">
                         </div>
-                        <h3 class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
+                        <h3
+                            class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
                             Double Degree Programs
                         </h3>
-                        <p class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
+                        <p
+                            class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
                             Earn degrees from both UB and partner universities worldwide
                         </p>
                         <div class="flex justify-between items-center text-xs md:text-[14px] leading-[20px]">
@@ -525,7 +590,8 @@
                             </span>
                             <span class="text-[#0000FF] font-medium">4–5 years</span>
                         </div>
-                        <ul class="flex flex-col gap-2 mt-2 text-xs md:text-[14px] leading-[20px] font-inter text-[#29303D]">
+                        <ul
+                            class="flex flex-col gap-2 mt-2 text-xs md:text-[14px] leading-[20px] font-inter text-[#29303D]">
                             <li class="flex items-center gap-2"><span
                                     class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Two university degrees</li>
                             <li class="flex items-center gap-2"><span
@@ -542,14 +608,19 @@
                         </a>
                     </div>
 
-                    <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
-                        <div  class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                            <img src="{{ asset('icons/book.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
+                    <div
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
+                        <div
+                            class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
+                            <img src="{{ asset('icons/book.svg') }}" alt="Program Icon"
+                                class="w-6 h-6 md:w-8 md:h-8">
                         </div>
-                        <h3 class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
+                        <h3
+                            class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
                             International Master’s
                         </h3>
-                        <p class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
+                        <p
+                            class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
                             Advanced graduate programs with research focus and global collaboration
                         </p>
                         <div class="flex justify-between items-center text-xs md:text-[14px] leading-[20px]">
@@ -559,7 +630,8 @@
                             </span>
                             <span class="text-[#0000FF] font-medium">2 years</span>
                         </div>
-                        <ul class="flex flex-col gap-2 mt-2 text-xs md:text-[14px] leading-[20px] font-inter text-[#29303D]">
+                        <ul
+                            class="flex flex-col gap-2 mt-2 text-xs md:text-[14px] leading-[20px] font-inter text-[#29303D]">
                             <li class="flex items-center gap-2"><span
                                     class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Research opportunities</li>
                             <li class="flex items-center gap-2"><span
@@ -582,7 +654,8 @@
             </div>
         </section>
 
-        <section id="events" class="w-full h-auto bg-[#FFFFFF] px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-[80px] lg:py-[80px]">
+        <section id="events"
+            class="w-full h-auto bg-[#FFFFFF] px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-[80px] lg:py-[80px]">
             <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6 md:gap-8 lg:gap-[40px]">
                 <div class="w-full flex flex-col items-center gap-4">
                     <h2
@@ -701,7 +774,7 @@
                             </a>
                         </div>
                     </article>
-                    
+
                     <article
                         class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
                         <div class="w-full h-48 sm:h-64 md:h-[288px]">
@@ -1100,7 +1173,7 @@
                 spans[0].classList.add('rotate-45', 'translate-y-1.5');
                 spans[1].classList.add('opacity-0');
                 spans[2].classList.add('-rotate-45', '-translate-y-1.5');
-            } else {  
+            } else {
                 mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
                 mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
 
@@ -1127,6 +1200,6 @@
             }
         });
     </script>
- </body>
+</body>
 
 </html>

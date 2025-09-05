@@ -10,11 +10,24 @@ export default {
     ],
 
     theme: {
+        fontFamily: {
+            sans: ["Outfit", "Inter", "ui-sans-serif", "system-ui"],
+            playfair: ["Playfair Display", "serif"],
+            inter: ["Inter", "sans-serif"],
+        },
         extend: {
-            fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-                playfair: ["Playfair Display", "serif"],
-                inter: ["Inter", "sans-serif"],
+            colors: {
+                primary: {
+                    50: "#f2f6ff",
+                    100: "#e6efff",
+                    500: "#1f4ed8",
+                    600: "#1842c0",
+                    700: "#12379f",
+                },
+                body: "#f5f7fc",
+            },
+            boxShadow: {
+                card: "0 1px 2px rgba(16,24,40,.05),0 0 0 1px rgba(16,24,40,.06)",
             },
         },
     },

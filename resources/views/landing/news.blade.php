@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>News Page</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
- </head>
+</head>
 
- <body class="bg-[#FFFFFF] w-full min-h-screen">
+<body class="bg-[#FFFFFF] w-full min-h-screen">
     <div class="max-w-[1440px] mx-auto">
 
         <nav class="w-full h-20 flex justify-between items-center bg-[#FFFFFFF2] border-b px-4 md:px-8 lg:px-28">
 
             <div class="flex items-center space-x-4">
-                <img src="/images/ub.png" alt="Logo UB" class="h-6 md:h-8">
-                <img src="/images/gub.png" alt="Logo Gub" class="h-6 md:h-8">
+                <img src="{{ asset('/images/ub.png') }}" alt="Logo UB" class="h-6 md:h-8">
+                <img src="{{ asset('/images/gub.png') }}" alt="Logo Gub" class="h-6 md:h-8">
             </div>
 
             <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
                 <a href="/"
-                    class="text-[#29303D] font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Home</a>
+                    class="text-[#29303D] font-inter font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Home</a>
                 <a href="/about"
-                    class="text-[#29303D] font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">About</a>
+                    class="text-[#29303D] font-inter font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">About</a>
                 <a href="/news"
-                    class="text-[#29303D] font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">News</a>
+                    class="text-[#29303D] font-inter font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">News</a>
                 <a href="/event"
-                    class="text-[#29303D] font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Event</a>
+                    class="text-[#29303D] font-inter font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Event</a>
                 <a href="/study"
-                    class="text-[#29303D] font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Study
+                    class="text-[#29303D] font-inter font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Study
                     in UB</a>
                 <a href="#"
-                    class="text-[#29303D] font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Partnership</a>
+                    class="text-[#29303D] font-inter font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Partnership</a>
                 <a href="#"
-                    class="text-[#29303D] font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Gallery</a>
+                    class="text-[#29303D] font-inter font-medium text-[15px] leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors">Gallery</a>
             </div>
 
             <div class="flex items-center space-x-4">
                 <button
                     class="bg-[#0000FF] text-white py-2 px-3 md:px-4 rounded-[10px] w-[70px] md:w-[78px] h-[36px] flex items-center gap-[6px] md:gap-[8px]">
                     <span class="font-medium text-[12px] md:text-[14px] leading-[24px] tracking-normal">Eng</span>
-                    <img src="/icons/globe.svg" alt="Globe Icon" class="w-4 h-4 md:w-5 md:h-5">
+                    <img src="{{ asset('icons/globe.svg') }}" alt="Globe Icon" class="w-4 h-4 md:w-5 md:h-5">
                 </button>
 
                 <button id="mobile-menu-button"
@@ -56,20 +57,20 @@
                 class="absolute top-20 left-0 right-0 bg-white border-b shadow-lg transform -translate-y-full opacity-0 invisible transition-all duration-300 lg:hidden z-50">
                 <div class="flex flex-col space-y-4 p-6">
                     <a href="/"
-                        class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Home</a>
+                        class="text-[#29303D] font-inter font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Home</a>
                     <a href="/about"
-                        class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">About</a>
+                        class="text-[#29303D] font-inter font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">About</a>
                     <a href="/news"
-                        class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">News</a>
+                        class="text-[#29303D] font-inter font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">News</a>
                     <a href="/event"
-                        class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Event</a>
+                        class="text-[#29303D] font-inter font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Event</a>
                     <a href="/study"
-                        class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Study
+                        class="text-[#29303D] font-inter font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Study
                         in UB</a>
                     <a href="#"
-                        class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Partnership</a>
+                        class="text-[#29303D] font-inter font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Partnership</a>
                     <a href="#"
-                        class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Gallery</a>
+                        class="text-[#29303D] font-inter font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Gallery</a>
                 </div>
             </div>
         </nav>
@@ -92,8 +93,7 @@
         <section class="news-section py-10 md:py-20 px-4 md:px-8 lg:px-28 bg-white">
             <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
                 <div class="w-full lg:w-[450px] h-[300px] md:h-[400px] lg:h-[465px] rounded-lg overflow-hidden">
-                    <img src="/images/rektorat.png" alt="News Image"
-                        class="w-full h-full object-cover object-center">
+                    <img src="/images/rektorat.png" alt="News Image" class="w-full h-full object-cover object-center">
                 </div>
 
                 <div class="w-full lg:w-[669px]">
@@ -108,11 +108,13 @@
                         </span>
                     </div>
 
-                    <h2 class="text-[#29303D] font-playfair text-2xl md:text-3xl lg:text-[36px] font-bold mb-4">UB Signs MOU with Stanford
+                    <h2 class="text-[#29303D] font-playfair text-2xl md:text-3xl lg:text-[36px] font-bold mb-4">UB Signs
+                        MOU with Stanford
                         University for
                         Joint Research Program</h2>
 
-                    <p class="text-[#29303DB2] font-inter text-base md:text-[18px] leading-relaxed md:leading-[29.25px] mb-6 md:mb-8">
+                    <p
+                        class="text-[#29303DB2] font-inter text-base md:text-[18px] leading-relaxed md:leading-[29.25px] mb-6 md:mb-8">
                         Universitas Brawijaya (UB) officially signed a Memorandum of Understanding (MoU) with Stanford
                         University on January 15, 2024, marking a significant milestone in UB’s journey toward global
                         collaboration. The agreement focuses on joint research, academic exchange, and student
@@ -156,19 +158,20 @@
         </section>
 
         <section class="py-10 md:py-20 px-4 md:px-8 lg:px-28 bg-white">
-            <h2 class="text-2xl md:text-3xl font-playfair font-extrabold text-[#29303D] mb-8 md:mb-14">Related Post</h2>
+            <h2 class="text-2xl md:text-3xl font-playfair font-extrabold text-[#29303D] mb-8 md:mb-14">Related Post
+            </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-[15.94px]">
                 <div class="w-full h-auto bg-white rounded-lg flex flex-col gap-4 md:gap-[18px] p-4 md:p-0">
                     <div class="w-full h-[180px] rounded-[12px] overflow-hidden">
-                        <img src="/images/rektorat.png" alt="Main News"
-                            class="w-full h-full object-cover">
+                        <img src="/images/rektorat.png" alt="Main News" class="w-full h-full object-cover">
                     </div>
 
                     <h3 class="text-lg md:text-[18px] text-[#29303D] font-playfair font-extrabold">
                         UB Signs MOU with Stanford University for Joint Research Program
                     </h3>
 
-                    <p class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
+                    <p
+                        class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
                         Universitas Brawijaya establishes new partnership with Stanford University focusing on
                         sustainable technology research and student development.
                     </p>
@@ -192,15 +195,15 @@
 
                 <div class="w-full h-auto bg-white rounded-lg flex flex-col gap-4 md:gap-[18px] p-4 md:p-0">
                     <div class="w-full h-[180px] rounded-[12px] overflow-hidden">
-                        <img src="/images/rektorat.png" alt="Main News"
-                            class="w-full h-full object-cover">
+                        <img src="/images/rektorat.png" alt="Main News" class="w-full h-full object-cover">
                     </div>
 
                     <h3 class="text-lg md:text-[18px] text-[#29303D] font-playfair font-extrabold">
                         UB Signs MOU with Stanford University for Joint Research Program
                     </h3>
 
-                    <p class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
+                    <p
+                        class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
                         Universitas Brawijaya establishes new partnership with Stanford University focusing on
                         sustainable technology research and student development.
                     </p>
@@ -224,15 +227,15 @@
 
                 <div class="w-full h-auto bg-white rounded-lg flex flex-col gap-4 md:gap-[18px] p-4 md:p-0">
                     <div class="w-full h-[180px] rounded-[12px] overflow-hidden">
-                        <img src="/images/rektorat.png" alt="Main News"
-                            class="w-full h-full object-cover">
+                        <img src="/images/rektorat.png" alt="Main News" class="w-full h-full object-cover">
                     </div>
 
                     <h3 class="text-lg md:text-[18px] text-[#29303D] font-playfair font-extrabold">
                         UB Signs MOU with Stanford University for Joint Research Program
                     </h3>
 
-                    <p class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
+                    <p
+                        class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
                         Universitas Brawijaya establishes new partnership with Stanford University focusing on
                         sustainable technology research and student development.
                     </p>
@@ -256,15 +259,15 @@
 
                 <div class="w-full h-auto bg-white rounded-lg flex flex-col gap-4 md:gap-[18px] p-4 md:p-0">
                     <div class="w-full h-[180px] rounded-[12px] overflow-hidden">
-                        <img src="/images/rektorat.png" alt="Main News"
-                            class="w-full h-full object-cover">
+                        <img src="/images/rektorat.png" alt="Main News" class="w-full h-full object-cover">
                     </div>
 
                     <h3 class="text-lg md:text-[18px] text-[#29303D] font-playfair font-extrabold">
                         UB Signs MOU with Stanford University for Joint Research Program
                     </h3>
 
-                    <p class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
+                    <p
+                        class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
                         Universitas Brawijaya establishes new partnership with Stanford University focusing on
                         sustainable technology research and student development.
                     </p>
@@ -288,15 +291,15 @@
 
                 <div class="w-full h-auto bg-white rounded-lg flex flex-col gap-4 md:gap-[18px] p-4 md:p-0">
                     <div class="w-full h-[180px] rounded-[12px] overflow-hidden">
-                        <img src="/images/rektorat.png" alt="Main News"
-                            class="w-full h-full object-cover">
+                        <img src="/images/rektorat.png" alt="Main News" class="w-full h-full object-cover">
                     </div>
 
                     <h3 class="text-lg md:text-[18px] text-[#29303D] font-playfair font-extrabold">
                         UB Signs MOU with Stanford University for Joint Research Program
                     </h3>
 
-                    <p class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
+                    <p
+                        class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
                         Universitas Brawijaya establishes new partnership with Stanford University focusing on
                         sustainable technology research and student development.
                     </p>
@@ -320,15 +323,15 @@
 
                 <div class="w-full h-auto bg-white rounded-lg flex flex-col gap-4 md:gap-[18px] p-4 md:p-0">
                     <div class="w-full h-[180px] rounded-[12px] overflow-hidden">
-                        <img src="/images/rektorat.png" alt="Main News"
-                            class="w-full h-full object-cover">
+                        <img src="/images/rektorat.png" alt="Main News" class="w-full h-full object-cover">
                     </div>
 
                     <h3 class="text-lg md:text-[18px] text-[#29303D] font-playfair font-extrabold">
                         UB Signs MOU with Stanford University for Joint Research Program
                     </h3>
 
-                    <p class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
+                    <p
+                        class="text-sm md:text-[15px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
                         Universitas Brawijaya establishes new partnership with Stanford University focusing on
                         sustainable technology research and student development.
                     </p>
@@ -395,6 +398,6 @@
             }
         });
     </script>
- </body>
+</body>
 
 </html>
