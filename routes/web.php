@@ -30,10 +30,10 @@ Route::get('/story', function () {
 
 Route::get('/testimonial', function () {
     return view('landing.testimonials');
+});
 
 Route::get('/detail-study', function () {
     return view('landing.detail-study');
-
 });
 
 Route::get('/dashboard', function () {
