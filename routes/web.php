@@ -23,8 +23,17 @@ Route::get('/study', function () {
     return view('landing.study');
 });
 
+
+Route::get('/story', function () {
+    return view('landing.stories');
+});
+
+Route::get('/testimonial', function () {
+    return view('landing.testimonials');
+
 Route::get('/detail-study', function () {
     return view('landing.detail-study');
+
 });
 
 Route::get('/dashboard', function () {
