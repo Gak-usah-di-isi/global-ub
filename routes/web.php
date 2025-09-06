@@ -7,6 +7,22 @@ Route::get('/', function () {
     return view('landing.index');
 });
 
+Route::get('/detail-news', function () {
+    return view('landing.detail-news');
+});
+
+Route::get('/detail-events', function () {
+    return view('landing.detail-events');
+});
+
+Route::get('/download-center', function () {
+    return view('landing.download-center');
+});
+
+Route::get('/gallery', function () {
+    return view('landing.gallery');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
