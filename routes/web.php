@@ -3,42 +3,46 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('landing.index');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/about', function () {
-    return view('landing.about');
-});
+// Route::get('/', function () {
+//     return view('landing.index');
+// });
 
-Route::get('/news', function () {
-    return view('landing.news');
-});
+// Route::get('/about', function () {
+//     return view('landing.about');
+// });
 
-Route::get('/event', function () {
-    return view('landing.event');
-});
+// Route::get('/news', function () {
+//     return view('landing.news');
+// });
 
-Route::get('/study', function () {
-    return view('landing.study');
-});
+// Route::get('/event', function () {
+//     return view('landing.event');
+// });
+
+// Route::get('/study', function () {
+//     return view('landing.study');
+// });
 
 
-Route::get('/story', function () {
-    return view('landing.stories');
-});
+// Route::get('/story', function () {
+//     return view('landing.stories');
+// });
 
-Route::get('/testimonial', function () {
-    return view('landing.testimonials');
-});
+// Route::get('/testimonial', function () {
+//     return view('landing.testimonials');
+// });
 
-Route::get('/detail-study', function () {
-    return view('landing.detail-study');
-});
+// Route::get('/detail-study', function () {
+//     return view('landing.detail-study');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
