@@ -854,130 +854,170 @@
                 </div>
 
                 <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    <article class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
+                    <article
+                        class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
                         <div class="px-4 sm:px-[25px] py-4 sm:py-[25px] w-full">
                             <div class="flex items-start gap-3 sm:gap-[16px] mb-6">
-                                <div class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
+                                <div
+                                    class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
                                     <img src="{{ asset('icons/file.svg') }}" class="w-6 h-6" alt="File icon">
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <h3 class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
+                                    <h3
+                                        class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
                                         University Profile Brochure
                                     </h3>
-                                    <p class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
+                                    <p
+                                        class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
                                         Complete overview of UB programs and facilities
                                     </p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex justify-between items-center mb-4 sm:mb-6">
                                 <div class="flex gap-3 sm:gap-[16px] items-center">
-                                    <span class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">PDF</span>
-                                    <span class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">5.2 MB</span>
+                                    <span
+                                        class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">PDF</span>
+                                    <span
+                                        class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">5.2
+                                        MB</span>
                                 </div>
-                                
+
                                 <div class="flex gap-1 sm:gap-[4px] items-center">
-                                    <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60" alt="Download">
-                                    <span class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">2.5k</span>
+                                    <img src="{{ asset('icons/download.svg') }}"
+                                        class="w-3 h-3 sm:w-4 sm:h-4 opacity-60" alt="Download">
+                                    <span
+                                        class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">2.5k</span>
                                 </div>
                             </div>
-                            
-                            <button class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
-                                <span class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
+
+                            <button
+                                class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4"
+                                    alt="Download">
+                                <span
+                                    class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
                             </button>
                         </div>
                     </article>
 
-                    <article class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
+                    <article
+                        class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
                         <div class="px-4 sm:px-[25px] py-4 sm:py-[25px] w-full">
                             <div class="flex items-start gap-3 sm:gap-[16px] mb-6">
-                                <div class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
+                                <div
+                                    class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
                                     <img src="{{ asset('icons/file.svg') }}" class="w-6 h-6" alt="File icon">
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <h3 class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
+                                    <h3
+                                        class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
                                         University Profile Brochure
                                     </h3>
-                                    <p class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
+                                    <p
+                                        class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
                                         Complete overview of UB programs and facilities
                                     </p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex justify-between items-center mb-4 sm:mb-6">
                                 <div class="flex gap-3 sm:gap-[16px] items-center">
-                                    <span class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">PDF</span>
-                                    <span class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">5.2 MB</span>
+                                    <span
+                                        class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">PDF</span>
+                                    <span
+                                        class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">5.2
+                                        MB</span>
                                 </div>
-                                
+
                                 <div class="flex gap-1 sm:gap-[4px] items-center">
-                                    <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60" alt="Download">
-                                    <span class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">2.5k</span>
+                                    <img src="{{ asset('icons/download.svg') }}"
+                                        class="w-3 h-3 sm:w-4 sm:h-4 opacity-60" alt="Download">
+                                    <span
+                                        class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">2.5k</span>
                                 </div>
                             </div>
-                            
-                            <button class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
-                                <span class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
+
+                            <button
+                                class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4"
+                                    alt="Download">
+                                <span
+                                    class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
                             </button>
                         </div>
                     </article>
-                    
-                    <article class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
+
+                    <article
+                        class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
                         <div class="px-4 sm:px-[25px] py-4 sm:py-[25px] w-full">
                             <div class="flex items-start gap-3 sm:gap-[16px] mb-6">
-                                <div class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
+                                <div
+                                    class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
                                     <img src="{{ asset('icons/file.svg') }}" class="w-6 h-6" alt="File icon">
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <h3 class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
+                                    <h3
+                                        class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
                                         University Profile Brochure
                                     </h3>
-                                    <p class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
+                                    <p
+                                        class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
                                         Complete overview of UB programs and facilities
                                     </p>
                                 </div>
                             </div>
-                            
+
                             <div class="flex justify-between items-center mb-4 sm:mb-6">
                                 <div class="flex gap-3 sm:gap-[16px] items-center">
-                                    <span class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">PDF</span>
-                                    <span class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">5.2 MB</span>
+                                    <span
+                                        class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">PDF</span>
+                                    <span
+                                        class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">5.2
+                                        MB</span>
                                 </div>
-                                
+
                                 <div class="flex gap-1 sm:gap-[4px] items-center">
-                                    <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60" alt="Download">
-                                    <span class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">2.5k</span>
+                                    <img src="{{ asset('icons/download.svg') }}"
+                                        class="w-3 h-3 sm:w-4 sm:h-4 opacity-60" alt="Download">
+                                    <span
+                                        class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">2.5k</span>
                                 </div>
                             </div>
-                            
-                            <button class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
-                                <span class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
+
+                            <button
+                                class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4"
+                                    alt="Download">
+                                <span
+                                    class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
                             </button>
                         </div>
                     </article>
                 </div>
             </div>
 
-           <div class="py-8 md:py-12 lg:py-[80px] px-4 sm:px-6 md:px-8 lg:px-[80px]">
-              <div class="w-full max-w-full md:max-w-[1216px] h-auto md:h-[264px] mx-auto bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[24px] p-6 md:p-[48px] flex flex-col justify-between items-center text-center shadow-lg">
+            <div class="py-8 md:py-12 lg:py-[80px] px-4 sm:px-6 md:px-8 lg:px-[80px]">
+                <div
+                    class="w-full max-w-full md:max-w-[1216px] h-auto md:h-[264px] mx-auto bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[24px] p-6 md:p-[48px] flex flex-col justify-between items-center text-center shadow-lg">
                     <h3 class="text-xl md:text-[30px] font-playfair font-bold leading-tight text-white">
                         Need Everything?
                     </h3>
 
-                    <p class="text-base md:text-[20px] font-light font-inter leading-relaxed text-white opacity-90 max-w-full md:max-w-[672px] mt-4">
-                       Download our complete media kit with all brochures, posters, and promotional materials in one package
+                    <p
+                        class="text-base md:text-[20px] font-light font-inter leading-relaxed text-white opacity-90 max-w-full md:max-w-[672px] mt-4">
+                        Download our complete media kit with all brochures, posters, and promotional materials in one
+                        package
                     </p>
 
                     <div class="flex justify-center mt-6 md:mt-6">
-                        <a href="#" class="w-full h-[48px] font-inter font-normal text-sm md:text-[15px] px-[33px] py-[12px] rounded-[10px] border border-white/20 bg-white/10 text-white flex items-center justify-center">
+                        <a href="#"
+                            class="w-full h-[48px] font-inter font-normal text-sm md:text-[15px] px-[33px] py-[12px] rounded-[10px] border border-white/20 bg-white/10 text-white flex items-center justify-center">
                             Download Complete Media Kit ->
                         </a>
                     </div>
                 </div>
-            </div> 
+            </div>
         </section>
 
         <section id="events" class="w-full h-auto bg-[#FFFFFF] px-4 sm:px-6  md:px-8  lg:px-[80px]">
@@ -987,7 +1027,8 @@
                         class="text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
                         Brawijaya's Innovation
                     </h2>
-                    <p class="max-w-full sm:max-w-[672px] text-center font-inter text-sm sm:text-base md:text-[20px] leading-relaxed md:leading-[28px] font-light text-[#29303DB2]">
+                    <p
+                        class="max-w-full sm:max-w-[672px] text-center font-inter text-sm sm:text-base md:text-[20px] leading-relaxed md:leading-[28px] font-light text-[#29303DB2]">
                         Discover groundbreaking innovations and research outcomes that drive real-world impact.
                     </p>
                 </div>
@@ -996,8 +1037,8 @@
                     <article
                         class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
                         <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                            <img src="{{ asset('images/International.svg') }}" alt="International Education Fair 2024"
-                                class="w-full h-full object-cover">
+                            <img src="{{ asset('images/International.svg') }}"
+                                alt="International Education Fair 2024" class="w-full h-full object-cover">
                         </div>
                         <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
                             <div class="w-full flex items-center justify-between">
@@ -1005,7 +1046,7 @@
                                     class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
                                     Education Fair
                                 </span>
-                               
+
                             </div>
                             <h3
                                 class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
@@ -1055,7 +1096,7 @@
                                     class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#EDE9FE] text-[#6D28D9]">
                                     Symposium
                                 </span>
-                                
+
                             </div>
                             <h3
                                 class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
@@ -1092,7 +1133,7 @@
                             </a>
                         </div>
                     </article>
-                    
+
                     <article
                         class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
                         <div class="w-full h-48 sm:h-64 md:h-[288px]">
@@ -1158,7 +1199,123 @@
             </div>
         </section>
 
+        <footer class="bg-[#29303D] w-full">
+            <div class="max-w-[1280px] mx-auto px-6 sm:px-8 py-12 sm:py-16 gap-12">
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="flex flex-col gap-2 w-full lg:w-1/3">
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-4 items-center">
+                                <img src="{{ asset('images/ub.png') }}" alt="UB Logo" class="w-10 h-10">
+                                <img src="{{ asset('icons/gub.svg') }}" alt="Globalizing Logo"
+                                    class="h-10 max-w-[120px] sm:max-w-[150px] lg:max-w-[200px]">
+                            </div>
+                            <p class="text-[#FFFFFF] text-sm mt-2 font-inter font-light">Inspiring Change, Uniting
+                                Civilizations</p>
+                        </div>
 
+                        <div class="flex flex-col gap-4 mt-4">
+                            <h3 class="text-white text-sm font-bold font-inter">Direktorat Kerjasama Universitas
+                                Brawijaya</h3>
+
+                            <div class="flex items-start gap-2">
+                                <img src="{{ asset('icons/location-blue.svg') }}" alt="Map Icon"
+                                    class="w-4 h-4 mt-1">
+                                <p class="text-white text-sm font-light font-inter">Jl. Veteran, Ketawanggede, Kec.
+                                    Lowokwaru, Kota Malang, Jawa Timur 65145, Indonesia</p>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <img src="{{ asset('icons/telp-blue.svg') }}" alt="Phone Icon" class="w-4 h-4">
+                                <p class="text-white text-sm font-light font-inter">+62 341 551611</p>
+                            </div>
+
+                            <div class="flex items-center gap-2">
+                                <img src="{{ asset('icons/email-blue.svg') }}" alt="Email Icon" class="w-4 h-4">
+                                <p class="text-white text-sm font-light font-inter">gub@ub.ac.id</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-6 w-full lg:w-1/3">
+                        <h4 class="text-white text-lg font-playfair ">Connect With Us</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <button
+                                class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
+                                <img src="{{ asset('icons/fb-blue.svg') }}" alt="Facebook Icon"
+                                    class="w-[20px] h-[20px]">
+                                <p class="text-white text-sm font-inter font-light leading-[20px]">Facebook</p>
+                            </button>
+                            <button
+                                class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
+                                <img src="{{ asset('icons/linkedin-blue.svg') }}" alt="LinkedIn Icon"
+                                    class="w-[20px] h-[20px]">
+                                <p class="text-white text-sm font-inter font-light leading-[20px]">LinkedIn</p>
+                            </button>
+                            <button
+                                class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
+                                <img src="{{ asset('icons/ig-blue.svg') }}" alt="Instagram Icon"
+                                    class="w-[20px] h-[20px]">
+                                <p class="text-white text-sm font-inter font-light leading-[20px]">Instagram</p>
+                            </button>
+                            <button
+                                class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
+                                <img src="{{ asset('icons/yt-blue.svg') }}" alt="YouTube Icon"
+                                    class="w-[20px] h-[20px]">
+                                <p class="text-white text-sm font-inter font-light leading-[20px]">YouTube</p>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 w-full lg:w-1/3">
+                        <h4 class="text-white text-lg font-playfair">Visitor</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-white text-sm">
+                            <div class="flex items-center gap-2">
+                                <img src="{{ asset('icons/user.svg') }}" alt="Visits Today Icon" class="w-4 h-4">
+                                <span>93 Visits Today</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <img src="{{ asset('icons/user.svg') }}" alt="Total Visits Icon" class="w-4 h-4">
+                                <span>12,627 Visits</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <img src="{{ asset('icons/user.svg') }}" alt="Visitors Today Icon" class="w-4 h-4">
+                                <span>44 Visitors Today</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <img src="{{ asset('icons/user.svg') }}" alt="Total Visitors Icon" class="w-4 h-4">
+                                <span>8,155 Visitors</span>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h5 class="text-white text-lg font-playfair  mb-2">Newsletter</h5>
+                            <input type="email" placeholder="Enter your email"
+                                class="w-full h-[41px] p-[11px] bg-[#FFFFFF1A] rounded-[12px] border border-t-[1px] border-[#FFFFFF33] text-white" />
+                            <button
+                                class="w-full h-[36px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[10px] text-white mt-4 shadow-[0px_4px_20px_-2px_#29303D1A]">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <hr class="w-full h-[1px] border-t border-[#FFFFFF33] opacity-100" />
+                </div>
+
+                <div class="flex flex-col sm:flex-row justify-between items-center mt-6 gap-4">
+                    <div class="text-white text-sm font-inter font-light leading-[20px] text-center sm:text-left">
+                        © 2024 Universitas Brawijaya Direktorat Kerjasama, All Right Reserved.
+                    </div>
+                    <div class="flex flex-wrap justify-center sm:justify-end gap-[20px]">
+                        <a href="#" class="text-white text-sm font-inter font-light leading-[20px]">Privacy
+                            Policy</a>
+                        <a href="#" class="text-white text-sm font-inter font-light leading-[20px]">Terms of
+                            Service</a>
+                        <a href="#" class="text-white text-sm font-inter font-light leading-[20px]">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
