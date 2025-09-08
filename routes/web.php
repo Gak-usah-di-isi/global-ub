@@ -36,6 +36,34 @@ Route::get('/detail-study', function () {
     return view('landing.detail-study');
 });
 
+Route::get('/detail-news', function () {
+    return view('landing.detail-news');
+});
+
+Route::get('/detail-events', function () {
+    return view('landing.detail-events');
+});
+
+Route::get('/download-center', function () {
+    return view('landing.download-center');
+});
+
+Route::get('/gallery', function () {
+    return view('landing.gallery');
+});
+
+Route::get('/partner', function () {
+    return view('landing.partner');
+});
+
+Route::get('/partnership', function () {
+    return view('landing.partnership');
+});
+
+Route::get('/innovations', function () {
+    return view('landing.innovation');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
