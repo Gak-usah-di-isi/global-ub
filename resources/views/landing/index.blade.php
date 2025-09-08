@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="relative w-full h-[800px] md:h-[700px] lg:h-[600px] max-w-[1440px] mx-auto">
-        <div class="absolute inset-0 bg-[url('../../../public/images/hero-bg.jpg')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/hero-bg.jpg') }}')">
             <div class="absolute inset-0 bg-gradient-to-r from-[#0000FF] to-[#6699FF] opacity-90"></div>
         </div>
         <div
