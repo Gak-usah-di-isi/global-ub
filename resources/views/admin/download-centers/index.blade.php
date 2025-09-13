@@ -41,10 +41,11 @@
                     @forelse($downloadCenters as $item)
                         <tr>
                             <td>{{ $item->title }}</td>
-                            <td>{{ $item->short_description }}</td>
+                            <td>{{ $item->description }}
+                            </td>
                             <td>
-                                @if ($item->file_url)
-                                    <a href="{{ $item->file_url }}" target="_blank"
+                                @if ($item->file)
+                                    <a href="{{ asset('storage/' . $item->file) }}" target="_blank"
                                         class="text-primary-500 hover:text-primary-600 text-sm font-medium">
                                         Download
                                     </a>

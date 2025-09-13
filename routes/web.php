@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDownloadCenterController;
+use App\Http\Controllers\Admin\AdminNewsController;
 
 Route::get('/', function () {
     return view('landing.index');
@@ -72,12 +73,20 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+
     Route::get('/download-center', [AdminDownloadCenterController::class, 'index'])->name('download-center.index');
     Route::get('/download-center/create', [AdminDownloadCenterController::class, 'create'])->name('download-center.create');
     Route::post('/download-center', [AdminDownloadCenterController::class, 'store'])->name('download-center.store');
     Route::get('/download-center/{slug}/edit', [AdminDownloadCenterController::class, 'edit'])->name('download-center.edit');
     Route::put('/download-center/{slug}', [AdminDownloadCenterController::class, 'update'])->name('download-center.update');
     Route::delete('/download-center/{slug}', [AdminDownloadCenterController::class, 'destroy'])->name('download-center.destroy');
+
+    Route::get('/news', [AdminNewsController::class, 'index'])->name('news.index');
+    Route::get('/news/create', [AdminNewsController::class, 'create'])->name('news.create');
+    Route::post('/news', [AdminNewsController::class, 'store'])->name('news.store');
+    Route::get('/news/{slug}/edit', [AdminNewsController::class, 'edit'])->name('news.edit');
+    Route::put('/news/{slug}', [AdminNewsController::class, 'update'])->name('news.update');
+    Route::delete('/news/{slug}', [AdminNewsController::class, 'destroy'])->name('news.destroy');
 });
 
 Route::middleware('auth')->group(function () {

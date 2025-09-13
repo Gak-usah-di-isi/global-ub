@@ -44,15 +44,17 @@
             </a>
 
             <!-- News Menu -->
-            <a href="#"
-                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold text-slate-800 px-2 rounded-[4px] hover:bg-slate-50 transition duration-150">
-                <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" stroke-width="1.5"
-                    viewBox="0 0 24 24">
+            <a href="{{ route('news.index') }}"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+   {{ request()->routeIs('news.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
+                <svg class="w-5 h-5 {{ request()->routeIs('news.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5M5.25 19.5a2.25 2.25 0 0 1-2.25-2.25V6.75a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v10.5a2.25 2.25 0 0 1-2.25 2.25H5.25Z" />
                 </svg>
                 <span class="nav-label">News</span>
             </a>
+
 
             <!-- Event Menu -->
             <a href="#"

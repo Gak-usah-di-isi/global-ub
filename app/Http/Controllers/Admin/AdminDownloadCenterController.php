@@ -14,12 +14,6 @@ class AdminDownloadCenterController extends Controller
     {
         $downloadCenters = DownloadCenter::latest()->paginate(10);
 
-        $downloadCenters->getCollection()->transform(function ($item) {
-            $item->short_description = $item->description ? \Illuminate\Support\Str::limit($item->description, 50) : 'No description';
-            $item->file_url = $item->file ? asset('storage/' . $item->file) : null;
-            return $item;
-        });
-
         return view('admin.download-centers.index', compact('downloadCenters'));
     }
 

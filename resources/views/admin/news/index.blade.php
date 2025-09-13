@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - Download Center')
+@section('title', 'Dashboard - News')
 
 @section('content')
     <h1
         class="text-[22px] md:text-[28px] leading-[30px] md:leading-[36px] font-semibold tracking-normal text-slate-800 mb-6">
-        File Download Center
+        News
     </h1>
 
     @if (session('success'))
@@ -16,13 +16,13 @@
 
     <div class="bg-white rounded-xl shadow-card p-4">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
-            <h2 class="text-[15px] font-medium text-slate-800">File</h2>
-            <a href="{{ route('download-center.create') }}"
+            <h2 class="text-[15px] font-medium text-slate-800">News</h2>
+            <a href="{{ route('news.create') }}"
                 class="inline-flex items-center gap-1.5 rounded-md bg-primary-500 hover:bg-primary-600 text-white text-[13px] font-medium px-3.5 py-2 transition self-start">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
-                Add File
+                Add News
             </a>
         </div>
 
@@ -30,32 +30,44 @@
             <table class="custom-table w-full min-w-[800px]">
                 <thead class="bg-[#E3E7F4] p-2">
                     <tr>
-                        <th class="rounded-tl-lg">Name File</th>
-                        <th>Description File</th>
-                        <th>File</th>
+                        <th>Image</th>
+                        <th>Content</th>
                         <th>Created</th>
                         <th class="rounded-tr-lg">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($downloadCenters as $item)
+                    @forelse($newsItems as $item)
                         <tr>
-                            <td>{{ $item->title }}</td>
-                            <td>{{ $item->short_description }}</td>
                             <td>
-                                @if ($item->file_url)
-                                    <a href="{{ $item->file_url }}" target="_blank"
-                                        class="text-primary-500 hover:text-primary-600 text-sm font-medium">
-                                        Download
-                                    </a>
+                                @if ($item->image)
+                                    <div class="flex items-center gap-3">
+                                        <img class="w-11 h-11 rounded-md object-cover ring-1 ring-slate-200"
+                                            src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" />
+                                        <div>
+                                            <div class="font-medium text-slate-800">{{ Str::limit($item->title, 20) }}</div>
+                                        </div>
+                                    </div>
                                 @else
-                                    <span class="text-slate-400">No file</span>
+                                    <div
+                                        class="w-11 h-11 rounded-md bg-slate-100 flex items-center justify-center text-slate-400 ring-1 ring-slate-200">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15zM15 19l-3-3m0 0l-3-3m3 3l3-3m-3 3l-3 3" />
+                                        </svg>
+                                    </div>
                                 @endif
+                            </td>
+                            <td>
+                                <div class="text-[13px] text-slate-600">
+                                    {{ Str::limit($item->content, 100) }}
+                                </div>
                             </td>
                             <td>{{ $item->created_at->format('d M Y') }}</td>
                             <td>
                                 <div class="flex items-center gap-2">
-                                    <a href="{{ route('download-center.edit', $item) }}"
+                                    <a href="{{ route('news.edit', $item->slug) }}"
                                         class="p-1.5 rounded-md hover:bg-blue-50 text-blue-600 transition" title="Edit">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
                                             viewBox="0 0 24 24">
@@ -63,8 +75,7 @@
                                                 d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg>
                                     </a>
-                                    <form action="{{ route('download-center.destroy', $item) }}" method="POST"
-                                        class="inline">
+                                    <form action="{{ route('news.destroy', $item->slug) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
@@ -91,10 +102,9 @@
             </table>
         </div>
 
-        <!-- Pagination -->
-        @if ($downloadCenters->hasPages())
+        @if ($newsItems->hasPages())
             <div class="mt-6">
-                {{ $downloadCenters->links() }}
+                {{ $newsItems->links() }}
             </div>
         @endif
     </div>
