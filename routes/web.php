@@ -68,14 +68,10 @@ Route::get('/innovations', function () {
     return view('landing.innovation');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});
-
-Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
-
     Route::get('/download-center', [AdminDownloadCenterController::class, 'index'])->name('download-center.index');
     Route::get('/download-center/create', [AdminDownloadCenterController::class, 'create'])->name('download-center.create');
     Route::post('/download-center', [AdminDownloadCenterController::class, 'store'])->name('download-center.store');

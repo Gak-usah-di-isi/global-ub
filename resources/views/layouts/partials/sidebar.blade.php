@@ -33,12 +33,13 @@
     <nav class="flex-1 overflow-y-auto">
         <div class="flex flex-col gap-2 pt-1">
 
-            <a href="#"
-                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold text-slate-800 px-2 rounded-[4px] hover:bg-slate-50 transition duration-150">
-                <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" stroke-width="1.5"
-                    viewBox="0 0 24 24">
+            <a href="{{ route('dashboard') }}"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+    {{ request()->routeIs('dashboard') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
+                <svg class="w-5 h-5 {{ request()->routeIs('dashboard') ? 'text-primary-600' : 'text-slate-600' }}"
+                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                        d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 A13:line@<path>#13:line@<path>#13  1 13.5 18v-2.25Z" />
                 </svg>
                 <span class="nav-label">Dashboard</span>
             </a>
@@ -62,7 +63,7 @@
    {{ request()->routeIs('events.*')
        ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500'
        : 'text-slate-800 hover:bg-s  
-      late-50' }}">
+         late-50' }}">
                 <svg class="w-5 h-5 {{ request()->routeIs('events.*') ? 'text-primary-600' : 'text-slate-600' }}"
                     fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
