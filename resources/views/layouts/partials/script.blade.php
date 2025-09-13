@@ -4,8 +4,7 @@
         const toggleBtn = document.getElementById("sidebarToggle");
         const arrowIcon = document.getElementById("arrowIcon");
         const logo = document.querySelector(".nav-logo");
-        const produkParent = document.getElementById("produkParent");
-        const produkSubmenu = document.getElementById("produkSubmenu");
+        const logoWrapper = document.querySelector(".logo-wrapper");
 
         const popover = document.getElementById("actionPopover");
         let lastActionTrigger = null;
@@ -22,9 +21,9 @@
         const closeMobile = document.getElementById("btnCloseMobileSidebar");
         const mobileOverlay = document.getElementById("mobileSidebarOverlay");
 
-        produkSubmenu.classList.add("hidden");
-
         function showPopover(btn) {
+            if (!popover) return;
+
             const r = btn.getBoundingClientRect();
             const popRect = {
                 w: 200,
@@ -47,7 +46,7 @@
         }
 
         function hidePopover() {
-            if (popover.classList.contains("hidden")) return;
+            if (!popover || popover.classList.contains("hidden")) return;
             document
                 .querySelectorAll('.action-trigger[aria-expanded="true"]')
                 .forEach((b) => b.setAttribute("aria-expanded", "false"));
@@ -69,11 +68,12 @@
         });
 
         document.addEventListener("click", (e) => {
-            if (!popover.contains(e.target)) hidePopover();
+            if (popover && !popover.contains(e.target)) hidePopover();
         });
+
         document.addEventListener("keydown", (e) => {
             if (e.key === "Escape") {
-                if (!deleteModal?.classList?.contains("hidden")) {
+                if (deleteModal && !deleteModal.classList.contains("hidden")) {
                     closeDeleteModal();
                 } else {
                     hidePopover();
@@ -83,14 +83,22 @@
         });
 
         function openDeleteModal(productId) {
+            if (!deleteModal) return;
+
             lastFocusedBeforeModal = document.activeElement;
             deleteModal.classList.remove("hidden");
             document.body.classList.add("overflow-hidden");
-            btnConfirmDelete.dataset.productId = productId || "";
-            btnCancelDelete.focus();
+            if (btnConfirmDelete) {
+                btnConfirmDelete.dataset.productId = productId || "";
+            }
+            if (btnCancelDelete) {
+                btnCancelDelete.focus();
+            }
         }
 
         function closeDeleteModal() {
+            if (!deleteModal) return;
+
             deleteModal.classList.add("hidden");
             document.body.classList.remove("overflow-hidden");
             if (lastFocusedBeforeModal) lastFocusedBeforeModal.focus();
@@ -122,9 +130,12 @@
             }
         });
 
-        popover
-            .querySelector(".action-delete")
-            ?.addEventListener("click", () => {
+        // Only add popover event listeners if popover exists
+        if (popover) {
+            const actionDelete = popover.querySelector(".action-delete");
+            const actionEdit = popover.querySelector(".action-edit");
+
+            actionDelete?.addEventListener("click", () => {
                 const productName =
                     lastActionTrigger
                     ?.closest("tr")
@@ -134,50 +145,49 @@
                 openDeleteModal(productName);
             });
 
-        popover.querySelector(".action-edit")?.addEventListener("click", () => {
-            hidePopover();
-            console.log("Edit produk");
-        });
-
-        produkParent.addEventListener("click", () => {
-            if (sidebar.classList.contains("collapsed")) return;
-            const hidden = produkSubmenu.classList.toggle("hidden");
-            produkParent
-                .querySelector(".caret-icon")
-                ?.classList.toggle("rotate-180", !hidden);
-        });
+            actionEdit?.addEventListener("click", () => {
+                hidePopover();
+                console.log("Edit produk");
+            });
+        }
 
         toggleBtn?.addEventListener("click", () => {
             if (window.innerWidth < 768) return;
+
+            if (!sidebar || !arrowIcon) return;
+
             const collapsed = sidebar.classList.toggle("collapsed");
+
             if (collapsed) {
                 sidebar.classList.replace("w-[275px]", "w-[88px]");
                 arrowIcon.classList.add("rotate-180");
-                if (logo.classList.contains("w-[160px]")) {
+                if (logo && logo.classList.contains("w-[160px]")) {
                     logo.classList.replace("w-[160px]", "w-[40px]");
                 }
-                produkSubmenu.classList.add("hidden");
-                produkParent
-                    .querySelector(".caret-icon")
-                    ?.classList.remove("rotate-180");
+                if (logoWrapper) {
+                    logoWrapper.classList.add("mt-4");
+                }
             } else {
                 sidebar.classList.replace("w-[88px]", "w-[275px]");
                 arrowIcon.classList.remove("rotate-180");
-                if (logo.classList.contains("w-[40px]")) {
+                if (logo && logo.classList.contains("w-[40px]")) {
                     logo.classList.replace("w-[40px]", "w-[160px]");
+                }
+                if (logoWrapper) {
+                    logoWrapper.classList.remove("mt-4");
                 }
             }
         });
 
         function openMobileSidebar() {
-            sidebar.classList.add("mobile-open");
-            mobileOverlay.classList.add("show");
+            if (sidebar) sidebar.classList.add("mobile-open");
+            if (mobileOverlay) mobileOverlay.classList.add("show");
             document.body.classList.add("overflow-hidden");
         }
 
         function closeMobileSidebar() {
-            sidebar.classList.remove("mobile-open");
-            mobileOverlay.classList.remove("show");
+            if (sidebar) sidebar.classList.remove("mobile-open");
+            if (mobileOverlay) mobileOverlay.classList.remove("show");
             document.body.classList.remove("overflow-hidden");
         }
         hamburger?.addEventListener("click", () => {

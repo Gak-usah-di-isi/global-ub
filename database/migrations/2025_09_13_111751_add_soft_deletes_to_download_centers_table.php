@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('download_centers', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('slug')->unique();
-            $table->text('description')->nullable();
-            $table->string('file');
-            $table->timestamps();
+        Schema::table('download_centers', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('download_centers');
+        Schema::table('download_centers', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 };

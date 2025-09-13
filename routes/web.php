@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminDownloadCenterController;
 
 Route::get('/', function () {
     return view('landing.index');
@@ -64,9 +65,20 @@ Route::get('/innovations', function () {
     return view('landing.innovation');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/download-center', [AdminDownloadCenterController::class, 'index'])->name('download-center.index');
+    Route::get('/download-center/create', [AdminDownloadCenterController::class, 'create'])->name('download-center.create');
+    Route::post('/download-center', [AdminDownloadCenterController::class, 'store'])->name('download-center.store');
+    Route::get('/download-center/{slug}/edit', [AdminDownloadCenterController::class, 'edit'])->name('download-center.edit');
+    Route::put('/download-center/{slug}', [AdminDownloadCenterController::class, 'update'])->name('download-center.update');
+    Route::delete('/download-center/{slug}', [AdminDownloadCenterController::class, 'destroy'])->name('download-center.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
