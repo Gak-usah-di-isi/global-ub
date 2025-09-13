@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDownloadCenterController;
 use App\Http\Controllers\Admin\AdminNewsController;
+use App\Http\Controllers\Admin\AdminEventController;
 
 Route::get('/', function () {
     return view('landing.index');
@@ -87,6 +88,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/news/{slug}/edit', [AdminNewsController::class, 'edit'])->name('news.edit');
     Route::put('/news/{slug}', [AdminNewsController::class, 'update'])->name('news.update');
     Route::delete('/news/{slug}', [AdminNewsController::class, 'destroy'])->name('news.destroy');
+
+    Route::get('/events', [AdminEventController::class, 'index'])->name('events.index');
+    Route::get('/events/create', [AdminEventController::class, 'create'])->name('events.create');
+    Route::post('/events', [AdminEventController::class, 'store'])->name('events.store');
+    Route::get('/events/{slug}/edit', [AdminEventController::class, 'edit'])->name('events.edit');
+    Route::put('/events/{slug}', [AdminEventController::class, 'update'])->name('events.update');
+    Route::delete('/events/{slug}', [AdminEventController::class, 'destroy'])->name('events.destroy');
 });
 
 Route::middleware('auth')->group(function () {

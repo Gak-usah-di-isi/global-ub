@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - News')
+@section('title', 'Dashboard - Events')
 
 @section('content')
     <h1
         class="text-[22px] md:text-[28px] leading-[30px] md:leading-[36px] font-semibold tracking-normal text-slate-800 mb-6">
-        News Management
+        Event Management
     </h1>
 
     @if (session('success'))
@@ -16,13 +16,13 @@
 
     <div class="bg-white rounded-xl shadow-card p-4">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
-            <h2 class="text-[15px] font-medium text-slate-800">News</h2>
-            <a href="{{ route('news.create') }}"
+            <h2 class="text-[15px] font-medium text-slate-800">Events</h2>
+            <a href="{{ route('events.create') }}"
                 class="inline-flex items-center gap-1.5 rounded-md bg-primary-500 hover:bg-primary-600 text-white text-[13px] font-medium px-3.5 py-2 transition self-start">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
-                Add News
+                Add Event
             </a>
         </div>
 
@@ -30,44 +30,58 @@
             <table class="custom-table w-full min-w-[800px]">
                 <thead class="bg-[#E3E7F4] p-2">
                     <tr>
-                        <th>Image</th>
-                        <th>Content</th>
-                        <th>Created</th>
+                        <th class="rounded-tl-lg">Image</th>
+                        <th>Event Name</th>
+                        <th>Event Type</th>
+                        <th>Date & Time</th>
+                        <th>Location</th>
+                        <th>Expected Attendees</th>
+                        <th>Status</th>
                         <th class="rounded-tr-lg">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($newsItems as $item)
+                    @forelse($events as $event)
                         <tr>
                             <td>
-                                @if ($item->image)
-                                    <div class="flex items-center gap-3">
-                                        <img class="w-11 h-11 rounded-md object-cover ring-1 ring-slate-200"
-                                            src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" />
-                                        <div>
-                                            <div class="font-medium text-slate-800">{{ Str::limit($item->title, 20) }}</div>
-                                        </div>
-                                    </div>
+                                @if ($event->image)
+                                    <img src="{{ asset('storage/' . $event->image) }}" alt="Event Image"
+                                        class="w-12 h-12 object-cover rounded-md border border-slate-200" />
                                 @else
-                                    <div
-                                        class="w-11 h-11 rounded-md bg-slate-100 flex items-center justify-center text-slate-400 ring-1 ring-slate-200">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15zM15 19l-3-3m0 0l-3-3m3 3l3-3m-3 3l-3 3" />
-                                        </svg>
-                                    </div>
+                                    <span class="text-slate-400">No image</span>
+                                @endif
+                            </td>
+                            <td>{{ $event->title }}</td>
+                            <td>{{ $event->event_type }}</td>
+                            <td>
+                                {{ \Carbon\Carbon::parse($event->event_date)->format('d M Y') }}
+                                <br>
+                                {{ \Carbon\Carbon::parse($event->start_time)->format('h:i A') }} -
+                                {{ \Carbon\Carbon::parse($event->end_time)->format('h:i A') }}
+                            </td>
+                            <td>{{ $event->location }}</td>
+                            <td>{{ $event->expected_attendees }}</td>
+                            <td>
+                                @if ($event->status === 'upcoming')
+                                    <span
+                                        class="inline-block px-2 py-1 text-[12px] font-medium bg-green-100 text-green-800 rounded-full">
+                                        Upcoming
+                                    </span>
+                                @elseif ($event->status === 'ongoing')
+                                    <span
+                                        class="inline-block px-2 py-1 text-[12px] font-medium bg-blue-100 text-blue-800 rounded-full">
+                                        Ongoing
+                                    </span>
+                                @else
+                                    <span
+                                        class="inline-block px-2 py-1 text-[12px] font-medium bg-gray-100 text-gray-800 rounded-full">
+                                        Past
+                                    </span>
                                 @endif
                             </td>
                             <td>
-                                <div class="text-[13px] text-slate-600">
-                                    {{ Str::limit($item->content, 100) }}
-                                </div>
-                            </td>
-                            <td>{{ $item->created_at->format('d M Y') }}</td>
-                            <td>
                                 <div class="flex items-center gap-2">
-                                    <a href="{{ route('news.edit', $item->slug) }}"
+                                    <a href="{{ route('events.edit', $event->slug) }}"
                                         class="p-1.5 rounded-md hover:bg-blue-50 text-blue-600 transition" title="Edit">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
                                             viewBox="0 0 24 24">
@@ -75,12 +89,12 @@
                                                 d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg>
                                     </a>
-                                    <form action="{{ route('news.destroy', $item->slug) }}" method="POST" class="inline">
+                                    <form action="{{ route('events.destroy', $event->slug) }}" method="POST"
+                                        onsubmit="return confirm('Are you sure you want to delete this event?');">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="p-1.5 rounded-md hover:bg-red-50 text-red-600 transition" title="Delete"
-                                            onclick="return confirm('Are you sure you want to delete this file?')">
+                                            class="p-1.5 rounded-md hover:bg-red-50 text-red-600 transition" title="Delete">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -93,18 +107,17 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center py-8 text-slate-500">
-                                No download files available
+                            <td colspan="8" class="text-center py-8 text-slate-500">
+                                No events available
                             </td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
-
-        @if ($newsItems->hasPages())
+        @if ($events->hasPages())
             <div class="mt-6">
-                {{ $newsItems->links() }}
+                {{ $events->links() }}
             </div>
         @endif
     </div>

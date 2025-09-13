@@ -57,10 +57,14 @@
 
 
             <!-- Event Menu -->
-            <a href="#"
-                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold text-slate-800 px-2 rounded-[4px] hover:bg-slate-50 transition duration-150">
-                <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" stroke-width="1.5"
-                    viewBox="0 0 24 24">
+            <a href="{{ route('events.index') }}"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+   {{ request()->routeIs('events.*')
+       ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500'
+       : 'text-slate-800 hover:bg-s  
+   late-50' }}">
+                <svg class="w-5 h-5 {{ request()->routeIs('events.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
                 </svg>
