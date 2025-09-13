@@ -20,9 +20,9 @@ return [
             'testimonials' => 'c,r,u,d',
             'partners' => 'c,r,u,d',
             'partnerships' => 'c,r,u,d',
-            'study' => 'c,r,u,d',
+            'studys' => 'c,r,u,d',
             'stories' => 'c,r,u,d',
-            'gallery' => 'c,r,u,d',
+            'gallerys' => 'c,r,u,d',
             'users' => 'c,r,u,d',
             'profile' => 'r,u',
         ]
