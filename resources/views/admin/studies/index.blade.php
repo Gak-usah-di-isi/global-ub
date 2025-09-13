@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - News')
+@section('title', 'Dashboard - Studies')
 
 @section('content')
     <h1
         class="text-[22px] md:text-[28px] leading-[30px] md:leading-[36px] font-semibold tracking-normal text-slate-800 mb-6">
-        News Management
+        Study Program Management
     </h1>
 
     @if (session('success'))
@@ -16,13 +16,13 @@
 
     <div class="bg-white rounded-xl shadow-card p-4">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
-            <h2 class="text-[15px] font-medium text-slate-800">News</h2>
-            <a href="{{ route('news.create') }}"
+            <h2 class="text-[15px] font-medium text-slate-800">Study Programs</h2>
+            <a href="{{ route('studies.create') }}"
                 class="inline-flex items-center gap-1.5 rounded-md bg-primary-500 hover:bg-primary-600 text-white text-[13px] font-medium px-3.5 py-2 transition self-start">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
-                Add News
+                Add Study Program
             </a>
         </div>
 
@@ -30,44 +30,40 @@
             <table class="custom-table w-full min-w-[800px]">
                 <thead class="bg-[#E3E7F4] p-2">
                     <tr>
-                        <th>Image</th>
-                        <th>Content</th>
-                        <th>Created</th>
+                        <th class="rounded-tl-lg">Icon</th>
+                        <th>Program Title</th>
+                        <th>Tagline</th>
+                        <th>Description</th>
+                        <th>Students Count</th>
+                        <th>Duration</th>
+                        <th>Created Date</th>
                         <th class="rounded-tr-lg">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($newsItems as $item)
+                    @forelse($studies as $study)
                         <tr>
                             <td>
-                                @if ($item->image)
-                                    <div class="flex items-center gap-3">
-                                        <img class="w-11 h-11 rounded-md object-cover ring-1 ring-slate-200"
-                                            src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}" />
-                                        <div>
-                                            <div class="font-medium text-slate-800">{{ Str::limit($item->title, 20) }}</div>
-                                        </div>
+                                @if ($study->icon_class)
+                                    <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                                        <i class="{{ $study->icon_class }} text-primary-600 text-lg"></i>
                                     </div>
                                 @else
-                                    <div
-                                        class="w-11 h-11 rounded-md bg-slate-100 flex items-center justify-center text-slate-400 ring-1 ring-slate-200">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15zM15 19l-3-3m0 0l-3-3m3 3l3-3m-3 3l-3 3" />
-                                        </svg>
+                                    <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-graduation-cap text-gray-400 text-lg"></i>
                                     </div>
                                 @endif
                             </td>
-                            <td>
-                                <div class="text-[13px] text-slate-600">
-                                    {{ Str::limit($item->content, 100) }}
-                                </div>
+                            <td>{{ $study->title }}</td>
+                            <td>{{ $study->tagline ?? '-' }}</td>
+                            <td>{{ $study->description ? \Illuminate\Support\Str::limit($study->description, 50) : 'No description' }}
                             </td>
-                            <td>{{ $item->created_at->format('d M Y') }}</td>
+                            <td>{{ number_format($study->students_count) }} students</td>
+                            <td>{{ $study->duration }}</td>
+                            <td>{{ $study->created_at->format('d M Y') }}</td>
                             <td>
                                 <div class="flex items-center gap-2">
-                                    <a href="{{ route('news.edit', $item->slug) }}"
+                                    <a href="{{ route('studies.edit', $study->slug) }}"
                                         class="p-1.5 rounded-md hover:bg-blue-50 text-blue-600 transition" title="Edit">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
                                             viewBox="0 0 24 24">
@@ -75,12 +71,13 @@
                                                 d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg>
                                     </a>
-                                    <form action="{{ route('news.destroy', $item->slug) }}" method="POST" class="inline">
+                                    <form action="{{ route('studies.destroy', $study->slug) }}" method="POST"
+                                        class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
                                             class="p-1.5 rounded-md hover:bg-red-50 text-red-600 transition" title="Delete"
-                                            onclick="return confirm('Are you sure you want to delete this file?')">
+                                            onclick="return confirm('Are you sure you want to delete this study program?')">
                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -93,17 +90,17 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center py-8 text-slate-500">
+                            <td colspan="8" class="text-center py-8 text-slate-500">
                                 <div class="flex flex-col items-center gap-2">
-                                    <svg class="w-5 h-5 {{ request()->routeIs('news.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                                    <svg class="w-5 h-5 {{ request()->routeIs('studies.*') ? 'text-primary-600' : 'text-slate-600' }}"
                                         fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5M5.25 19.5a2.25 2.25 0 0 1-2.25-2.25V6.75a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v10.5a2.25 2.25 0 0 1-2.25 2.25H5.25Z" />
+                                            d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                                     </svg>
-                                    <span>No News found</span>
-                                    <a href="{{ route('news.create') }}"
+                                    <span>No study programs found</span>
+                                    <a href="{{ route('studies.create') }}"
                                         class="text-primary-500 hover:text-primary-600 text-sm font-medium">
-                                        Create your first News
+                                        Create your first study program
                                     </a>
                                 </div>
                             </td>
@@ -113,9 +110,9 @@
             </table>
         </div>
 
-        @if ($newsItems->hasPages())
+        @if ($studies->hasPages())
             <div class="mt-6">
-                {{ $newsItems->links() }}
+                {{ $studies->links() }}
             </div>
         @endif
     </div>

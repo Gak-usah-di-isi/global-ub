@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('location');
             $table->integer('expected_attendees');
             $table->text('description');
-            $table->enum('status')->default('upcoming');
+            $table->string('status')->default('upcoming');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDownloadCenterController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\AdminEventController;
+use App\Http\Controllers\Admin\AdminStudyController;
 
 Route::get('/', function () {
     return view('landing.index');
@@ -95,6 +96,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/events/{slug}/edit', [AdminEventController::class, 'edit'])->name('events.edit');
     Route::put('/events/{slug}', [AdminEventController::class, 'update'])->name('events.update');
     Route::delete('/events/{slug}', [AdminEventController::class, 'destroy'])->name('events.destroy');
+
+    Route::get('/studies', [AdminStudyController::class, 'index'])->name('studies.index');
+    Route::get('/studies/create', [AdminStudyController::class, 'create'])->name('studies.create');
+    Route::post('/studies', [AdminStudyController::class, 'store'])->name('studies.store');
+    Route::get('/studies/{slug}/edit', [AdminStudyController::class, 'edit'])->name('studies.edit');
+    Route::put('/studies/{slug}', [AdminStudyController::class, 'update'])->name('studies.update');
+    Route::delete('/studies/{slug}', [AdminStudyController::class, 'destroy'])->name('studies.destroy');
 });
 
 Route::middleware('auth')->group(function () {
