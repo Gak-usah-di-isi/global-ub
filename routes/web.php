@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\AdminEventController;
 use App\Http\Controllers\Admin\AdminStudyController;
 use App\Http\Controllers\Admin\AdminInnovationController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Admin\AdminPartnerController;
+
 
 Route::get('/', function () {
     return view('landing.index');

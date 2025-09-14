@@ -152,21 +152,39 @@
                     @enderror
                 </div>
 
+                @if ($innovation->image)
+                    <div>
+                        <label class="field-label">Current Image</label>
+                        <div class="mt-2">
+                            <img src="{{ asset('storage/' . $innovation->image) }}" alt="Current Innovation Image"
+                                class="max-w-xs rounded-md border border-slate-200" />
+                        </div>
+                    </div>
+                @endif
+
                 <div>
                     <label for="image" class="field-label">
-                        Innovation Image
+                        @if ($innovation->image)
+                            Replace Image
+                        @else
+                            Upload Image
+                        @endif
                     </label>
                     <div class="mt-2">
-                        <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png,.gif"
+                        <input id="image" name="image" type="file" accept="image/*"
                             class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 border border-[#E3E9F2] rounded-lg @error('image') border-red-300 @enderror" />
                     </div>
                     @error('image')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                     <p class="help-text">
-                        Supported formats: JPG, JPEG, PNG, GIF. Max size: 5MB
+                        @if ($innovation->image)
+                            Leave empty to keep the current image.
+                        @endif
+                        Supported formats: JPG, JPEG, PNG, GIF. Maximum size: 10MB
                     </p>
                 </div>
+
             </div>
         </section>
     </form>

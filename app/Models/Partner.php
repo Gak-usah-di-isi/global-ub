@@ -12,9 +12,41 @@ class Partner extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'students_count',
         'program_duration',
         'icon_class',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->slug)) {
+                $model->slug = \Illuminate\Support\Str::slug($model->title);
+
+                $count = 0;
+                $originalSlug = $model->slug;
+                while (static::where('slug', $model->slug)->exists()) {
+                    $count++;
+                    $model->slug = $originalSlug . '-' . $count;
+                }
+            }
+        });
+
+        static::updating(function ($model) {
+            if ($model->isDirty('title') && empty($model->slug)) {
+                $model->slug = \Illuminate\Support\Str::slug($model->title);
+
+                $count = 0;
+                $originalSlug = $model->slug;
+                while (static::where('slug', $model->slug)->where('id', '!=', $model->id)->exists()) {
+                    $count++;
+                    $model->slug = $originalSlug . '-' . $count;
+                }
+            }
+        });
+    }
 }
