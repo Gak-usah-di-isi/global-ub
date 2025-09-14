@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminInnovationController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminPartnerController;
 use App\Http\Controllers\Admin\AdminStoryController;
+use App\Http\Controllers\Admin\AdminGalleryController;
 
 
 Route::get('/', function () {

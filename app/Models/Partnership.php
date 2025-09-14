@@ -12,7 +12,39 @@ class Partnership extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'logo',
         'website',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (empty($model->slug)) {
+                $model->slug = \Illuminate\Support\Str::slug($model->name);
+
+                $count = 0;
+                $originalSlug = $model->slug;
+                while (static::where('slug', $model->slug)->exists()) {
+                    $count++;
+                    $model->slug = $originalSlug . '-' . $count;
+                }
+            }
+        });
+
+        static::updating(function ($model) {
+            if ($model->isDirty('name') && empty($model->slug)) {
+                $model->slug = \Illuminate\Support\Str::slug($model->name);
+
+                $count = 0;
+                $originalSlug = $model->slug;
+                while (static::where('slug', $model->slug)->where('id', '!=', $model->id)->exists()) {
+                    $count++;
+                    $model->slug = $originalSlug . '-' . $count;
+                }
+            }
+        });
+    }
 }

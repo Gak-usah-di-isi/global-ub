@@ -77,7 +77,7 @@
                 <span class="nav-label">Story</span>
             </a>
 
-            <a href="#"
+            <a href="{{ route('galleries.index') }}"
                 class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
     {{ request()->routeIs('galleries.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
                 <svg class="w-4 h-4 {{ request()->routeIs('galleries.*') ? 'text-primary-600' : 'text-slate-600' }}"
@@ -121,7 +121,7 @@
    {{ request()->routeIs('events.*')
        ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500'
        : 'text-slate-800 hover:bg-s  
-                                                                  late-50' }}">
+                                                                     late-50' }}">
                 <svg class="w-5 h-5 {{ request()->routeIs('events.*') ? 'text-primary-600' : 'text-slate-600' }}"
                     fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
