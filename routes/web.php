@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\AdminEventController;
 use App\Http\Controllers\Admin\AdminStudyController;
 use App\Http\Controllers\Admin\AdminInnovationController;
+use App\Http\Controllers\Admin\AdminTestimonialController;
 
 Route::get('/', function () {
     return view('landing.index');

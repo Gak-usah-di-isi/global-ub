@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->string('photo')->nullable();
             $table->string('position')->nullable();
             $table->string('organization');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->string('partnership_since');
             $table->text('key_achievements');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
