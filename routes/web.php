@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminStudyController;
 use App\Http\Controllers\Admin\AdminInnovationController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminPartnerController;
+use App\Http\Controllers\Admin\AdminStoryController;
 
 
 Route::get('/', function () {

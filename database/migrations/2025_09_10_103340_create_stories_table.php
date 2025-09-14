@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('description');
             $table->string('category_story');
             $table->string('thumbnail')->nullable();
             $table->string('video_url')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
