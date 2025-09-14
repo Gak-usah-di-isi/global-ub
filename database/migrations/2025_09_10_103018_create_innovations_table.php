@@ -14,16 +14,17 @@ return new class extends Migration
         Schema::create('innovations', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->string('event_type');
-            $table->date('event_date');
+            $table->string('innovation_type');
+            $table->date('innovation_date');
             $table->time('start_time');
             $table->time('end_time');
             $table->string('location');
             $table->string('expected_attendees');
-            $table->string('status')->default('upcoming');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

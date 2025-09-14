@@ -1,32 +1,32 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - Create Event')
+@section('title', 'Dashboard - Create Innovation')
 
 @section('content')
     <div class="space-y-6">
         <nav class="text-[12px] font-medium flex items-center gap-1 text-slate-500">
-            <a href="{{ route('events.index') }}" class="hover:text-slate-700 cursor-pointer">
-                Events
+            <a href="{{ route('innovations.index') }}" class="hover:text-slate-700 cursor-pointer">
+                Innovations
             </a>
             <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6" />
             </svg>
-            <span class="text-slate-700">Create Event</span>
+            <span class="text-slate-700">Create Innovation</span>
         </nav>
 
 
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <h1 class="text-[24px] md:text-[26px] font-semibold text-slate-800">
-                Create Event
+                Create Innovation
             </h1>
             <div class="flex gap-3">
-                <a href="{{ route('events.index') }}"
+                <a href="{{ route('innovations.index') }}"
                     class="h-[42px] px-6 rounded-md text-[13px] font-medium bg-[#E0E6F2] hover:bg-[#d6deec] text-slate-700 transition flex items-center">
                     Back
                 </a>
                 <button type="submit" form="create-form"
                     class="h-[42px] px-7 rounded-md text-[13px] font-semibold bg-primary-500 hover:bg-primary-600 text-white transition">
-                    Create Event
+                    Create Innovation
                 </button>
             </div>
         </div>
@@ -41,19 +41,19 @@
             </div>
         @endif
 
-        <form id="create-form" action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data"
+        <form id="create-form" action="{{ route('innovations.store') }}" method="POST" enctype="multipart/form-data"
             class="space-y-8">
             @csrf
             <section class="bg-white shadow-card rounded-xl p-6 md:p-8">
-                <h2 class="section-title">Event Information</h2>
+                <h2 class="section-title">Innovation Information</h2>
 
                 <div class="space-y-7">
                     <div>
                         <label for="title" class="field-label req">
-                            Event Name
+                            Innovation Title
                         </label>
                         <input id="title" name="title" type="text" value="{{ old('title') }}"
-                            placeholder="Enter event name"
+                            placeholder="Enter innovation title"
                             class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('title') border-red-300 @enderror" />
                         @error('title')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -61,28 +61,27 @@
                     </div>
 
                     <div>
-                        <label for="event_type" class="field-label req">
-                            Event Type
+                        <label for="innovation_type" class="field-label req">
+                            Innovation Type
                         </label>
-                        <input id="event_type" name="event_type" type="text" value="{{ old('event_type') }}"
-                            placeholder="Enter event type (e.g., Conference, Workshop)"
-                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('event_type') border-red-300 @enderror" />
-                        @error('event_type')
+                        <input id="innovation_type" name="innovation_type" type="text"
+                            value="{{ old('innovation_type') }}" placeholder="Enter innovation type"
+                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('innovation_type') border-red-300 @enderror" />
+                        @error('innovation_type')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div>
-                            <label for="event_date" class="field-label req">
-                                Event Date
-                            </label>
-                            <input id="event_date" name="event_date" type="date" value="{{ old('event_date') }}"
-                                class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('event_date') border-red-300 @enderror" />
-                            @error('event_date')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
+                    <div>
+                        <label for="innovation_date" class="field-label req">
+                            Innovation Date
+                        </label>
+                        <input id="innovation_date" name="innovation_date" type="date"
+                            value="{{ old('innovation_date') }}"
+                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('innovation_date') border-red-300 @enderror" />
+                        @error('innovation_date')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -96,6 +95,7 @@
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
+
                         <div>
                             <label for="end_time" class="field-label req">
                                 End Time
@@ -106,25 +106,25 @@
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
+                    </div>
 
-                        <div>
-                            <label for="location" class="field-label req">
-                                Location
-                            </label>
-                            <input id="location" name="location" type="text" value="{{ old('location') }}"
-                                placeholder="Enter event location"
-                                class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('location') border-red-300 @enderror" />
-                            @error('location')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
+                    <div>
+                        <label for="location" class="field-label req">
+                            Location
+                        </label>
+                        <input id="location" name="location" type="text" value="{{ old('location') }}"
+                            placeholder="Enter innovation location"
+                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('location') border-red-300 @enderror" />
+                        @error('location')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div>
                         <label for="expected_attendees" class="field-label">
-                            Expected Number of Attendees
+                            Expected Attendees
                         </label>
-                        <input id="expected_attendees" name="expected_attendees" type="number" min="1"
+                        <input id="expected_attendees" name="expected_attendees" type="number"
                             value="{{ old('expected_attendees') }}" placeholder="Enter expected number of attendees"
                             class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('expected_attendees') border-red-300 @enderror" />
                         @error('expected_attendees')
@@ -139,19 +139,16 @@
                         <label for="description" class="field-label">
                             Description
                         </label>
-                        <textarea id="description" name="description" rows="4" placeholder="Enter event description"
+                        <textarea id="description" name="description" rows="4" placeholder="Enter description"
                             class="mt-2 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 py-3 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors resize-vertical @error('description') border-red-300 @enderror">{{ old('description') }}</textarea>
                         @error('description')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
-                        <p class="help-text">
-                            Optional description for the event
-                        </p>
                     </div>
 
                     <div>
                         <label for="image" class="field-label">
-                            Event Image
+                            Innovation Image
                         </label>
                         <div class="mt-2">
                             <input id="image" name="image" type="file" accept=".jpg,.jpeg,.png,.gif"
@@ -161,24 +158,8 @@
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                         <p class="help-text">
-                            Supported formats: JPG, JPEG, PNG, GIF. Maximum size: 5MB
+                            Supported formats: JPG, JPEG, PNG, GIF. Max size: 5MB
                         </p>
-                    </div>
-
-                    <div>
-                        <label for="status" class="field-label req">
-                            Status
-                        </label>
-                        <select id="status" name="status"
-                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('status') border-red-300 @enderror">
-                            <option value="upcoming" {{ old('status') == 'upcoming' ? 'selected' : '' }}>Upcoming</option>
-                            <option value="ongoing" {{ old('status') == 'ongoing' ? 'selected' : '' }}>Ongoing</option>
-                            <option value="completed" {{ old('status') == 'completed' ? 'selected' : '' }}>Completed
-                            </option>
-                        </select>
-                        @error('status')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
                     </div>
                 </div>
             </section>

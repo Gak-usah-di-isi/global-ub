@@ -44,6 +44,64 @@
                 <span class="nav-label">Dashboard</span>
             </a>
 
+            <a href="{{ route('innovations.index') }}"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+            {{ request()->routeIs('innovations.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
+                <svg class="w-4 h-4 {{ request()->routeIs('innovations.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0ZM22,12a9.938,9.938,0,0,1-1.662,5.508l-1.192-1.193A.5.5,0,0,1,19,15.962V15a3,3,0,0,0-3-3H13a1,1,0,0,1-1-1v-.5a.5.5,0,0,1,.5-.5A2.5,2.5,0,0,0,15,7.5v-1a.5.5,0,0,1,.5-.5h1.379a2.516,2.516,0,0,0,1.767-.732l.377-.377A9.969,9.969,0,0,1,22,12Zm-19.951.963,3.158,3.158A2.978,2.978,0,0,0,7.329,17H10a1,1,0,0,1,1,1v3.949A10.016,10.016,0,0,1,2.049,12.963ZM13,21.949V18a3,3,0,0,0-3-3H7.329a1,1,0,0,1-.708-.293L2.163,10.249A9.978,9.978,0,0,1,17.456,3.63l-.224.224A.507.507,0,0,1,16.879,4H15.5A2.5,2.5,0,0,0,13,6.5v1a.5.5,0,0,1-.5.5A2.5,2.5,0,0,0,10,10.5V11a3,3,0,0,0,3,3h3a1,1,0,0,1,1,1v.962a2.516,2.516,0,0,0,.732,1.767l1.337,1.337A9.971,9.971,0,0,1,13,21.949Z" />
+                </svg>
+                <span class="nav-label">Innovation</span>
+            </a>
+
+            <a href="#"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+            {{ request()->routeIs('testimonials.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
+                <svg class="w-5 h-5 {{ request()->routeIs('testimonials.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                </svg>
+                <span class="nav-label">Testimonial</span>
+            </a>
+
+            <a href="#"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+            {{ request()->routeIs('stories.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
+                <svg class="w-5 h-5 {{ request()->routeIs('stories.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                </svg>
+                <span class="nav-label">Story</span>
+            </a>
+
+            <a href="#"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+    {{ request()->routeIs('galleries.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
+                <svg class="w-4 h-4 {{ request()->routeIs('galleries.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M19,0H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V5A5.006,5.006,0,0,0,19,0ZM5,2H19a3,3,0,0,1,3,3V19a2.951,2.951,0,0,1-.3,1.285l-9.163-9.163a5,5,0,0,0-7.072,0L2,14.586V5A3,3,0,0,1,5,2ZM5,22a3,3,0,0,1-3-3V17.414l4.878-4.878a3,3,0,0,1,4.244,0L20.285,21.7A2.951,2.951,0,0,1,19,22Z" />
+                    <path
+                        d="M16,10.5A3.5,3.5,0,1,0,12.5,7,3.5,3.5,0,0,0,16,10.5Zm0-5A1.5,1.5,0,1,1,14.5,7,1.5,1.5,0,0,1,16,5.5Z" />
+                </svg>
+                <span class="nav-label">Gallery</span>
+            </a>
+
+
+            <a href="#"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+            {{ request()->routeIs('partners.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
+                <svg class="w-5 h-5 {{ request()->routeIs('partners.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                </svg>
+                <span class="nav-label">Partner</span>
+            </a>
+
             <!-- News Menu -->
             <a href="{{ route('news.index') }}"
                 class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
@@ -63,7 +121,7 @@
    {{ request()->routeIs('events.*')
        ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500'
        : 'text-slate-800 hover:bg-s  
-         late-50' }}">
+                                                         late-50' }}">
                 <svg class="w-5 h-5 {{ request()->routeIs('events.*') ? 'text-primary-600' : 'text-slate-600' }}"
                     fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"

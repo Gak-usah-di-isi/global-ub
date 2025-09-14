@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StudyRequest;
 use App\Models\Study;
 
 class AdminStudyController extends Controller
@@ -18,7 +18,7 @@ class AdminStudyController extends Controller
     {
         return view('admin.studies.create');
     }
-    public function store(Request $request)
+    public function store(StudyRequest $request)
     {
         $data = $request->only(['title', 'tagline', 'description', 'students_count', 'duration', 'highlights', 'icon_class']);
 
@@ -35,7 +35,7 @@ class AdminStudyController extends Controller
         $study = Study::where('slug', $slug)->firstOrFail();
         return view('admin.studies.edit', compact('study'));
     }
-    public function update(Request $request, $slug)
+    public function update(StudyRequest $request, $slug)
     {
         $study = Study::where('slug', $slug)->firstOrFail();
         $data = $request->only(['title', 'tagline', 'description', 'students_count', 'duration', 'highlights', 'icon_class']);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminDownloadCenterController;
 use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\Admin\AdminEventController;
 use App\Http\Controllers\Admin\AdminStudyController;
+use App\Http\Controllers\Admin\AdminInnovationController;
 
 Route::get('/', function () {
     return view('landing.index');
@@ -99,6 +100,48 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/studies/{slug}/edit', [AdminStudyController::class, 'edit'])->name('studies.edit');
     Route::put('/studies/{slug}', [AdminStudyController::class, 'update'])->name('studies.update');
     Route::delete('/studies/{slug}', [AdminStudyController::class, 'destroy'])->name('studies.destroy');
+
+    Route::get('/innovations', [AdminInnovationController::class, 'index'])->name('innovations.index');
+    Route::get('/innovations/create', [AdminInnovationController::class, 'create'])->name('innovations.create');
+    Route::post('/innovations', [AdminInnovationController::class, 'store'])->name('innovations.store');
+    Route::get('/innovations/{slug}/edit', [AdminInnovationController::class, 'edit'])->name('innovations.edit');
+    Route::put('/innovations/{slug}', [AdminInnovationController::class, 'update'])->name('innovations.update');
+    Route::delete('/innovations/{slug}', [AdminInnovationController::class, 'destroy'])->name('innovations.destroy');
+
+    Route::get('/galleries', [AdminGalleryController::class, 'index'])->name('galleries.index');
+    Route::get('/galleries/create', [AdminGalleryController::class, 'create'])->name('galleries.create');
+    Route::post('/galleries', [AdminGalleryController::class, 'store'])->name('galleries.store');
+    Route::get('/galleries/{slug}/edit', [AdminGalleryController::class, 'edit'])->name('galleries.edit');
+    Route::put('/galleries/{slug}', [AdminGalleryController::class, 'update'])->name('galleries.update');
+    Route::delete('/galleries/{slug}', [AdminGalleryController::class, 'destroy'])->name('galleries.destroy');
+
+    Route::get('/partners', [AdminPartnerController::class, 'index'])->name('partners.index');
+    Route::get('/partners/create', [AdminPartnerController::class, 'create'])->name('partners.create');
+    Route::post('/partners', [AdminPartnerController::class, 'store'])->name('partners.store');
+    Route::get('/partners/{slug}/edit', [AdminPartnerController::class, 'edit'])->name('partners.edit');
+    Route::put('/partners/{slug}', [AdminPartnerController::class, 'update'])->name('partners.update');
+    Route::delete('/partners/{slug}', [AdminPartnerController::class, 'destroy'])->name('partners.destroy');
+
+    Route::get('/partnerships', [AdminPartnershipController::class, 'index'])->name('partnerships.index');
+    Route::get('/partnerships/create', [AdminPartnershipController::class, 'create'])->name('partnerships.create');
+    Route::post('/partnerships', [AdminPartnershipController::class, 'store'])->name('partnerships.store');
+    Route::get('/partnerships/{slug}/edit', [AdminPartnershipController::class, 'edit'])->name('partnerships.edit');
+    Route::put('/partnerships/{slug}', [AdminPartnershipController::class, 'update'])->name('partnerships.update');
+    Route::delete('/partnerships/{slug}', [AdminPartnershipController::class, 'destroy'])->name('partnerships.destroy');
+
+    Route::get('/stories', [AdminStoryController::class, 'index'])->name('stories.index');
+    Route::get('/stories/create', [AdminStoryController::class, 'create'])->name('stories.create');
+    Route::post('/stories', [AdminStoryController::class, 'store'])->name('stories.store');
+    Route::get('/stories/{slug}/edit', [AdminStoryController::class, 'edit'])->name('stories.edit');
+    Route::put('/stories/{slug}', [AdminStoryController::class, 'update'])->name('stories.update');
+    Route::delete('/stories/{slug}', [AdminStoryController::class, 'destroy'])->name('stories.destroy');
+
+    Route::get('/testimonials', [AdminTestimonialController::class, 'index'])->name('testimonials.index');
+    Route::get('/testimonials/create', [AdminTestimonialController::class, 'create'])->name('testimonials.create');
+    Route::post('/testimonials', [AdminTestimonialController::class, 'store'])->name('testimonials.store');
+    Route::get('/testimonials/{slug}/edit', [AdminTestimonialController::class, 'edit'])->name('testimonials.edit');
+    Route::put('/testimonials/{slug}', [AdminTestimonialController::class, 'update'])->name('testimonials.update');
+    Route::delete('/testimonials/{slug}', [AdminTestimonialController::class, 'destroy'])->name('testimonials.destroy');
 });
 
 Route::middleware('auth')->group(function () {

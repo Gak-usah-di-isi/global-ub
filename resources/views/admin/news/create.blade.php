@@ -86,7 +86,6 @@
             </section>
         </form>
     </div>
-    </div>
 
     <style>
         .field-label {

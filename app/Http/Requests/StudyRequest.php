@@ -57,4 +57,22 @@ class StudyRequest extends FormRequest
             'icon_class.max' => 'Icon class cannot exceed 255 characters.',
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'title' => 'study title',
+            'tagline' => 'study tagline',
+            'description' => 'study description',
+            'students_count' => 'number of students',
+            'duration' => 'study duration',
+            'highlights' => 'study highlights',
+            'icon_class' => 'icon class',
+        ];
+    }
 }

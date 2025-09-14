@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\EventRequest;
 use App\Models\Event;
 
 class AdminEventController extends Controller
@@ -20,7 +20,7 @@ class AdminEventController extends Controller
         return view('admin.events.create');
     }
 
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
         $data = $request->only(['title', 'event_type', 'event_date', 'start_time', 'end_time', 'location', 'expected_attendees', 'description', 'image', 'status']);
 
@@ -46,7 +46,7 @@ class AdminEventController extends Controller
         return view('admin.events.edit', compact('event'));
     }
 
-    public function update(Request $request, $slug)
+    public function update(EventRequest $request, $slug)
     {
         $event = Event::where('slug', $slug)->firstOrFail();
         $data = $request->only(['title', 'event_type', 'event_date', 'start_time', 'end_time', 'location', 'expected_attendees', 'description', 'status']);

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\NewsRequest;
 use App\Models\News;
 
 class AdminNewsController extends Controller
@@ -20,7 +20,7 @@ class AdminNewsController extends Controller
         return view('admin.news.create');
     }
 
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
         $data = $request->only(['title', 'content']);
 
@@ -46,7 +46,7 @@ class AdminNewsController extends Controller
         return view('admin.news.edit', compact('newsItem'));
     }
 
-    public function update(Request $request, $slug)
+    public function update(NewsRequest $request, $slug)
     {
         $newsItem = News::where('slug', $slug)->firstOrFail();
         $data = $request->only(['title', 'content']);
