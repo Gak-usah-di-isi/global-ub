@@ -151,13 +151,12 @@
         </div>
     </section>
 
-    <section class="w-full h-auto md:h-[665px] bg-white pt-12 md:pt-20 px-4 sm:px-8 md:px-12 lg:px-[112px]">
-        <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-[64px]">
-            <div class="w-full md:w-1/2 lg:w-[576px]">
+    <section class="w-full h-auto bg-white pt-8 md:pt-10 px-4 sm:px-6 md:px-8 lg:px-[112px] pb-0 sm:pb-0 lg:pb-12">
+        <div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-[64px]">
+            <div class="w-full lg:w-1/2 xl:w-[576px]">
                 <h2
                     class="text-2xl sm:text-3xl md:text-[36px] font-playfair font-extrabold leading-tight md:leading-[48px] text-[#29303D]">
-                    About
-                    Globalizing UB
+                    About Globalizing UB
                 </h2>
                 <p
                     class="mt-4 text-base sm:text-lg md:text-[18px] font-light font-inter leading-relaxed md:leading-[29.25px] text-[#29303DB2]">
@@ -172,8 +171,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/user.svg') }}" alt="Students Icon"
-                                class="w-5 h-5 md:w-[24px] md:h-[24px]" />
+                            <img src="{{ asset('icons/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">50,000+</p>
@@ -183,8 +181,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/book.svg') }}" alt="Programs Icon"
-                                class="w-5 h-5 md:w-[24px] md:h-[24px]" />
+                            <img src="{{ asset('icons/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">150+</p>
@@ -195,7 +192,7 @@
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
                             <img src="{{ asset('icons/achievement.svg') }}" alt="Years Icon"
-                                class="w-5 h-5 md:w-[24px] md:h-[24px]" />
+                                class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">60+</p>
@@ -205,62 +202,90 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/partner.svg') }}" alt="Partners Icon"
-                                class="w-5 h-5 md:w-[24px] md:h-[24px]" />
+                            <img src="{{ asset('icons/partner.svg') }}" alt="Partners Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">100+ </p>
+                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">100+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Partner Universities</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-8 md:mt-12 flex flex-col sm:flex-row gap-3 md:gap-[16px]">
+                <div class="mt-8 md:mt-12 flex flex-col sm:flex-row gap-4 md:gap-[16px]">
                     <a href="#"
-                        class="w-full sm:w-[140px] lg:w-[158px] h-[44px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] shadow-[0px_4px_20px_-2px_#29303D1A] flex items-center justify-center text-center py-[11.5px] px-[32px] text-sm md:text-[14px] font-medium">
+                        class="w-full sm:w-[150px] h-[44px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] shadow-md flex items-center justify-center text-center py-[11.5px] px-[32px] text-sm md:text-[14px] font-medium">
                         Learn More
                     </a>
 
                     <a href="#"
-                        class="w-full sm:w-[198px] lg:w-[216px] h-[44px] bg-white text-[#29303D] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center text-center py-[11.5px] px-[33px] text-sm md:text-[14px] font-medium">
+                        class="w-full sm:w-[200px] h-[44px] bg-white text-[#29303D] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center text-center py-[11.5px] px-[33px] text-sm md:text-[14px] font-medium hover:bg-gray-50">
                         Download Brochure
                     </a>
                 </div>
-
             </div>
 
-            <div
-                class="w-full md:w-1/2 lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden flex justify-center items-center mt-6 md:mt-24 relative">
-                <img src="{{ asset('/images/about-shadow.png') }}" alt="UB Image" class="w-full h-full object-cover">
+            <div class="relative">
+                <div class="w-full lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden relative mt-0 md:mt-12 lg:mt-24"
+                    style="box-shadow: 0px 8px 25px -8px #0000FF4D;">
+                    <!-- Background Image -->
+                    <div class="absolute inset-0">
+                        <img src="{{ asset('/images/about-new.png') }}" alt="UB Image"
+                            class="w-full h-full object-cover">
+                    </div>
 
+                    <!-- Gradient Overlay -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[rgba(0,0,255,0.6)] to-[rgba(102,153,255,0.6)] rounded-[16px]">
+                    </div>
+
+                    <!-- Video Content Container -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
+                        <!-- Play Button -->
+                        <button
+                            class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm mb-6">
+                            <img src='{{ asset('icons/play.svg') }}' alt="Play"
+                                class="w-6 h-6 md:w-8 md:h-8 text-white" />
+                        </button>
+
+                        <!-- Title -->
+                        <h3 class="font-playfair font-bold text-lg md:text-xl lg:text-2xl text-white mb-2">
+                            University Profile Video
+                        </h3>
+
+                        <!-- Subtitle -->
+                        <p class="font-inter font-normal text-sm md:text-base text-white opacity-90">
+                            Discover our journey towards global excellence
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Global Network Card - Positioned relative to the wrapper -->
                 <div
-                    class="absolute -bottom-20 md:-bottom-100 right-4 md:right-12 w-[180px] md:w-[220.08px] h-[70px] md:h-[80px] max-w-[220px] rounded-[16px] bg-white p-3 md:p-4 shadow-[0px_8px_25px_-8px_#0000FF4D] mt-72">
-                    <div class="w-full flex items-center gap-3">
+                    class="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-4 md:-bottom-8 md:-right-6 lg:bottom-16 lg:-right-6 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px] h-[50px] sm:h-[65px] md:h-[70px] lg:h-[80px] rounded-[12px] md:rounded-[16px] bg-white border border-[#E2E4E9] p-2 sm:p-3 md:p-4 z-20 shadow-[0px_4px_20px_-2px_#29303D1A]">
+                    <div class="flex items-center gap-2 sm:gap-3 w-full h-full">
                         <div
-                            class="w-10 h-10 md:w-[48px] md:h-[48px] rounded-full flex items-center justify-center bg-[linear-gradient(135deg,#0000FF_0%,#6699FF_100%)]">
+                            class="w-8 h-8 sm:w-10 sm:h-10 md:w-[48px] md:h-[48px] rounded-full flex items-center justify-center bg-[linear-gradient(135deg,#0000FF_0%,#6699FF_100%)]">
                             <img src="{{ asset('icons/partner.svg') }}" alt="Global Network Icon"
-                                class="w-5 h-5 md:w-6 md:h-6">
+                                class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6">
                         </div>
-                        <div class="w-[calc(100%-60px)] leading-none">
+                        <div class="flex-1 min-w-0">
                             <p
-                                class="font-inter font-semibold text-xs md:text-[14px] leading-tight md:leading-[24px] text-[#29303D]">
+                                class="font-inter font-semibold text-xs sm:text-[13px] md:text-[14px] leading-[1.2] sm:leading-[1.3] md:leading-[24px] text-[#29303D] truncate">
                                 Global Network
                             </p>
                             <p
-                                class="font-inter font-normal text-xs md:text-[12px] leading-tight md:leading-[20px] text-[#29303DB2]">
+                                class="font-inter font-normal text-[10px] sm:text-[11px] md:text-[12px] leading-[1.1] sm:leading-[1.2] md:leading-[20px] text-[#29303DB2] truncate">
                                 Connected worldwide
                             </p>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
 
     <section id="news" class="w-full bg-[#FFFFFF] py-10 px-4 sm:px-8 md:px-12 lg:px-[112px]">
-        <div class="max-w-[1280px] mx-auto h-auto md:h-[740px]">
+        <div class="max-w-[1280px] mx-auto h-auto">
             <div class="w-full text-center mb-8 md:mb-12">
                 <h2
                     class="text-2xl sm:text-3xl md:text-[36px] font-bold leading-tight md:leading-[40px] text-[#29303D] font-playfair">
@@ -372,7 +397,7 @@
 
             <div class="flex justify-center mt-8 md:mt-16">
                 <a href="#"
-                    class="w-full max-w-[193px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
+                    class="w-full max-w-[193px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     View All News
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
@@ -382,7 +407,7 @@
     </section>
 
     <section id="study-in-ub"
-        class="w-full h-auto bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] px-4 sm:px-6 md:px-8 lg:px-[80px] py-8 md:py-[80px]">
+        class="w-full h-auto bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] px-4 sm:px-6 md:px-8 lg:px-[80px] py-8 md:py-[100px] lg:py-20">
         <div class="max-w-[1280px] h-auto mx-auto px-4 sm:px-6 md:px-8 lg:px-[32px] flex flex-col gap-8 md:gap-[64px]">
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
@@ -473,7 +498,7 @@
                     </ul>
 
                     <a href="#"
-                        class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px]">
+                        class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
                         Learn More
                         <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                     </a>
@@ -511,7 +536,7 @@
                             Enhanced career prospects</li>
                     </ul>
                     <a href="#"
-                        class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px]">
+                        class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
                         Learn More
                         <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                     </a>
@@ -549,7 +574,7 @@
                             Publication support</li>
                     </ul>
                     <a href="#"
-                        class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px]">
+                        class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
                         Learn More
                         <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                     </a>
@@ -621,7 +646,7 @@
                             </div>
                         </div>
                         <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
+                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                             Register Now
                             <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
@@ -673,7 +698,7 @@
                             </div>
                         </div>
                         <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
+                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                             Register Now
                             <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
@@ -725,7 +750,7 @@
                             </div>
                         </div>
                         <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
+                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                             Register Now
                             <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
@@ -737,7 +762,7 @@
 
         <div class="flex justify-center">
             <a href="#"
-                class="mt-8 md:mt-16 w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
+                class="mt-8 md:mt-16 w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                 View All Events
                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>
@@ -978,7 +1003,7 @@
                             </div>
                         </div>
                         <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
+                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                             Register Now
                             <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
@@ -1027,7 +1052,7 @@
                             </div>
                         </div>
                         <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
+                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                             Register Now
                             <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
@@ -1079,7 +1104,7 @@
                             </div>
                         </div>
                         <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
+                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                             Register Now
                             <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
@@ -1091,7 +1116,7 @@
 
         <div class="flex justify-center mb-8">
             <a href="#"
-                class="mt-8 md:mt-16 w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
+                class="mt-8 md:mt-16 w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                 View All Events
                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>

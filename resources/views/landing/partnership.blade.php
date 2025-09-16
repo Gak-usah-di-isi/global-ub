@@ -13,7 +13,7 @@
                     </path>
                 </svg>
             </div>
-            <span class="text-[#29303D] text-xs md:text-[14px] font-medium">Home</span>
+            <span class="text-[#29303D] text-xs md:text-[14px] font-light">Home</span>
             <div class="w-4 h-4 md:w-[16px] md:h-[16px]">
                 <svg class="w-full h-full" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="flex items-center space-x-2 md:space-x-4 ml-2 md:ml-4">
-            <span class="text-[#29303D] text-xs md:text-[14px] font-medium">Partnership</span>
+            <span class="text-[#29303D] text-xs md:text-[14px] font-light">Partnership</span>
         </div>
     </div>
 
