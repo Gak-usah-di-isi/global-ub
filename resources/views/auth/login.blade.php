@@ -28,14 +28,9 @@
             <div class="max-w-md w-full">
                 <!-- Logo & Header -->
                 <div class="text-center mb-8">
-                    <div
-                        class="mx-auto h-16 w-16 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center mb-4">
-                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
+                    <div class="mx-auto h-20  flex items-center justify-center mb-4">
+                        <img src="{{ asset('/icons/gub-nav.svg') }}" alt="Logo Gub">
                     </div>
-                    <h1 class="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
                     <p class="text-gray-600">Sign in to your account to continue</p>
                 </div>
 
@@ -115,7 +110,7 @@
 
                     <!-- Submit Button -->
                     <button type="submit"
-                        class="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-3 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform transition duration-200 hover:scale-[1.02] active:scale-[0.98]">
+                        class="w-full bg-[#0000FF] text-white py-3 px-4 rounded-lg font-medium hover:from-blue-700 hover:to-cyan-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform transition duration-200 hover:scale-[1.02] active:scale-[0.98]">
                         Sign In
                     </button>
                 </form>
@@ -149,35 +144,16 @@
                 <div class="mb-8">
                     <div
                         class="w-32 h-32 mx-auto bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
+                        <img src="{{ asset('/images/ub.png') }}" alt="Logo UB" class="h-14 md:h-14">
                     </div>
-                    <h2 class="text-4xl font-bold mb-4">Global UB</h2>
-                    <p class="text-xl text-blue-100 mb-6">
+                    <h2 class="text-4xl font-bold mb-4 font-playfair">Global UB</h2>
+                    <p class="text-xl text-blue-100 mb-6 font-inter font-light">
                         Empowering innovation and fostering global connections
                     </p>
-                    <p class="text-blue-200 max-w-md mx-auto">
+                    <p class="text-blue-200 max-w-md mx-auto font-inter font-light">
                         Join our platform to access cutting-edge resources, connect with innovators worldwide, and drive
                         meaningful change in your community.
                     </p>
-                </div>
-
-                <!-- Feature Highlights -->
-                <div class="grid grid-cols-1 gap-4 max-w-sm mx-auto">
-                    <div class="flex items-center space-x-3 text-blue-100">
-                        <div class="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                        <span class="text-sm">Innovation Management</span>
-                    </div>
-                    <div class="flex items-center space-x-3 text-blue-100">
-                        <div class="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                        <span class="text-sm">Global Partnerships</span>
-                    </div>
-                    <div class="flex items-center space-x-3 text-blue-100">
-                        <div class="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                        <span class="text-sm">Resource Center</span>
-                    </div>
                 </div>
             </div>
         </div>

@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\AdminStoryController;
 use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminPartnershipController;
 
+use App\Http\Controllers\PartnershipController;
+
 
 Route::get('/', function () {
     return view('landing.index');
@@ -67,9 +69,7 @@ Route::get('/partner', function () {
     return view('landing.partner');
 });
 
-Route::get('/partnership', function () {
-    return view('landing.partnership');
-});
+Route::get('/partnership', [PartnershipController::class, 'index'])->name('partnership.index');
 
 Route::get('/innovations', function () {
     return view('landing.innovation');
