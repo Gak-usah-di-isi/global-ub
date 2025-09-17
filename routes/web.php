@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminPartnershipController;
 
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\NewsController;
 
 
 Route::get('/', function () {
@@ -25,9 +26,8 @@ Route::get('/about', function () {
     return view('landing.about');
 });
 
-Route::get('/news', function () {
-    return view('landing.news');
-});
+Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
 
@@ -46,10 +46,6 @@ Route::get('/testimonial', function () {
 
 Route::get('/detail-study', function () {
     return view('landing.detail-study');
-});
-
-Route::get('/detail-news', function () {
-    return view('landing.detail-news');
 });
 
 Route::get('/detail-events', function () {
