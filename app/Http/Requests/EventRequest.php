@@ -30,7 +30,7 @@ class EventRequest extends FormRequest
             'location' => 'required|string|max:255',
             'expected_attendees' => 'required|integer|min:1',
             'description' => 'required|string|max:2000',
-            'status' => 'required|in:upcoming,completed,cancelled',
+            'status' => 'required|in:upcoming,ongoing,completed,cancelled',
         ];
 
         if ($this->isMethod('post')) {

@@ -184,6 +184,8 @@
                                 Ongoing</option>
                             <option value="completed"
                                 {{ old('status', $event->status) == 'completed' ? 'selected' : '' }}>Completed</option>
+                            <option value="cancelled"
+                                {{ old('status', $event->status) == 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                         </select>
                         @error('status')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

@@ -1,6 +1,6 @@
 @extends('core.app')
 
-@section('title', 'Partner Page')
+@section('title', 'Partner')
 
 @section('content')
 
@@ -9,13 +9,20 @@
             <div class="w-[16px] h-[16px]">
                 <img src="{{ asset('icons/home.svg') }}" alt="Home Icon" class="w-full h-full">
             </div>
-            <span class="text-[#29303D] text-[14px] font-light">Home</span>
+            <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
+                Home
+            </a>
             <div class="w-[16px] h-[16px]">
-                <img src="{{ asset('icons/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
+                <div class="w-[14px] h-[14px]">
+                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                </div>
             </div>
         </div>
         <div class="flex items-center space-x-4 ml-4">
-            <span class="text-[#29303D] text-[14px] font-light">Partner</span>
+            <span
+                class="{{ request()->is('partner') ? 'font-medium text-[#29303D]' : 'text-[#29303D] font-light' }} text-xs md:text-[14px]">
+                Partner
+            </span>
         </div>
     </div>
 

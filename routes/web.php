@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminPartnershipController;
 
 use App\Http\Controllers\PartnershipController;
+use App\Http\Controllers\EventController;
 
 
 Route::get('/', function () {
@@ -28,9 +29,7 @@ Route::get('/news', function () {
     return view('landing.news');
 });
 
-Route::get('/event', function () {
-    return view('landing.event');
-});
+Route::get('/event', [EventController::class, 'index'])->name('event.index');
 
 Route::get('/study', function () {
     return view('landing.study');
