@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\AdminIconController;
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\InnovationController;
+use App\Http\Controllers\StudyController;
 
 
 Route::get('/', function () {
@@ -33,10 +35,11 @@ Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
 Route::get('/event/{slug}', [EventController::class, 'show'])->name('event.show');
 
-Route::get('/study', function () {
-    return view('landing.study');
-});
+Route::get('/innovation', [InnovationController::class, 'index'])->name('innovation.index');
+Route::get('/partnership', [PartnershipController::class, 'index'])->name('partnership.index');
 
+Route::get('/study', [StudyController::class, 'index'])->name('study.index');
+Route::get('/study/{slug}', [StudyController::class, 'show'])->name('study.show');
 
 Route::get('/story', function () {
     return view('landing.stories');
@@ -60,12 +63,6 @@ Route::get('/gallery', function () {
 
 Route::get('/partner', function () {
     return view('landing.partner');
-});
-
-Route::get('/partnership', [PartnershipController::class, 'index'])->name('partnership.index');
-
-Route::get('/innovations', function () {
-    return view('landing.innovation');
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
