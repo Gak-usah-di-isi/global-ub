@@ -19,6 +19,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\InnovationController;
 use App\Http\Controllers\StudyController;
+use App\Http\Controllers\PartnerController;
 
 
 Route::get('/', function () {
@@ -41,6 +42,8 @@ Route::get('/partnership', [PartnershipController::class, 'index'])->name('partn
 Route::get('/study', [StudyController::class, 'index'])->name('study.index');
 Route::get('/study/{slug}', [StudyController::class, 'show'])->name('study.show');
 
+Route::get('/partner', [PartnerController::class, 'index'])->name('partner.index');
+
 Route::get('/story', function () {
     return view('landing.stories');
 });
@@ -49,20 +52,12 @@ Route::get('/testimonial', function () {
     return view('landing.testimonials');
 });
 
-Route::get('/detail-study', function () {
-    return view('landing.detail-study');
-});
-
 Route::get('/download-center', function () {
     return view('landing.download-center');
 });
 
 Route::get('/gallery', function () {
     return view('landing.gallery');
-});
-
-Route::get('/partner', function () {
-    return view('landing.partner');
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
