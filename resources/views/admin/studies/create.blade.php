@@ -44,6 +44,22 @@
 
                 <div class="space-y-7">
                     <div>
+                        <label class="field-label">Choose Icon</label>
+                        <div class="flex gap-4 flex-wrap">
+                            @foreach ($icons as $icon)
+                                <label class="flex flex-col items-center cursor-pointer">
+                                    <input type="radio" name="icon_id" value="{{ $icon->id }}"
+                                        {{ old('icon_id') == $icon->id ? 'checked' : '' }}>
+                                    <img src="{{ asset('storage/' . $icon->icon) }}" alt="{{ $icon->name }}"
+                                        class="w-12 h-12 object-cover rounded-md border border-slate-200 mt-1 bg-[#6699FF33]" />
+                                </label>
+                            @endforeach
+                        </div>
+                        @error('icon_id')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div>
                         <label for="title" class="field-label req">
                             Program Title
                         </label>
@@ -118,21 +134,6 @@
                         @enderror
                         <p class="help-text">
                             Optional: Key features, specializations, or unique aspects of the program
-                        </p>
-                    </div>
-
-                    <div>
-                        <label for="icon_class" class="field-label">
-                            Icon Class
-                        </label>
-                        <input id="icon_class" name="icon_class" type="text" value="{{ old('icon_class') }}"
-                            placeholder="e.g., fas fa-graduation-cap, fas fa-book"
-                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('icon_class') border-red-300 @enderror" />
-                        @error('icon_class')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                        <p class="help-text">
-                            Optional: Use Font Awesome icon classes. Leave empty for default graduation cap icon
                         </p>
                     </div>
                 </div>

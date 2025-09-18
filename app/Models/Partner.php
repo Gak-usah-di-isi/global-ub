@@ -17,6 +17,7 @@ class Partner extends Model
         'students_count',
         'program_duration',
         'icon_class',
+        'icon_id',
     ];
 
     protected static function boot()
@@ -48,5 +49,10 @@ class Partner extends Model
                 }
             }
         });
+    }
+
+    public function icon()
+    {
+        return $this->belongsTo(Icon::class, 'icon_id');
     }
 }

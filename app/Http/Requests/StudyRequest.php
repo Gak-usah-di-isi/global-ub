@@ -29,6 +29,7 @@ class StudyRequest extends FormRequest
             'duration' => 'required|string|max:100',
             'highlights' => 'required|string|max:2000',
             'icon_class' => 'nullable|string|max:255',
+            'icon_id' => 'nullable|exists:icons,id',
         ];
 
         return $rules;

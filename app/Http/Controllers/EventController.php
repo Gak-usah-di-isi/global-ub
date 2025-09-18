@@ -12,4 +12,9 @@ class EventController extends Controller
         $events = Event::paginate(6);
         return view('landing.event', compact('events'));
     }
+
+    public function show($slug)
+    {
+        return view('landing.detail-events');
+    }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminPartnerController;
 use App\Http\Controllers\Admin\AdminStoryController;
 use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminPartnershipController;
+use App\Http\Controllers\Admin\AdminIconController;
 
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\EventController;
@@ -30,6 +31,7 @@ Route::get('/news', [NewsController::class, 'index']);
 Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
+Route::get('/event/{slug}', [EventController::class, 'show'])->name('event.show');
 
 Route::get('/study', function () {
     return view('landing.study');
@@ -46,10 +48,6 @@ Route::get('/testimonial', function () {
 
 Route::get('/detail-study', function () {
     return view('landing.detail-study');
-});
-
-Route::get('/detail-events', function () {
-    return view('landing.detail-events');
 });
 
 Route::get('/download-center', function () {
@@ -143,6 +141,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/testimonials/{slug}/edit', [AdminTestimonialController::class, 'edit'])->name('testimonials.edit');
     Route::put('/testimonials/{slug}', [AdminTestimonialController::class, 'update'])->name('testimonials.update');
     Route::delete('/testimonials/{slug}', [AdminTestimonialController::class, 'destroy'])->name('testimonials.destroy');
+
+    Route::get('/icons', [AdminIconController::class, 'index'])->name('icons.index');
+    Route::get('/icons/create', [AdminIconController::class, 'create'])->name('icons.create');
+    Route::post('/icons', [AdminIconController::class, 'store'])->name('icons.store');
+    Route::get('/icons/{slug}/edit', [AdminIconController::class, 'edit'])->name('icons.edit');
+    Route::put('/icons/{slug}', [AdminIconController::class, 'update'])->name('icons.update');
+    Route::delete('/icons/{slug}', [AdminIconController::class, 'destroy'])->name('icons.destroy');
 });
 
 Route::middleware('auth')->group(function () {

@@ -27,6 +27,7 @@ class PartnerRequest extends FormRequest
             'students_count' => 'required|string|max:255',
             'program_duration' => 'required|string|max:255',
             'icon_class' => 'nullable|string|max:255',
+            'icon_id' => 'nullable|exists:icons,id',
         ];
 
         return $rules;

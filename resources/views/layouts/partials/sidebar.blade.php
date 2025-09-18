@@ -132,7 +132,7 @@
    {{ request()->routeIs('events.*')
        ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500'
        : 'text-slate-800 hover:bg-s  
-                                                                        late-50' }}">
+                                                                                             late-50' }}">
                 <svg class="w-5 h-5 {{ request()->routeIs('events.*') ? 'text-primary-600' : 'text-slate-600' }}"
                     fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -163,6 +163,19 @@
                         d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                 </svg>
                 <span class="nav-label">Download</span>
+            </a>
+
+            <!-- Icons Menu -->
+            <a href="{{ route('icons.index') }}"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+                {{ request()->routeIs('icons.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
+                <!-- icons svg -->
+                <svg class="w-5 h-5 {{ request()->routeIs('icons.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16M6 4v16M12 4v16M18 4v16"></path>
+                </svg>
+                <span class="nav-label">Icons</span>
             </a>
         </div>
     </nav>

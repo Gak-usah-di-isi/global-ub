@@ -6,22 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Study extends Model
+class Icon extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'studies';
-
     protected $fillable = [
-        'title',
-        'tagline',
+        'name',
         'slug',
-        'description',
-        'students_count',
-        'duration',
-        'highlights',
-        'icon_class',
-        'icon_id',
+        'icon',
     ];
 
     protected static function boot()
@@ -30,7 +22,7 @@ class Study extends Model
 
         static::creating(function ($model) {
             if (empty($model->slug)) {
-                $model->slug = \Illuminate\Support\Str::slug($model->title);
+                $model->slug = \Illuminate\Support\Str::slug($model->name);
 
                 $count = 0;
                 $originalSlug = $model->slug;
@@ -42,8 +34,8 @@ class Study extends Model
         });
 
         static::updating(function ($model) {
-            if ($model->isDirty('title') && empty($model->slug)) {
-                $model->slug = \Illuminate\Support\Str::slug($model->title);
+            if ($model->isDirty('name') && empty($model->slug)) {
+                $model->slug = \Illuminate\Support\Str::slug($model->name);
 
                 $count = 0;
                 $originalSlug = $model->slug;
@@ -55,8 +47,13 @@ class Study extends Model
         });
     }
 
-    public function icon()
+    public function studies()
     {
-        return $this->belongsTo(Icon::class, 'icon_id');
+        return $this->hasMany(Study::class, 'icon_id');
+    }
+
+    public function partners()
+    {
+        return $this->hasMany(Partner::class, 'icon_id');
     }
 }

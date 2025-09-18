@@ -5,22 +5,23 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudyRequest;
 use App\Models\Study;
+use App\Models\Icon;
 
 class AdminStudyController extends Controller
 {
     public function index()
     {
-        $studies = Study::latest()->paginate(10);
-
+        $studies = Study::with('icon')->latest()->paginate(10);
         return view('admin.studies.index', compact('studies'));
     }
     public function create()
     {
-        return view('admin.studies.create');
+        $icons = Icon::all();
+        return view('admin.studies.create', compact('icons'));
     }
     public function store(StudyRequest $request)
     {
-        $data = $request->only(['title', 'tagline', 'description', 'students_count', 'duration', 'highlights', 'icon_class']);
+        $data = $request->only(['title', 'tagline', 'description', 'students_count', 'duration', 'highlights', 'icon_class', 'icon_id']);
 
         if (empty($data['slug'])) {
             $data['slug'] = \Illuminate\Support\Str::slug($data['title']);
@@ -32,13 +33,14 @@ class AdminStudyController extends Controller
     }
     public function edit($slug)
     {
+        $icons = Icon::all();
         $study = Study::where('slug', $slug)->firstOrFail();
-        return view('admin.studies.edit', compact('study'));
+        return view('admin.studies.edit', compact('study', 'icons'));
     }
     public function update(StudyRequest $request, $slug)
     {
         $study = Study::where('slug', $slug)->firstOrFail();
-        $data = $request->only(['title', 'tagline', 'description', 'students_count', 'duration', 'highlights', 'icon_class']);
+        $data = $request->only(['title', 'tagline', 'description', 'students_count', 'duration', 'highlights', 'icon_class', 'icon_id']);
 
         $study->update($data);
         return redirect()->route('studies.index')->with('success', 'Study item successfully updated.');
