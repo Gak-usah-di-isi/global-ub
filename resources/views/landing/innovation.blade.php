@@ -43,7 +43,7 @@
             </div>
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <article class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
                     <div class="w-full h-48 sm:h-64 md:h-[288px]">
                         <img src="{{ asset('images/International.svg') }}" alt="International Education Fair 2024"
                             class="w-full h-full object-cover">
@@ -64,131 +64,23 @@
                             class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
                             Meet representatives from top universities worldwide and explore study abroad...
                         </p>
-                        <div
-                            class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                Thursday, February 15, 2024
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                09:00 - 17:00
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
-                                UB Convention Center
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                500+ expected attendees
-                            </div>
-                        </div>
+                        <ul
+                            class="flex flex-col gap-2 mt-2 text-sm md:text-[14px] leading-5 md:leading-[20px] font-inter text-[#29303D]">
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
+                                English-taught courses</li>
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
+                                International faculty</li>
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
+                                Exchange
+                                opportunities</li>
+                        </ul>
                         <a href="#"
                             class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
-                            Register Now
+                            Learn More
                             <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
                     </div>
-                </article>
-
-                <article class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
-                    <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                        <img src="{{ asset('images/Cultural.svg') }}" alt="Global Research Symposium"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                        <div class="w-full flex items-center justify-between">
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#EDE9FE] text-[#6D28D9]">
-                                Symposium
-                            </span>
-
-                        </div>
-                        <h3
-                            class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                            Global Research Symposium
-                        </h3>
-                        <p
-                            class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                            Leading researchers present cutting-edge findings in sustainability and innovation
-                        </p>
-                        <div
-                            class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                Thursday, February 22, 2024
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                08:30 - 16:00
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
-                                Academic Hall UB
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                300+ expected attendees
-                            </div>
-                        </div>
-                        <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
-                            Register Now
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
-                    </div>
-                </article>
-
-                <article class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
-                    <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                        <img src="{{ asset('images/Festival.svg') }}" alt="International Cultural Festival"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                        <div class="w-full flex items-center justify-between">
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#FCE7F3] text-[#DB2777]">
-                                Cultural Event
-                            </span>
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                                upcoming
-                            </span>
-                        </div>
-                        <h3
-                            class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                            International Cultural Festival
-                        </h3>
-                        <p
-                            class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                            Celebrate diversity with cultural performances, food, and traditions from...
-                        </p>
-                        <div
-                            class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                Friday, March 1, 2024
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                10:00 - 22:00
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
-                                UB Campus Plaza
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                1000+ expected attendees
-                            </div>
-                        </div>
-                        <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px]">
-                            Register Now
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
-                    </div>
-                </article>
+                </div>
 
             </div>
 

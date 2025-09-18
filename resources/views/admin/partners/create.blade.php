@@ -45,6 +45,23 @@
                 <h2 class="section-title">Partner Information</h2>
                 <div class="space-y-7">
                     <div>
+                        <label class="field-label">Choose Icon</label>
+                        <div class="flex gap-4 flex-wrap">
+                            @foreach ($icons as $icon)
+                                <label class="flex flex-col items-center cursor-pointer">
+                                    <input type="radio" name="icon_id" value="{{ $icon->id }}"
+                                        {{ old('icon_id') == $icon->id ? 'checked' : '' }}>
+                                    <img src="{{ asset('storage/' . $icon->icon) }}" alt="{{ $icon->name }}"
+                                        class="w-12 h-12 object-cover rounded-md border border-slate-200 mt-1 bg-[#6699FF33]" />
+                                </label>
+                            @endforeach
+                        </div>
+                        @error('icon_id')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
                         <label for="title" class="field-label req">Partner Title</label>
                         <input id="title" name="title" type="text" value="{{ old('title') }}"
                             placeholder="Enter partner title"
@@ -79,16 +96,6 @@
                             value="{{ old('program_duration') }}" placeholder="Enter program duration"
                             class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('program_duration') border-red-300 @enderror" />
                         @error('program_duration')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="icon_class" class="field-label">Icon Class</label>
-                        <input id="icon_class" name="icon_class" type="text" value="{{ old('icon_class') }}"
-                            placeholder="Enter icon class (e.g., fas fa-graduation-cap)"
-                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
-                        @error('icon_class')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>

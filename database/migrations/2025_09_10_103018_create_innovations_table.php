@@ -18,11 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->string('innovation_type');
-            $table->date('innovation_date');
-            $table->time('start_time');
-            $table->time('end_time');
-            $table->string('location');
-            $table->string('expected_attendees');
+            $table->text('highlights')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

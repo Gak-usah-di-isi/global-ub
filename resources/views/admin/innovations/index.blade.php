@@ -33,9 +33,7 @@
                         <th class="rounded-tl-lg">Image</th>
                         <th>Innovation Title</th>
                         <th>Type</th>
-                        <th>Date & Time</th>
-                        <th>Location</th>
-                        <th>Expected Attendees</th>
+                        <th>Description</th>
                         <th class="rounded-tr-lg">Actions</th>
                     </tr>
                 </thead>
@@ -52,15 +50,7 @@
                             </td>
                             <td>{{ $innovation->title }}</td>
                             <td>{{ $innovation->innovation_type }}</td>
-                            <td>
-                                {{ \Carbon\Carbon::parse($innovation->innovation_date)->format('d M Y') }}
-                                <br>
-                                {{ \Carbon\Carbon::parse($innovation->start_time)->format('h:i A') }} -
-                                {{ \Carbon\Carbon::parse($innovation->end_time)->format('h:i A') }}
-                            </td>
-                            <td>{{ $innovation->location }}</td>
-                            <td>{{ $innovation->expected_attendees }}</td>
-
+                            <td>{{ Str::limit($innovation->description, 50) }}</td>
                             <td>
                                 <div class="flex items-center gap-2">
                                     <a href="{{ route('innovations.edit', $innovation->slug) }}"

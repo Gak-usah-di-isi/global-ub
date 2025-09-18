@@ -35,7 +35,6 @@
                         <th>Description</th>
                         <th>Students Count</th>
                         <th>Program Duration</th>
-                        <th>Created Date</th>
                         <th class="rounded-tr-lg">Actions</th>
                     </tr>
                 </thead>
@@ -43,10 +42,10 @@
                     @forelse($partners as $partner)
                         <tr>
                             <td>
-                                @if ($partner->icon_class)
-                                    <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                                        <i class="{{ $partner->icon_class }} text-primary-600 text-lg"></i>
-                                    </div>
+                                @if ($partner->icon)
+                                    <img src="{{ asset('storage/' . $partner->icon->icon) }}"
+                                        alt="{{ $partner->icon->name }}"
+                                        class="w-12 h-12 object-cover rounded-md border border-slate-200 bg-[#6699FF33]" />
                                 @else
                                     <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
                                         <i class="fas fa-graduation-cap text-gray-400 text-lg"></i>
@@ -57,7 +56,6 @@
                             <td>{{ Str::limit($partner->description, 50) }}</td>
                             <td>{{ number_format($partner->students_count) }} students</td>
                             <td>{{ $partner->program_duration }}</td>
-                            <td>{{ $partner->created_at->format('d M Y') }}</td>
                             <td>
                                 <div class="flex items-center gap-2">
                                     <a href="{{ route('partners.edit', $partner->slug) }}"

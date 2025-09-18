@@ -16,11 +16,7 @@ class Innovation extends Model
         'description',
         'image',
         'innovation_type',
-        'innovation_date',
-        'start_time',
-        'end_time',
-        'location',
-        'expected_attendees',
+        'highlights',
     ];
 
     protected static function boot()

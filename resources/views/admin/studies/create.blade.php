@@ -167,4 +167,16 @@
             margin-top: 6px;
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.ClassicEditor) {
+                ClassicEditor
+                    .create(document.querySelector('#highlights'))
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        });
+    </script>
 @endsection

@@ -73,69 +73,6 @@
                     </div>
 
                     <div>
-                        <label for="innovation_date" class="field-label req">
-                            Innovation Date
-                        </label>
-                        <input id="innovation_date" name="innovation_date" type="date"
-                            value="{{ old('innovation_date') }}"
-                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('innovation_date') border-red-300 @enderror" />
-                        @error('innovation_date')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="start_time" class="field-label req">
-                                Start Time
-                            </label>
-                            <input id="start_time" name="start_time" type="time" value="{{ old('start_time') }}"
-                                class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('start_time') border-red-300 @enderror" />
-                            @error('start_time')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div>
-                            <label for="end_time" class="field-label req">
-                                End Time
-                            </label>
-                            <input id="end_time" name="end_time" type="time" value="{{ old('end_time') }}"
-                                class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('end_time') border-red-300 @enderror" />
-                            @error('end_time')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="location" class="field-label req">
-                            Location
-                        </label>
-                        <input id="location" name="location" type="text" value="{{ old('location') }}"
-                            placeholder="Enter innovation location"
-                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('location') border-red-300 @enderror" />
-                        @error('location')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="expected_attendees" class="field-label">
-                            Expected Attendees
-                        </label>
-                        <input id="expected_attendees" name="expected_attendees" type="number"
-                            value="{{ old('expected_attendees') }}" placeholder="Enter expected number of attendees"
-                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('expected_attendees') border-red-300 @enderror" />
-                        @error('expected_attendees')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                        <p class="help-text">
-                            Optional field to indicate the expected number of attendees
-                        </p>
-                    </div>
-
-                    <div>
                         <label for="description" class="field-label">
                             Description
                         </label>
@@ -144,6 +81,20 @@
                         @error('description')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
+                    </div>
+
+                    <div>
+                        <label for="highlights" class="field-label">
+                            Program Highlights
+                        </label>
+                        <textarea id="highlights" name="highlights" rows="3" placeholder="Enter key highlights or features of the program"
+                            class="mt-2 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors resize-none @error('highlights') border-red-300 @enderror">{{ old('highlights') }}</textarea>
+                        @error('highlights')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                        <p class="help-text">
+                            Optional: Key features, specializations, or unique aspects of the program
+                        </p>
                     </div>
 
                     <div>
@@ -191,4 +142,15 @@
             margin-top: 6px;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.ClassicEditor) {
+                ClassicEditor
+                    .create(document.querySelector('#highlights'))
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        });
+    </script>
 @endsection

@@ -22,7 +22,7 @@ class AdminInnovationController extends Controller
 
     public function store(InnovationRequest $request)
     {
-        $data = $request->only(['title', 'description', 'innovation_type', 'innovation_date', 'start_time', 'end_time', 'location', 'expected_attendees']);
+        $data = $request->only(['title', 'description', 'innovation_type', 'highlights']);
 
         if (empty($data['slug'])) {
             $data['slug'] = \Illuminate\Support\Str::slug($data['title']);
@@ -49,7 +49,7 @@ class AdminInnovationController extends Controller
     public function update(InnovationRequest $request, $slug)
     {
         $innovation = Innovation::where('slug', $slug)->firstOrFail();
-        $data = $request->only(['title', 'description', 'innovation_type', 'innovation_date', 'start_time', 'end_time', 'location', 'expected_attendees']);
+        $data = $request->only(['title', 'description', 'innovation_type', 'highlights']);
 
         if ($request->hasFile('image')) {
             if ($innovation->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($innovation->image)) {
