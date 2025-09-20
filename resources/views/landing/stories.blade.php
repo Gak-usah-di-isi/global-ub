@@ -9,13 +9,13 @@
             <div class="w-[16px] h-[16px]">
                 <img src="{{ asset('icons/home.svg') }}" alt="Home Icon" class="w-full h-full">
             </div>
-            <span class="text-[#29303D] text-[14px] font-medium">Home</span>
+            <span class="text-[#29303D] text-[14px] font-light">Home</span>
             <div class="w-[16px] h-[16px]">
                 <img src="{{ asset('icons/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
             </div>
         </div>
         <div class="flex items-center space-x-4 ml-4">
-            <span class="text-[#29303D] text-[14px] font-medium">Watch Their Stories</span>
+            <span class="text-[#29303D] text-[14px] font-light">Watch Their Stories</span>
         </div>
     </div>
 

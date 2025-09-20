@@ -1,6 +1,6 @@
 @extends('core.app')
 
-@section('title', 'Partner Page')
+@section('title', 'Partner')
 
 @section('content')
 
@@ -9,13 +9,20 @@
             <div class="w-[16px] h-[16px]">
                 <img src="{{ asset('icons/home.svg') }}" alt="Home Icon" class="w-full h-full">
             </div>
-            <span class="text-[#29303D] text-[14px] font-medium">Home</span>
+            <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
+                Home
+            </a>
             <div class="w-[16px] h-[16px]">
-                <img src="{{ asset('icons/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
+                <div class="w-[14px] h-[14px]">
+                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                </div>
             </div>
         </div>
         <div class="flex items-center space-x-4 ml-4">
-            <span class="text-[#29303D] text-[14px] font-medium">Partner</span>
+            <span
+                class="{{ request()->is('partner') ? 'font-medium text-[#29303D]' : 'text-[#29303D] font-light' }} text-xs md:text-[14px]">
+                Partner
+            </span>
         </div>
     </div>
 
@@ -26,7 +33,7 @@
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
                     class="w-full text-center font-playfair font-bold text-2xl md:text-3xl lg:text-[36px] leading-[40px] text-[#29303D]">
-                    Partnership
+                    Partner
                 </h2>
                 <p
                     class="max-w-full md:max-w-[768px] text-center font-inter font-light text-base md:text-lg lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303DB2]">
@@ -36,217 +43,78 @@
             </div>
 
             <div class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
-                <div
-                    class="w-full max-w-full sm:max-w-[384px] mx-auto h-auto md:h-[390px] bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col gap-4 md:gap-6">
+                @foreach ($partners as $partner)
                     <div
-                        class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                        <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
+                        class="w-full max-w-full sm:max-w-[384px] mx-auto h-auto md:h-[420px] bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col gap-4 md:gap-6">
+                        <div
+                            class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
+                            <img src="{{ asset('storage/' . $partner->icon->icon) }}" alt="Program Icon"
+                                class="w-6 h-6 md:w-8 md:h-8">
+                        </div>
+
+                        <h3
+                            class="font-playfair font-bold text-lg md:text-xl lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303D]">
+                            {{ $partner->title }}
+                        </h3>
+
+                        <p class="font-inter font-normal text-sm md:text-base leading-5 md:leading-6 text-[#29303DB2]">
+                            {{ $partner->description }}
+                        </p>
+
+                        <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
+                            <span class="flex items-center gap-2 text-[#29303DB2]">
+                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
+                                {{ number_format($partner->students_count) }} students
+                            </span>
+                            <span class="text-[#0000FF] font-medium">{{ $partner->program_duration }}</span>
+                        </div>
+
+                        <a href="#"
+                            class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px]">
+                            Collaborate
+                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                        </a>
                     </div>
-
-                    <h3
-                        class="font-playfair font-bold text-lg md:text-xl lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303D]">
-                        Global Mobility
-                    </h3>
-
-                    <p class="font-inter font-normal text-sm md:text-base leading-5 md:leading-6 text-[#29303DB2]">
-                        Student exchange, internship programs, and summer schools with international partners.
-                    </p>
-
-                    <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        <span class="flex items-center gap-2 text-[#29303DB2]">
-                            <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
-                            5,000+ students
-                        </span>
-                        <span class="text-[#0000FF] font-medium">Every Semester</span>
-                    </div>
-
-                    <a href="#"
-                        class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        Collaborate
-                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                    </a>
-                </div>
-                <div
-                    class="w-full max-w-full sm:max-w-[384px] mx-auto h-auto md:h-[390px] bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col gap-4 md:gap-6">
-                    <div
-                        class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                        <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
-                    </div>
-
-                    <h3
-                        class="font-playfair font-bold text-lg md:text-xl lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303D]">
-                        Global Mobility
-                    </h3>
-
-                    <p class="font-inter font-normal text-sm md:text-base leading-5 md:leading-6 text-[#29303DB2]">
-                        Student exchange, internship programs, and summer schools with international partners.
-                    </p>
-
-                    <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        <span class="flex items-center gap-2 text-[#29303DB2]">
-                            <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
-                            5,000+ students
-                        </span>
-                        <span class="text-[#0000FF] font-medium">Every Semester</span>
-                    </div>
-
-                    <a href="#"
-                        class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        Collaborate
-                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                    </a>
-                </div>
-                <div
-                    class="w-full max-w-full sm:max-w-[384px] mx-auto h-auto md:h-[390px] bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col gap-4 md:gap-6">
-                    <div
-                        class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                        <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
-                    </div>
-
-                    <h3
-                        class="font-playfair font-bold text-lg md:text-xl lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303D]">
-                        Global Mobility
-                    </h3>
-
-                    <p class="font-inter font-normal text-sm md:text-base leading-5 md:leading-6 text-[#29303DB2]">
-                        Student exchange, internship programs, and summer schools with international partners.
-                    </p>
-
-                    <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        <span class="flex items-center gap-2 text-[#29303DB2]">
-                            <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
-                            5,000+ students
-                        </span>
-                        <span class="text-[#0000FF] font-medium">Every Semester</span>
-                    </div>
-
-                    <a href="#"
-                        class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        Collaborate
-                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                    </a>
-                </div>
-                <div
-                    class="w-full max-w-full sm:max-w-[384px] mx-auto h-auto md:h-[390px] bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col gap-4 md:gap-6">
-                    <div
-                        class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                        <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
-                    </div>
-
-                    <h3
-                        class="font-playfair font-bold text-lg md:text-xl lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303D]">
-                        Global Mobility
-                    </h3>
-
-                    <p class="font-inter font-normal text-sm md:text-base leading-5 md:leading-6 text-[#29303DB2]">
-                        Student exchange, internship programs, and summer schools with international partners.
-                    </p>
-
-                    <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        <span class="flex items-center gap-2 text-[#29303DB2]">
-                            <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
-                            5,000+ students
-                        </span>
-                        <span class="text-[#0000FF] font-medium">Every Semester</span>
-                    </div>
-
-                    <a href="#"
-                        class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        Collaborate
-                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                    </a>
-                </div>
-                <div
-                    class="w-full max-w-full sm:max-w-[384px] mx-auto h-auto md:h-[390px] bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col gap-4 md:gap-6">
-                    <div
-                        class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                        <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
-                    </div>
-
-                    <h3
-                        class="font-playfair font-bold text-lg md:text-xl lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303D]">
-                        Global Mobility
-                    </h3>
-
-                    <p class="font-inter font-normal text-sm md:text-base leading-5 md:leading-6 text-[#29303DB2]">
-                        Student exchange, internship programs, and summer schools with international partners.
-                    </p>
-
-                    <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        <span class="flex items-center gap-2 text-[#29303DB2]">
-                            <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
-                            5,000+ students
-                        </span>
-                        <span class="text-[#0000FF] font-medium">Every Semester</span>
-                    </div>
-
-                    <a href="#"
-                        class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        Collaborate
-                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                    </a>
-                </div>
-                <div
-                    class="w-full max-w-full sm:max-w-[384px] mx-auto h-auto md:h-[390px] bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col gap-4 md:gap-6">
-                    <div
-                        class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                        <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
-                    </div>
-
-                    <h3
-                        class="font-playfair font-bold text-lg md:text-xl lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303D]">
-                        Global Mobility
-                    </h3>
-
-                    <p class="font-inter font-normal text-sm md:text-base leading-5 md:leading-6 text-[#29303DB2]">
-                        Student exchange, internship programs, and summer schools with international partners.
-                    </p>
-
-                    <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        <span class="flex items-center gap-2 text-[#29303DB2]">
-                            <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
-                            5,000+ students
-                        </span>
-                        <span class="text-[#0000FF] font-medium">Every Semester</span>
-                    </div>
-
-                    <a href="#"
-                        class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                        Collaborate
-                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                    </a>
-                </div>
-
-
+                @endforeach
             </div>
 
             <div class="w-full flex justify-center items-center py-8">
                 <div class="flex items-center gap-4">
-                    <button class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                        <img src="{{ asset('icons/vector-left.svg') }}" alt="Previous" class="w-3 h-3 md:w-4 md:h-4">
-                    </button>
+                    @if ($partners->onFirstPage())
+                        <button
+                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                            <img src="/icons/arrow-fix.svg" alt="Previous"
+                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
+                        </button>
+                    @else
+                        <a href="{{ $partners->previousPageUrl() }}"
+                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                            <img src="/icons/arrow-fix.svg" alt="Previous"
+                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
+                        </a>
+                    @endif
 
                     <div class="flex items-center gap-2 md:gap-4 bg-[#FFFFFF] rounded-full p-1 md:p-2">
-                        <button
-                            class="w-7 h-7 md:w-9 md:h-9 bg-[#1D4ED8] text-white rounded-full flex justify-center items-center text-sm md:text-base">
-                            1
-                        </button>
-
-                        <button
-                            class="w-7 h-7 md:w-9 md:h-9 text-[#1D4ED8] flex justify-center items-center text-sm md:text-base">
-                            2
-                        </button>
-
-                        <button
-                            class="w-7 h-7 md:w-9 md:h-9 text-[#1D4ED8] flex justify-center items-center text-sm md:text-base">
-                            3
-                        </button>
+                        @foreach ($partners->getUrlRange(1, $partners->lastPage()) as $page => $url)
+                            <a href="{{ $url }}"
+                                class="w-7 h-7 md:w-9 md:h-9 {{ $partners->currentPage() == $page ? 'bg-[#1D4ED8] text-white' : 'text-[#1D4ED8]' }} rounded-full flex justify-center items-center text-xs md:text-sm">
+                                {{ $page }}
+                            </a>
+                        @endforeach
                     </div>
 
-                    <button class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                        <img src="{{ asset('icons/vector-right.svg') }}" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
-                    </button>
+
+                    @if ($partners->hasMorePages())
+                        <a href="{{ $partners->nextPageUrl() }}"
+                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                            <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                        </a>
+                    @else
+                        <button
+                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                            <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                        </button>
+                    @endif
                 </div>
             </div>
 

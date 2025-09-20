@@ -3,26 +3,18 @@
 @section('title', 'About Page')
 
 @section('content')
-    <div class="bg-[#F0F2F4] w-full h-[60px] md:h-[80px] flex items-center px-4 sm:px-6 md:px-8 lg:px-[112px]">
-        <div class="flex items-center space-x-2 md:space-x-4">
-            <div class="w-4 h-4 md:w-[16px] md:h-[16px]">
-                <svg class="w-full h-full" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
-                    </path>
-                </svg>
+    <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
+        <div class="flex items-center space-x-4">
+            <div class="w-[16px] h-[16px]">
+                <img src="/icons/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
-            <span class="text-[#29303D] text-xs md:text-[14px] font-medium">Home</span>
-            <div class="w-4 h-4 md:w-[16px] md:h-[16px]">
-                <svg class="w-full h-full" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"></path>
-                </svg>
+            <span class="text-[#29303D] text-[14px] font-light">Home</span>
+            <div class="w-[16px] h-[16px]">
+                <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
             </div>
         </div>
-        <div class="flex items-center space-x-2 md:space-x-4 ml-2 md:ml-4">
-            <span class="text-[#29303D] text-xs md:text-[14px] font-medium">About</span>
+        <div class="flex items-center space-x-4 ml-4">
+            <span class="text-[#29303D] text-[14px] font-light">About</span>
         </div>
     </div>
 
