@@ -16,6 +16,7 @@ class DownloadCenter extends Model
         'slug',
         'description',
         'file',
+        'icon_id',
     ];
 
     protected static function boot()
@@ -47,5 +48,10 @@ class DownloadCenter extends Model
                 }
             }
         });
+    }
+
+    public function icon()
+    {
+        return $this->belongsTo(Icon::class, 'icon_id');
     }
 }

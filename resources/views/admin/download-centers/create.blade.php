@@ -48,6 +48,22 @@
 
                 <div class="space-y-7">
                     <div>
+                        <label class="field-label">Choose Icon</label>
+                        <div class="flex gap-4 flex-wrap">
+                            @foreach ($icons as $icon)
+                                <label class="flex flex-col items-center cursor-pointer">
+                                    <input type="radio" name="icon_id" value="{{ $icon->id }}"
+                                        {{ old('icon_id') == $icon->id ? 'checked' : '' }}>
+                                    <img src="{{ asset('storage/' . $icon->icon) }}" alt="{{ $icon->name }}"
+                                        class="w-12 h-12 object-cover rounded-md border border-slate-200 mt-1 bg-[#6699FF33]" />
+                                </label>
+                            @endforeach
+                        </div>
+                        @error('icon_id')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div>
                         <label for="title" class="field-label">
                             File Title
                         </label>
@@ -79,14 +95,14 @@
                         </label>
                         <div class="mt-2">
                             <input id="file" name="file" type="file"
-                                accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                                accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                                 class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 border border-[#E3E9F2] rounded-lg @error('file') border-red-300 @enderror" />
                         </div>
                         @error('file')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                         <p class="help-text">
-                            Supported formats: PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX. Maximum size: 10MB
+                            Supported formats: JPG, JPEG, PNG, PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX. Maximum size: 10MB
                         </p>
                     </div>
                 </div>
