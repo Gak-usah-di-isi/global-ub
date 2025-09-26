@@ -86,12 +86,13 @@
         </div>
     </section>
 
-    <section class="py-10 md:py-20 px-4 md:px-8 lg:px-28 bg-white">
+    <section class="py-10 md:py-20 md:px-8 lg:px-28 bg-white">
         <h2 class="text-2xl md:text-3xl font-playfair font-extrabold text-[#29303D] mb-8 md:mb-14">Related Post
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-[15.94px]">
             @foreach ($news as $newsItem)
-                <div class="w-full h-auto bg-white rounded-lg flex flex-col gap-4 md:gap-[18px] p-4 md:p-0">
+                <a href="{{ route('news.show', $newsItem->slug) }}"
+                    class="w-full h-auto bg-white rounded-lg flex flex-col gap-4 md:gap-[18px] p-4 md:p-0">
                     <div class="w-full h-[180px] rounded-[12px] overflow-hidden">
                         <img src="{{ asset('storage/' . $newsItem->image) }}" alt="{{ $newsItem->title }}"
                             class="w-full h-full object-cover">
@@ -117,12 +118,12 @@
                                 {{ $newsItem->created_at->diffForHumans() }}
                             </span>
                         </div>
-                        <a href="{{ route('news.show', $newsItem->slug) }}">
+                        <span>
                             <img src="/icons/arrow-right.svg" class="w-5 h-5 hover:scale-110 transition-transform"
                                 alt="">
-                        </a>
+                        </span>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
 
