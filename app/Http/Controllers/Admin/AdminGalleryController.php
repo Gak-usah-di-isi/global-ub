@@ -58,26 +58,31 @@ class AdminGalleryController extends Controller
         $data = $request->only(['title', 'description', 'category_gallery']);
 
         $existingImages = json_decode($gallery->images, true) ?? [];
+        $replaceImages = $request->file('replace_images', []);
 
-        if ($request->hasFile('images')) {
-            // Delete old images
-            foreach ($existingImages as $oldImage) {
+        // Replace existing images if new file is uploaded
+        foreach ($existingImages as $idx => $oldImage) {
+            if (isset($replaceImages[$idx]) && $replaceImages[$idx]) {
                 if (Storage::disk('public')->exists($oldImage)) {
                     Storage::disk('public')->delete($oldImage);
                 }
+                $filename = time() . '_' . Str::random(10) . '.' . $replaceImages[$idx]->getClientOriginalExtension();
+                $imagePath = $replaceImages[$idx]->storeAs('galleries', $filename, 'public');
+                $existingImages[$idx] = $imagePath;
             }
+        }
 
-            // Upload new images
-            $images = [];
+        // Add new images
+        $newImages = [];
+        if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $filename = time() . '_' . Str::random(10) . '.' . $image->getClientOriginalExtension();
                 $imagePath = $image->storeAs('galleries', $filename, 'public');
-                $images[] = $imagePath;
+                $newImages[] = $imagePath;
             }
-            $data['images'] = json_encode($images);
-        } else {
-            $data['images'] = $gallery->images;
         }
+
+        $data['images'] = json_encode(array_merge($existingImages, $newImages));
 
         $gallery->update($data);
 
