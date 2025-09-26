@@ -20,11 +20,13 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\InnovationController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\StoryController;
 
-
-Route::get('/', function () {
-    return view('landing.index');
-});
+Route::get('/', [LandingController::class, 'index']);
 
 Route::get('/about', function () {
     return view('landing.about');
@@ -44,21 +46,15 @@ Route::get('/study/{slug}', [StudyController::class, 'show'])->name('study.show'
 
 Route::get('/partner', [PartnerController::class, 'index'])->name('partner.index');
 
-Route::get('/story', function () {
-    return view('landing.stories');
-});
+Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
 
-Route::get('/testimonial', function () {
-    return view('landing.testimonials');
-});
+Route::get('/download-center', [DownloadController::class, 'index'])->name('download-center.index');
+Route::get('/download/{downloadCenter:slug}', [DownloadController::class, 'download'])->name('download-center.download');
 
-Route::get('/download-center', function () {
-    return view('landing.download-center');
-});
+Route::get('/story', [StoryController::class, 'index'])->name('story.index');
 
-Route::get('/gallery', function () {
-    return view('landing.gallery');
-});
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+Route::get('/gallery/{slug}', [GalleryController::class, 'show'])->name('gallery.show');
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', function () {

@@ -212,7 +212,7 @@
                 </div>
 
                 <div class="mt-8 md:mt-12 flex flex-col sm:flex-row gap-4 md:gap-[16px]">
-                    <a href="#"
+                    <a href="/about"
                         class="w-full sm:w-[150px] h-[44px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] shadow-md flex items-center justify-center text-center py-[11.5px] px-[32px] text-sm md:text-[14px] font-medium">
                         Learn More
                     </a>
@@ -299,98 +299,56 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-                <div class="flex flex-col gap-4">
+                <a href="{{ route('news.show', $latestNews->slug) }}" class="flex flex-col gap-4">
                     <div class="w-full h-[200px] sm:h-[239px] rounded-[12px] overflow-hidden">
-                        <img src="{{ asset('images/rektorat.png') }}" alt="Main News"
+                        <img src="{{ asset('storage/' . $latestNews->image) }}" alt="{{ $latestNews->title }}"
                             class="w-full h-full object-cover">
                     </div>
 
                     <h3 class="text-xl sm:text-2xl md:text-[24px] text-[#29303D] font-playfair font-extrabold">
-                        UB Signs MOU with Stanford University for Joint Research Program
+                        {{ $latestNews->title }}
                     </h3>
 
                     <p
                         class="text-base sm:text-lg md:text-[18px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
-                        Universitas Brawijaya establishes new partnership with Stanford University
-                        focusing on sustainable technology research and stude ..
+                        {{ Str::limit($latestNews->content, 120) }}
                     </p>
                     <div class="flex items-center justify-between text-sm md:text-[14px] text-[#29303DB2]">
                         <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
                             <span class="flex items-center gap-1">
                                 <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                1/15/2024
+                                {{ $latestNews->created_at->format('m/d/Y') }}
                             </span>
                             <span class="flex items-center gap-1">
                                 <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                3 min read
+                                {{ $latestNews->created_at_human }}
                             </span>
                         </div>
                         <div>
                             <img src="{{ asset('icons/arrow-right.svg') }}" class="w-5 h-5" alt="">
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <div class="flex flex-col gap-6 md:gap-8">
-                    <div class="flex gap-4">
-                        <img src="{{ asset('images/conference.jpg') }}" alt=""
-                            class="w-16 h-16 sm:w-[96px] sm:h-[86px] rounded-lg object-cover">
-                        <div>
-                            <span
-                                class="text-xs font-inter font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full">Event</span>
-                            <h4 class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
-                                International Conference on Climate Change hosted by UB
-                            </h4>
-                            <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/12/2024
-                                • 4 min
-                                read</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <img src="{{ asset('images/branch.jpg') }}" alt=""
-                            class="w-16 h-16 sm:w-[96px] sm:h-[86px] rounded-lg object-cover">
-                        <div>
-                            <span
-                                class="text-xs font-inter font-medium text-yellow-700 bg-yellow-100 px-2 py-0.5 rounded-full">Achievement</span>
-                            <h4 class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
-                                UB Students Win Gold at International Innovation Competition
-                            </h4>
-                            <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/10/2024
-                                • 2 min
-                                read</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <img src="{{ asset('images/student.jpg') }}" alt=""
-                            class="w-16 h-16 sm:w-[96px] sm:h-[86px] rounded-lg object-cover">
-                        <div>
-                            <span
-                                class="text-xs font-inter font-medium text-purple-700 bg-purple-100 px-2 py-0.5 rounded-full">Academic</span>
-                            <h4 class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
-                                New Double Degree Program with University of Melbourne
-                            </h4>
-                            <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/8/2024
-                                • 3 min
-                                read</p>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <img src="{{ asset('images/work.jpg') }}" alt=""
-                            class="w-16 h-16 sm:w-[96px] sm:h-[86px] rounded-lg object-cover">
-                        <div>
-                            <span
-                                class="text-xs font-inter font-medium text-pink-700 bg-pink-100 px-2 py-0.5 rounded-full">Alumni</span>
-                            <h4 class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
-                                Global Alumni Network Reaches 10,000 Members Worldwide
-                            </h4>
-                            <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">1/5/2024
-                                • 2 min
-                                read</p>
-                        </div>
-                    </div>
+                    @foreach ($news as $newsItem)
+                        <a href="{{ route('news.show', $newsItem->slug) }}" class="flex gap-4">
+                            <img src="{{ asset('storage/' . $newsItem->image) }}" alt="{{ $newsItem->title }}"
+                                class="w-16 h-16 sm:w-[96px] sm:h-[86px] rounded-lg object-cover">
+                            <div>
+                                <span
+                                    class="text-xs font-inter font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full">News</span>
+                                <h4
+                                    class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1 group-hover:text-blue-700 transition-colors">
+                                    {{ $newsItem->title }}
+                                </h4>
+                                <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">
+                                    {{ $newsItem->created_at->format('m/d/Y') }} •
+                                    {{ Str::limit(strip_tags($newsItem->content), 60) }}
+                                </p>
+                            </div>
+                        </a>
+                    @endforeach
                 </div>
 
             </div>
@@ -407,7 +365,7 @@
     </section>
 
     <section id="study-in-ub"
-        class="w-full h-auto bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] px-4 sm:px-6 md:px-8 lg:px-[80px] py-8 md:py-[100px] lg:py-20">
+        class="w-full h-auto bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] sm:px-6 md:px-8 lg:px-[80px] py-8 md:py-[100px] lg:py-20">
         <div class="max-w-[1280px] h-auto mx-auto px-4 sm:px-6 md:px-8 lg:px-[32px] flex flex-col gap-8 md:gap-[64px]">
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
@@ -421,39 +379,36 @@
                 </p>
             </div>
 
-            <div class="w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-[32px] place-items-center">
+            <div x-data="{}"
+                class="w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-[32px] place-items-center">
                 <div class="flex flex-col items-center">
-                    <div
+                    <div id="counter1"
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
-                        150+
-                    </div>
+                        0+</div>
                     <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Study
                         Programs</span>
                 </div>
 
                 <div class="flex flex-col items-center">
-                    <div
+                    <div id="counter2"
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
-                        15
-                    </div>
+                        0</div>
                     <span
                         class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Faculties</span>
                 </div>
 
                 <div class="flex flex-col items-center">
-                    <div
+                    <div id="counter3"
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
-                        100+
-                    </div>
+                        0+</div>
                     <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Partner
                         Universities</span>
                 </div>
 
                 <div class="flex flex-col items-center">
-                    <div
+                    <div id="counter4"
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
-                        4,500+
-                    </div>
+                        0+</div>
                     <span
                         class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">International
                         Students</span>
@@ -461,125 +416,44 @@
             </div>
 
             <div class="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[32px]">
-                <div
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
+                @foreach ($studies as $study)
                     <div
-                        class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                        <img src="{{ asset('icons/togs.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
+                        <div
+                            class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
+                            <img src="{{ asset('storage/' . $study->icon->icon) }}" alt="{{ $study->icon->name }}"
+                                class="w-6 h-6 md:w-8 md:h-8">
+                        </div>
+
+                        <h3
+                            class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
+                            {{ $study->title }}
+                        </h3>
+
+                        <p
+                            class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
+                            {{ Str::limit($study->tagline, 80) }}
+                        </p>
+
+                        <div class="flex justify-between items-center text-xs md:text-[14px] leading-[20px]">
+                            <span class="flex items-center gap-2 text-[#29303DB2]">
+                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
+                                {{ number_format($study->students_count) }} students
+                            </span>
+                            <span class="text-[#0000FF] font-medium">{{ $study->duration }}</span>
+                        </div>
+
+                        <div class="ck-content">
+                            {!! $study->highlights !!}
+                        </div>
+
+                        <a href="{{ route('study.show', $study->slug) }}"
+                            class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
+                            Learn More
+                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                        </a>
                     </div>
-
-                    <h3
-                        class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                        International Undergraduate Program
-                    </h3>
-
-                    <p
-                        class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                        Comprehensive bachelor’s degree programs taught in English with global perspectives
-                    </p>
-
-                    <div class="flex justify-between items-center text-xs md:text-[14px] leading-[20px]">
-                        <span class="flex items-center gap-2 text-[#29303DB2]">
-                            <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
-                            2,500+ students
-                        </span>
-                        <span class="text-[#0000FF] font-medium">4 years</span>
-                    </div>
-
-                    <ul class="flex flex-col gap-2 mt-2 text-xs md:text-[14px] leading-[20px] font-inter text-[#29303D]">
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
-                            English-taught courses</li>
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
-                            International faculty</li>
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
-                            Exchange opportunities</li>
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
-                            Industry partnerships</li>
-                    </ul>
-
-                    <a href="#"
-                        class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
-                        Learn More
-                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                    </a>
-                </div>
-
-                <div
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
-                    <div
-                        class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                        <img src="{{ asset('icons/globe.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
-                    </div>
-                    <h3
-                        class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                        Double Degree Programs
-                    </h3>
-                    <p
-                        class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                        Earn degrees from both UB and partner universities worldwide
-                    </p>
-                    <div class="flex justify-between items-center text-xs md:text-[14px] leading-[20px]">
-                        <span class="flex items-center gap-2 text-[#29303DB2]">
-                            <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
-                            800+ students
-                        </span>
-                        <span class="text-[#0000FF] font-medium">4–5 years</span>
-                    </div>
-                    <ul class="flex flex-col gap-2 mt-2 text-xs md:text-[14px] leading-[20px] font-inter text-[#29303D]">
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Two
-                            university degrees</li>
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Study
-                            abroad experience</li>
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span> Global
-                            network access</li>
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
-                            Enhanced career prospects</li>
-                    </ul>
-                    <a href="#"
-                        class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
-                        Learn More
-                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                    </a>
-                </div>
-
-                <div
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
-                    <div
-                        class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                        <img src="{{ asset('icons/book.svg') }}" alt="Program Icon" class="w-6 h-6 md:w-8 md:h-8">
-                    </div>
-                    <h3
-                        class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                        International Master’s
-                    </h3>
-                    <p
-                        class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                        Advanced graduate programs with research focus and global collaboration
-                    </p>
-                    <div class="flex justify-between items-center text-xs md:text-[14px] leading-[20px]">
-                        <span class="flex items-center gap-2 text-[#29303DB2]">
-                            <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
-                            1,200+ students
-                        </span>
-                        <span class="text-[#0000FF] font-medium">2 years</span>
-                    </div>
-                    <ul class="flex flex-col gap-2 mt-2 text-xs md:text-[14px] leading-[20px] font-inter text-[#29303D]">
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
-                            Research opportunities</li>
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
-                            International supervision</li>
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
-                            Conference participation</li>
-                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-[#0000FF] rounded-full"></span>
-                            Publication support</li>
-                    </ul>
-                    <a href="#"
-                        class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
-                        Learn More
-                        <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                    </a>
-                </div>
-
+                @endforeach
             </div>
 
 
@@ -587,7 +461,7 @@
     </section>
 
     <section id="events"
-        class="w-full h-auto bg-[#FFFFFF] px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-[80px] lg:py-[80px]">
+        class="w-full h-auto bg-[#FFFFFF] py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-[80px] lg:py-[80px]">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6 md:gap-8 lg:gap-[40px]">
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
@@ -601,168 +475,66 @@
             </div>
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
-                    <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                        <img src="{{ asset('images/conference.jpg') }}" alt="International Education Fair 2024"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                        <div class="w-full flex items-center justify-between">
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                                Education Fair
-                            </span>
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                                upcoming
-                            </span>
+                @foreach ($events as $event)
+                    <div
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                        <div class="w-full h-48 sm:h-64 md:h-[288px]">
+                            <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}"
+                                class="w-full h-full object-cover">
                         </div>
-                        <h3
-                            class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                            International Education Fair 2024
-                        </h3>
-                        <p
-                            class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                            Meet representatives from top universities worldwide and explore study abroad...
-                        </p>
-                        <div
-                            class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                Thursday, February 15, 2024
+                        <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
+                            <div class="w-full flex items-center justify-between">
+                                <span
+                                    class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#6699FF33] text-[#1D4ED8]">
+                                    {{ $event->event_type }}
+                                </span>
+                                <span
+                                    class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
+                                    {{ $event->status }}
+                                </span>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                09:00 - 17:00
+                            <h3
+                                class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
+                                {{ $event->title }}
+                            </h3>
+                            <p
+                                class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
+                                {{ Str::limit($event->description, 100, '...') }}
+                            </p>
+                            <div
+                                class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
+                                    {{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
+                                    {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} -
+                                    {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
+                                    {{ $event->location }}
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
+                                    {{ $event->expected_attendees }} expected attendees
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
-                                UB Convention Center
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                500+ expected attendees
-                            </div>
+                            <a href="{{ route('event.show', $event->slug) }}"
+                                class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
+                                Learn More
+                                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                            </a>
                         </div>
-                        <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                            Register Now
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
                     </div>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
-                    <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                        <img src="{{ asset('images/present.jpg') }}" alt="Global Research Symposium"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                        <div class="w-full flex items-center justify-between">
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#EDE9FE] text-[#6D28D9]">
-                                Symposium
-                            </span>
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                                upcoming
-                            </span>
-                        </div>
-                        <h3
-                            class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                            Global Research Symposium
-                        </h3>
-                        <p
-                            class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                            Leading researchers present cutting-edge findings in sustainability and innovation
-                        </p>
-                        <div
-                            class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                Thursday, February 22, 2024
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                08:30 - 16:00
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
-                                Academic Hall UB
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                300+ expected attendees
-                            </div>
-                        </div>
-                        <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                            Register Now
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
-                    </div>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
-                    <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                        <img src="{{ asset('images/fest.jpg') }}" alt="International Cultural Festival"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                        <div class="w-full flex items-center justify-between">
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#FCE7F3] text-[#DB2777]">
-                                Cultural Event
-                            </span>
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                                upcoming
-                            </span>
-                        </div>
-                        <h3
-                            class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                            International Cultural Festival
-                        </h3>
-                        <p
-                            class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                            Celebrate diversity with cultural performances, food, and traditions from...
-                        </p>
-                        <div
-                            class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                Friday, March 1, 2024
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                10:00 - 22:00
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
-                                UB Campus Plaza
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                1000+ expected attendees
-                            </div>
-                        </div>
-                        <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                            Register Now
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
-                    </div>
-                </article>
-
+                @endforeach
             </div>
         </div>
 
         <div class="flex justify-center">
-            <a href="#"
-                class="mt-8 md:mt-16 w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
+            <a href="{{ route('event.index') }}"
+                class="mt-8 md:mt-10 w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                 View All Events
                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>
@@ -770,7 +542,7 @@
     </section>
 
     <section id="downloadCenter"
-        class="w-full h-auto bg-[#FFFFFF] px-4 py-8 sm:px-6 sm:py-10 md:px-8 md:py-12 lg:px-[80px] lg:py-[40px]">
+        class="w-full h-auto bg-[#FFFFFF] py-8 sm:px-6 sm:py-10 md:px-8 md:py-10 lg:px-[80px] lg:py-[20px]">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6 md:gap-8 lg:gap-[40px]">
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
@@ -784,143 +556,77 @@
             </div>
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <article
-                    class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
-                    <div class="px-4 sm:px-[25px] py-4 sm:py-[25px] w-full">
-                        <div class="flex items-start gap-3 sm:gap-[16px] mb-6">
-                            <div
-                                class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
-                                <img src="{{ asset('icons/file.svg') }}" class="w-6 h-6" alt="File icon">
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <h3
-                                    class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
-                                    University Profile Brochure
-                                </h3>
-                                <p
-                                    class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
-                                    Complete overview of UB programs and facilities
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between items-center mb-4 sm:mb-6">
-                            <div class="flex gap-3 sm:gap-[16px] items-center">
-                                <span
-                                    class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">PDF</span>
-                                <span
-                                    class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">5.2
-                                    MB</span>
+                @foreach ($downloads as $download)
+                    <div
+                        class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
+                        <div class="px-4 sm:px-[25px] py-4 sm:py-[25px] w-full">
+                            <div class="flex items-start gap-3 sm:gap-[16px] mb-6">
+                                <div
+                                    class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
+                                    <img src="{{ asset('storage/' . $download->icon->icon) }}" class="w-6 h-6"
+                                        alt="File icon">
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h3
+                                        class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
+                                        {{ $download->title }}
+                                    </h3>
+                                    <p
+                                        class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
+                                        {{ $download->description }}
+                                    </p>
+                                </div>
                             </div>
 
-                            <div class="flex gap-1 sm:gap-[4px] items-center">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60"
+                            <div class="flex justify-between items-center mb-4 sm:mb-6">
+                                <div class="flex gap-3 sm:gap-[16px] items-center">
+                                    <span
+                                        class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">{{ strtoupper(pathinfo($download->file, PATHINFO_EXTENSION)) }}</span>
+                                    <span
+                                        class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">@php
+                                            $size = Storage::disk('public')->exists($download->file)
+                                                ? Storage::disk('public')->size($download->file)
+                                                : 0;
+                                        @endphp
+                                        @if ($size < 1048576)
+                                            {{ number_format($size / 1024, 1) }} KB
+                                        @else
+                                            {{ number_format($size / 1048576, 1) }} MB
+                                        @endif
+                                    </span>
+                                </div>
+
+                                <div class="flex gap-1 sm:gap-[4px] items-center">
+                                    <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60"
+                                        alt="Download">
+                                    <span
+                                        class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">
+                                        @php
+                                            $redisKey = 'download_center:' . $download->id;
+                                            $downloadCount = \Illuminate\Support\Facades\Redis::get($redisKey) ?? 0;
+                                        @endphp
+                                        {{ number_format($downloadCount) }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <a href="{{ route('download-center.download', $download->slug) }}"
+                                class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4"
                                     alt="Download">
                                 <span
-                                    class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">2.5k</span>
-                            </div>
+                                    class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
+                            </a>
                         </div>
-
-                        <button
-                            class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                            <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
-                            <span
-                                class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
-                        </button>
                     </div>
-                </article>
-
-                <article
-                    class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
-                    <div class="px-4 sm:px-[25px] py-4 sm:py-[25px] w-full">
-                        <div class="flex items-start gap-3 sm:gap-[16px] mb-6">
-                            <div
-                                class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
-                                <img src="{{ asset('icons/file.svg') }}" class="w-6 h-6" alt="File icon">
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <h3
-                                    class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
-                                    University Profile Brochure
-                                </h3>
-                                <p
-                                    class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
-                                    Complete overview of UB programs and facilities
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between items-center mb-4 sm:mb-6">
-                            <div class="flex gap-3 sm:gap-[16px] items-center">
-                                <span
-                                    class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">PDF</span>
-                                <span
-                                    class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">5.2
-                                    MB</span>
-                            </div>
-
-                            <div class="flex gap-1 sm:gap-[4px] items-center">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60"
-                                    alt="Download">
-                                <span
-                                    class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">2.5k</span>
-                            </div>
-                        </div>
-
-                        <button
-                            class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                            <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
-                            <span
-                                class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
-                        </button>
-                    </div>
-                </article>
-
-                <article
-                    class="w-full max-w-[400px] sm:max-w-md lg:max-w-lg h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden mx-auto">
-                    <div class="px-4 sm:px-[25px] py-4 sm:py-[25px] w-full">
-                        <div class="flex items-start gap-3 sm:gap-[16px] mb-6">
-                            <div
-                                class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
-                                <img src="{{ asset('icons/file.svg') }}" class="w-6 h-6" alt="File icon">
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <h3
-                                    class="text-[#29303D] text-sm sm:text-base font-playfair font-semibold leading-5 sm:leading-6 mb-1">
-                                    University Profile Brochure
-                                </h3>
-                                <p
-                                    class="text-xs sm:text-sm text-[#29303D] opacity-[0.7] font-normal font-inter leading-4 sm:leading-tight">
-                                    Complete overview of UB programs and facilities
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between items-center mb-4 sm:mb-6">
-                            <div class="flex gap-3 sm:gap-[16px] items-center">
-                                <span
-                                    class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D] opacity-[0.6]">PDF</span>
-                                <span
-                                    class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">5.2
-                                    MB</span>
-                            </div>
-
-                            <div class="flex gap-1 sm:gap-[4px] items-center">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60"
-                                    alt="Download">
-                                <span
-                                    class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">2.5k</span>
-                            </div>
-                        </div>
-
-                        <button
-                            class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                            <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
-                            <span
-                                class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
-                        </button>
-                    </div>
-                </article>
+                @endforeach
+            </div>
+            <div class="flex justify-center">
+                <a href="/download-center"
+                    class=" w-full max-w-[270px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
+                    View All Download Center
+                    <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                </a>
             </div>
         </div>
 
@@ -938,7 +644,7 @@
                 </p>
 
                 <div class="flex justify-center mt-6 md:mt-6">
-                    <a href="#"
+                    <a href="#" target="_blank" rel="noopener"
                         class="w-full h-[48px] font-inter font-normal text-sm md:text-[15px] px-[33px] py-[12px] rounded-[10px] border border-white/20 bg-white/10 text-white flex items-center justify-center">
                         Download Complete Media Kit
                     </a>
@@ -947,7 +653,7 @@
         </div>
     </section>
 
-    <section id="events" class="w-full h-auto bg-[#FFFFFF] px-4 sm:px-6  md:px-8  lg:px-[80px]">
+    <section id="innovations" class="w-full h-auto bg-[#FFFFFF] sm:px-6  md:px-8  lg:px-[80px]">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6 md:gap-8 lg:gap-[40px]">
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
@@ -961,170 +667,54 @@
             </div>
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
-                    <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                        <img src="{{ asset('images/International.svg') }}" alt="International Education Fair 2024"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                        <div class="w-full flex items-center justify-between">
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                                Education Fair
-                            </span>
+                @foreach ($innovations as $innovation)
+                    <div
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                        <div class="w-full h-48 sm:h-64 md:h-[288px]">
+                            <img src="{{ asset('storage/' . $innovation->image) }}" alt="{{ $innovation->title }}"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
+                            <div class="w-full flex items-center justify-between">
+                                <span
+                                    class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#6699FF33] text-[#1D4ED8]">
+                                    {{ $innovation->innovation_type }}
+                                </span>
 
+                            </div>
+                            <h3
+                                class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
+                                {{ $innovation->title }}
+                            </h3>
+                            <p
+                                class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
+                                {{ Str::limit($innovation->description, 80) }}
+                            </p>
+                            <div class="ck-content">
+                                {!! $innovation->highlights !!}
+                            </div>
+                            <a href="#"
+                                class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition">
+                                Learn More
+                                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                            </a>
                         </div>
-                        <h3
-                            class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                            International Education Fair 2024
-                        </h3>
-                        <p
-                            class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                            Meet representatives from top universities worldwide and explore study abroad...
-                        </p>
-                        <div
-                            class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                Thursday, February 15, 2024
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                09:00 - 17:00
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
-                                UB Convention Center
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                500+ expected attendees
-                            </div>
-                        </div>
-                        <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                            Register Now
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
                     </div>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
-                    <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                        <img src="{{ asset('images/Cultural.svg') }}" alt="Global Research Symposium"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                        <div class="w-full flex items-center justify-between">
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#EDE9FE] text-[#6D28D9]">
-                                Symposium
-                            </span>
-
-                        </div>
-                        <h3
-                            class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                            Global Research Symposium
-                        </h3>
-                        <p
-                            class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                            Leading researchers present cutting-edge findings in sustainability and innovation
-                        </p>
-                        <div
-                            class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                Thursday, February 22, 2024
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                08:30 - 16:00
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
-                                Academic Hall UB
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                300+ expected attendees
-                            </div>
-                        </div>
-                        <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                            Register Now
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
-                    </div>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
-                    <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                        <img src="{{ asset('images/Festival.svg') }}" alt="International Cultural Festival"
-                            class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                        <div class="w-full flex items-center justify-between">
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#FCE7F3] text-[#DB2777]">
-                                Cultural Event
-                            </span>
-                            <span
-                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                                upcoming
-                            </span>
-                        </div>
-                        <h3
-                            class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                            International Cultural Festival
-                        </h3>
-                        <p
-                            class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                            Celebrate diversity with cultural performances, food, and traditions from...
-                        </p>
-                        <div
-                            class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                Friday, March 1, 2024
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
-                                10:00 - 22:00
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
-                                UB Campus Plaza
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                1000+ expected attendees
-                            </div>
-                        </div>
-                        <a href="#"
-                            class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                            Register Now
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
-                    </div>
-                </article>
-
+                @endforeach
             </div>
         </div>
 
         <div class="flex justify-center mb-8">
-            <a href="#"
-                class="mt-8 md:mt-16 w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                View All Events
+            <a href="{{ route('innovation.index') }}"
+                class="mt-8 md:mt-16 w-full max-w-[240px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
+                View All Innovations
                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>
         </div>
     </section>
 
     <section
-        class="w-full h-auto bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] px-4 sm:px-6 md:px-8 lg:px-[80px] py-10 md:py-16 lg:py-[64px]">
+        class="w-full h-auto bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] sm:px-6 md:px-8 lg:px-[80px] py-10 md:py-16 lg:py-[64px]">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6 md:gap-8 lg:gap-[40px]">
 
             <div class="w-full flex flex-col items-center gap-4">
@@ -1140,213 +730,73 @@
             </div>
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                @foreach ($testimonials as $testimonial)
+                    <div
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
+                        <header class="flex items-center gap-4">
+                            <div class="relative">
+                                <img src="{{ asset('storage/' . $testimonial->photo) }}" alt="{{ $testimonial->name }}"
+                                    class="w-16 h-16 rounded-full object-cover" />
+                                <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
+                                    class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-[#1C2B39] font-playfair">{{ $testimonial->name }}</h3>
+                                <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">
+                                    {{ $testimonial->position }}</p>
+                                <p class="text-sm font-medium text-[#0000FF] font-inter">{{ $testimonial->organization }}
+                                </p>
+                            </div>
+                        </header>
 
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
-                    <header class="flex items-center gap-4">
-                        <div class="relative">
-                            <img src="{{ asset('images/Prof_Michael.png') }}" alt="Profile photo"
-                                class="w-16 h-16 rounded-full object-cover" />
-                            <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
-                                class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-[#1C2B39] font-playfair">Prof. Michael Johnson</h3>
-                            <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">Director of
-                                International Relations</p>
-                            <p class="text-sm font-medium text-[#0000FF] font-inter">Oxford University</p>
-                        </div>
-                    </header>
+                        <section class="mt-4">
+                            <p
+                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
+                                {{ $testimonial->testimonial_type }}</p>
+                        </section>
 
-                    <section class="mt-4">
-                        <p
-                            class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                            International Partner</p>
-                    </section>
+                        <blockquote class="mt-4">
+                            <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
+                                class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
+                            <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
+                                “{{ $testimonial->testimonial }}”</p>
+                        </blockquote>
 
-                    <blockquote class="mt-4">
-                        <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
-                            class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
-                        <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
-                            “Our collaboration with UB has been exceptional. Their students bring fresh perspectives
-                            and innovative solutions to our joint research projects.”</p>
-                    </blockquote>
+                        <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
+                            <p class="flex items-center gap-2">
+                                <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
+                                {{ $testimonial->location }}
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
+                                {{ $testimonial->partnership_since }}
+                            </p>
+                        </section>
 
-                    <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
-                            Oxford, UK
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
-                            Partnership since 2019
-                        </p>
-                    </section>
+                        <section class="mt-6">
+                            <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
+                            <div class="ck-content">
+                                {!! $testimonial->key_achievements !!}
+                            </div>
+                        </section>
 
-                    <section class="mt-6">
-                        <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
-                        <ul class="mt-2 space-y-1 text-xs sm:text-sm text-gray-600 font-inter list-none">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">50+ joint research projects</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">Student exchange programs</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">International conferences</p>
-                            </li>
-                        </ul>
-                    </section>
+                        <footer class="mt-6">
+                            <button
+                                class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
+                                View Full Story
+                                <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
+                            </button>
+                        </footer>
+                    </div>
+                @endforeach
+            </div>
 
-                    <footer class="mt-6">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
-                            View Full Story
-                            <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
-                        </button>
-                    </footer>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
-                    <header class="flex items-center gap-4">
-                        <div class="relative">
-                            <img src="{{ asset('images/Prof_Michael.png') }}" alt="Profile photo"
-                                class="w-16 h-16 rounded-full object-cover" />
-                            <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
-                                class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-[#1C2B39] font-playfair">Prof. Michael Johnson</h3>
-                            <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">Director of
-                                International Relations</p>
-                            <p class="text-sm font-medium text-[#0000FF] font-inter">Oxford University</p>
-                        </div>
-                    </header>
-
-                    <section class="mt-4">
-                        <p
-                            class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                            International Partner</p>
-                    </section>
-
-                    <blockquote class="mt-4">
-                        <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
-                            class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
-                        <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
-                            “Our collaboration with UB has been exceptional. Their students bring fresh perspectives
-                            and innovative solutions to our joint research projects.”</p>
-                    </blockquote>
-
-                    <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
-                            Oxford, UK
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
-                            Partnership since 2019
-                        </p>
-                    </section>
-
-                    <section class="mt-6">
-                        <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
-                        <ul class="mt-2 space-y-1 text-xs sm:text-sm text-gray-600 font-inter list-none">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">50+ joint research projects</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">Student exchange programs</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">International conferences</p>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <footer class="mt-6">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
-                            View Full Story
-                            <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
-                        </button>
-                    </footer>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
-                    <header class="flex items-center gap-4">
-                        <div class="relative">
-                            <img src="{{ asset('images/Prof_Michael.png') }}" alt="Profile photo"
-                                class="w-16 h-16 rounded-full object-cover" />
-                            <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
-                                class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-[#1C2B39] font-playfair">Prof. Michael Johnson</h3>
-                            <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">Director of
-                                International Relations</p>
-                            <p class="text-sm font-medium text-[#0000FF] font-inter">Oxford University</p>
-                        </div>
-                    </header>
-
-                    <section class="mt-4">
-                        <p
-                            class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                            International Partner</p>
-                    </section>
-
-                    <blockquote class="mt-4">
-                        <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
-                            class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
-                        <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
-                            “Our collaboration with UB has been exceptional. Their students bring fresh perspectives
-                            and innovative solutions to our joint research projects.”</p>
-                    </blockquote>
-
-                    <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
-                            Oxford, UK
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
-                            Partnership since 2019
-                        </p>
-                    </section>
-
-                    <section class="mt-6">
-                        <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
-                        <ul class="mt-2 space-y-1 text-xs sm:text-sm text-gray-600 font-inter list-none">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">50+ joint research projects</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">Student exchange programs</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">International conferences</p>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <footer class="mt-6">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
-                            View Full Story
-                            <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
-                        </button>
-                    </footer>
-                </article>
+            <div class="flex justify-center">
+                <a href="{{ route('testimonial.index') }}"
+                    class="mt-6 md:mt-8 w-full max-w-[250px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
+                    View All Testimonials
+                    <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                </a>
             </div>
 
             <div
@@ -1452,13 +902,19 @@
                         </button>
                     </div>
                 </div>
+                <div class="flex justify-center">
+                    <a href="/story"
+                        class="w-full sm:w-[160px] h-[44px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] shadow-md flex items-center justify-center text-center py-[11.5px] px-[32px] text-sm md:text-[14px] font-medium">
+                        View All Story
+                    </a>
+                </div>
             </div>
 
         </div>
     </section>
 
     <section id="partner"
-        class="w-full h-auto bg-[#FFFFFF] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-[80px] lg:py-[50px]">
+        class="w-full h-auto bg-[#FFFFFF] py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-[80px] lg:py-[50px]">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6 md:gap-8 lg:gap-[40px]">
 
             <!-- Header -->
@@ -1473,67 +929,25 @@
             <div
                 class="w-full grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 md:gap-6 lg:gap-[24px] items-center justify-items-center">
 
-                <!-- Partner 1 -->
-                <div
-                    class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
-                    <img src="{{ asset('images/partner-1.png') }}" alt="Partner University"
-                        class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                </div>
+                @foreach ($partnerships as $partnership)
+                    <div
+                        class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] 
+        shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
 
-                <!-- Partner 2 -->
-                <div
-                    class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
-                    <img src="{{ asset('images/partner-2.png') }}" alt="Partner University"
-                        class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                </div>
+                        <a href="{{ $partnership->website ?? '#' }}" target="_blank" rel="noopener noreferrer"
+                            class="block w-full h-full flex items-center justify-center">
+                            <img src="{{ asset('storage/' . $partnership->logo) }}" alt="{{ $partnership->name }}"
+                                class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
+                        </a>
 
-                <!-- Partner 3 -->
-                <div
-                    class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
-                    <img src="{{ asset('images/partner-3.png') }}" alt="Partner University"
-                        class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                </div>
-
-                <!-- Partner 4 -->
-                <div
-                    class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
-                    <img src="{{ asset('images/partner-4.png') }}" alt="Partner University"
-                        class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                </div>
-
-                <!-- Partner 5 -->
-                <div
-                    class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
-                    <img src="{{ asset('images/partner-5.png') }}" alt="Partner University"
-                        class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                </div>
-
-                <!-- Partner 6 -->
-                <div
-                    class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
-                    <img src="{{ asset('images/partner-6.png') }}" alt="Partner University"
-                        class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                </div>
-
-                <!-- Partner 7 -->
-                <div
-                    class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
-                    <img src="{{ asset('images/partner-7.png') }}" alt="Partner University"
-                        class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                </div>
-
-                <!-- Partner 8 -->
-                <div
-                    class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
-                    <img src="{{ asset('images/partner-8.png') }}" alt="Partner University"
-                        class="max-w-full max-h-full object-contain opacity-70 hover:opacity-100 transition-opacity">
-                </div>
+                    </div>
+                @endforeach
 
             </div>
 
             <!-- View All Button -->
             <div class="flex justify-center mt-6 md:mt-10">
-                <a href="#"
+                <a href="{{ route('partnership.index') }}"
                     class="flex items-center gap-2 px-6 py-3 bg-white border border-[#E2E4E9] rounded-[10px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition-colors">
                     View All Partner
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="Arrow">
@@ -1542,5 +956,67 @@
 
         </div>
     </section>
+    <style>
+        .ck-content ul {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #29303D;
+            font-family: 'Inter', sans-serif;
+            margin-top: 0.5rem;
+        }
 
+        .ck-content ul li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .ck-content ul li::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #0000FF;
+            border-radius: 9999px;
+            margin-right: 8px;
+        }
+    </style>
+    <script>
+        function animateCounter(el, target, duration = 2000) {
+            let start = 0;
+            let startTime = null;
+
+            function update(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                el.textContent = Math.floor(progress * target) + (target > 20 ? '+' : '');
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = target + (target > 20 ? '+' : '');
+                }
+            }
+            requestAnimationFrame(update);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            let section = document.querySelector('.grid.grid-cols-2');
+            let started = false;
+            let observer = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting && !started) {
+                    started = true;
+                    animateCounter(document.getElementById('counter1'), 150, 2000);
+                    animateCounter(document.getElementById('counter2'), 15, 2000);
+                    animateCounter(document.getElementById('counter3'), 100, 2000);
+                    animateCounter(document.getElementById('counter4'), 4500, 2000);
+                }
+            }, {
+                threshold: 0.3
+            });
+            observer.observe(section);
+        });
+    </script>
 @endsection
