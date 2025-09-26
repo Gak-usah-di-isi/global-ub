@@ -4,19 +4,25 @@
 
 @section('content')
 
-    <div
-        class="bg-[#F0F2F4] w-full min-h-[60px] md:min-h-[80px] flex flex-wrap items-center px-4 sm:px-6 md:px-8 lg:px-28 py-2 md:py-0">
-        <div class="flex items-center space-x-2 sm:space-x-4">
+    <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-28">
+        <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
                 <img src="{{ asset('icons/home.svg') }}" alt="Home Icon" class="w-full h-full">
             </div>
-            <span class="text-[#29303D] text-[13px] sm:text-[14px] font-light">Home</span>
+            <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
+                Home
+            </a>
             <div class="w-[16px] h-[16px]">
-                <img src="{{ asset('icons/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
+                <div class="w-[14px] h-[14px]">
+                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                </div>
             </div>
         </div>
-        <div class="flex items-center space-x-2 sm:space-x-4 ml-2 sm:ml-4">
-            <span class="text-[#29303D] text-[13px] sm:text-[14px] font-light">Profiles & Testimonials</span>
+        <div class="flex items-center space-x-4 ml-4">
+            <span
+                class="{{ request()->is('testimonial') ? 'font-medium text-[#29303D]' : 'text-[#29303D] font-light' }} text-xs md:text-[14px]">
+                Testimonials
+            </span>
         </div>
     </div>
 
@@ -37,450 +43,135 @@
             </div>
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                @foreach ($testimonials as $testimonial)
+                    <div
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
+                        <header class="flex items-center gap-4">
+                            <div class="relative">
+                                <img src="{{ asset('storage/' . $testimonial->photo) }}" alt="Profile photo"
+                                    class="w-16 h-16 rounded-full object-cover" />
+                                <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
+                                    class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-[#1C2B39] font-playfair">{{ $testimonial->name }}</h3>
+                                <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">
+                                    {{ $testimonial->position }}</p>
+                                <p class="text-sm font-medium text-[#0000FF] font-inter">{{ $testimonial->institution }}</p>
+                            </div>
+                        </header>
 
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
-                    <header class="flex items-center gap-4">
-                        <div class="relative">
-                            <img src="{{ asset('images/Prof_Michael.png') }}" alt="Profile photo"
-                                class="w-16 h-16 rounded-full object-cover" />
-                            <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
-                                class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-[#1C2B39] font-playfair">Prof. Michael Johnson</h3>
-                            <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">Director of
-                                International Relations</p>
-                            <p class="text-sm font-medium text-[#0000FF] font-inter">Oxford University</p>
-                        </div>
-                    </header>
+                        <section class="mt-4">
+                            <p
+                                class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
+                                {{ $testimonial->testimonial_type }}</p>
+                        </section>
 
-                    <section class="mt-4">
-                        <p
-                            class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                            International Partner</p>
-                    </section>
+                        <blockquote class="mt-4">
+                            <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
+                                class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
+                            <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
+                                “{{ $testimonial->testimonial }}”</p>
+                        </blockquote>
 
-                    <blockquote class="mt-4">
-                        <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
-                            class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
-                        <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
-                            “Our collaboration with UB has been exceptional. Their students bring fresh perspectives
-                            and innovative solutions to our joint research projects.”</p>
-                    </blockquote>
+                        <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
+                            <p class="flex items-center gap-2">
+                                <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
+                                {{ $testimonial->location }}
+                            </p>
+                            <p class="flex items-center gap-2">
+                                <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
+                                {{ $testimonial->partnership_since }}
+                            </p>
+                        </section>
 
-                    <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
-                            Oxford, UK
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
-                            Partnership since 2019
-                        </p>
-                    </section>
+                        <section class="mt-6">
+                            <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
+                            <div class="ck-content">
+                                {!! $testimonial->key_achievements !!}
+                            </div>
+                        </section>
 
-                    <section class="mt-6">
-                        <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
-                        <ul class="mt-2 space-y-1 text-xs sm:text-sm text-gray-600 font-inter list-none">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">50+ joint research projects</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">Student exchange programs</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">International conferences</p>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <footer class="mt-6">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
-                            View Full Story
-                            <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
-                        </button>
-                    </footer>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
-                    <header class="flex items-center gap-4">
-                        <div class="relative">
-                            <img src="{{ asset('images/Prof_Michael.png') }}" alt="Profile photo"
-                                class="w-16 h-16 rounded-full object-cover" />
-                            <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
-                                class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-[#1C2B39] font-playfair">Prof. Michael Johnson</h3>
-                            <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">Director of
-                                International Relations</p>
-                            <p class="text-sm font-medium text-[#0000FF] font-inter">Oxford University</p>
-                        </div>
-                    </header>
-
-                    <section class="mt-4">
-                        <p
-                            class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                            International Partner</p>
-                    </section>
-
-                    <blockquote class="mt-4">
-                        <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
-                            class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
-                        <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
-                            “Our collaboration with UB has been exceptional. Their students bring fresh perspectives
-                            and innovative solutions to our joint research projects.”</p>
-                    </blockquote>
-
-                    <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
-                            Oxford, UK
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
-                            Partnership since 2019
-                        </p>
-                    </section>
-
-                    <section class="mt-6">
-                        <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
-                        <ul class="mt-2 space-y-1 text-xs sm:text-sm text-gray-600 font-inter list-none">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">50+ joint research projects</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">Student exchange programs</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">International conferences</p>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <footer class="mt-6">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
-                            View Full Story
-                            <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
-                        </button>
-                    </footer>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
-                    <header class="flex items-center gap-4">
-                        <div class="relative">
-                            <img src="{{ asset('images/Prof_Michael.png') }}" alt="Profile photo"
-                                class="w-16 h-16 rounded-full object-cover" />
-                            <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
-                                class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-[#1C2B39] font-playfair">Prof. Michael Johnson</h3>
-                            <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">Director of
-                                International Relations</p>
-                            <p class="text-sm font-medium text-[#0000FF] font-inter">Oxford University</p>
-                        </div>
-                    </header>
-
-                    <section class="mt-4">
-                        <p
-                            class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                            International Partner</p>
-                    </section>
-
-                    <blockquote class="mt-4">
-                        <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
-                            class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
-                        <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
-                            “Our collaboration with UB has been exceptional. Their students bring fresh perspectives
-                            and innovative solutions to our joint research projects.”</p>
-                    </blockquote>
-
-                    <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
-                            Oxford, UK
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
-                            Partnership since 2019
-                        </p>
-                    </section>
-
-                    <section class="mt-6">
-                        <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
-                        <ul class="mt-2 space-y-1 text-xs sm:text-sm text-gray-600 font-inter list-none">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">50+ joint research projects</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">Student exchange programs</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">International conferences</p>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <footer class="mt-6">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
-                            View Full Story
-                            <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
-                        </button>
-                    </footer>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
-                    <header class="flex items-center gap-4">
-                        <div class="relative">
-                            <img src="{{ asset('images/Prof_Michael.png') }}" alt="Profile photo"
-                                class="w-16 h-16 rounded-full object-cover" />
-                            <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
-                                class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-[#1C2B39] font-playfair">Prof. Michael Johnson</h3>
-                            <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">Director of
-                                International Relations</p>
-                            <p class="text-sm font-medium text-[#0000FF] font-inter">Oxford University</p>
-                        </div>
-                    </header>
-
-                    <section class="mt-4">
-                        <p
-                            class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                            International Partner</p>
-                    </section>
-
-                    <blockquote class="mt-4">
-                        <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
-                            class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
-                        <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
-                            “Our collaboration with UB has been exceptional. Their students bring fresh perspectives
-                            and innovative solutions to our joint research projects.”</p>
-                    </blockquote>
-
-                    <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
-                            Oxford, UK
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
-                            Partnership since 2019
-                        </p>
-                    </section>
-
-                    <section class="mt-6">
-                        <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
-                        <ul class="mt-2 space-y-1 text-xs sm:text-sm text-gray-600 font-inter list-none">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">50+ joint research projects</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">Student exchange programs</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">International conferences</p>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <footer class="mt-6">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
-                            View Full Story
-                            <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
-                        </button>
-                    </footer>
-                </article>
-
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
-                    <header class="flex items-center gap-4">
-                        <div class="relative">
-                            <img src="{{ asset('images/Prof_Michael.png') }}" alt="Profile photo"
-                                class="w-16 h-16 rounded-full object-cover" />
-                            <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
-                                class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-[#1C2B39] font-playfair">Prof. Michael Johnson</h3>
-                            <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">Director of
-                                International Relations</p>
-                            <p class="text-sm font-medium text-[#0000FF] font-inter">Oxford University</p>
-                        </div>
-                    </header>
-
-                    <section class="mt-4">
-                        <p
-                            class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                            International Partner</p>
-                    </section>
-
-                    <blockquote class="mt-4">
-                        <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
-                            class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
-                        <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
-                            “Our collaboration with UB has been exceptional. Their students bring fresh perspectives
-                            and innovative solutions to our joint research projects.”</p>
-                    </blockquote>
-
-                    <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
-                            Oxford, UK
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
-                            Partnership since 2019
-                        </p>
-                    </section>
-
-                    <section class="mt-6">
-                        <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
-                        <ul class="mt-2 space-y-1 text-xs sm:text-sm text-gray-600 font-inter list-none">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">50+ joint research projects</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">Student exchange programs</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">International conferences</p>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <footer class="mt-6">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
-                            View Full Story
-                            <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
-                        </button>
-                    </footer>
-                </article>
-                <article
-                    class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
-                    <header class="flex items-center gap-4">
-                        <div class="relative">
-                            <img src="{{ asset('images/Prof_Michael.png') }}" alt="Profile photo"
-                                class="w-16 h-16 rounded-full object-cover" />
-                            <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
-                                class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
-                        </div>
-                        <div>
-                            <h3 class="text-base font-bold text-[#1C2B39] font-playfair">Prof. Michael Johnson</h3>
-                            <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">Director of
-                                International Relations</p>
-                            <p class="text-sm font-medium text-[#0000FF] font-inter">Oxford University</p>
-                        </div>
-                    </header>
-
-                    <section class="mt-4">
-                        <p
-                            class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                            International Partner</p>
-                    </section>
-
-                    <blockquote class="mt-4">
-                        <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
-                            class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
-                        <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
-                            “Our collaboration with UB has been exceptional. Their students bring fresh perspectives
-                            and innovative solutions to our joint research projects.”</p>
-                    </blockquote>
-
-                    <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
-                            Oxford, UK
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
-                            Partnership since 2019
-                        </p>
-                    </section>
-
-                    <section class="mt-6">
-                        <h4 class="text-base font-semibold font-playfair text-[#29303D]">Key Achievements</h4>
-                        <ul class="mt-2 space-y-1 text-xs sm:text-sm text-gray-600 font-inter list-none">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">50+ joint research projects</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">Student exchange programs</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-[#1D4ED8]"></span>
-                                <p class="text-[#29303D] opacity-[0.7]">International conferences</p>
-                            </li>
-                        </ul>
-                    </section>
-
-                    <footer class="mt-6">
-                        <button
-                            class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
-                            View Full Story
-                            <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
-                        </button>
-                    </footer>
-                </article>
+                        <footer class="mt-6">
+                            <button
+                                class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
+                                View Full Story
+                                <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
+                            </button>
+                        </footer>
+                    </div>
+                @endforeach
             </div>
+
             <div class="w-full flex justify-center items-center py-8">
                 <div class="flex items-center gap-4">
-                    <button class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                        <img src="{{ asset('icons/vector-left.svg') }}" alt="Previous" class="w-3 h-3 md:w-4 md:h-4">
-                    </button>
+                    @if ($testimonials->onFirstPage())
+                        <button
+                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                            <img src="/icons/arrow-fix.svg" alt="Previous"
+                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
+                        </button>
+                    @else
+                        <a href="{{ $testimonials->previousPageUrl() }}"
+                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                            <img src="/icons/arrow-fix.svg" alt="Previous"
+                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
+                        </a>
+                    @endif
 
                     <div class="flex items-center gap-2 md:gap-4 bg-[#FFFFFF] rounded-full p-1 md:p-2">
-                        <button
-                            class="w-7 h-7 md:w-9 md:h-9 bg-[#1D4ED8] text-white rounded-full flex justify-center items-center text-sm md:text-base">
-                            1
-                        </button>
-
-                        <button
-                            class="w-7 h-7 md:w-9 md:h-9 text-[#1D4ED8] flex justify-center items-center text-sm md:text-base">
-                            2
-                        </button>
-
-                        <button
-                            class="w-7 h-7 md:w-9 md:h-9 text-[#1D4ED8] flex justify-center items-center text-sm md:text-base">
-                            3
-                        </button>
+                        @foreach ($testimonials->getUrlRange(1, $testimonials->lastPage()) as $page => $url)
+                            <a href="{{ $url }}"
+                                class="w-7 h-7 md:w-9 md:h-9 {{ $testimonials->currentPage() == $page ? 'bg-[#1D4ED8] text-white' : 'text-[#1D4ED8]' }} rounded-full flex justify-center items-center text-xs md:text-sm">
+                                {{ $page }}
+                            </a>
+                        @endforeach
                     </div>
 
-                    <button class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                        <img src="{{ asset('icons/vector-right.svg') }}" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
-                    </button>
+
+                    @if ($testimonials->hasMorePages())
+                        <a href="{{ $testimonials->nextPageUrl() }}"
+                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                            <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                        </a>
+                    @else
+                        <button
+                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                            <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                        </button>
+                    @endif
                 </div>
             </div>
 
         </div>
     </section>
+    <style>
+        .ck-content ul {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #29303D;
+            font-family: 'Inter', sans-serif;
+            margin-top: 0.5rem;
+        }
 
+        .ck-content ul li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .ck-content ul li::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #0000FF;
+            border-radius: 9999px;
+            margin-right: 8px;
+        }
+    </style>
 @endsection
