@@ -7,6 +7,7 @@ use App\Models\DownloadCenter;
 use App\Http\Requests\DownloadCenterRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Models\Icon;
 
 class AdminDownloadCenterController extends Controller
 {
@@ -19,12 +20,13 @@ class AdminDownloadCenterController extends Controller
 
     public function create()
     {
-        return view('admin.download-centers.create');
+        $icons = Icon::all();
+        return view('admin.download-centers.create', compact('icons'));
     }
 
     public function store(DownloadCenterRequest $request)
     {
-        $data = $request->only(['title', 'description']);
+        $data = $request->only(['title', 'description', 'icon_id']);
 
         if (empty($data['slug'])) {
             $data['slug'] = Str::slug($data['title']);
@@ -44,14 +46,15 @@ class AdminDownloadCenterController extends Controller
 
     public function edit($slug)
     {
+        $icons = Icon::all();
         $downloadCenter = DownloadCenter::where('slug', $slug)->firstOrFail();
-        return view('admin.download-centers.edit', compact('downloadCenter'));
+        return view('admin.download-centers.edit', compact('downloadCenter', 'icons'));
     }
 
     public function update(DownloadCenterRequest $request, $slug)
     {
         $downloadCenter = DownloadCenter::where('slug', $slug)->firstOrFail();
-        $data = $request->only(['title', 'description']);
+        $data = $request->only(['title', 'description', 'icon_id']);
 
         if ($request->hasFile('file')) {
             if ($downloadCenter->file && Storage::disk('public')->exists($downloadCenter->file)) {

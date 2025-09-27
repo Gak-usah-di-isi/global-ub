@@ -184,4 +184,18 @@
             margin-top: 6px;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.ClassicEditor) {
+                ClassicEditor
+                    .create(document.querySelector('#key_achievements'), {
+                        toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'undo', 'redo'],
+                        height: 150,
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+        });
+    </script>
 @endsection

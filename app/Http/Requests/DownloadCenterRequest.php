@@ -24,14 +24,15 @@ class DownloadCenterRequest extends FormRequest
         $rules = [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
+            'icon_id' => 'nullable|exists:icons,id',
         ];
 
         if ($this->isMethod('post')) {
-            $rules['file'] = 'required|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:10240';
+            $rules['file'] = 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx,xls,xlsx,ppt,pptx|max:10240';
         }
 
         if ($this->isMethod('put') || $this->isMethod('patch')) {
-            $rules['file'] = 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:10240';
+            $rules['file'] = 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx,xls,xlsx,ppt,pptx|max:10240';
         }
 
         return $rules;
@@ -53,6 +54,7 @@ class DownloadCenterRequest extends FormRequest
             'file.file' => 'The uploaded file is not valid.',
             'file.mimes' => 'File must be a PDF, DOC, DOCX, XLS, XLSX, PPT, or PPTX.',
             'file.max' => 'File size cannot exceed 10MB.',
+            'icon_id.exists' => 'The selected icon is invalid.',
         ];
     }
 
@@ -67,6 +69,7 @@ class DownloadCenterRequest extends FormRequest
             'title' => 'file title',
             'description' => 'description',
             'file' => 'file',
+            'icon_id' => 'icon',
         ];
     }
 }

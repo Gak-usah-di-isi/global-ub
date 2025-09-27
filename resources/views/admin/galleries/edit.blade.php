@@ -95,33 +95,37 @@
                     @if (count($existingImages) > 0)
                         <div>
                             <label class="field-label">Current Images</label>
-                            <div class="mt-2 grid grid-cols-2 md:grid-cols-4 gap-4">
-                                @foreach ($existingImages as $image)
-                                    <div class="relative group">
-                                        <img src="{{ asset('storage/' . $image) }}" alt="Gallery image"
-                                            class="w-full h-32 object-cover rounded-lg border-2 border-gray-200">
-                                        <div
-                                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
-                                            <span class="text-white text-xs">Current Image</span>
+                            <div class="mt-2 grid grid-cols-2 md:grid-cols-3 gap-6">
+                                @foreach ($existingImages as $idx => $image)
+                                    <div class="bg-white rounded-xl p-3 flex flex-col items-center">
+                                        <div class="relative w-full mb-2 group">
+                                            <img src="{{ asset('storage/' . $image) }}" alt="Gallery image"
+                                                class="w-full h-32 object-cover rounded-lg border-2 border-gray-200 transition duration-200 hover:scale-105" />
+                                            <div
+                                                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                                                <span class="text-white text-xs">Current Image</span>
+                                            </div>
                                         </div>
+                                        <input name="replace_images[{{ $idx }}]" type="file" accept="image/*"
+                                            class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 border border-[#E3E9F2] rounded-lg mb-2" />
+                                        <span class="text-xs text-gray-500">Replace this image (optional)</span>
                                     </div>
                                 @endforeach
                             </div>
                             <p class="help-text mt-2">
-                                Upload new images below to replace all current images
+                                You can replace any image above by uploading a new file in its field. Leave empty to keep
+                                the current image.
                             </p>
                         </div>
                     @endif
 
-                    <div>
-                        <label class="field-label">
-                            {{ count($existingImages) > 0 ? 'Replace Images' : 'Gallery Images' }}
-                        </label>
+                    <div class="mt-8">
+                        <label class="field-label">Add New Images</label>
                         <div id="image-inputs" class="space-y-3">
                             <div class="image-input-group">
                                 <div class="flex items-center gap-3">
                                     <input name="images[]" type="file" accept="image/*"
-                                        class="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 border border-[#E3E9F2] rounded-lg @error('images') border-red-300 @enderror" />
+                                        class="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 border border-[#E3E9F2] rounded-lg" />
                                     <button type="button" onclick="removeImageInput(this)"
                                         class="remove-btn hidden px-3 py-2 text-red-600 hover:text-red-800 text-sm border border-red-300 rounded-md hover:bg-red-50">
                                         Remove
@@ -133,7 +137,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="mt-3 flex gap-2">
                             <button type="button" onclick="addImageInput()"
                                 class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-primary-600 bg-primary-50 border border-primary-200 rounded-md hover:bg-primary-100">
@@ -143,21 +146,12 @@
                                 </svg>
                                 Add Another Image
                             </button>
-                            <span class="text-xs text-gray-500 self-center">Maximum 4 images</span>
                         </div>
-
-                        @error('images')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                        @error('images.*')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                        <p class="help-text">
-                            Supported formats: JPEG, JPG, PNG, GIF, WEBP. Maximum size: 5MB per image.
-                            {{ count($existingImages) > 0 ? 'Leave empty to keep current images.' : 'You can add multiple images.' }}
+                        <p class="help-text mt-2">
+                            Supported formats: JPEG, JPG, PNG, GIF, WEBP. Maximum size: 5MB per image. You can add multiple
+                            images.
                         </p>
                     </div>
-
                 </div>
             </section>
         </form>
@@ -201,82 +195,90 @@
     </style>
 
     <script>
-        let imageInputCount = 1;
-        const maxImages = 4;
-
-        function addImageInput() {
-            if (imageInputCount >= maxImages) {
-                alert('Maximum 4 images allowed');
-                return;
-            }
-
-            const imageInputsContainer = document.getElementById('image-inputs');
-            const newInputGroup = document.createElement('div');
-            newInputGroup.className = 'image-input-group';
-
-            newInputGroup.innerHTML = `
-                <div class="flex items-center gap-3">
-                    <input name="images[]" type="file" accept="image/*" 
-                        class="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 border border-[#E3E9F2] rounded-lg" />
-                    <button type="button" onclick="removeImageInput(this)" 
-                        class="remove-btn px-3 py-2 text-red-600 hover:text-red-800 text-sm border border-red-300 rounded-md hover:bg-red-50">
-                        Remove
-                    </button>
-                </div>
-                <div class="image-preview mt-2 hidden">
-                    <img class="preview-img w-20 h-20 object-cover rounded-lg border-2 border-gray-200" src="" alt="Preview">
-                </div>
-            `;
-
-            imageInputsContainer.appendChild(newInputGroup);
-            imageInputCount++;
-
-            // Add event listener to the new input
-            const newInput = newInputGroup.querySelector('input[type="file"]');
-            newInput.addEventListener('change', handleImagePreview);
-
-            updateRemoveButtons();
-        }
-
-        function removeImageInput(button) {
-            const inputGroup = button.closest('.image-input-group');
-            inputGroup.remove();
-            imageInputCount--;
-            updateRemoveButtons();
-        }
-
-        function updateRemoveButtons() {
-            const removeButtons = document.querySelectorAll('.remove-btn');
-            removeButtons.forEach(btn => {
-                if (imageInputCount > 1) {
-                    btn.classList.remove('hidden');
-                } else {
-                    btn.classList.add('hidden');
-                }
-            });
-        }
-
-        function handleImagePreview(event) {
-            const file = event.target.files[0];
-            const inputGroup = event.target.closest('.image-input-group');
-            const previewContainer = inputGroup.querySelector('.image-preview');
-            const previewImg = inputGroup.querySelector('.preview-img');
-
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    previewImg.src = e.target.result;
-                    previewContainer.classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
-            } else {
-                previewContainer.classList.add('hidden');
-            }
-        }
-
-        // Initialize event listeners
+        // Preview for replace_images[]
         document.addEventListener('DOMContentLoaded', function() {
-            // Add event listener to initial input
+            document.querySelectorAll('input[name^="replace_images"]').forEach(function(input) {
+                input.addEventListener('change', function(event) {
+                    const file = event.target.files[0];
+                    if (file && file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            // Find the image in the same card
+                            const card = event.target.closest('.flex-col');
+                            const img = card.querySelector('img');
+                            img.src = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            });
+
+            // Add image input preview and dynamic add/remove
+            let imageInputCount = 1;
+
+            function addImageInput() {
+                const imageInputsContainer = document.getElementById('image-inputs');
+                const newInputGroup = document.createElement('div');
+                newInputGroup.className = 'image-input-group';
+                newInputGroup.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <input name="images[]" type="file" accept="image/*" 
+                            class="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100 border border-[#E3E9F2] rounded-lg" />
+                        <button type="button" onclick="removeImageInput(this)" 
+                            class="remove-btn px-3 py-2 text-red-600 hover:text-red-800 text-sm border border-red-300 rounded-md hover:bg-red-50">
+                            Remove
+                        </button>
+                    </div>
+                    <div class="image-preview mt-2 hidden">
+                        <img class="preview-img w-20 h-20 object-cover rounded-lg border-2 border-gray-200" src="" alt="Preview">
+                    </div>
+                `;
+                imageInputsContainer.appendChild(newInputGroup);
+                imageInputCount++;
+                // Add event listener to the new input
+                const newInput = newInputGroup.querySelector('input[type="file"]');
+                newInput.addEventListener('change', handleImagePreview);
+                updateRemoveButtons();
+            }
+            window.addImageInput = addImageInput;
+
+            function removeImageInput(button) {
+                const inputGroup = button.closest('.image-input-group');
+                inputGroup.remove();
+                imageInputCount--;
+                updateRemoveButtons();
+            }
+            window.removeImageInput = removeImageInput;
+
+            function updateRemoveButtons() {
+                const removeButtons = document.querySelectorAll('.remove-btn');
+                removeButtons.forEach(btn => {
+                    if (imageInputCount > 1) {
+                        btn.classList.remove('hidden');
+                    } else {
+                        btn.classList.add('hidden');
+                    }
+                });
+            }
+
+            function handleImagePreview(event) {
+                const file = event.target.files[0];
+                const inputGroup = event.target.closest('.image-input-group');
+                const previewContainer = inputGroup.querySelector('.image-preview');
+                const previewImg = inputGroup.querySelector('.preview-img');
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImg.src = e.target.result;
+                        previewContainer.classList.remove('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    previewContainer.classList.add('hidden');
+                }
+            }
+
+            // Initialize event listeners for initial input
             const initialInput = document.querySelector('input[name="images[]"]');
             if (initialInput) {
                 initialInput.addEventListener('change', handleImagePreview);

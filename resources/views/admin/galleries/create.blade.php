@@ -116,7 +116,6 @@
                                 </svg>
                                 Add Another Image
                             </button>
-                            <span class="text-xs text-gray-500 self-center">Maximum 4 images</span>
                         </div>
 
                         @error('images')
@@ -173,13 +172,8 @@
 
     <script>
         let imageInputCount = 1;
-        const maxImages = 4;
 
         function addImageInput() {
-            if (imageInputCount >= maxImages) {
-                alert('Maximum 4 images allowed');
-                return;
-            }
 
             const imageInputsContainer = document.getElementById('image-inputs');
             const newInputGroup = document.createElement('div');

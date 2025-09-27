@@ -8,13 +8,20 @@
             <div class="w-[16px] h-[16px]">
                 <img src="/icons/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
-            <span class="text-[#29303D] text-[14px] font-light">Home</span>
+            <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
+                Home
+            </a>
             <div class="w-[16px] h-[16px]">
-                <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                <div class="w-[14px] h-[14px]">
+                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                </div>
             </div>
         </div>
         <div class="flex items-center space-x-4 ml-4">
-            <span class="text-[#29303D] text-[14px] font-light">About</span>
+            <span
+                class="{{ request()->is('about') ? 'font-medium text-[#29303D]' : 'text-[#29303D] font-light' }} text-xs md:text-[14px]">
+                About
+            </span>
         </div>
     </div>
 
@@ -172,7 +179,7 @@
         </div>
     </div>
 
-    <div class="w-full bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] py-8 md:py-[80px] px-4 sm:px-6 lg:px-[112px]">
+    <div class="w-full bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] py-8 md:py-[80px] sm:px-6 lg:px-[112px]">
         <div class="max-w-[1280px] mx-auto px-4 md:px-[32px] gap-8 md:gap-[64px] lg:px-[0px]">
             <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-2xl md:text-[36px] font-playfair font-extrabold leading-tight text-[#29303D]">

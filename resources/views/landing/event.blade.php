@@ -71,7 +71,7 @@
                                 class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
                                 <div class="flex items-center gap-2">
                                     <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
-                                    {{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}
+                                    {{ \Carbon\Carbon::parse($event->event_date)->format('F j, Y') }}
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
@@ -84,12 +84,12 @@
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
-                                    {{ $event->expected_attendees }}+ expected attendees
+                                    {{ $event->expected_attendees }} expected attendees
                                 </div>
                             </div>
-                            <a href="#"
+                            <a href="{{ route('event.show', $event->slug) }}"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:hover:bg-gray-50">
-                                Register Now
+                                Learn More
                                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                             </a>
                         </div>

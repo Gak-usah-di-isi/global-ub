@@ -56,4 +56,9 @@ class Icon extends Model
     {
         return $this->hasMany(Partner::class, 'icon_id');
     }
+
+    public function downloadCenters()
+    {
+        return $this->hasMany(DownloadCenter::class, 'icon_id');
+    }
 }

@@ -172,7 +172,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             if (window.ClassicEditor) {
                 ClassicEditor
-                    .create(document.querySelector('#highlights'))
+                    .create(document.querySelector('#highlights'), {
+                        toolbar: ['bold', 'italic', 'link', 'bulletedList', 'numberedList', 'undo', 'redo'],
+                        height: 150,
+                    })
                     .catch(error => {
                         console.error(error);
                     });
