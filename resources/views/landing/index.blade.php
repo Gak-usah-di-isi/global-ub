@@ -152,7 +152,7 @@
     </section>
 
     <section class="w-full h-auto bg-white pt-8 md:pt-10 px-4 sm:px-6 md:px-8 lg:px-[112px] pb-0 sm:pb-0 lg:pb-12">
-        <div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-[64px]">
+        <div id="aboutSection" class="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-[64px]">
             <div class="w-full lg:w-1/2 xl:w-[576px]">
                 <h2
                     class="text-2xl sm:text-3xl md:text-[36px] font-playfair font-extrabold leading-tight md:leading-[48px] text-[#29303D]">
@@ -174,7 +174,7 @@
                             <img src="{{ asset('icons/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">50,000+</p>
+                            <p id="aboutCounter1" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Students</p>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
                             <img src="{{ asset('icons/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">150+</p>
+                            <p id="aboutCounter2" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Study Programs</p>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                                 class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">60+</p>
+                            <p id="aboutCounter3" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Years of Excellence</p>
                         </div>
                     </div>
@@ -205,7 +205,7 @@
                             <img src="{{ asset('icons/partner.svg') }}" alt="Partners Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">100+</p>
+                            <p id="aboutCounter4" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Partner Universities</p>
                         </div>
                     </div>
@@ -1003,6 +1003,7 @@
             requestAnimationFrame(update);
         }
         document.addEventListener('DOMContentLoaded', function() {
+            // Study in UB counters
             let section = document.querySelector('.grid.grid-cols-2');
             let started = false;
             let observer = new IntersectionObserver(function(entries) {
@@ -1017,6 +1018,22 @@
                 threshold: 0.3
             });
             observer.observe(section);
+
+            // About Globalizing UB counters
+            let aboutSection = document.getElementById('aboutSection');
+            let aboutStarted = false;
+            let aboutObserver = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting && !aboutStarted) {
+                    aboutStarted = true;
+                    animateCounter(document.getElementById('aboutCounter1'), 50000, 3000);
+                    animateCounter(document.getElementById('aboutCounter2'), 150, 3000);
+                    animateCounter(document.getElementById('aboutCounter3'), 60, 3000);
+                    animateCounter(document.getElementById('aboutCounter4'), 100, 3000);
+                }
+            }, {
+                threshold: 0.3
+            });
+            if (aboutSection) aboutObserver.observe(aboutSection);
         });
     </script>
 @endsection
