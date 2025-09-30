@@ -949,7 +949,7 @@
             <div class="flex justify-center mt-4 md:mt-6">
                 <a href="{{ route('partnership.index') }}"
                     class="flex items-center gap-2 px-6 py-3 bg-white border border-[#E2E4E9] rounded-[10px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition-colors">
-                    View All Partner
+                    View All Partnership
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="Arrow">
                 </a>
             </div>
