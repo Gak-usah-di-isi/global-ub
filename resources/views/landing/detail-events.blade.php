@@ -1,6 +1,6 @@
 @extends('core.app')
 
-@section('title', 'Detail Event Page')
+@section('title', 'Event {{ $event->title }}')
 
 @section('content')
 
