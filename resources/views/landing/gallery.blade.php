@@ -141,18 +141,30 @@
         document.addEventListener('DOMContentLoaded', function() {
             const dots = document.querySelectorAll('.slider-dot');
             const slides = document.querySelectorAll('.slider-item');
+            let currentIndex = 0;
+
+            function changeSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('opacity-100', i === index);
+                    slide.classList.toggle('z-10', i === index);
+                    slide.classList.toggle('opacity-0', i !== index);
+                    slide.classList.toggle('z-0', i !== index);
+                });
+                dots.forEach((d, i) => {
+                    d.classList.toggle('bg-[#0000FF]', i === index);
+                    d.classList.toggle('bg-[#6699FF33]', i !== index);
+                });
+            }
+
+            setInterval(function() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                changeSlide(currentIndex);
+            }, 3000);
+
             dots.forEach((dot, idx) => {
                 dot.addEventListener('click', function() {
-                    slides.forEach((slide, i) => {
-                        slide.classList.toggle('opacity-100', i === idx);
-                        slide.classList.toggle('z-10', i === idx);
-                        slide.classList.toggle('opacity-0', i !== idx);
-                        slide.classList.toggle('z-0', i !== idx);
-                    });
-                    dots.forEach((d, i) => {
-                        d.classList.toggle('bg-[#0000FF]', i === idx);
-                        d.classList.toggle('bg-[#6699FF33]', i !== idx);
-                    });
+                    currentIndex = idx;
+                    changeSlide(currentIndex);
                 });
             });
         });
