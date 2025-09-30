@@ -1,6 +1,6 @@
 @extends('core.app')
 
-@section('title', 'About Page')
+@section('title', 'About Globalizing UB')
 
 @section('content')
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">

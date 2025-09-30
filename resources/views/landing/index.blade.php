@@ -1,6 +1,6 @@
 @extends('core.app')
 
-@section('title', 'Landing Page')
+@section('title', 'Globalizing UB')
 
 @section('content')
     <section class="relative w-full h-[800px] md:h-[700px] lg:h-[600px] max-w-[1440px] mx-auto">
@@ -140,7 +140,7 @@
 
             <div class="flex justify-center mt-8 md:mt-16 rounded-full">
                 <button
-                    class="bg-[#FFFFFFB2] text-[#29303D] py-3 px-4 md:py-[12px] md:px-[24px] rounded-full w-full max-w-[504px] h-12 md:h-[48px] flex items-center justify-center gap-2">
+                    class="bg-[#FFFFFFB2] text-[#29303D] py-10 px-4 md:py-[12px] md:px-[24px] rounded-full w-full max-w-[504px] h-12 md:h-[48px] flex items-center justify-center gap-2">
                     <img src="{{ asset('icons/up.svg') }}" alt="Arrow Right Icon" class="w-4 h-4 md:w-5 md:h-5">
                     <span class="font-medium font-inter text-sm md:text-[14px] leading-[24px]">
                         Consistently improving in global rankings year over year
@@ -532,9 +532,9 @@
             </div>
         </div>
 
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-12 md:mt-16">
             <a href="{{ route('event.index') }}"
-                class="mt-8 md:mt-10 w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
+                class="w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                 View All Events
                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>
@@ -621,7 +621,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center mt-4 md:mt-6">
                 <a href="/download-center"
                     class=" w-full max-w-[270px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     View All Download Center
@@ -793,7 +793,7 @@
 
             <div class="flex justify-center">
                 <a href="{{ route('testimonial.index') }}"
-                    class="mt-6 md:mt-8 w-full max-w-[250px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
+                    class="mt-4 md:mt-6 w-full max-w-[250px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     View All Testimonials
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
@@ -946,7 +946,7 @@
             </div>
 
             <!-- View All Button -->
-            <div class="flex justify-center mt-6 md:mt-10">
+            <div class="flex justify-center mt-4 md:mt-6">
                 <a href="{{ route('partnership.index') }}"
                     class="flex items-center gap-2 px-6 py-3 bg-white border border-[#E2E4E9] rounded-[10px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition-colors">
                     View All Partner

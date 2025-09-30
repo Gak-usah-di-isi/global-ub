@@ -1,6 +1,6 @@
 @extends('core.app')
 
-@section('title', 'About Page')
+@section('title', 'Gallery {{ $gallery->title }} ')
 
 @section('content')
 
@@ -62,7 +62,7 @@
             @php
                 $imgArray = json_decode($image->images, true);
             @endphp
-            <div class="w-full max-w-[1200px] mx-auto mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[15.87px]">
+            <div class="w-full max-w-[1200px] mx-auto mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[30px]">
                 @foreach ($imgArray as $index => $img)
                     <div class="aspect-square rounded-[21px] overflow-hidden bg-neutral-100 flex items-center justify-center cursor-pointer"
                         onclick="openModal({{ $index }})" data-img="{{ asset('storage/' . $img) }}">

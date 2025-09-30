@@ -1,6 +1,6 @@
 @extends('core.app')
 
-@section('title', 'Detail News')
+@section('title', 'News {{ $image->title }} ')
 
 @section('content')
 

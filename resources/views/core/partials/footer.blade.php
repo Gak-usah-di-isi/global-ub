@@ -37,26 +37,26 @@
             <div class="flex flex-col gap-6 w-full lg:w-1/3">
                 <h4 class="text-white text-lg font-playfair ">Connect With Us</h4>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <button
+                    <a href="#" target="_blank"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
                         <img src="{{ asset('icons/fb-blue.svg') }}" alt="Facebook Icon" class="w-[20px] h-[20px]">
                         <p class="text-white text-sm font-inter font-light leading-[20px]">Facebook</p>
-                    </button>
-                    <button
+                    </a>
+                    <a href="https://www.linkedin.com/in/globalizing-ub-94b519385/" target="_blank"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
                         <img src="{{ asset('icons/linkedin-blue.svg') }}" alt="LinkedIn Icon" class="w-[20px] h-[20px]">
                         <p class="text-white text-sm font-inter font-light leading-[20px]">LinkedIn</p>
-                    </button>
-                    <button
+                    </a>
+                    <a href="https://www.instagram.com/globalizingub/" target="_blank"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
                         <img src="{{ asset('icons/ig-blue.svg') }}" alt="Instagram Icon" class="w-[20px] h-[20px]">
                         <p class="text-white text-sm font-inter font-light leading-[20px]">Instagram</p>
-                    </button>
-                    <button
+                    </a>
+                    <a href="https://www.youtube.com/@GlobalizingUB" target="_blank"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
                         <img src="{{ asset('icons/yt-blue.svg') }}" alt="YouTube Icon" class="w-[20px] h-[20px]">
                         <p class="text-white text-sm font-inter font-light leading-[20px]">YouTube</p>
-                    </button>
+                    </a>
                 </div>
             </div>
 
@@ -65,19 +65,19 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-white text-sm">
                     <div class="flex items-center gap-2">
                         <img src="{{ asset('icons/user.svg') }}" alt="Visits Today Icon" class="w-4 h-4">
-                        <span>93 Visits Today</span>
+                        <span>{{ number_format($visitsToday) }} Visits Today</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <img src="{{ asset('icons/user.svg') }}" alt="Total Visits Icon" class="w-4 h-4">
-                        <span>12,627 Visits</span>
+                        <span>{{ number_format($totalVisits) }} Visits</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <img src="{{ asset('icons/user.svg') }}" alt="Visitors Today Icon" class="w-4 h-4">
-                        <span>44 Visitors Today</span>
+                        <span>{{ number_format($visitorsToday) }} Visitors Today</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <img src="{{ asset('icons/user.svg') }}" alt="Total Visitors Icon" class="w-4 h-4">
-                        <span>8,155 Visitors</span>
+                        <span>{{ number_format($totalVisitors) }} Visitors</span>
                     </div>
                 </div>
                 <div class="mt-4">
