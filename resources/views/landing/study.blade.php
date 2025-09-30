@@ -42,42 +42,38 @@
                 </p>
             </div>
 
-            <div class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+            <div x-data="{}"
+                class="w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-[32px] place-items-center">
                 <div class="flex flex-col items-center">
-                    <div
-                        class="w-full text-center font-inter font-bold text-2xl md:text-3xl lg:text-[36px] leading-[40px] text-[#0000FF]">
-                        150+
-                    </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px] leading-5 md:leading-[20px]">Study
+                    <div id="counter1"
+                        class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        0+</div>
+                    <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Study
                         Programs</span>
                 </div>
 
                 <div class="flex flex-col items-center">
-                    <div
-                        class="w-full text-center font-inter font-bold text-2xl md:text-3xl lg:text-[36px] leading-[40px] text-[#0000FF]">
-                        15
-                    </div>
+                    <div id="counter2"
+                        class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        0</div>
                     <span
-                        class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px] leading-5 md:leading-[20px]">Faculties</span>
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Faculties</span>
                 </div>
 
                 <div class="flex flex-col items-center">
-                    <div
-                        class="w-full text-center font-inter font-bold text-2xl md:text-3xl lg:text-[36px] leading-[40px] text-[#0000FF]">
-                        100+
-                    </div>
-                    <span
-                        class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px] leading-5 md:leading-[20px]">Partner
+                    <div id="counter3"
+                        class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        0+</div>
+                    <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Partner
                         Universities</span>
                 </div>
 
                 <div class="flex flex-col items-center">
-                    <div
-                        class="w-full text-center font-inter font-bold text-2xl md:text-3xl lg:text-[36px] leading-[40px] text-[#0000FF]">
-                        4,500+
-                    </div>
+                    <div id="counter4"
+                        class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        0+</div>
                     <span
-                        class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px] leading-5 md:leading-[20px]">International
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">International
                         Students</span>
                 </div>
             </div>
@@ -218,5 +214,38 @@
             margin-right: 8px;
         }
     </style>
+    <script>
+        function animateCounter(el, target, duration = 2000) {
+            let start = 0;
+            let startTime = null;
 
+            function update(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                el.textContent = Math.floor(progress * target) + (target > 20 ? '+' : '');
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = target + (target > 20 ? '+' : '');
+                }
+            }
+            requestAnimationFrame(update);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            let section = document.querySelector('.grid.grid-cols-2');
+            let started = false;
+            let observer = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting && !started) {
+                    started = true;
+                    animateCounter(document.getElementById('counter1'), 150, 2000);
+                    animateCounter(document.getElementById('counter2'), 15, 2000);
+                    animateCounter(document.getElementById('counter3'), 100, 2000);
+                    animateCounter(document.getElementById('counter4'), 4500, 2000);
+                }
+            }, {
+                threshold: 0.3
+            });
+            observer.observe(section);
+        });
+    </script>
 @endsection

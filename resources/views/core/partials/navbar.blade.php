@@ -30,7 +30,7 @@
             class="bg-[#0000FF] text-white py-2 px-3 md:px-4 rounded-[10px] w-[82px] md:w-[98px] h-[36px] flex items-center justify-between gap-[6px] md:gap-[8px]">
             <img src="{{ asset('icons/globe.svg') }}" alt="Globe Icon" class="w-4 h-4 md:w-5 md:h-5">
             <span
-                class="font-medium text-[12px] md:text-[14px] leading-[24px] tracking-normal text-center flex-1">Eng</span>
+                class="font-medium text-[12px] md:text-[14px] leading-[24px] tracking-normal text-center flex-1">En</span>
             <img src="{{ asset('icons/arrow-down.svg') }}" alt="Arrow Down Icon">
         </button>
 
