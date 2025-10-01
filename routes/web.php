@@ -24,6 +24,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\Merchandise;
 use App\Http\Controllers\StoryController;
 use App\Http\Middleware\CountVisitor;
 
@@ -47,6 +48,7 @@ Route::middleware([CountVisitor::class])->group(function () {
     Route::get('/story', [StoryController::class, 'index'])->name('story.index');
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
     Route::get('/gallery/{slug}', [GalleryController::class, 'show'])->name('gallery.show');
+    Route::get('/merchandise', [Merchandise::class, 'index'])->name('merchandise');
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
