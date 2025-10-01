@@ -15,7 +15,7 @@
 </head>
 
 <body class="bg-[#FFFFFF] w-full min-h-screen">
-    <div class="max-w-[1440px] mx-auto">
+    <div class="mx-auto">
         @include('core.partials.navbar')
         @yield('content')
         @include('core.partials.footer')
