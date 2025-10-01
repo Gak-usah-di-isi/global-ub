@@ -1,6 +1,6 @@
 @extends('core.app')
 
-@section('title', 'Event {{ $event->title }}')
+@section('title', 'Event ' . $event->title)
 
 @section('content')
 
