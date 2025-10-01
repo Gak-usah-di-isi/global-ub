@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewsRequest;
 use App\Models\News;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class AdminNewsController extends Controller
 {
@@ -30,9 +34,22 @@ class AdminNewsController extends Controller
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            $filename = time() . '_' . \Illuminate\Support\Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs('news', $filename, 'public');
-            $data['image'] = $filePath;
+
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file->getPathname());
+
+            $maxKb = 400;
+            $quality = 80;
+            do {
+                $encoded = $image->toWebp(quality: $quality);
+                $quality -= 5;
+            } while (strlen((string)$encoded) > $maxKb * 1024 && $quality >= 40);
+
+            $filenameBase = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
+            $webpPath = "news/{$filenameBase}.webp";
+
+            Storage::disk('public')->put($webpPath, $encoded);
+            $data['image'] = $webpPath;
         }
 
         News::create($data);
@@ -52,14 +69,27 @@ class AdminNewsController extends Controller
         $data = $request->only(['title', 'content']);
 
         if ($request->hasFile('image')) {
-            if ($newsItem->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($newsItem->image)) {
-                \Illuminate\Support\Facades\Storage::disk('public')->delete($newsItem->image);
+            if ($newsItem->image && Storage::disk('public')->exists($newsItem->image)) {
+                Storage::disk('public')->delete($newsItem->image);
             }
 
             $file = $request->file('image');
-            $filename = time() . '_' . \Illuminate\Support\Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs('news', $filename, 'public');
-            $data['image'] = $filePath;
+
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($file->getPathname());
+
+            $maxKb = 400;
+            $quality = 80;
+            do {
+                $encoded = $image->toWebp(quality: $quality);
+                $quality -= 5;
+            } while (strlen((string)$encoded) > $maxKb * 1024 && $quality >= 40);
+
+            $filenameBase = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME));
+            $webpPath = "news/{$filenameBase}.webp";
+
+            Storage::disk('public')->put($webpPath, $encoded);
+            $data['image'] = $webpPath;
         }
 
         $newsItem->update($data);
