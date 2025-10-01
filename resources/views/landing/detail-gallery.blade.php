@@ -1,6 +1,6 @@
 @extends('core.app')
 
-@section('title', 'Gallery {{ $gallery->title }} ')
+@section('title', 'Gallery ' . $image->title)
 
 @section('content')
 
