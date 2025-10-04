@@ -3,14 +3,18 @@
 @section('title', 'Globalizing UB')
 
 @section('content')
-    <section class="relative w-full h-[800px] md:h-[700px] lg:h-[600px] max-w-[1440px] mx-auto">
+    <section class="relative w-full h-[800px] md:h-[700px] ipad-pro:h-[800px] lg:h-[600px] max-w-[1440px] mx-auto">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/hero-bg.jpg') }}')">
             <div class="absolute inset-0 bg-gradient-to-r from-[#0000FF] to-[#6699FF] opacity-90"></div>
         </div>
+
+        <!-- Ubah bagian ini untuk iPad Pro menggunakan flex-col -->
         <div
-            class="absolute top-1/2 transform -translate-y-1/2 w-full flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 md:px-12 lg:px-[120px] gap-8 md:gap-0">
+            class="absolute gap-2 top-1/2 transform -translate-y-1/2 w-full flex flex-col ipad-pro:flex-col lg:flex-row items-center justify-between px-4 sm:px-8 md:px-12 lg:px-[120px] gap-8 md:gap-0">
+
+            <!-- Text Container -->
             <div
-                class="text-container flex flex-col gap-4 sm:gap-6 w-full md:w-1/2 lg:w-[779px] max-w-full md:max-w-[896px] text-center md:text-left">
+                class="text-container flex flex-col gap-4 sm:gap-6 w-full ipad-pro:w-full lg:w-1/2 xl:w-[779px] max-w-full lg:max-w-[896px] text-center ipad-pro:text-center lg:text-left">
                 <h1
                     class="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold leading-tight md:leading-[72px] tracking-normal text-white font-playfair">
                     Inspiring Change,<br><span class="text-[#6699FF]">Uniting Civilizations</span>
@@ -19,7 +23,7 @@
                     class="text-lg sm:text-xl md:text-[24px] font-light leading-relaxed md:leading-[24px] text-white font-inter tracking-normal">
                     Leading research and innovation on the global stage
                 </h2>
-                <div class="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                <div class="flex flex-col sm:flex-row gap-3 justify-center ipad-pro:justify-center lg:justify-start">
                     <button
                         class="bg-[#FFFFFF1A] border border-[#FFFFFF33] shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px] text-[#0000FF] py-2 px-4 sm:px-[33px] rounded-[12px] w-full sm:w-[220px] h-[56px] flex items-center justify-center gap-2">
                         <span class="font-medium font-inter text-sm sm:text-[14px] leading-[24px] text-white">Explore
@@ -34,20 +38,23 @@
                     </button>
                 </div>
             </div>
+
+            <!-- Image Container - akan tetap di bawah text di iPad Pro -->
             <div
-                class="image-container w-full md:w-1/2 lg:w-[380px] h-[300px] sm:h-[350px] md:h-[390px] rounded-[20px] overflow-hidden mt-4 md:mt-0">
+                class="image-container w-full ipad-pro:w-full lg:w-1/2 xl:w-[380px] h-[300px] sm:h-[350px] ipad-pro:h-[350px] lg:h-[390px] rounded-[20px] overflow-hidden mt-4 ipad-pro:mt-6 lg:mt-0">
                 <img src="{{ asset('/images/hero-content.jpg') }}" alt="Image" class="w-full h-full object-cover">
             </div>
         </div>
 
+        <!-- Sembunyikan arrow navigation di iPad Pro -->
         <div
-            class="hidden md:flex absolute top-1/2 left-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
+            class="hidden lg:flex absolute top-1/2 left-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button class="w-12 h-12 flex justify-center items-center text-white">
                 <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
             </button>
         </div>
         <div
-            class="hidden md:flex absolute top-1/2 right-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
+            class="hidden lg:flex absolute top-1/2 right-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button class="w-12 h-12 flex justify-center items-center text-white">
                 <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
             </button>
@@ -61,7 +68,6 @@
             <div class="w-2 h-2 bg-[#FFFFFF80] rounded-full transition-all duration-300"></div>
         </div>
     </section>
-
     <section class="w-full h-auto bg-[#F0F2F4] py-12 md:py-20 lg:px-[112px]">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[0px]">
             <h1 class="text-2xl sm:text-3xl md:text-[38px] font-extrabold text-center text-[#29303D] font-playfair">
@@ -71,7 +77,7 @@
                 class="text-base sm:text-lg md:text-[20px] font-inter font-normal text-center text-[#29303DB2] mt-2 mb-6 md:mb-8">
                 Recognized globally for academic excellence and research innovation
             </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mt-8 md:mt-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8 md:mt-16">
                 <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
@@ -191,8 +197,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/achievement.svg') }}" alt="Years Icon"
-                                class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons/achievement.svg') }}" alt="Years Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutCounter3" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
@@ -229,8 +234,7 @@
                     style="box-shadow: 0px 8px 25px -8px #0000FF4D;">
                     <!-- Background Image -->
                     <div class="absolute inset-0">
-                        <img src="{{ asset('/images/about-new.png') }}" alt="UB Image"
-                            class="w-full h-full object-cover">
+                        <img src="{{ asset('/images/about-new.png') }}" alt="UB Image" class="w-full h-full object-cover">
                     </div>
 
                     <!-- Gradient Overlay -->
@@ -243,8 +247,7 @@
                         <!-- Play Button -->
                         <button
                             class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm mb-6">
-                            <img src='{{ asset('icons/play.svg') }}' alt="Play"
-                                class="w-6 h-6 md:w-8 md:h-8 text-white" />
+                            <img src='{{ asset('icons/play.svg') }}' alt="Play" class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
                         <!-- Title -->
@@ -476,8 +479,7 @@
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach ($events as $event)
-                    <div
-                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                    <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
                         <div class="w-full h-48 sm:h-64 md:h-[288px]">
                             <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}"
                                 class="w-full h-full object-cover">
@@ -563,8 +565,7 @@
                             <div class="flex items-start gap-3 sm:gap-[16px] mb-6">
                                 <div
                                     class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
-                                    <img src="{{ asset('storage/' . $download->icon->icon) }}" class="w-6 h-6"
-                                        alt="File icon">
+                                    <img src="{{ asset('storage/' . $download->icon->icon) }}" class="w-6 h-6" alt="File icon">
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3
@@ -612,8 +613,7 @@
 
                             <a href="{{ route('download-center.download', $download->slug) }}"
                                 class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4"
-                                    alt="Download">
+                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
                                 <span
                                     class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
                             </a>
@@ -668,8 +668,7 @@
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach ($innovations as $innovation)
-                    <div
-                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                    <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
                         <div class="w-full h-48 sm:h-64 md:h-[288px]">
                             <img src="{{ asset('storage/' . $innovation->image) }}" alt="{{ $innovation->title }}"
                                 class="w-full h-full object-cover">
@@ -743,7 +742,8 @@
                             <div>
                                 <h3 class="text-base font-bold text-[#1C2B39] font-playfair">{{ $testimonial->name }}</h3>
                                 <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">
-                                    {{ $testimonial->position }}</p>
+                                    {{ $testimonial->position }}
+                                </p>
                                 <p class="text-sm font-medium text-[#0000FF] font-inter">{{ $testimonial->organization }}
                                 </p>
                             </div>
@@ -752,7 +752,8 @@
                         <section class="mt-4">
                             <p
                                 class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#DCFCE7] text-[#15803D]">
-                                {{ $testimonial->testimonial_type }}</p>
+                                {{ $testimonial->testimonial_type }}
+                            </p>
                         </section>
 
                         <blockquote class="mt-4">
@@ -826,8 +827,7 @@
                         <!-- Play button in center -->
                         <button
                             class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm">
-                            <img src='{{ asset('icons/play.svg') }}' alt="Play"
-                                class="w-6 h-6 md:w-8 md:h-8 text-white" />
+                            <img src='{{ asset('icons/play.svg') }}' alt="Play" class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
                         <!-- Text overlay at bottom -->
@@ -932,7 +932,7 @@
                 @foreach ($partnerships as $partnership)
                     <div
                         class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] 
-        shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
+                                                    shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
 
                         <a href="{{ $partnership->website ?? '#' }}" target="_blank" rel="noopener noreferrer"
                             class="block w-full h-full flex items-center justify-center">
@@ -1002,11 +1002,11 @@
             }
             requestAnimationFrame(update);
         }
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Study in UB counters
             let section = document.querySelector('.grid.grid-cols-2');
             let started = false;
-            let observer = new IntersectionObserver(function(entries) {
+            let observer = new IntersectionObserver(function (entries) {
                 if (entries[0].isIntersecting && !started) {
                     started = true;
                     animateCounter(document.getElementById('counter1'), 150, 2000);
@@ -1022,7 +1022,7 @@
             // About Globalizing UB counters
             let aboutSection = document.getElementById('aboutSection');
             let aboutStarted = false;
-            let aboutObserver = new IntersectionObserver(function(entries) {
+            let aboutObserver = new IntersectionObserver(function (entries) {
                 if (entries[0].isIntersecting && !aboutStarted) {
                     aboutStarted = true;
                     animateCounter(document.getElementById('aboutCounter1'), 50000, 3000);

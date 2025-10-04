@@ -4,6 +4,7 @@
 
 @section('content')
 
+    {{-- Breadcrumbs Section --}}
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
@@ -19,8 +20,7 @@
             </div>
         </div>
         <div class="flex items-center space-x-4 ml-4">
-            <a href="/news"
-                class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
+            <a href="/news" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 News
             </a>
             <div class="w-[16px] h-[16px]">
@@ -36,6 +36,7 @@
         </div>
     </div>
 
+    {{-- News Content Section --}}
     <section class="lg:max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-20 lg:px-8">
         <div class="w-full mx-auto mb-8">
             <img src="{{ asset('storage/' . $news->image) }}" class="h-full rounded-xl w-full bg-cover bg-center"
@@ -90,26 +91,30 @@
         </div>
     </section>
 
+
+    {{-- Related Post Section (FIXED RESPONSIVENESS) --}}
     <section class="lg:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <h1 class="text-3xl font-playfair text-neutral-800 font-bold mb-8">Related Post</h1>
-        <div class="lg:grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3">
+
+        {{-- Menggunakan grid grid-cols-1 (default), sm:grid-cols-2, dan lg:grid-cols-3 --}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach ($relatedNews as $related)
-                <a href="{{ route('news.show', $related->slug) }}" class="my-2 inline-block mb-2">
-                    <img src="{{ asset('storage/' . $related->image) }}" class="rounded-lg h-40 w-full bg-cover bg-center"
+                {{-- Menggunakan 'block' agar link mengambil lebar penuh kolom --}}
+                <a href="{{ route('news.show', $related->slug) }}" class="my-2 block">
+                    <img src="{{ asset('storage/' . $related->image) }}" class="rounded-lg h-40 w-full object-cover bg-center"
                         alt="{{ $related->title }}">
                     <h1 class="font-playfair font-bold my-4 line-clamp-2 leading-tight text-lg">{{ $related->title }}</h1>
                     <p class="text-sm font-inter line-clamp-2 text-neutral-600 my-4">
-                        {{ Str::limit($related->content, 100) }}</p>
-                    <div
-                        class="flex items-center align-middle justify-between font-inter w-full text-xs mb-2 text-neutral-500">
+                        {{ Str::limit($related->content, 100) }}
+                    </p>
+                    <div class="flex items-center align-middle justify-between font-inter w-full text-xs mb-2 text-neutral-500">
                         <div class="flex items-center align-middle w-full">
                             <span class="flex items-center align-middle gap-x-2 mr-4">
                                 <img src="{{ asset('icons/calender.svg') }}" alt="">
                                 {{ $related->created_at->format('m/d/Y') }}
                             </span>
                             <span class="flex items-center align-middle gap-x-2">
-                                <img src="{{ asset('icons/clock.svg') }}"
-                                    alt="">{{ $related->created_at->diffForHumans() }}
+                                <img src="{{ asset('icons/clock.svg') }}" alt="">{{ $related->created_at->diffForHumans() }}
                             </span>
                         </div>
                         <img src="{{ asset('icons/arrow-right.svg') }}" class="size-4" alt="">
