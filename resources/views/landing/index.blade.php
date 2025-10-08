@@ -71,11 +71,11 @@
     <section class="w-full h-auto bg-[#F0F2F4] py-12 md:py-20 lg:px-[112px]">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[0px]">
             <h1 class="text-2xl sm:text-3xl md:text-[38px] font-extrabold text-center text-[#29303D] font-playfair">
-                University Ranking
+                {{ __('landing.ranking.title') }}
             </h1>
             <h2
                 class="text-base sm:text-lg md:text-[20px] font-inter font-normal text-center text-[#29303DB2] mt-2 mb-6 md:mb-8">
-                Recognized globally for academic excellence and research innovation
+                {{ __('landing.ranking.description') }}
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8 md:mt-16">
                 <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
@@ -162,15 +162,11 @@
             <div class="w-full lg:w-1/2 xl:w-[576px]">
                 <h2
                     class="text-2xl sm:text-3xl md:text-[36px] font-playfair font-extrabold leading-tight md:leading-[48px] text-[#29303D]">
-                    About Globalizing UB
+                    {{ __('landing.about.title') }}
                 </h2>
                 <p
                     class="mt-4 text-base sm:text-lg md:text-[18px] font-light font-inter leading-relaxed md:leading-[29.25px] text-[#29303DB2]">
-                    Brawijaya University is one of Indonesia's leading universities, committed to becoming a
-                    world-class university. Through the Globalizing UB program, we provide international-quality
-                    education that connects students with global opportunities. With over 60 years of experience in
-                    education, UB has produced top-notch graduates who contribute to national and international
-                    development.
+                    {{ __('landing.about.description') }}
                 </p>
 
                 <div class="mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -181,7 +177,8 @@
                         </div>
                         <div>
                             <p id="aboutCounter1" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
-                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Students</p>
+                            <p class="text-xs md:text-[14px] text-[#29303DB2]">{{ __('landing.about.counters.students') }}
+                            </p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -191,17 +188,20 @@
                         </div>
                         <div>
                             <p id="aboutCounter2" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
-                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Study Programs</p>
+                            <p class="text-xs md:text-[14px] text-[#29303DB2]">{{ __('landing.about.counters.programs') }}
+                            </p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/achievement.svg') }}" alt="Years Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons/achievement.svg') }}" alt="Years Icon"
+                                class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutCounter3" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
-                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Years of Excellence</p>
+                            <p class="text-xs md:text-[14px] text-[#29303DB2]">{{ __('landing.about.counters.years') }}
+                            </p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -211,7 +211,8 @@
                         </div>
                         <div>
                             <p id="aboutCounter4" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
-                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Partner Universities</p>
+                            <p class="text-xs md:text-[14px] text-[#29303DB2]">{{ __('landing.about.counters.partners') }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -219,12 +220,12 @@
                 <div class="mt-8 md:mt-12 flex flex-col sm:flex-row gap-4 md:gap-[16px]">
                     <a href="/about"
                         class="w-full sm:w-[150px] h-[44px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] shadow-md flex items-center justify-center text-center py-[11.5px] px-[32px] text-sm md:text-[14px] font-medium">
-                        Learn More
+                        {{ __('landing.about.button.learn_more') }}
                     </a>
 
                     <a href="#"
                         class="w-full sm:w-[200px] h-[44px] bg-white text-[#29303D] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center text-center py-[11.5px] px-[33px] text-sm md:text-[14px] font-medium hover:bg-gray-50">
-                        Download Brochure
+                        {{ __('landing.about.button.download_brochure') }}
                     </a>
                 </div>
             </div>
@@ -234,7 +235,8 @@
                     style="box-shadow: 0px 8px 25px -8px #0000FF4D;">
                     <!-- Background Image -->
                     <div class="absolute inset-0">
-                        <img src="{{ asset('/images/about-new.png') }}" alt="UB Image" class="w-full h-full object-cover">
+                        <img src="{{ asset('/images/about-new.png') }}" alt="UB Image"
+                            class="w-full h-full object-cover">
                     </div>
 
                     <!-- Gradient Overlay -->
@@ -247,17 +249,18 @@
                         <!-- Play Button -->
                         <button
                             class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm mb-6">
-                            <img src='{{ asset('icons/play.svg') }}' alt="Play" class="w-6 h-6 md:w-8 md:h-8 text-white" />
+                            <img src='{{ asset('icons/play.svg') }}' alt="Play"
+                                class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
                         <!-- Title -->
                         <h3 class="font-playfair font-bold text-lg md:text-xl lg:text-2xl text-white mb-2">
-                            University Profile Video
+                            {{ __('landing.about.video.title') }}
                         </h3>
 
                         <!-- Subtitle -->
                         <p class="font-inter font-normal text-sm md:text-base text-white opacity-90">
-                            Discover our journey towards global excellence
+                            {{ __('landing.about.video.subtitle') }}
                         </p>
                     </div>
                 </div>
@@ -274,11 +277,11 @@
                         <div class="flex-1 min-w-0">
                             <p
                                 class="font-inter font-semibold text-xs sm:text-[13px] md:text-[14px] leading-[1.2] sm:leading-[1.3] md:leading-[24px] text-[#29303D] truncate">
-                                Global Network
+                                {{ __('landing.about.global_network.title') }}
                             </p>
                             <p
                                 class="font-inter font-normal text-[10px] sm:text-[11px] md:text-[12px] leading-[1.1] sm:leading-[1.2] md:leading-[20px] text-[#29303DB2] truncate">
-                                Connected worldwide
+                                {{ __('landing.about.global_network.subtitle') }}
                             </p>
                         </div>
                     </div>
@@ -292,12 +295,11 @@
             <div class="w-full text-center mb-8 md:mb-12">
                 <h2
                     class="text-2xl sm:text-3xl md:text-[36px] font-bold leading-tight md:leading-[40px] text-[#29303D] font-playfair">
-                    News
+                    {{ __('landing.news.title') }}
                 </h2>
                 <p
                     class="mt-2 md:mt-4 text-base sm:text-lg md:text-[20px] leading-relaxed md:leading-[28px] font-inter font-light text-[#29303DB2]">
-                    Stay updated with the latest international activities and achievements
-                    from Universitas Brawijaya
+                    {{ __('landing.news.description') }}
                 </p>
             </div>
 
@@ -359,7 +361,7 @@
             <div class="flex justify-center mt-8 md:mt-16">
                 <a href="#"
                     class="w-full max-w-[193px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                    View All News
+                    {{ __('landing.news.button') }}
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
             </div>
@@ -373,12 +375,11 @@
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
                     class="w-full text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
-                    Study in UB
+                    {{ __('landing.study.title') }}
                 </h2>
                 <p
                     class="max-w-full md:max-w-[768px] text-center font-inter font-light text-base sm:text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303DB2]">
-                    Discover world-class education opportunities and join our diverse international
-                    academic community
+                    {{ __('landing.study.description') }}
                 </p>
             </div>
 
@@ -388,8 +389,8 @@
                     <div id="counter1"
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                         0+</div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Study
-                        Programs</span>
+                    <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">
+                        {{ __('landing.study.counters.programs') }}</span>
                 </div>
 
                 <div class="flex flex-col items-center">
@@ -397,15 +398,15 @@
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                         0</div>
                     <span
-                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Faculties</span>
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.study.counters.faculty') }}</span>
                 </div>
 
                 <div class="flex flex-col items-center">
                     <div id="counter3"
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                         0+</div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">Partner
-                        Universities</span>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.study.counters.partners') }}</span>
                 </div>
 
                 <div class="flex flex-col items-center">
@@ -413,8 +414,7 @@
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                         0+</div>
                     <span
-                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">International
-                        Students</span>
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.study.counters.students') }}</span>
                 </div>
             </div>
 
@@ -452,7 +452,7 @@
 
                         <a href="{{ route('study.show', $study->slug) }}"
                             class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
-                            Learn More
+                            {{ __('landing.study.button') }}
                             <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
                     </div>
@@ -469,17 +469,18 @@
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
                     class="text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
-                    Upcoming Events
+                    {{ __('landing.events.title') }}
                 </h2>
                 <p
                     class="max-w-full sm:max-w-[672px] text-center font-inter text-sm sm:text-base md:text-[20px] leading-relaxed md:leading-[28px] font-light text-[#29303DB2]">
-                    Join our international events and connect with the global academic community
+                    {{ __('landing.events.description') }}
                 </p>
             </div>
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach ($events as $event)
-                    <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                    <div
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
                         <div class="w-full h-48 sm:h-64 md:h-[288px]">
                             <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}"
                                 class="w-full h-full object-cover">
@@ -525,7 +526,7 @@
                             </div>
                             <a href="{{ route('event.show', $event->slug) }}"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                                Learn More
+                                {{ __('landing.events.button.learn_more ') }}
                                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                             </a>
                         </div>
@@ -537,7 +538,7 @@
         <div class="flex justify-center mt-12 md:mt-16">
             <a href="{{ route('event.index') }}"
                 class="w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                View All Events
+                {{ __('landing.events.button.view_all') }}
                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>
         </div>
@@ -549,11 +550,11 @@
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
                     class="text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
-                    Download Center
+                    {{ __('landing.download.title') }}
                 </h2>
                 <p
                     class="max-w-full sm:max-w-[672px] text-center font-inter text-sm sm:text-base md:text-[20px] leading-relaxed md:leading-[28px] font-light text-[#29303DB2]">
-                    Access our collection of promotional materials, brochures and multimedia content
+                    {{ __('landing.download.description') }}
                 </p>
             </div>
 
@@ -565,7 +566,8 @@
                             <div class="flex items-start gap-3 sm:gap-[16px] mb-6">
                                 <div
                                     class="p-2 sm:p-[12px] bg-[#F9FAFB] rounded-xl flex-shrink-0 flex items-center justify-center">
-                                    <img src="{{ asset('storage/' . $download->icon->icon) }}" class="w-6 h-6" alt="File icon">
+                                    <img src="{{ asset('storage/' . $download->icon->icon) }}" class="w-6 h-6"
+                                        alt="File icon">
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <h3
@@ -613,9 +615,10 @@
 
                             <a href="{{ route('download-center.download', $download->slug) }}"
                                 class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
+                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4"
+                                    alt="Download">
                                 <span
-                                    class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
+                                    class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">{{ __('landing.download.button.download') }}</span>
                             </a>
                         </div>
                     </div>
@@ -624,7 +627,7 @@
             <div class="flex justify-center mt-4 md:mt-6">
                 <a href="/download-center"
                     class=" w-full max-w-[270px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                    View All Download Center
+                    {{ __('landing.download.button.view_all') }}
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
             </div>
@@ -658,17 +661,18 @@
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
                     class="text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
-                    Brawijaya's Innovation
+                    {{ __('landing.innovation.title') }}
                 </h2>
                 <p
                     class="max-w-full sm:max-w-[672px] text-center font-inter text-sm sm:text-base md:text-[20px] leading-relaxed md:leading-[28px] font-light text-[#29303DB2]">
-                    Discover groundbreaking innovations and research outcomes that drive real-world impact.
+                    {{ __('landing.innovation.description') }}
                 </p>
             </div>
 
             <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach ($innovations as $innovation)
-                    <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                    <div
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
                         <div class="w-full h-48 sm:h-64 md:h-[288px]">
                             <img src="{{ asset('storage/' . $innovation->image) }}" alt="{{ $innovation->title }}"
                                 class="w-full h-full object-cover">
@@ -694,7 +698,7 @@
                             </div>
                             <a href="#"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition">
-                                Learn More
+                                {{ __('landing.innovation.button.learn_more') }}
                                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                             </a>
                         </div>
@@ -706,7 +710,7 @@
         <div class="flex justify-center mb-8">
             <a href="{{ route('innovation.index') }}"
                 class="mt-8 md:mt-16 w-full max-w-[240px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                View All Innovations
+                {{ __('landing.innovation.button.view_all') }}
                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>
         </div>
@@ -719,7 +723,7 @@
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
                     class="w-full text-center font-playfair font-bold text-2xl md:text-3xl lg:text-[36px] leading-[36px] md:leading-[40px] text-[#29303D]">
-                    Profiles & Testimonials
+                    {{ __('landing.testimonial.title') }}
                 </h2>
                 <p
                     class="text-center font-inter font-light text-sm sm:text-base md:text-lg lg:text-xl leading-6 md:leading-7 lg:leading-[28px] text-[#29303DB2]">
@@ -734,13 +738,14 @@
                         class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] p-4 sm:p-6 md:p-6">
                         <header class="flex items-center gap-4">
                             <div class="relative">
-                                <img src="{{ asset('storage/' . $testimonial->photo) }}" alt="{{ $testimonial->name }}"
-                                    class="w-16 h-16 rounded-full object-cover" />
+                                <img src="{{ asset('storage/' . $testimonial->photo) }}"
+                                    alt="{{ $testimonial->name }}" class="w-16 h-16 rounded-full object-cover" />
                                 <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
                                     class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
                             </div>
                             <div>
-                                <h3 class="text-base font-bold text-[#1C2B39] font-playfair">{{ $testimonial->name }}</h3>
+                                <h3 class="text-base font-bold text-[#1C2B39] font-playfair">{{ $testimonial->name }}
+                                </h3>
                                 <p class="text-sm font-normal text-[#29303D] opacity-[0.7] font-inter">
                                     {{ $testimonial->position }}
                                 </p>
@@ -795,7 +800,7 @@
             <div class="flex justify-center">
                 <a href="{{ route('testimonial.index') }}"
                     class="mt-4 md:mt-6 w-full max-w-[250px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                    View All Testimonials
+                    {{ __('landing.testimonial.button') }}
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
             </div>
@@ -806,10 +811,10 @@
                 <div class="flex flex-col items-center gap-4 max-w-[1120px] mx-auto">
                     <h3
                         class="w-full text-center font-playfair font-bold text-[30px] md:text-[36px] leading-[36px] text-[#29303D]">
-                        Watch Their Stories</h3>
+                        {{ __('landing.story.title') }}</h3>
                     <p
                         class="max-w-[632px] text-center font-inter text-base md:text-lg lg:text-xl font-normal leading-[28px] text-[#29303DB2]">
-                        Hear directly from our global community about their transformative experiences at UB</p>
+                        {{ __('landing.story.description') }}</p>
                 </div>
                 <!-- Content: Video & List -->
                 <div class="w-full flex flex-col md:flex-row gap-8 md:gap-[32px] max-w-[1120px] mx-auto">
@@ -827,7 +832,8 @@
                         <!-- Play button in center -->
                         <button
                             class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm">
-                            <img src='{{ asset('icons/play.svg') }}' alt="Play" class="w-6 h-6 md:w-8 md:h-8 text-white" />
+                            <img src='{{ asset('icons/play.svg') }}' alt="Play"
+                                class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
                         <!-- Text overlay at bottom -->
@@ -905,7 +911,7 @@
                 <div class="flex justify-center">
                     <a href="/story"
                         class="w-full sm:w-[160px] h-[44px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] shadow-md flex items-center justify-center text-center py-[11.5px] px-[32px] text-sm md:text-[14px] font-medium">
-                        View All Story
+                        {{ __('landing.story.button') }}
                     </a>
                 </div>
             </div>
@@ -921,7 +927,7 @@
             <div class="w-full flex flex-col items-center gap-4">
                 <h3
                     class="text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
-                    Partnership
+                    {{ __('landing.partnership.title') }}
                 </h3>
             </div>
 
@@ -949,7 +955,7 @@
             <div class="flex justify-center mt-4 md:mt-6">
                 <a href="{{ route('partnership.index') }}"
                     class="flex items-center gap-2 px-6 py-3 bg-white border border-[#E2E4E9] rounded-[10px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition-colors">
-                    View All Partnership
+                    {{ __('landing.partnership.button') }}
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="Arrow">
                 </a>
             </div>
@@ -1002,11 +1008,11 @@
             }
             requestAnimationFrame(update);
         }
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Study in UB counters
             let section = document.querySelector('.grid.grid-cols-2');
             let started = false;
-            let observer = new IntersectionObserver(function (entries) {
+            let observer = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting && !started) {
                     started = true;
                     animateCounter(document.getElementById('counter1'), 150, 2000);
@@ -1022,7 +1028,7 @@
             // About Globalizing UB counters
             let aboutSection = document.getElementById('aboutSection');
             let aboutStarted = false;
-            let aboutObserver = new IntersectionObserver(function (entries) {
+            let aboutObserver = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting && !aboutStarted) {
                     aboutStarted = true;
                     animateCounter(document.getElementById('aboutCounter1'), 50000, 3000);

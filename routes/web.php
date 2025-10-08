@@ -51,6 +51,19 @@ Route::middleware([CountVisitor::class])->group(function () {
     Route::get('/merchandise', [MerchandiseController::class, 'index'])->name('merchandise');
 });
 
+// Language Switcher
+
+Route::get('/lang/{locale}', function ($locale) {
+    $supportedLocales = ['en', 'id'];
+
+    if (in_array($locale, $supportedLocales)) {
+        app()->setLocale($locale);
+        session()->put('locale', $locale);
+    }
+
+    return redirect()->back();
+})->name('lang.switch');
+
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
