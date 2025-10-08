@@ -723,7 +723,7 @@
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
                     class="w-full text-center font-playfair font-bold text-2xl md:text-3xl lg:text-[36px] leading-[36px] md:leading-[40px] text-[#29303D]">
-                    {{ __('landing.testimonial.title') }}
+                    {{ __('landing.testimonials.title') }}
                 </h2>
                 <p
                     class="text-center font-inter font-light text-sm sm:text-base md:text-lg lg:text-xl leading-6 md:leading-7 lg:leading-[28px] text-[#29303DB2]">
@@ -800,7 +800,7 @@
             <div class="flex justify-center">
                 <a href="{{ route('testimonial.index') }}"
                     class="mt-4 md:mt-6 w-full max-w-[250px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
-                    {{ __('landing.testimonial.button') }}
+                    {{ __('landing.testimonials.button') }}
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
             </div>
