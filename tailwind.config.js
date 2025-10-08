@@ -29,6 +29,15 @@ export default {
             boxShadow: {
                 card: "0 1px 2px rgba(16,24,40,.05),0 0 0 1px rgba(16,24,40,.06)",
             },
+            screens: {
+                sm: "640px",
+                md: "768px",
+                lg: "1030px",
+                xl: "1280px",
+                "2xl": "1536px",
+                // Custom breakpoint untuk iPad Pro
+                "ipad-pro": "1024px",
+            },
         },
     },
 
