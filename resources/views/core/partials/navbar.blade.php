@@ -31,7 +31,7 @@
                 class="bg-[#0000FF] text-white py-2 px-3 md:px-4 rounded-[10px] w-[82px] md:w-[98px] h-[36px] flex items-center justify-between gap-[6px] md:gap-[8px]">
                 <img src="{{ asset('icons/globe.svg') }}" alt="Globe Icon" class="w-4 h-4 md:w-5 md:h-5">
                 <span id="language-text"
-                    class="font-medium text-[12px] md:text-[14px] leading-[24px] tracking-normal text-center flex-1">En</span>
+                    class="font-medium text-[12px] md:text-[14px] leading-[24px] tracking-normal text-center flex-1">{{ app()->getLocale() == 'en' ? 'En' : 'ID' }}</span>
                 <img id="arrow-icon" src="{{ asset('icons/arrow-down.svg') }}" alt="Arrow Down Icon"
                     class="transition-transform duration-300">
             </button>
@@ -40,12 +40,12 @@
             <div id="language-dropdown" class="absolute right-0 mt-2 w-32 bg-white shadow-md rounded-lg hidden">
                 <ul class="py-2">
                     <li>
-                        <a href="#" id="english"
-                            class="block px-4 py-2 text-sm text-[#0000FF] font-medium transition-colors">English</a>
+                        <a href="{{ route('lang.switch', 'en') }}" id="english"
+                            class="block px-4 py-2 text-sm {{ app()->getLocale() == 'en' ? 'text-[#0000FF] font-medium' : 'text-[#29303D]' }} transition-colors">English</a>
                     </li>
                     <li>
-                        <a href="#" id="indonesian"
-                            class="block px-4 py-2 text-sm text-[#29303D] transition-colors">Indonesian</a>
+                        <a href="{{ route('lang.switch', 'id') }}" id="indonesian"
+                            class="block px-4 py-2 text-sm {{ app()->getLocale() == 'id' ? 'text-[#0000FF] font-medium' : 'text-[#29303D]' }} transition-colors">Indonesian</a>
                     </li>
                 </ul>
             </div>
@@ -86,17 +86,18 @@
         var arrowIcon = document.getElementById('arrow-icon');
 
         dropdown.classList.toggle('hidden');
-
         arrowIcon.classList.toggle('rotate-180');
     });
 
-    document.getElementById('english').addEventListener('click', function() {
-        document.getElementById('language-text').textContent = 'En';
-        window.location.href = '/en';
-    });
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        var languageButton = document.getElementById('language-button');
+        var dropdown = document.getElementById('language-dropdown');
+        var arrowIcon = document.getElementById('arrow-icon');
 
-    document.getElementById('indonesian').addEventListener('click', function() {
-        document.getElementById('language-text').textContent = 'ID';
-        window.location.href = '/id';
+        if (!languageButton.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.add('hidden');
+            arrowIcon.classList.remove('rotate-180');
+        }
     });
 </script>

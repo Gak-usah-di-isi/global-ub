@@ -111,7 +111,7 @@ return [
     'story' => [
         'title' => 'Watch Their Stories',
         'description' => 'Hear directly from our global community about their transformative experiences at UB',
-        'button' => 'View All Stories',
+        'button' => 'View All Story',
     ],
 
     'partnership' => [
