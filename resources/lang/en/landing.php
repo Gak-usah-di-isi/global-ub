@@ -89,7 +89,7 @@ return [
         'description' => 'Access our collection of promotional materials, brochures and multimedia content',
         'button' => [
             'download' => 'Download',
-            'view_all' => 'View All Downloads Center',
+            'view_all' => 'View All Download Center',
         ],
     ],
 
