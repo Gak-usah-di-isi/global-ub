@@ -37,7 +37,7 @@ class Merchandise extends Model
         if ($this->image) {
             return asset('storage/' . $this->image);
         }
-        return asset('images/placeholder.jpg'); // Add a default placeholder image
+        return asset('images/placeholder.jpg');
     }
 
     public function scopeActive($query)

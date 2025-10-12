@@ -68,7 +68,7 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">
-                                        <a href="{{ route('merchandise.edit', $item) }}"
+                                        <a href="{{ route('merchandise.edit', $item->slug) }}"
                                             class="text-slate-600 hover:text-primary-500 transition-colors">
                                             <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
@@ -76,12 +76,13 @@
                                                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                             </svg>
                                         </a>
-                                        <form action="{{ route('merchandise.destroy', $item) }}" method="POST"
+                                        <form action="{{ route('merchandise.destroy', $item->slug) }}" method="POST"
                                             onsubmit="return confirm('Are you sure you want to delete this merchandise?');"
                                             class="inline-block">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-500 hover:text-red-600 transition-colors">
+                                            <button type="submit"
+                                                class="text-red-500 hover:text-red-600 transition-colors">
                                                 <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -103,7 +104,7 @@
                 </table>
             </div>
 
-            @if($merchandise->hasPages())
+            @if ($merchandise->hasPages())
                 <div class="px-6 py-4 border-t border-[#E3E9F2]">
                     {{ $merchandise->links() }}
                 </div>

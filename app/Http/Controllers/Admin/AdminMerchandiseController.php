@@ -38,7 +38,6 @@ class AdminMerchandiseController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
-            // Make sure the directory exists
             if (!file_exists(public_path('storage/merchandise'))) {
                 mkdir(public_path('storage/merchandise'), 0777, true);
             }
@@ -55,13 +54,16 @@ class AdminMerchandiseController extends Controller
             ->with('success', 'Merchandise created successfully.');
     }
 
-    public function edit(Merchandise $merchandise)
+    public function edit($slug)
     {
+        $merchandise = Merchandise::where('slug', $slug)->firstOrFail();
         return view('admin.merchandise.edit', compact('merchandise'));
     }
 
-    public function update(Request $request, Merchandise $merchandise)
+    public function update(Request $request, $slug)
     {
+        $merchandise = Merchandise::where('slug', $slug)->firstOrFail();
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
@@ -99,8 +101,10 @@ class AdminMerchandiseController extends Controller
             ->with('success', 'Merchandise updated successfully.');
     }
 
-    public function destroy(Merchandise $merchandise)
+    public function destroy($slug)
     {
+        $merchandise = Merchandise::where('slug', $slug)->firstOrFail();
+
         if ($merchandise->image) {
             $imagePath = public_path('storage/' . $merchandise->image);
             if (file_exists($imagePath)) {

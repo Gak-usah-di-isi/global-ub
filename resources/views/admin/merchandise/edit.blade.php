@@ -40,7 +40,7 @@
             </div>
         @endif
 
-        <form id="edit-form" action="{{ route('merchandise.update', $merchandise) }}" method="POST"
+        <form id="edit-form" action="{{ route('merchandise.update', $merchandise->slug) }}" method="POST"
             enctype="multipart/form-data" class="space-y-8">
             @csrf
             @method('PUT')
@@ -149,8 +149,8 @@
                         <label for="order" class="field-label">
                             Display Order
                         </label>
-                        <input id="order" name="order" type="number" value="{{ old('order', $merchandise->order) }}"
-                            placeholder="Enter display order"
+                        <input id="order" name="order" type="number"
+                            value="{{ old('order', $merchandise->order) }}" placeholder="Enter display order"
                             class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('order') border-red-300 @enderror" />
                         @error('order')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -162,7 +162,8 @@
 
                     <div>
                         <label class="flex items-center">
-                            <input type="checkbox" name="is_active" value="1" {{ old('is_active', $merchandise->is_active) ? 'checked' : '' }}
+                            <input type="checkbox" name="is_active" value="1"
+                                {{ old('is_active', $merchandise->is_active) ? 'checked' : '' }}
                                 class="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
                             <span class="ml-2 text-[13px] text-slate-800">Active</span>
                         </label>

@@ -135,9 +135,9 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/merchandise', [AdminMerchandiseController::class, 'index'])->name('merchandise.index');
     Route::get('/merchandise/create', [AdminMerchandiseController::class, 'create'])->name('merchandise.create');
     Route::post('/merchandise', [AdminMerchandiseController::class, 'store'])->name('merchandise.store');
-    Route::get('/merchandise/{merchandise}/edit', [AdminMerchandiseController::class, 'edit'])->name('merchandise.edit');
-    Route::put('/merchandise/{merchandise}', [AdminMerchandiseController::class, 'update'])->name('merchandise.update');
-    Route::delete('/merchandise/{merchandise}', [AdminMerchandiseController::class, 'destroy'])->name('merchandise.destroy');
+    Route::get('/merchandise/{slug}/edit', [AdminMerchandiseController::class, 'edit'])->name('merchandise.edit');
+    Route::put('/merchandise/{slug}', [AdminMerchandiseController::class, 'update'])->name('merchandise.update');
+    Route::delete('/merchandise/{slug}', [AdminMerchandiseController::class, 'destroy'])->name('merchandise.destroy');
 });
 
 Route::middleware('auth')->group(function () {
