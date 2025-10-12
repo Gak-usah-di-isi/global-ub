@@ -41,242 +41,90 @@
         <image src="{{ asset('/images/ubMerch.svg') }}" class="sm:w-[100px] md:w-[100px] mb-16 lg:w-[125px]" alt="ub merch">
             <div class="w-full">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                    <h3 class="text-lg sm:text-xl font-semibold font-inter text-[#29303D] leading-7">124 Products</h3>
+                    <h3 class="text-lg sm:text-xl font-semibold font-inter text-[#29303D] leading-7">{{ $total }} Products
+                    </h3>
                     <div class="flex items-center gap-3">
                         <span class="sm:text-sm md:text-lg font-semibold text-[#29303D] font-inter leading-7">Sort by</span>
-                        <select
+                        <select name="sort" onchange="window.location.href='?sort=' + this.value"
                             class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <option>All Product</option>
-                            <option>Price: Low to High</option>
-                            <option>Price: High to Low</option>
-                            <option>Newest</option>
+                            <option value="newest" {{ $sort == 'newest' ? 'selected' : '' }}>All Product</option>
+                            <option value="price_low" {{ $sort == 'price_low' ? 'selected' : '' }}>Price: Low to High
+                            </option>
+                            <option value="price_high" {{ $sort == 'price_high' ? 'selected' : '' }}>Price: High to Low
+                            </option>
                         </select>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-8">
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Totebag</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Totebag.png')}}" alt="Totebag"
-                                    class="w-full h-full object-contain">
+                    @forelse ($merchandise as $item)
+                        <article class="group cursor-pointer">
+                            <div
+                                class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
+                                <span
+                                    class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">
+                                    {{ $item->category }}
+                                </span>
+                                <div class="aspect-square flex items-center justify-center bg-[#F1F1F1]">
+                                    <!-- Removed padding -->
+                                    <img src="{{ $item->image_url }}" alt="{{ $item->name }}"
+                                        class="w-full h-full object-cover">
+                                </div>
                             </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Canvas Totebag UB BRWJY</h4>
-                        <span class="flex jusify-between gap-2 w-full align-middle items-center">
-                            <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp110.000</p>
-                            <span class="flex w-full gap-2 align-middle items-center justify-end">
-                                <img src="{{asset('/images/shopee.png')}}" alt="Totebag" class="size-7 object-contain">
-                                <img src="{{asset('/images/tokped.png')}}" alt="Totebag" class="size-10 object-contain">
+                            <h4
+                                class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
+                                {{ $item->name }}
+                            </h4>
+                            <span class="flex jusify-between gap-2 w-full align-middle items-center">
+                                <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">
+                                    Rp {{ number_format($item->price, 0, ',', '.') }}
+                                </p>
+                                <span class="flex w-full gap-2 align-middle items-center justify-end">
+                                    @if($item->shopee_link)
+                                        <a href="{{ $item->shopee_link }}" target="_blank" rel="noopener noreferrer">
+                                            <img src="{{asset('/images/shopee.png')}}" alt="Shopee" class="size-7 object-contain">
+                                        </a>
+                                    @endif
+                                    @if($item->tokopedia_link)
+                                        <a href="{{ $item->tokopedia_link }}" target="_blank" rel="noopener noreferrer">
+                                            <img src="{{asset('/images/tokped.png')}}" alt="Tokopedia"
+                                                class="size-10 object-contain">
+                                        </a>
+                                    @endif
+                                </span>
                             </span>
-                        </span>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">T-Shirt</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/T-Shirt_Mesin.png')}}" alt="T-Shirt_Mesin"
-                                    class="w-full h-full object-contain">
-                            </div>
+                        </article>
+                    @empty
+                        <div class="col-span-full text-center py-12">
+                            <p class="text-gray-500">No merchandise found</p>
                         </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            T-Shirt Mesin Universitas Brawijaya</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp110.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Hoodie</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Zipper_Brawijaya.png')}}" alt="Zipper_Brawijaya"
-                                    class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Hoodie Zipper Brawijaya Greatness</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp210.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">T-Shirt</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/T-Shirt_Brawijaya.png')}}" alt="T-Shirt_Brawijaya"
-                                    class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            T-Shirt Brawijaya University</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp110.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Long
-                                Sleeve</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Long_Sleeve.png')}}" alt="Long_Sleeve"
-                                    class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Long Sleeve Universitas Brawijaya</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp130.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Shorts</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Shorts_Brawijaya.png')}}" alt="Shorts_Brawijaya"
-                                    class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Shorts Universitas Brawijaya</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp85.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Polo</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Polo_Brawijaya.png')}}" alt="Polo_Brawijaya"
-                                    class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Polo Brawijaya University 1963</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp150.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Baseball</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Baseball_Brawijaya.png')}}" alt="Baseball_Brawijaya"
-                                    class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Baseball Universitas Brawijaya</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp160.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Hoodie</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Hoodie_Sleeveless_Brawijaya.png')}}"
-                                    alt="Hoodie_Sleeveless_Brawijaya" class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Hoodie Sleeveless Brawijaya University</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp190.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Baseball</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Baseball2_Brawijaya.png')}}" alt="Baseball2_Brawijaya"
-                                    class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Baseball Universitas Brawijaya </h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp150.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Hoodie</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Hoodie_Zipper_Brawijaya_Grey.png')}}"
-                                    alt="Hoodie_Zipper_Brawijaya_Grey" class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Hoodie Zipper Brawijaya University | Grey</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp260.000</p>
-                    </article>
-
-                    <article class="group cursor-pointer">
-                        <div
-                            class="relative bg-white rounded-xl overflow-hidden mb-3 border border-gray-200 hover:shadow-lg transition">
-                            <span
-                                class="absolute top-2 right-2 px-[10px] rounded-full text-sm font-normal leading-7 font-inter text-[#29303D] border bg-white border-[#29303D]">Sticker</span>
-                            <div class="aspect-square flex items-center justify-center px-6 pb-2 pt-6 bg-[#F1F1F1]">
-                                <img src="{{asset('/images/Sticker_Brawijaya.png')}}" alt="Sticker_Brawijaya"
-                                    class="w-full h-full object-contain">
-                            </div>
-                        </div>
-                        <h4
-                            class="font-semibold text-[#29303D] mb-1 text-lg font-inter leading-7 sm:text-base group-hover:text-blue-600 transition">
-                            Sticker Universitas Brawijaya</h4>
-                        <p class="text-[#29303D] opacity-[0.8] text-base font-normal font-inter leading-7">Rp5.000</p>
-                    </article>
+                    @endforelse
                 </div>
 
-                <nav class="flex justify-center items-center gap-3" aria-label="Pagination">
-                    <button
-                        class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F3F4F6] text-gray-500 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
-                        aria-label="Previous" disabled>
-                        <image src="{{ asset('/icons/left-arrow2.svg') }}" alt="left-arrow">
-                    </button>
+                @if($merchandise->hasPages())
+                    <nav class="flex justify-center items-center gap-3" aria-label="Pagination">
+                        <a href="{{ $merchandise->previousPageUrl() }}"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F3F4F6] text-gray-500 hover:bg-gray-200 {{ !$merchandise->onFirstPage() ?: 'disabled opacity-50 cursor-not-allowed' }}"
+                            aria-label="Previous">
+                            <image src="{{ asset('/icons/left-arrow2.svg') }}" alt="left-arrow">
+                        </a>
 
-                    <div class="flex items-center gap-[12px] bg-[#F3F4F6] rounded-full px-1 py-1">
-                        <button
-                            class="w-[35px] h-[35px] flex items-center justify-center rounded-full bg-[#29303D] text-white font-medium">1</button>
-                        <button
-                            class="w-[35px] h-[35px] flex items-center justify-center rounded-full text-[#29303D] hover:bg-gray-200 font-medium">2</button>
-                        <button
-                            class="w-[35px] h-[35px] flex items-center justify-center rounded-full text-[#29303D] hover:bg-gray-200 font-medium">3</button>
-                    </div>
+                        <div class="flex items-center gap-[12px] bg-[#F3F4F6] rounded-full px-1 py-1">
+                            @for ($i = 1; $i <= $merchandise->lastPage(); $i++)
+                                <a href="{{ $merchandise->url($i) }}"
+                                    class="w-[35px] h-[35px] flex items-center justify-center rounded-full {{ $merchandise->currentPage() == $i ? 'bg-[#29303D] text-white' : 'text-[#29303D] hover:bg-gray-200' }} font-medium">
+                                    {{ $i }}
+                                </a>
+                            @endfor
+                        </div>
 
-                    <button
-                        class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F3F4F6] text-gray-500 hover:bg-gray-200"
-                        aria-label="Next">
-                        <image src="{{ asset('/icons/righ-arrow2.svg') }}" alt="righ-arrow">
-                    </button>
-                </nav>
+                        <a href="{{ $merchandise->nextPageUrl() }}"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F3F4F6] text-gray-500 hover:bg-gray-200 {{ $merchandise->hasMorePages() ?: 'disabled opacity-50 cursor-not-allowed' }}"
+                            aria-label="Next">
+                            <image src="{{ asset('/icons/righ-arrow2.svg') }}" alt="right-arrow">
+                        </a>
+                    </nav>
+                @endif
             </div>
     </main>
 

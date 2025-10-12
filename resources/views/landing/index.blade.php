@@ -48,13 +48,13 @@
 
         <!-- Sembunyikan arrow navigation di iPad Pro -->
         <div
-            class="hidden lg:flex absolute top-1/2 left-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
+            class="flex absolute top-1/2 left-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button class="w-12 h-12 flex justify-center items-center text-white">
                 <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
             </button>
         </div>
         <div
-            class="hidden lg:flex absolute top-1/2 right-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
+            class="flex absolute top-1/2 right-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button class="w-12 h-12 flex justify-center items-center text-white">
                 <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
             </button>
@@ -932,7 +932,7 @@
                 @foreach ($partnerships as $partnership)
                     <div
                         class="flex items-center justify-center w-full h-[60px] md:h-[80px] p-2 md:p-3 bg-white rounded-[8px] md:rounded-[12px] 
-                                                    shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
+                                                                    shadow-[0px_2px_8px_-2px_rgba(41,48,61,0.05)] hover:shadow-[0px_4px_16px_-2px_rgba(41,48,61,0.10)] transition-shadow">
 
                         <a href="{{ $partnership->website ?? '#' }}" target="_blank" rel="noopener noreferrer"
                             class="block w-full h-full flex items-center justify-center">
