@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\AdminStoryController;
 use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminPartnershipController;
 use App\Http\Controllers\Admin\AdminIconController;
+use App\Http\Controllers\Admin\AdminMerchandiseController;
 
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\EventController;
@@ -144,6 +145,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/icons/{slug}/edit', [AdminIconController::class, 'edit'])->name('icons.edit');
     Route::put('/icons/{slug}', [AdminIconController::class, 'update'])->name('icons.update');
     Route::delete('/icons/{slug}', [AdminIconController::class, 'destroy'])->name('icons.destroy');
+
+    Route::get('/merchandise', [AdminMerchandiseController::class, 'index'])->name('merchandise.index');
+    Route::get('/merchandise/create', [AdminMerchandiseController::class, 'create'])->name('merchandise.create');
+    Route::post('/merchandise', [AdminMerchandiseController::class, 'store'])->name('merchandise.store');
+    Route::get('/merchandise/{slug}/edit', [AdminMerchandiseController::class, 'edit'])->name('merchandise.edit');
+    Route::put('/merchandise/{slug}', [AdminMerchandiseController::class, 'update'])->name('merchandise.update');
+    Route::delete('/merchandise/{slug}', [AdminMerchandiseController::class, 'destroy'])->name('merchandise.destroy');
 });
 
 Route::middleware('auth')->group(function () {
