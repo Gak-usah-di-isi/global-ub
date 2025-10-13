@@ -132,6 +132,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/icons/{slug}', [AdminIconController::class, 'update'])->name('icons.update');
     Route::delete('/icons/{slug}', [AdminIconController::class, 'destroy'])->name('icons.destroy');
 
+
     Route::get('/merchandise', [AdminMerchandiseController::class, 'index'])->name('merchandise.index');
     Route::get('/merchandise/create', [AdminMerchandiseController::class, 'create'])->name('merchandise.create');
     Route::post('/merchandise', [AdminMerchandiseController::class, 'store'])->name('merchandise.store');
