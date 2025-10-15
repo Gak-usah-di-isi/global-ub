@@ -60,7 +60,36 @@
             </button>
         </div>
 
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+          <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
+        <div
+            class="hidden md:flex lg:hidden absolute top-[500px] left-5 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
+            <button class="w-12 h-12 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
+            </button>
+        </div>
+        <div
+            class="hidden md:flex lg:hidden absolute top-[500px] right-5 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
+            <button class="w-12 h-12 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
+            </button>
+        </div>
+
+
+         <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
+        <div
+            class="flex md:hidden lg:hidden absolute top-[580px] left-3 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
+            <button class="w-8 h-8 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
+            </button>
+        </div>
+        <div
+            class="flex md:hidden lg:hidden absolute top-[580px] right-3 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
+            <button class="w-8 h-8 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
+            </button>
+        </div>
+
+        <div class="absolute bottom-8 md:bottom-[16px] lg:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
             <div class="w-2 h-2 bg-[#FFFFFF80] rounded-full transition-all duration-300"></div>
             <div class="w-2 h-2 bg-[#FFFFFF80] rounded-full transition-all duration-300"></div>
             <div class="w-2 h-2 bg-[#FFFFFF] rounded-full transition-all duration-300"></div>
