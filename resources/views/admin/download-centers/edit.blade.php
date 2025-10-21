@@ -54,7 +54,7 @@
                             @foreach ($icons as $icon)
                                 <label class="flex flex-col items-center cursor-pointer">
                                     <input type="radio" name="icon_id" value="{{ $icon->id }}"
-                                        {{ old('icon_id', $study->icon_id) == $icon->id ? 'checked' : '' }}>
+                                        {{ old('icon_id', $downloadCenter->icon_id) == $icon->id ? 'checked' : '' }}>
                                     <img src="{{ asset('storage/' . $icon->icon) }}" alt="{{ $icon->name }}"
                                         class="w-12 h-12 object-cover rounded-md border border-slate-200 mt-1 bg-[#6699FF33]" />
                                 </label>
