@@ -6,14 +6,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="/icons/home.svg" alt="Home Icon" class="w-full h-full">
+                <img src="/icons-site/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">50,000+</p>
@@ -55,7 +55,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">150+</p>
@@ -65,7 +65,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/achievement.svg') }}" alt="Years Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/achievement.svg') }}" alt="Years Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">60+</p>
@@ -75,7 +75,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/partner.svg') }}" alt="Partners Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Partners Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">100+</p>
@@ -108,7 +108,7 @@
                     <div class="flex items-center gap-2 sm:gap-3 w-full h-full">
                         <div
                             class="w-8 h-8 sm:w-10 sm:h-10 md:w-[48px] md:h-[48px] rounded-full flex items-center justify-center bg-[linear-gradient(135deg,#0000FF_0%,#6699FF_100%)]">
-                            <img src="{{ asset('icons/partner.svg') }}" alt="Global Network Icon"
+                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Global Network Icon"
                                 class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6">
                         </div>
                         <div class="flex-1 min-w-0">
@@ -195,7 +195,7 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons/editor_choice.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                        <img src="{{ asset('icons-site/editor_choice.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
                         Provide high-quality education with international standards.
@@ -205,7 +205,7 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons/globe_book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                        <img src="{{ asset('icons-site/globe_book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
                         Foster global collaboration in research and innovation.
@@ -215,7 +215,7 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons/emoji_language.svg') }}" alt="Programs Icon"
+                        <img src="{{ asset('icons-site/emoji_language.svg') }}" alt="Programs Icon"
                             class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
@@ -226,7 +226,7 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons/diversity_2.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                        <img src="{{ asset('icons-site/diversity_2.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
                         Encourage cultural exchange and diversity.

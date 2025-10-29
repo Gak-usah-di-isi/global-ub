@@ -7,14 +7,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-28">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="{{ asset('icons/home.svg') }}" alt="Home Icon" class="w-full h-full">
+                <img src="{{ asset('icons-site/home.svg') }}" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
 
                 <div class="flex justify-between items-center flex-wrap gap-4 md:gap-6">
                     <span class="flex items-center gap-2 text-[#29303DB2] text-[14px] md:text-[16px]">
-                        <img src="{{ asset('icons/user-black.svg') }}" alt="user" class="w-4 h-4 md:w-5 md:h-5">
+                        <img src="{{ asset('icons-site/user-black.svg') }}" alt="user" class="w-4 h-4 md:w-5 md:h-5">
                         {{ number_format($study->students_count) }} students
                     </span>
                     <span class="text-[#0000FF] text-[14px] font-medium md:text-[16px]">
@@ -79,7 +79,7 @@
                 <a href="#"
                     class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px] hover:bg-gray-50">
                     Apply Now
-                    <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                    <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
             </div>
 
@@ -113,7 +113,7 @@
 
                         <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
                             <span class="flex items-center gap-2 text-[#29303DB2]">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
+                                <img src="{{ asset('icons-site/user-black.svg') }}" class="w-4 h-4" alt="user">
                                 {{ number_format($studies->students_count) }} students
                             </span>
                             <span class="text-[#0000FF] font-medium">{{ $studies->duration }}</span>
@@ -126,7 +126,7 @@
                         <a href="{{ route('study.show', $studies->slug) }}"
                             class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px] hover:bg-gray-50">
                             Learn More
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                            <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
                     </div>
                 @endforeach

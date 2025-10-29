@@ -29,7 +29,7 @@
                 <!-- Logo & Header -->
                 <div class="text-center mb-8">
                     <div class="mx-auto h-20  flex items-center justify-center mb-4">
-                        <img src="{{ asset('/icons/gub-nav.svg') }}" alt="Logo Gub">
+                        <img src="{{ asset('/icons-site/gub-nav.svg') }}" alt="Logo Gub">
                     </div>
                     <p class="text-gray-600">Sign in to your account to continue</p>
                 </div>

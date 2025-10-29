@@ -3,7 +3,7 @@
 
     <div class="flex items-center space-x-4">
         <img src="{{ asset('/images/ub.png') }}" alt="Logo UB" class="h-8 md:h-10">
-        <img src="{{ asset('/icons/gub-nav.svg') }}" alt="Logo Gub" class="h-6 md:h-8">
+        <img src="{{ asset('/icons-site/gub-nav.svg') }}" alt="Logo Gub" class="h-6 md:h-8">
     </div>
 
     <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
@@ -29,10 +29,10 @@
         <div class="relative">
             <button id="language-button"
                 class="bg-[#0000FF] text-white py-2 px-3 md:px-4 rounded-[10px] w-[82px] md:w-[98px] h-[36px] flex items-center justify-between gap-[6px] md:gap-[8px]">
-                <img src="{{ asset('icons/globe.svg') }}" alt="Globe Icon" class="w-4 h-4 md:w-5 md:h-5">
+                <img src="{{ asset('icons-site/globe.svg') }}" alt="Globe Icon" class="w-4 h-4 md:w-5 md:h-5">
                 <span id="language-text"
                     class="font-medium text-[12px] md:text-[14px] leading-[24px] tracking-normal text-center flex-1">{{ app()->getLocale() == 'en' ? 'En' : 'ID' }}</span>
-                <img id="arrow-icon" src="{{ asset('icons/arrow-down.svg') }}" alt="Arrow Down Icon"
+                <img id="arrow-icon" src="{{ asset('icons-site/arrow-down.svg') }}" alt="Arrow Down Icon"
                     class="transition-transform duration-300">
             </button>
 
