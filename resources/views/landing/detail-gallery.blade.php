@@ -74,7 +74,7 @@
             <!-- Modal Gallery -->
             <div id="galleryModal" class="fixed inset-0 hidden z-50 flex items-center justify-center p-4">
                 <div class="absolute inset-0 backdrop-blur-sm bg-black/90" onclick="closeModal()"></div>
-                <div class="relative w-full max-w-5xl mx-auto">
+                <div class="relative w-full max-w-5xl mx-auto flex items-center justify-center">
                     <button id="closeButton" onclick="closeModal()"
                         class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,11 +82,9 @@
                             </path>
                         </svg>
                     </button>
-                    <div class="flex justify-center items-center w-full h-[80vh]">
-                        <img id="modalImage" src=""
-                            class="max-w-full max-h-full w-auto h-auto object-contain cursor-pointer rounded-lg"
-                            onclick="closeModal()" />
-                    </div>
+                    <img id="modalImage" src=""
+                        class="max-w-full max-h-[85vh] object-contain cursor-pointer rounded-lg shadow-2xl"
+                        onclick="closeModal()" />
                 </div>
             </div>
             <div class="flex gap-4 mt-6 md:mt-8">
