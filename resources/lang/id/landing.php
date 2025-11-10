@@ -79,7 +79,7 @@ return [
         'description' => 'Bergabunglah dengan acara internasional kami dan terhubung dengan komunitas akademik global',
         'button' => [
             'learn_more' => 'Pelajari Lebih Lanjut',
-            'view_all' => 'Lihat Semua Acara',
+            'view_all' => 'Semua Acara',
         ]
     ],
 
@@ -88,7 +88,7 @@ return [
         'description' => 'Akses koleksi materi promosi, brosur, dan konten multimedia kami',
         'button' => [
             'download' => 'Unduh',
-            'view_all' => 'Lihat Semua Pusat Unduhan',
+            'view_all' => 'Semua Pusat Unduhan',
         ],
     ],
 
