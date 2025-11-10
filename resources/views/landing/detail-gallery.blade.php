@@ -74,16 +74,16 @@
             <!-- Modal Gallery -->
             <div id="galleryModal" class="fixed inset-0 hidden z-50 flex items-center justify-center p-4">
                 <div class="absolute inset-0 backdrop-blur-sm bg-black/90" onclick="closeModal()"></div>
-                <div class="relative w-full max-w-5xl mx-auto flex items-center justify-center">
+                <div class="relative w-full h-full flex items-center justify-center p-4">
                     <button id="closeButton" onclick="closeModal()"
-                        class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10">
+                        class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                             </path>
                         </svg>
                     </button>
                     <img id="modalImage" src=""
-                        class="max-w-full max-h-[85vh] object-contain cursor-pointer rounded-lg shadow-2xl"
+                        class="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain cursor-pointer rounded-lg shadow-2xl"
                         onclick="closeModal()" />
                 </div>
             </div>
