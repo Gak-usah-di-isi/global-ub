@@ -83,8 +83,8 @@
                         </svg>
                     </button>
                     <img id="modalImage" src=""
-                        class="max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain cursor-pointer rounded-lg shadow-2xl"
-                        onclick="closeModal()" />
+                        style="max-width: 90vw !important; max-height: 90vh !important; width: auto !important; height: auto !important; object-fit: contain !important;"
+                        class="cursor-pointer rounded-lg shadow-2xl" onclick="closeModal()" />
                 </div>
             </div>
             <div class="flex gap-4 mt-6 md:mt-8">
