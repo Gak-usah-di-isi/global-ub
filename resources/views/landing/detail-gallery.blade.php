@@ -64,7 +64,7 @@
             @endphp
             <div class="w-full max-w-[1200px] mx-auto mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[30px]">
                 @foreach ($imgArray as $index => $img)
-                    <div class="aspect-square rounded-[21px] overflow-hidden bg-neutral-100 flex items-center justify-center cursor-pointer"
+                    <div class="w-full h-40 md:h-48 rounded-[21px] overflow-hidden bg-neutral-100 flex items-center justify-center cursor-pointer"
                         onclick="openModal({{ $index }})" data-img="{{ asset('storage/' . $img) }}">
                         <img src="{{ asset('storage/' . $img) }}" alt="gallery image" class="w-full h-full object-cover"
                             style="border-radius:20.95px;" />
@@ -74,7 +74,7 @@
             <!-- Modal Gallery -->
             <div id="galleryModal" class="fixed inset-0 hidden z-50 flex items-center justify-center p-4">
                 <div class="absolute inset-0 backdrop-blur-sm bg-black/90" onclick="closeModal()"></div>
-                <div class="relative w-full max-w-3xl mx-auto">
+                <div class="relative w-full max-w-5xl mx-auto">
                     <button id="closeButton" onclick="closeModal()"
                         class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,8 +82,8 @@
                             </path>
                         </svg>
                     </button>
-                    <div class="flex justify-center items-center w-full">
-                        <img id="modalImage" src="" class="max-w-full max-h-[70vh] object-contain cursor-pointer"
+                    <div class="flex justify-center items-center w-full h-[80vh]">
+                        <img id="modalImage" src="" class="max-w-full max-h-full w-auto h-auto object-contain cursor-pointer rounded-lg"
                             onclick="closeModal()" />
                     </div>
                 </div>
