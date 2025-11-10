@@ -39,8 +39,8 @@
 
     {{-- News Content Section --}}
     <section class="lg:max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-20 lg:px-8">
-        <div class="w-full mx-auto mb-8">
-            <img src="{{ asset('storage/' . $news->image) }}" class="h-full rounded-xl w-full bg-cover bg-center"
+        <div class="w-full mx-auto mb-8 max-h-[500px] overflow-hidden flex items-center justify-center">
+            <img src="{{ asset('storage/' . $news->image) }}" class="w-full h-auto max-h-[500px] rounded-xl object-cover"
                 alt="{{ $news->title }}">
         </div>
         <div class="flex w-full text-xs mt-12 mb-4 text-neutral-400">
