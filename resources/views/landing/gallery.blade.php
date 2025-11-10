@@ -58,7 +58,7 @@
                         </h2>
                         <p
                             class="font-inter font-light text-[13px] md:text-[16px] lg:text-[17px] leading-[18px] md:leading-[24px] lg:leading-[29.25px] text-[#F9FAFB] pr-12 break-words">
-                            {{ Str::limit($gallery->description, 70) }}
+                            {{ $gallery->description }}
                         </p>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                                 {{ $gallery->title }}
                             </h3>
                             <p class="mt-2 text-neutral-500 text-sm">
-                                {{ $gallery->description }}
+                                {{ str::limit($gallery->description, 80) }}
                             </p>
                         </div>
                     </div>
