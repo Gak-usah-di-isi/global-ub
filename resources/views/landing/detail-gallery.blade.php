@@ -83,7 +83,8 @@
                         </svg>
                     </button>
                     <div class="flex justify-center items-center w-full h-[80vh]">
-                        <img id="modalImage" src="" class="max-w-full max-h-full w-auto h-auto object-contain cursor-pointer rounded-lg"
+                        <img id="modalImage" src=""
+                            class="max-w-full max-h-full w-auto h-auto object-contain cursor-pointer rounded-lg"
                             onclick="closeModal()" />
                     </div>
                 </div>
