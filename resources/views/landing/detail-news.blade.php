@@ -20,7 +20,8 @@
             </div>
         </div>
         <div class="flex items-center space-x-4 ml-4">
-            <a href="/news" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
+            <a href="/news"
+                class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 News
             </a>
             <div class="w-[16px] h-[16px]">
@@ -101,13 +102,14 @@
             @foreach ($relatedNews as $related)
                 {{-- Menggunakan 'block' agar link mengambil lebar penuh kolom --}}
                 <a href="{{ route('news.show', $related->slug) }}" class="my-2 block">
-                    <img src="{{ asset('storage/' . $related->image) }}" class="rounded-lg h-40 w-full object-cover bg-center"
-                        alt="{{ $related->title }}">
+                    <img src="{{ asset('storage/' . $related->image) }}"
+                        class="rounded-lg h-40 w-full object-cover bg-center" alt="{{ $related->title }}">
                     <h1 class="font-playfair font-bold my-4 line-clamp-2 leading-tight text-lg">{{ $related->title }}</h1>
                     <p class="text-sm font-inter line-clamp-2 text-neutral-600 my-4">
                         {{ Str::limit($related->content, 100) }}
                     </p>
-                    <div class="flex items-center align-middle justify-between font-inter w-full text-xs mb-2 text-neutral-500">
+                    <div
+                        class="flex items-center align-middle justify-between font-inter w-full text-xs mb-2 text-neutral-500">
                         <div class="flex items-center align-middle w-full">
                             <span class="flex items-center align-middle gap-x-2 mr-4">
                                 <img src="{{ asset('icons-site/calender.svg') }}" alt="">

@@ -47,9 +47,15 @@
                     <span
                         class="py-1 px-4 text-sm text-blue-700 font-inter mb-4 w-fit block bg-blue-50 font-normal rounded-full">{{ $event->event_type }}</span>
                     <h1 class="font-bold text-3xl mb-4 font-playfair">{{ $event->title }}</h1>
-                    <p class="font-inter max-w-xl text-neutral-500 leading-6">
-                        {{ $event->description }}
-                    </p>
+                    <div id="event-description" class="text-neutral-500 leading-6">
+                        @foreach ($paragraphs as $paragraph)
+                            @if (trim($paragraph))
+                                <p class="font-inter text-neutral-500 text-justify leading-6 mb-4">
+                                    {{ $paragraph }}
+                                </p>
+                            @endif
+                        @endforeach
+                    </div>
                     <div class="flex flex-col gap-1 text-neutral-500 my-4">
                         <span class="flex items-center align-middle gap-2"><img src="{{ asset('icons-site/calender.svg') }}"
                                 alt="calender">{{ \Carbon\Carbon::parse($event->event_date)->format('F j, Y') }}</span>
@@ -63,9 +69,9 @@
                             Expected
                             Attendance</span>
                     </div>
-                    <a
+                    {{-- <a
                         class="inline-block text-neutral-800 border border-neutral-200 font-inter w-fit py-3 font-medium px-8 rounded-xl mb-4 hover:bg-gray-50">Register
-                        Now</a>
+                        Now</a> --}}
                 </div>
                 <div class="flex items-end align-bottom gap-x-2">
                     <div

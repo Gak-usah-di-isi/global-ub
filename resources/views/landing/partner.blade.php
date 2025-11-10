@@ -69,11 +69,11 @@
                             <span class="text-[#0000FF] font-medium">{{ $partner->program_duration }}</span>
                         </div>
 
-                        <a href="#"
+                        {{-- <a href="#"
                             class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px]">
                             Collaborate
                             <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
+                        </a> --}}
                     </div>
                 @endforeach
             </div>
