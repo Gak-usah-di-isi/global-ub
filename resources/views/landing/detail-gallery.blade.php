@@ -72,16 +72,16 @@
                 @endforeach
             </div>
             <!-- Modal Gallery -->
-            <div id="galleryModal" class="fixed inset-0 hidden z-50 flex items-center justify-center p-4">
+            <div id="galleryModal" class="fixed inset-0 hidden z-50">
                 <div class="absolute inset-0 backdrop-blur-sm bg-black/90" onclick="closeModal()"></div>
                 <button id="closeButton" onclick="closeModal()"
-                    class="absolute top-4 right-4 md:top-8 md:right-8 text-white hover:text-gray-300 transition-colors z-10">
+                    class="fixed top-4 right-4 md:top-8 md:right-8 text-white hover:text-gray-300 transition-colors z-[60]">
                     <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                         </path>
                     </svg>
                 </button>
-                <div class="relative w-full h-full flex items-center justify-center">
+                <div class="fixed inset-0 flex items-center justify-center p-4">
                     <img id="modalImage" src=""
                         style="max-width: 90vw !important; max-height: 90vh !important; width: auto !important; height: auto !important; object-fit: contain !important;"
                         class="cursor-pointer rounded-lg shadow-2xl" onclick="closeModal()" />
