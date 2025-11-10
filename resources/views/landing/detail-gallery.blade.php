@@ -75,7 +75,8 @@
             <div id="galleryModal" class="fixed inset-0 hidden z-50">
                 <div class="absolute inset-0 backdrop-blur-sm bg-black/90" onclick="closeModal()"></div>
                 <button id="closeButton" onclick="closeModal()"
-                    class="fixed top-10 right-10 md:top-14 md:right-14 text-white hover:text-gray-300 transition-colors z-[60]">
+                    style="position: fixed !important; top: 2.5rem !important; right: 2.5rem !important; z-index: 60 !important;"
+                    class="text-white hover:text-gray-300 transition-colors">
                     <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                         </path>
