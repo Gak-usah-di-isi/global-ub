@@ -7,14 +7,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-28">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="{{ asset('icons/home.svg') }}" alt="Home Icon" class="w-full h-full">
+                <img src="{{ asset('icons-site/home.svg') }}" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
                             <div class="relative">
                                 <img src="{{ asset('storage/' . $testimonial->photo) }}" alt="Profile photo"
                                     class="w-16 h-16 rounded-full object-cover" />
-                                <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
+                                <img src="{{ asset('icons-site/star_testi.svg') }}" alt="Badge icon"
                                     class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
                             </div>
                             <div>
@@ -68,7 +68,7 @@
                         </section>
 
                         <blockquote class="mt-4">
-                            <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
+                            <img src="{{ asset('icons-site/quote.svg') }}" alt="Quote icon"
                                 class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
                             <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
                                 “{{ $testimonial->testimonial }}”</p>
@@ -76,11 +76,11 @@
 
                         <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
                             <p class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
+                                <img src="{{ asset('icons-site/location.svg') }}" alt="Location icon" class="w-4 h-4" />
                                 {{ $testimonial->location }}
                             </p>
                             <p class="flex items-center gap-2">
-                                <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
+                                <img src="{{ asset('icons-site/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
                                 {{ $testimonial->partnership_since }}
                             </p>
                         </section>
@@ -108,13 +108,13 @@
                     @if ($testimonials->onFirstPage())
                         <button
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons/arrow-fix.svg" alt="Previous"
+                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
                                 class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
                         </button>
                     @else
                         <a href="{{ $testimonials->previousPageUrl() }}"
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons/arrow-fix.svg" alt="Previous"
+                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
                                 class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                         </a>
                     @endif
@@ -132,12 +132,12 @@
                     @if ($testimonials->hasMorePages())
                         <a href="{{ $testimonials->nextPageUrl() }}"
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
                         </a>
                     @else
                         <button
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
                         </button>
                     @endif
                 </div>

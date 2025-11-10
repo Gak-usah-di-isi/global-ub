@@ -8,12 +8,12 @@
             role="menu" aria-label="Aksi Produk">
             <button type="button" role="menuitem"
                 class="group action-delete flex w-full items-center gap-4 rounded-md px-2 py-3 text-[13px] font-medium text-[#2545AE] hover:bg-[#F1F5FF] hover:text-[#12379f] focus:outline-none focus:ring-2 focus:ring-primary-500/30 transition">
-                <img src="/icons/Outline copy 3.png" alt="Hapus" class="w-5 h-5 shrink-0" />
+                <img src="/icons-site/Outline copy 3.png" alt="Hapus" class="w-5 h-5 shrink-0" />
                 <span>Hapus Produk</span>
             </button>
             <button type="button" role="menuitem"
                 class="group action-edit flex w-full items-center gap-4 rounded-md px-2 py-3 text-[13px] font-medium text-[#2545AE] hover:bg-[#F1F5FF] hover:text-[#12379f] focus:outline-none focus:ring-2 focus:ring-primary-500/30 transition">
-                <img src="/icons/Outline copy 4.png" alt="Edit" class="w-5 h-5 shrink-0" />
+                <img src="/icons-site/Outline copy 4.png" alt="Edit" class="w-5 h-5 shrink-0" />
                 <span>Edit Produk</span>
             </button>
         </div>

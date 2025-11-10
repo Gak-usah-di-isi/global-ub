@@ -48,7 +48,7 @@
         <div
             class="relative z-10 flex flex-col items-center justify-center px-4 sm:px-8 md:px-12 lg:px-[120px] text-center">
 
-            <img src="{{ asset('/icons/gub-nav.svg') }}" alt="Logo Gub"
+            <img src="{{ asset('/icons-site/gub-nav.svg') }}" alt="Logo Gub"
                 class="h-10 md:h-14 mx-auto mb-6 md:mb-8 animate-float-slow">
 
             <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 font-inter mb-6">

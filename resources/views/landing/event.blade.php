@@ -7,14 +7,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="/icons/home.svg" alt="Home Icon" class="w-full h-full">
+                <img src="/icons-site/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -70,27 +70,27 @@
                             <div
                                 class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset('icons-site/calender.svg') }}" class="w-4 h-4" alt="">
                                     {{ \Carbon\Carbon::parse($event->event_date)->format('F j, Y') }}
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset('icons-site/clock.svg') }}" class="w-4 h-4" alt="">
                                     {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} -
                                     {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset('icons-site/location.svg') }}" class="w-4 h-4" alt="">
                                     {{ $event->location }}
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset('icons-site/user-black.svg') }}" class="w-4 h-4" alt="">
                                     {{ $event->expected_attendees }} expected attendees
                                 </div>
                             </div>
                             <a href="{{ route('event.show', $event->slug) }}"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:hover:bg-gray-50">
                                 Learn More
-                                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                             </a>
                         </div>
                     </article>
@@ -102,13 +102,13 @@
                     @if ($events->onFirstPage())
                         <button
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons/arrow-fix.svg" alt="Previous"
+                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
                                 class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
                         </button>
                     @else
                         <a href="{{ $events->previousPageUrl() }}"
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons/arrow-fix.svg" alt="Previous"
+                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
                                 class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                         </a>
                     @endif
@@ -125,12 +125,12 @@
                     @if ($events->hasMorePages())
                         <a href="{{ $events->nextPageUrl() }}"
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
                         </a>
                     @else
                         <button
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
                         </button>
                     @endif
                 </div>

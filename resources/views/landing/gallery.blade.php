@@ -7,11 +7,11 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="/icons/home.svg" alt="Home Icon" class="w-full h-full">
+                <img src="/icons-site/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
             <span class="text-[#29303D] text-[14px] font-light">Home</span>
             <div class="w-[16px] h-[16px]">
-                <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
             </div>
         </div>
         <div class="flex items-center space-x-4 ml-4">
@@ -45,7 +45,7 @@
                     <div
                         class="absolute left-4 md:left-8 lg:left-[60px] bottom-4 md:bottom-8 lg:bottom-[46px] w-[90vw] max-w-[669px] h-auto flex flex-col justify-end gap-2 md:gap-[14px]">
                         <div class="flex items-center gap-2 w-auto h-[20px] mb-1 md:mb-2">
-                            <img src="{{ asset('icons/calender-white.svg') }}" class="w-4 h-4 md:w-5 md:h-5"
+                            <img src="{{ asset('icons-site/calender-white.svg') }}" class="w-4 h-4 md:w-5 md:h-5"
                                 alt="calendar icon">
                             <span
                                 class="font-inter font-normal text-[12px] md:text-[14px] leading-[13.29px] text-[#F9FAFB] bg-transparent">
@@ -105,13 +105,13 @@
             <div class="flex items-center gap-3 md:gap-4">
                 @if ($images->onFirstPage())
                     <button class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons/arrow-fix.svg" alt="Previous"
+                        <img src="/icons-site/arrow-fix.svg" alt="Previous"
                             class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
                     </button>
                 @else
                     <a href="{{ $images->previousPageUrl() }}"
                         class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons/arrow-fix.svg" alt="Previous" class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
+                        <img src="/icons-site/arrow-fix.svg" alt="Previous" class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                     </a>
                 @endif
 
@@ -127,11 +127,11 @@
                 @if ($images->hasMorePages())
                     <a href="{{ $images->nextPageUrl() }}"
                         class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                        <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
                     </a>
                 @else
                     <button class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                        <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
                     </button>
                 @endif
             </div>
