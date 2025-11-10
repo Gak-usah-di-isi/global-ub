@@ -35,7 +35,7 @@ return [
 
     'about' => [
         'title' => 'Tentang Globalizing UB',
-        'description' => 'Universitas Brawijaya adalah salah satu universitas terkemuka di Indonesia, yang berkomitmen untuk menjadi universitas bertaraf internasional. Melalui program Globalizing UB, kami menyediakan pendidikan berkualitas internasional yang menghubungkan mahasiswa dengan peluang global. Dengan pengalaman lebih dari 60 tahun dalam pendidikan, UB telah menghasilkan lulusan-lulusan terbaik yang berkontribusi pada pembangunan nasional dan internasional.',
+        'description' => 'Universitas Brawijaya adalah salah satu universitas terkemuka di Indonesia yang berkomitmen menjadi universitas bertaraf internasional. Melalui program Globalizing UB, kami menyediakan pendidikan berstandar global yang menghubungkan mahasiswa dengan peluang internasional dengan pengalaman lebih dari 60 tahun.',
         'counters' => [
             'students' => 'Mahasiswa',
             'partners' => 'Universitas Mitra',

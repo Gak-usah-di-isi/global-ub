@@ -60,7 +60,7 @@
             </button>
         </div>
 
-          <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
+        <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
         <div
             class="hidden md:flex lg:hidden absolute top-[500px] left-5 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button class="w-12 h-12 flex justify-center items-center text-white">
@@ -75,7 +75,7 @@
         </div>
 
 
-         <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
+        <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
         <div
             class="flex md:hidden lg:hidden absolute top-[580px] left-3 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button class="w-8 h-8 flex justify-center items-center text-white">
@@ -388,7 +388,7 @@
             </div>
 
             <div class="flex justify-center mt-8 md:mt-16">
-                <a href="#"
+                <a href="/news"
                     class="w-full max-w-[193px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     {{ __('landing.news.button') }}
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
@@ -566,7 +566,7 @@
 
         <div class="flex justify-center mt-12 md:mt-16">
             <a href="{{ route('event.index') }}"
-                class="w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
+                class="w-full max-w-[220px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                 {{ __('landing.events.button.view_all') }}
                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>
@@ -629,8 +629,8 @@
                                 </div>
 
                                 <div class="flex gap-1 sm:gap-[4px] items-center">
-                                    <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60"
-                                        alt="Download">
+                                    <img src="{{ asset('icons/download.svg') }}"
+                                        class="w-3 h-3 sm:w-4 sm:h-4 opacity-60" alt="Download">
                                     <span
                                         class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">
                                         @php
@@ -655,7 +655,7 @@
             </div>
             <div class="flex justify-center mt-4 md:mt-6">
                 <a href="/download-center"
-                    class=" w-full max-w-[270px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
+                    class=" w-full max-w-[280px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     {{ __('landing.download.button.view_all') }}
                     <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
@@ -725,11 +725,11 @@
                             <div class="ck-content">
                                 {!! $innovation->highlights !!}
                             </div>
-                            <a href="#"
+                            {{-- <a href="#"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition">
                                 {{ __('landing.innovation.button.learn_more') }}
                                 <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 @endforeach
@@ -815,13 +815,13 @@
                             </div>
                         </section>
 
-                        <footer class="mt-6">
+                        {{-- <footer class="mt-6">
                             <button
                                 class="w-full flex items-center justify-center gap-2 py-2 border border-gray-200 rounded-lg font-inter text-sm font-medium text-[#29303D] hover:bg-gray-50">
                                 View Full Story
                                 <img src="{{ asset('images/play.svg') }}" alt="Arrow icon" class="w-4 h-4" />
                             </button>
-                        </footer>
+                        </footer> --}}
                     </div>
                 @endforeach
             </div>
@@ -939,7 +939,7 @@
                 </div>
                 <div class="flex justify-center">
                     <a href="/story"
-                        class="w-full sm:w-[160px] h-[44px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] shadow-md flex items-center justify-center text-center py-[11.5px] px-[32px] text-sm md:text-[14px] font-medium">
+                        class="w-full sm:w-[160px] h-[44px] md:w-[200px] h-[46px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] shadow-md flex items-center justify-center text-center py-[11.5px] px-[32px] text-sm md:text-[14px] font-medium">
                         {{ __('landing.story.button') }}
                     </a>
                 </div>
