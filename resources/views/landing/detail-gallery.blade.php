@@ -184,7 +184,7 @@
                                 {{ $gallery->title }}
                             </h3>
                             <p class="mt-2 text-neutral-500 text-sm">
-                                {{ $gallery->description }}
+                                {{ Str::limit($gallery->description, 80) }}
                             </p>
                         </div>
                     </div>
