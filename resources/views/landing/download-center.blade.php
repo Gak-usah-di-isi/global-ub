@@ -7,14 +7,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="/icons/home.svg" alt="Home Icon" class="w-full h-full">
+                <img src="/icons-site/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="flex gap-1 sm:gap-[4px] items-center">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60"
+                                <img src="{{ asset('icons-site/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60"
                                     alt="Download">
                                 <span
                                     class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">
@@ -89,7 +89,7 @@
 
                         <a href="{{ route('download-center.download', $download->slug) }}"
                             class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                            <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
+                            <img src="{{ asset('icons-site/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
                             <span
                                 class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">Download</span>
                         </a>
@@ -102,13 +102,13 @@
             <div class="flex items-center gap-3 md:gap-4">
                 @if ($downloads->onFirstPage())
                     <button class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons/arrow-fix.svg" alt="Previous"
+                        <img src="/icons-site/arrow-fix.svg" alt="Previous"
                             class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
                     </button>
                 @else
                     <a href="{{ $downloads->previousPageUrl() }}"
                         class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons/arrow-fix.svg" alt="Previous" class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
+                        <img src="/icons-site/arrow-fix.svg" alt="Previous" class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                     </a>
                 @endif
 
@@ -124,11 +124,11 @@
                 @if ($downloads->hasMorePages())
                     <a href="{{ $downloads->nextPageUrl() }}"
                         class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                        <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
                     </a>
                 @else
                     <button class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                        <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
                     </button>
                 @endif
             </div>
@@ -150,7 +150,7 @@
             <a href="#"
                 class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 transition border border-white/20 text-white px-12 py-3 rounded-lg text-sm font-medium">
                 Download Complete Media Kit
-                <img src="{{ asset('icons/arrow-right-white.svg') }}" alt="">
+                <img src="{{ asset('icons-site/arrow-right-white.svg') }}" alt="">
             </a>
         </div>
     </div>

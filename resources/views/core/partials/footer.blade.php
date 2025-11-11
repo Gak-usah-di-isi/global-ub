@@ -5,7 +5,7 @@
                 <div class="flex flex-col gap-4">
                     <div class="flex gap-4 items-center">
                         <img src="{{ asset('images/ub.png') }}" alt="UB Logo" class="w-10 h-10">
-                        <img src="{{ asset('icons/gub.svg') }}" alt="Globalizing Logo"
+                        <img src="{{ asset('icons-site/gub.svg') }}" alt="Globalizing Logo"
                             class="h-10 max-w-[120px] sm:max-w-[150px] lg:max-w-[200px]">
                     </div>
                     <p class="text-[#FFFFFF] text-sm mt-2 font-inter font-light">Inspiring Change, Uniting
@@ -17,18 +17,18 @@
                         Brawijaya</h3>
 
                     <div class="flex items-start gap-2">
-                        <img src="{{ asset('icons/location-blue.svg') }}" alt="Map Icon" class="w-4 h-4 mt-1">
+                        <img src="{{ asset('icons-site/location-blue.svg') }}" alt="Map Icon" class="w-4 h-4 mt-1">
                         <p class="text-white text-sm font-light font-inter">Jl. Veteran, Ketawanggede, Kec.
                             Lowokwaru, Kota Malang, Jawa Timur 65145, Indonesia</p>
                     </div>
 
                     <div class="flex items-center gap-2">
-                        <img src="{{ asset('icons/telp-blue.svg') }}" alt="Phone Icon" class="w-4 h-4">
+                        <img src="{{ asset('icons-site/telp-blue.svg') }}" alt="Phone Icon" class="w-4 h-4">
                         <p class="text-white text-sm font-light font-inter">+62 341 551611</p>
                     </div>
 
                     <div class="flex items-center gap-2">
-                        <img src="{{ asset('icons/email-blue.svg') }}" alt="Email Icon" class="w-4 h-4">
+                        <img src="{{ asset('icons-site/email-blue.svg') }}" alt="Email Icon" class="w-4 h-4">
                         <p class="text-white text-sm font-light font-inter">gub@ub.ac.id</p>
                     </div>
                 </div>
@@ -39,22 +39,22 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <a href="#" target="_blank"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
-                        <img src="{{ asset('icons/fb-blue.svg') }}" alt="Facebook Icon" class="w-[20px] h-[20px]">
+                        <img src="{{ asset('icons-site/fb-blue.svg') }}" alt="Facebook Icon" class="w-[20px] h-[20px]">
                         <p class="text-white text-sm font-inter font-light leading-[20px]">Facebook</p>
                     </a>
                     <a href="https://www.linkedin.com/in/globalizing-ub-94b519385/" target="_blank"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
-                        <img src="{{ asset('icons/linkedin-blue.svg') }}" alt="LinkedIn Icon" class="w-[20px] h-[20px]">
+                        <img src="{{ asset('icons-site/linkedin-blue.svg') }}" alt="LinkedIn Icon" class="w-[20px] h-[20px]">
                         <p class="text-white text-sm font-inter font-light leading-[20px]">LinkedIn</p>
                     </a>
                     <a href="https://www.instagram.com/globalizingub/" target="_blank"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
-                        <img src="{{ asset('icons/ig-blue.svg') }}" alt="Instagram Icon" class="w-[20px] h-[20px]">
+                        <img src="{{ asset('icons-site/ig-blue.svg') }}" alt="Instagram Icon" class="w-[20px] h-[20px]">
                         <p class="text-white text-sm font-inter font-light leading-[20px]">Instagram</p>
                     </a>
                     <a href="https://www.youtube.com/@GlobalizingUB" target="_blank"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
-                        <img src="{{ asset('icons/yt-blue.svg') }}" alt="YouTube Icon" class="w-[20px] h-[20px]">
+                        <img src="{{ asset('icons-site/yt-blue.svg') }}" alt="YouTube Icon" class="w-[20px] h-[20px]">
                         <p class="text-white text-sm font-inter font-light leading-[20px]">YouTube</p>
                     </a>
                 </div>
@@ -64,19 +64,19 @@
                 <h4 class="text-white text-lg font-playfair">Visitor</h4>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-white text-sm">
                     <div class="flex items-center gap-2">
-                        <img src="{{ asset('icons/user.svg') }}" alt="Visits Today Icon" class="w-4 h-4">
+                        <img src="{{ asset('icons-site/user.svg') }}" alt="Visits Today Icon" class="w-4 h-4">
                         <span>{{ number_format($visitsToday) }} Visits Today</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <img src="{{ asset('icons/user.svg') }}" alt="Total Visits Icon" class="w-4 h-4">
+                        <img src="{{ asset('icons-site/user.svg') }}" alt="Total Visits Icon" class="w-4 h-4">
                         <span>{{ number_format($totalVisits) }} Visits</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <img src="{{ asset('icons/user.svg') }}" alt="Visitors Today Icon" class="w-4 h-4">
+                        <img src="{{ asset('icons-site/user.svg') }}" alt="Visitors Today Icon" class="w-4 h-4">
                         <span>{{ number_format($visitorsToday) }} Visitors Today</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <img src="{{ asset('icons/user.svg') }}" alt="Total Visitors Icon" class="w-4 h-4">
+                        <img src="{{ asset('icons-site/user.svg') }}" alt="Total Visitors Icon" class="w-4 h-4">
                         <span>{{ number_format($totalVisitors) }} Visitors</span>
                     </div>
                 </div>

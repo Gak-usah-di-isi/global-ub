@@ -45,7 +45,7 @@
                         class="bg-[#FFFFFF1A] border border-[#FFFFFF33] shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px] text-[#0000FF] py-2 px-4 sm:px-[33px] rounded-[12px] w-full sm:w-[220px] h-[56px] flex items-center justify-center gap-2">
                         <span class="font-medium font-inter text-sm sm:text-[14px] leading-[24px] text-white">Explore
                             Programs</span>
-                        <img src="{{ asset('icons/play.svg') }}" alt="Play Icon" class="w-4 h-4">
+                        <img src="{{ asset('icons-site/play.svg') }}" alt="Play Icon" class="w-4 h-4">
                     </button>
 
                     <button
@@ -131,7 +131,7 @@
                 <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
-                        <img src="{{ asset('icons/trophy.svg') }}" alt="Icon 1"
+                        <img src="{{ asset('icons-site/trophy.svg') }}" alt="Icon 1"
                             class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                     </div>
                     <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
@@ -147,7 +147,7 @@
                 <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
-                        <img src="{{ asset('icons/globe-blue.svg') }}" alt="Icon 2"
+                        <img src="{{ asset('icons-site/globe-blue.svg') }}" alt="Icon 2"
                             class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                     </div>
                     <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
@@ -163,7 +163,7 @@
                 <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
-                        <img src="{{ asset('icons/up.svg') }}" alt="Icon 3"
+                        <img src="{{ asset('icons-site/up.svg') }}" alt="Icon 3"
                             class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                     </div>
                     <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
@@ -180,7 +180,7 @@
                     class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
-                        <img src="{{ asset('icons/star.svg') }}" alt="Icon 4"
+                        <img src="{{ asset('icons-site/star.svg') }}" alt="Icon 4"
                             class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                     </div>
                     <h3 class="text-xl md:text-[24px] font-inter font-extrabold text-[#29303D] text-center mt-2 mb-2">
@@ -198,7 +198,7 @@
             <div class="flex justify-center mt-8 md:mt-16 rounded-full">
                 <button
                     class="bg-[#FFFFFFB2] text-[#29303D] py-10 px-4 md:py-[12px] md:px-[24px] rounded-full w-full max-w-[504px] h-12 md:h-[48px] flex items-center justify-center gap-2">
-                    <img src="{{ asset('icons/up.svg') }}" alt="Arrow Right Icon" class="w-4 h-4 md:w-5 md:h-5">
+                    <img src="{{ asset('icons-site/up.svg') }}" alt="Arrow Right Icon" class="w-4 h-4 md:w-5 md:h-5">
                     <span class="font-medium font-inter text-sm md:text-[14px] leading-[24px]">
                         Consistently improving in global rankings year over year
                     </span>
@@ -224,7 +224,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutCounter1" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
@@ -235,7 +235,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutCounter2" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
@@ -246,7 +246,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/achievement.svg') }}" alt="Years Icon"
+                            <img src="{{ asset('icons-site/achievement.svg') }}" alt="Years Icon"
                                 class="w-[24px] h-[24px]" />
                         </div>
                         <div>
@@ -258,7 +258,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons/partner.svg') }}" alt="Partners Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Partners Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutCounter4" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
@@ -300,7 +300,7 @@
                         <!-- Play Button -->
                         <button
                             class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm mb-6">
-                            <img src='{{ asset('icons/play.svg') }}' alt="Play"
+                            <img src='{{ asset('icons-site/play.svg') }}' alt="Play"
                                 class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
@@ -322,7 +322,7 @@
                     <div class="flex items-center gap-2 sm:gap-3 w-full h-full">
                         <div
                             class="w-8 h-8 sm:w-10 sm:h-10 md:w-[48px] md:h-[48px] rounded-full flex items-center justify-center bg-[linear-gradient(135deg,#0000FF_0%,#6699FF_100%)]">
-                            <img src="{{ asset('icons/partner.svg') }}" alt="Global Network Icon"
+                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Global Network Icon"
                                 class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6">
                         </div>
                         <div class="flex-1 min-w-0">
@@ -372,16 +372,16 @@
                     <div class="flex items-center justify-between text-sm md:text-[14px] text-[#29303DB2]">
                         <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
                             <span class="flex items-center gap-1">
-                                <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
+                                <img src="{{ asset('icons-site/calender.svg') }}" class="w-4 h-4" alt="">
                                 {{ $latestNews->created_at->format('m/d/Y') }}
                             </span>
                             <span class="flex items-center gap-1">
-                                <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
+                                <img src="{{ asset('icons-site/clock.svg') }}" class="w-4 h-4" alt="">
                                 {{ $latestNews->created_at_human }}
                             </span>
                         </div>
                         <div>
-                            <img src="{{ asset('icons/arrow-right.svg') }}" class="w-5 h-5" alt="">
+                            <img src="{{ asset('icons-site/arrow-right.svg') }}" class="w-5 h-5" alt="">
                         </div>
                     </div>
                 </a>
@@ -413,7 +413,7 @@
                 <a href="/news"
                     class="w-full max-w-[193px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     {{ __('landing.news.button') }}
-                    <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                    <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
             </div>
 
@@ -491,7 +491,7 @@
 
                         <div class="flex justify-between items-center text-xs md:text-[14px] leading-[20px]">
                             <span class="flex items-center gap-2 text-[#29303DB2]">
-                                <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="user">
+                                <img src="{{ asset('icons-site/user-black.svg') }}" class="w-4 h-4" alt="user">
                                 {{ number_format($study->students_count) }} students
                             </span>
                             <span class="text-[#0000FF] font-medium">{{ $study->duration }}</span>
@@ -504,7 +504,7 @@
                         <a href="{{ route('study.show', $study->slug) }}"
                             class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
                             {{ __('landing.study.button') }}
-                            <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                            <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
                     </div>
                 @endforeach
@@ -558,27 +558,27 @@
                             <div
                                 class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset('icons/calender.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset('icons-site/calender.svg') }}" class="w-4 h-4" alt="">
                                     {{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset('icons/clock.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset('icons-site/clock.svg') }}" class="w-4 h-4" alt="">
                                     {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} -
                                     {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset('icons/location.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset('icons-site/location.svg') }}" class="w-4 h-4" alt="">
                                     {{ $event->location }}
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset('icons/user-black.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset('icons-site/user-black.svg') }}" class="w-4 h-4" alt="">
                                     {{ $event->expected_attendees }} expected attendees
                                 </div>
                             </div>
                             <a href="{{ route('event.show', $event->slug) }}"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                                 {{ __('landing.events.button.learn_more') }}
-                                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                             </a>
                         </div>
                     </div>
@@ -590,7 +590,7 @@
             <a href="{{ route('event.index') }}"
                 class="w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                 {{ __('landing.events.button.view_all') }}
-                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>
         </div>
     </section>
@@ -651,8 +651,10 @@
                                 </div>
 
                                 <div class="flex gap-1 sm:gap-[4px] items-center">
-                                    <img src="{{ asset('icons/download.svg') }}"
-                                        class="w-3 h-3 sm:w-4 sm:h-4 opacity-60" alt="Download">
+
+                                    <img src="{{ asset('icons-site/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60"
+                                        alt="Download">
+
                                     <span
                                         class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">
                                         @php
@@ -666,7 +668,7 @@
 
                             <a href="{{ route('download-center.download', $download->slug) }}"
                                 class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                                <img src="{{ asset('icons/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4"
+                                <img src="{{ asset('icons-site/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4"
                                     alt="Download">
                                 <span
                                     class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">{{ __('landing.download.button.download') }}</span>
@@ -679,7 +681,7 @@
                 <a href="/download-center"
                     class=" w-full max-w-[270px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     {{ __('landing.download.button.view_all') }}
-                    <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                    <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
             </div>
         </div>
@@ -750,7 +752,7 @@
                             {{-- <a href="#"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition">
                                 {{ __('landing.innovation.button.learn_more') }}
-                                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                             </a> --}}
                         </div>
                     </div>
@@ -762,7 +764,7 @@
             <a href="{{ route('innovation.index') }}"
                 class="mt-8 md:mt-16 w-full max-w-[240px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                 {{ __('landing.innovation.button.view_all') }}
-                <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
             </a>
         </div>
     </section>
@@ -791,7 +793,7 @@
                             <div class="relative">
                                 <img src="{{ asset('storage/' . $testimonial->photo) }}"
                                     alt="{{ $testimonial->name }}" class="w-16 h-16 rounded-full object-cover" />
-                                <img src="{{ asset('icons/star_testi.svg') }}" alt="Badge icon"
+                                <img src="{{ asset('icons-site/star_testi.svg') }}" alt="Badge icon"
                                     class="w-[24px] h-[24px] absolute -mt-[20px] right-0" />
                             </div>
                             <div>
@@ -813,7 +815,7 @@
                         </section>
 
                         <blockquote class="mt-4">
-                            <img src="{{ asset('icons/quote.svg') }}" alt="Quote icon"
+                            <img src="{{ asset('icons-site/quote.svg') }}" alt="Quote icon"
                                 class="w-[28px] h-[28px] sm:w-[33px] sm:h-[33px] mb-2" />
                             <p class="text-[#29303D] opacity-[0.8] text-sm sm:text-base leading-relaxed font-inter">
                                 “{{ $testimonial->testimonial }}”</p>
@@ -821,11 +823,11 @@
 
                         <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
                             <p class="flex items-center gap-2">
-                                <img src="{{ asset('icons/location.svg') }}" alt="Location icon" class="w-4 h-4" />
+                                <img src="{{ asset('icons-site/location.svg') }}" alt="Location icon" class="w-4 h-4" />
                                 {{ $testimonial->location }}
                             </p>
                             <p class="flex items-center gap-2">
-                                <img src="{{ asset('icons/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
+                                <img src="{{ asset('icons-site/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
                                 {{ $testimonial->partnership_since }}
                             </p>
                         </section>
@@ -852,7 +854,7 @@
                 <a href="{{ route('testimonial.index') }}"
                     class="mt-4 md:mt-6 w-full max-w-[250px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     {{ __('landing.testimonials.button') }}
-                    <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                    <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                 </a>
             </div>
 
@@ -883,7 +885,7 @@
                         <!-- Play button in center -->
                         <button
                             class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm">
-                            <img src='{{ asset('icons/play.svg') }}' alt="Play"
+                            <img src='{{ asset('icons-site/play.svg') }}' alt="Play"
                                 class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
@@ -905,7 +907,7 @@
                         <button
                             class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
                             <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
-                                <img src='{{ asset('icons/play.svg') }}' alt="Play" class="w-6 h-6" />
+                                <img src='{{ asset('icons-site/play.svg') }}' alt="Play" class="w-6 h-6" />
                             </span>
                             <span class="flex flex-col items-start justify-center">
                                 <span
@@ -918,7 +920,7 @@
                         <button
                             class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
                             <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
-                                <img src='{{ asset('icons/play.svg') }}' alt="Play" class="w-6 h-6" />
+                                <img src='{{ asset('icons-site/play.svg') }}' alt="Play" class="w-6 h-6" />
                             </span>
                             <span class="flex flex-col items-start justify-center">
                                 <span
@@ -932,7 +934,7 @@
                         <button
                             class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
                             <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
-                                <img src='{{ asset('icons/play.svg') }}' alt="Play" class="w-6 h-6" />
+                                <img src='{{ asset('icons-site/play.svg') }}' alt="Play" class="w-6 h-6" />
                             </span>
                             <span class="flex flex-col items-start justify-center">
                                 <span
@@ -946,7 +948,7 @@
                         <button
                             class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
                             <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
-                                <img src='{{ asset('icons/play.svg') }}' alt="Play" class="w-6 h-6" />
+                                <img src='{{ asset('icons-site/play.svg') }}' alt="Play" class="w-6 h-6" />
                             </span>
                             <span class="flex flex-col items-start justify-center">
                                 <span
@@ -1007,7 +1009,7 @@
                 <a href="{{ route('partnership.index') }}"
                     class="flex items-center gap-2 px-6 py-3 bg-white border border-[#E2E4E9] rounded-[10px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition-colors">
                     {{ __('landing.partnership.button') }}
-                    <img src="{{ asset('icons/arrow-right-black.svg') }}" class="w-4 h-4" alt="Arrow">
+                    <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="Arrow">
                 </a>
             </div>
 
