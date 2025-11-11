@@ -3,7 +3,24 @@
 @section('title', 'Globalizing UB')
 
 @section('content')
-    <section class="relative w-full h-[800px] md:h-[700px] ipad-pro:h-[800px] lg:h-[600px] max-w-[1440px] mx-auto">
+    <section x-data="{
+        currentSlide: 0,
+        slides: [
+            '{{ asset('images/slider_one.jpg') }}',
+            '{{ asset('images/slider_three.jpg') }}',
+            '{{ asset('images/hero-content.jpg') }}'
+        ],
+        nextSlide() {
+            this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+        },
+        prevSlide() {
+            this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+        },
+        goToSlide(index) {
+            this.currentSlide = index;
+        }
+    }"
+        class="relative w-full h-[850px] md:h-[700px] ipad-pro:h-[800px] lg:h-[600px] max-w-[1440px] mx-auto">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/hero-bg.jpg') }}')">
             <div class="absolute inset-0 bg-gradient-to-r from-[#0000FF] to-[#6699FF] opacity-90"></div>
         </div>
@@ -39,62 +56,66 @@
                 </div>
             </div>
 
-            <!-- Image Container - akan tetap di bawah text di iPad Pro -->
             <div
-                class="image-container w-full ipad-pro:w-full lg:w-1/2 xl:w-[380px] h-[300px] sm:h-[350px] ipad-pro:h-[350px] lg:h-[390px] rounded-[20px] overflow-hidden mt-4 ipad-pro:mt-6 lg:mt-0">
-                <img src="{{ asset('/images/hero-content.jpg') }}" alt="Image" class="w-full h-full object-cover">
+                class="image-container relative w-full ipad-pro:w-full lg:w-1/2 xl:w-[440px] h-[440px] sm:h-[380px] ipad-pro:h-[440px] lg:h-[440px] rounded-[20px] overflow-hidden mt-4 ipad-pro:mt-6 lg:mt-0">
+                <template x-for="(slide, index) in slides" :key="index">
+                    <div x-show="currentSlide === index" x-transition:enter="transition ease-out duration-500"
+                        x-transition:enter-start="opacity-0 transform translate-x-full"
+                        x-transition:enter-end="opacity-100 transform translate-x-0"
+                        x-transition:leave="transition ease-in duration-500"
+                        x-transition:leave-start="opacity-100 transform translate-x-0"
+                        x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0">
+                        <img :src="slide" alt="Slider Image" class="w-full h-full object-cover">
+                    </div>
+                </template>
             </div>
         </div>
 
-        <!-- Sembunyikan arrow navigation di iPad Pro -->
         <div
             class="hidden lg:flex absolute top-1/2 left-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
-            <button class="w-12 h-12 flex justify-center items-center text-white">
-                <img src="{{ asset('icons-site/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
+            <button @click="prevSlide()" class="w-12 h-12 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
             </button>
         </div>
         <div
             class="hidden lg:flex absolute top-1/2 right-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
-            <button class="w-12 h-12 flex justify-center items-center text-white">
-                <img src="{{ asset('icons-site/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
+            <button @click="nextSlide()" class="w-12 h-12 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
             </button>
         </div>
 
-        <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
         <div
             class="hidden md:flex lg:hidden absolute top-[500px] left-5 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
-            <button class="w-12 h-12 flex justify-center items-center text-white">
-                <img src="{{ asset('icons-site/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
+            <button @click="prevSlide()" class="w-12 h-12 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
             </button>
         </div>
         <div
             class="hidden md:flex lg:hidden absolute top-[500px] right-5 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
-            <button class="w-12 h-12 flex justify-center items-center text-white">
-                <img src="{{ asset('icons-site/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
+            <button @click="nextSlide()" class="w-12 h-12 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
             </button>
         </div>
 
-
-        <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
         <div
             class="flex md:hidden lg:hidden absolute top-[580px] left-3 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
-            <button class="w-8 h-8 flex justify-center items-center text-white">
-                <img src="{{ asset('icons-site/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
+            <button @click="prevSlide()" class="w-8 h-8 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
             </button>
         </div>
         <div
             class="flex md:hidden lg:hidden absolute top-[580px] right-3 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
-            <button class="w-8 h-8 flex justify-center items-center text-white">
-                <img src="{{ asset('icons-site/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
+            <button @click="nextSlide()" class="w-8 h-8 flex justify-center items-center text-white">
+                <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
             </button>
         </div>
 
         <div class="absolute bottom-8 md:bottom-[16px] lg:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
-            <div class="w-2 h-2 bg-[#FFFFFF80] rounded-full transition-all duration-300"></div>
-            <div class="w-2 h-2 bg-[#FFFFFF80] rounded-full transition-all duration-300"></div>
-            <div class="w-2 h-2 bg-[#FFFFFF] rounded-full transition-all duration-300"></div>
-            <div class="w-2 h-2 bg-[#FFFFFF80] rounded-full transition-all duration-300"></div>
-            <div class="w-2 h-2 bg-[#FFFFFF80] rounded-full transition-all duration-300"></div>
+            <template x-for="(slide, index) in slides" :key="index">
+                <div @click="goToSlide(index)" :class="currentSlide === index ? 'bg-[#FFFFFF] w-3' : 'bg-[#FFFFFF80] w-2'"
+                    class="h-2 rounded-full transition-all duration-300 cursor-pointer hover:bg-[#FFFFFF]">
+                </div>
+            </template>
         </div>
     </section>
     <section class="w-full h-auto bg-[#F0F2F4] py-12 md:py-20 lg:px-[112px]">
@@ -155,7 +176,8 @@
                     <span class="font-medium text-[#0000FF]">2024</span>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
+                <div
+                    class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
                         <img src="{{ asset('icons-site/star.svg') }}" alt="Icon 4"
