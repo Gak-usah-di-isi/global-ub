@@ -6,9 +6,9 @@
     <section x-data="{
         currentSlide: 0,
         slides: [
-            '{{ asset('images-site/slider_one.jpg') }}',
-            '{{ asset('images-site/slider_three.jpg') }}',
-            '{{ asset('images-site/hero-content.jpg') }}'
+            '/images/slider_one.jpg',
+            '/images/slider_three.jpg',
+            '/images/hero-content.jpg'
         ],
         nextSlide() {
             this.currentSlide = (this.currentSlide + 1) % this.slides.length;
