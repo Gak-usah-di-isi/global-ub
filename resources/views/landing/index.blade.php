@@ -6,9 +6,9 @@
     <section x-data="{
         currentSlide: 0,
         slides: [
-            '{{ asset('images/slider_one.jpg') }}',
-            '{{ asset('images/slider_three.jpg') }}',
-            '{{ asset('images/hero-content.jpg') }}'
+            '{{ url('images/slider_one.jpg') }}',
+            '{{ url('images/slider_three.jpg') }}',
+            '{{ url('images/hero-content.jpg') }}'
         ],
         nextSlide() {
             this.currentSlide = (this.currentSlide + 1) % this.slides.length;
@@ -72,7 +72,7 @@
         <div
             class="hidden lg:flex absolute top-1/2 left-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="prevSlide()" class="w-12 h-12 flex justify-center items-center text-white">
-                <img src="{{ asset('icons-sitw/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
+                <img src="{{ asset('icons-site/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
             </button>
         </div>
         <div
@@ -104,7 +104,7 @@
         <div
             class="flex md:hidden lg:hidden absolute top-[580px] right-3 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="nextSlide()" class="w-8 h-8 flex justify-center items-center text-white">
-                <img src="{{ asset('icons-sitw/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
+                <img src="{{ asset('icons-site/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
             </button>
         </div>
 
