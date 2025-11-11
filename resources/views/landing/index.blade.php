@@ -56,7 +56,6 @@
                 </div>
             </div>
 
-            <!-- Image Container - Carousel -->
             <div
                 class="image-container relative w-full ipad-pro:w-full lg:w-1/2 xl:w-[440px] h-[440px] sm:h-[380px] ipad-pro:h-[440px] lg:h-[440px] rounded-[20px] overflow-hidden mt-4 ipad-pro:mt-6 lg:mt-0">
                 <template x-for="(slide, index) in slides" :key="index">
@@ -72,7 +71,6 @@
             </div>
         </div>
 
-        <!-- Sembunyikan arrow navigation di iPad Pro -->
         <div
             class="hidden lg:flex absolute top-1/2 left-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="prevSlide()" class="w-12 h-12 flex justify-center items-center text-white">
@@ -86,7 +84,6 @@
             </button>
         </div>
 
-        <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
         <div
             class="hidden md:flex lg:hidden absolute top-[500px] left-5 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="prevSlide()" class="w-12 h-12 flex justify-center items-center text-white">
@@ -100,8 +97,6 @@
             </button>
         </div>
 
-
-        <!-- Sembunyikan arrow navigation di Dekstop % mobile-->
         <div
             class="flex md:hidden lg:hidden absolute top-[580px] left-3 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="prevSlide()" class="w-8 h-8 flex justify-center items-center text-white">
