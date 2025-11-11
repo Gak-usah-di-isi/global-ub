@@ -25,11 +25,9 @@
             <div class="absolute inset-0 bg-gradient-to-r from-[#0000FF] to-[#6699FF] opacity-90"></div>
         </div>
 
-        <!-- Ubah bagian ini untuk iPad Pro menggunakan flex-col -->
         <div
             class="absolute gap-2 top-1/2 transform -translate-y-1/2 w-full flex flex-col ipad-pro:flex-col lg:flex-row items-center justify-between px-4 sm:px-8 md:px-12 lg:px-[120px] gap-8 md:gap-0">
 
-            <!-- Text Container -->
             <div
                 class="text-container flex flex-col gap-4 sm:gap-6 w-full ipad-pro:w-full lg:w-1/2 xl:w-[779px] max-w-full lg:max-w-[896px] text-center ipad-pro:text-center lg:text-left">
                 <h1
@@ -74,39 +72,39 @@
         <div
             class="hidden lg:flex absolute top-1/2 left-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="prevSlide()" class="w-12 h-12 flex justify-center items-center text-white">
-                <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
+                <img src="{{ asset('icons-sitw/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
             </button>
         </div>
         <div
             class="hidden lg:flex absolute top-1/2 right-7 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="nextSlide()" class="w-12 h-12 flex justify-center items-center text-white">
-                <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
+                <img src="{{ asset('icons-site/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
             </button>
         </div>
 
         <div
             class="hidden md:flex lg:hidden absolute top-[500px] left-5 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="prevSlide()" class="w-12 h-12 flex justify-center items-center text-white">
-                <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
+                <img src="{{ asset('icons-site/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
             </button>
         </div>
         <div
             class="hidden md:flex lg:hidden absolute top-[500px] right-5 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="nextSlide()" class="w-12 h-12 flex justify-center items-center text-white">
-                <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
+                <img src="{{ asset('icons-site/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
             </button>
         </div>
 
         <div
             class="flex md:hidden lg:hidden absolute top-[580px] left-3 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="prevSlide()" class="w-8 h-8 flex justify-center items-center text-white">
-                <img src="{{ asset('icons/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
+                <img src="{{ asset('icons-site/left-arrow.svg') }}" alt="Previous" class="w-6 h-6">
             </button>
         </div>
         <div
             class="flex md:hidden lg:hidden absolute top-[580px] right-3 transform -translate-y-1/2 p-2 bg-[#FFFFFF1A] rounded-full shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
             <button @click="nextSlide()" class="w-8 h-8 flex justify-center items-center text-white">
-                <img src="{{ asset('icons/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
+                <img src="{{ asset('icons-sitw/right-arrow.svg') }}" alt="Next" class="w-6 h-6">
             </button>
         </div>
 
@@ -224,7 +222,8 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons-site/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/user.svg') }}" alt="Students Icon"
+                                class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutCounter1" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
@@ -235,7 +234,8 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons-site/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/book.svg') }}" alt="Programs Icon"
+                                class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutCounter2" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
@@ -258,7 +258,8 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Partners Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Partners Icon"
+                                class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutCounter4" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
@@ -578,7 +579,8 @@
                             <a href="{{ route('event.show', $event->slug) }}"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                                 {{ __('landing.events.button.learn_more') }}
-                                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4"
+                                    alt="">
                             </a>
                         </div>
                     </div>
@@ -652,8 +654,8 @@
 
                                 <div class="flex gap-1 sm:gap-[4px] items-center">
 
-                                    <img src="{{ asset('icons-site/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4 opacity-60"
-                                        alt="Download">
+                                    <img src="{{ asset('icons-site/download.svg') }}"
+                                        class="w-3 h-3 sm:w-4 sm:h-4 opacity-60" alt="Download">
 
                                     <span
                                         class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">
@@ -823,11 +825,13 @@
 
                         <section class="mt-4 space-y-2 text-xs sm:text-sm text-gray-500 font-inter">
                             <p class="flex items-center gap-2">
-                                <img src="{{ asset('icons-site/location.svg') }}" alt="Location icon" class="w-4 h-4" />
+                                <img src="{{ asset('icons-site/location.svg') }}" alt="Location icon"
+                                    class="w-4 h-4" />
                                 {{ $testimonial->location }}
                             </p>
                             <p class="flex items-center gap-2">
-                                <img src="{{ asset('icons-site/education.svg') }}" alt="Calendar icon" class="w-4 h-4" />
+                                <img src="{{ asset('icons-site/education.svg') }}" alt="Calendar icon"
+                                    class="w-4 h-4" />
                                 {{ $testimonial->partnership_since }}
                             </p>
                         </section>
