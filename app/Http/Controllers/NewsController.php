@@ -11,8 +11,9 @@ class NewsController extends Controller
     {
         $latestNews = News::latest()->first();
         $latestNews->created_at_human = $latestNews->created_at->diffForHumans();
+        $latestNewsParagraphs = explode("\n", $latestNews->content);
         $news = News::latest()->paginate(6);
-        return view('landing.news', compact('latestNews', 'news'));
+        return view('landing.news', compact('latestNews', 'latestNewsParagraphs', 'news'));
     }
 
     public function show($slug)

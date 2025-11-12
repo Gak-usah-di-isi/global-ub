@@ -32,6 +32,11 @@ class AdminNewsController extends Controller
             $data['slug'] = \Illuminate\Support\Str::slug($data['title']);
         }
 
+        // Handle custom created_at date
+        if ($request->filled('created_at')) {
+            $data['created_at'] = $request->created_at;
+        }
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
 
@@ -67,6 +72,11 @@ class AdminNewsController extends Controller
     {
         $newsItem = News::where('slug', $slug)->firstOrFail();
         $data = $request->only(['title', 'content']);
+
+        // Handle custom created_at date
+        if ($request->filled('created_at')) {
+            $data['created_at'] = $request->created_at;
+        }
 
         if ($request->hasFile('image')) {
             if ($newsItem->image && Storage::disk('public')->exists($newsItem->image)) {

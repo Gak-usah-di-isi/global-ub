@@ -47,10 +47,17 @@
                 <h2 class="text-[#29303D] font-playfair text-2xl md:text-3xl lg:text-[36px] font-bold mb-4">
                     {{ $latestNews->title }}</h2>
 
-                <p
-                    class="text-[#29303DB2] font-inter text-base md:text-[18px] leading-relaxed md:leading-[29.25px] mb-6 md:mb-8">
-                    {{ $latestNews->content }}
-                </p>
+                <div
+                    class="text-[#29303DB2] font-inter text-base md:text-[18px] leading-relaxed md:leading-[29.25px] mb-6 md:mb-8 space-y-4">
+                    @foreach (array_slice($latestNewsParagraphs, 0, 3) as $paragraph)
+                        @if (trim($paragraph))
+                            <p>{{ $paragraph }}</p>
+                        @endif
+                    @endforeach
+                    @if (count($latestNewsParagraphs) > 3)
+                        <p>...</p>
+                    @endif
+                </div>
 
                 <a href="{{ route('news.show', $latestNews->slug) }}"
                     class="w-[140px] h-[44px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] shadow-[0px_4px_20px_-2px_#29303D1A] flex items-center justify-center text-center py-[11.5px] px-[32px] text-[14px] font-medium">
@@ -137,7 +144,8 @@
                 @else
                     <a href="{{ $news->previousPageUrl() }}"
                         class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons-site/arrow-fix.svg" alt="Previous" class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
+                        <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                            class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                     </a>
                 @endif
 

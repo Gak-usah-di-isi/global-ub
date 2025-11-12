@@ -60,11 +60,32 @@
                         <label for="content" class="field-label req">
                             News Content
                         </label>
-                        <textarea id="content" name="content" rows="4" placeholder="Enter news content"
+                        <textarea id="content" name="content" rows="4"
+                            placeholder="Enter news content (use line breaks to separate paragraphs)"
                             class="mt-2 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 py-2 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors resize-none @error('content') border-red-300 @enderror">{{ old('content') }}</textarea>
                         @error('content')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
+                        <p class="help-text">
+                            Use line breaks (Enter key) to separate paragraphs. Each line will be displayed as a separate
+                            paragraph.
+                        </p>
+                    </div>
+
+                    <div>
+                        <label for="created_at" class="field-label">
+                            Publication Date
+                        </label>
+                        <input id="created_at" name="created_at" type="datetime-local"
+                            value="{{ old('created_at', now()->format('Y-m-d\TH:i')) }}"
+                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('created_at') border-red-300 @enderror" />
+                        @error('created_at')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                        <p class="help-text">
+                            Set the date and time when this news should appear as published. Defaults to current date and
+                            time.
+                        </p>
                     </div>
 
                     <div>
