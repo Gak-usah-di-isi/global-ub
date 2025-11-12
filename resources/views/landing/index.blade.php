@@ -6,8 +6,8 @@
     <section x-data="{
         currentSlide: 0,
         slides: [
-            '/images/slider_one.jpg',
-            '/images/slider_three.jpg',
+            '/images/hero-content.jpg',
+            '/images/hero-content.jpg',
             '/images/hero-content.jpg'
         ],
         nextSlide() {
