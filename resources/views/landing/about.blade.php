@@ -58,14 +58,15 @@
                             <img src="{{ asset('icons-site/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">150+</p>
+                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">160+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Study Programs</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons-site/achievement.svg') }}" alt="Years Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/achievement.svg') }}" alt="Years Icon"
+                                class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">60+</p>
@@ -75,10 +76,11 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Partners Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Partners Icon"
+                                class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">100+</p>
+                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">300+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Partner Universities</p>
                         </div>
                     </div>
@@ -136,44 +138,53 @@
                 </h2>
                 <p
                     class="max-w-full md:max-w-[768px] text-center font-inter font-light text-base md:text-[20px] leading-relaxed text-[#29303DB2]">
-                    Showcasing international recognition and outstanding global contributions.
+                    Showcasing international recognition and strengthened global presence.
                 </p>
             </div>
 
             <div
-                class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-[32px] place-items-center">
+                class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-[32px] place-items-center">
                 <div class="flex flex-col items-center text-center">
                     <div
                         class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
-                        QS Asia
+                        57
                     </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">University Ranking</span>
+                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">Countries Represented</span>
                 </div>
 
                 <div class="flex flex-col items-center text-center">
                     <div
                         class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
-                        5000+
+                        100+
                     </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">International students &
-                        alumni from 50+ countries</span>
+                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">International Partner
+                        Institutions</span>
                 </div>
 
                 <div class="flex flex-col items-center text-center">
                     <div
                         class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
-                        Top 10
+                        Top 700
                     </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">In Indonesia</span>
+                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">QS World University
+                        Rankings</span>
                 </div>
 
                 <div class="flex flex-col items-center text-center">
                     <div
                         class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
-                        150+
+                        50+
                     </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">International
-                        Programs</span>
+                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">Global Mobility Programs</span>
+                </div>
+
+                <div class="flex flex-col items-center text-center">
+                    <div
+                        class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
+                        Top 150
+                    </div>
+                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">UI GreenMetric World
+                        University</span>
                 </div>
             </div>
         </div>
@@ -195,7 +206,8 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons-site/editor_choice.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                        <img src="{{ asset('icons-site/editor_choice.svg') }}" alt="Programs Icon"
+                            class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
                         Provide high-quality education with international standards.
@@ -205,7 +217,8 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons-site/globe_book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                        <img src="{{ asset('icons-site/globe_book.svg') }}" alt="Programs Icon"
+                            class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
                         Foster global collaboration in research and innovation.
@@ -226,7 +239,8 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons-site/diversity_2.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                        <img src="{{ asset('icons-site/diversity_2.svg') }}" alt="Programs Icon"
+                            class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
                         Encourage cultural exchange and diversity.

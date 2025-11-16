@@ -37,111 +37,189 @@
                 </h2>
                 <p
                     class="max-w-full md:max-w-[768px] text-center font-inter font-light text-base md:text-lg lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303DB2]">
-                    We value global collaboration as the key to excellence and innovation, connecting our community
-                    with opportunities for growth and impact worldwide
+                    Empowering collaboration across universities, industries, governments, and cultural institutions to
+                    drive innovation, international engagement, and meaningful global impact.
                 </p>
             </div>
 
-            <div class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                @foreach ($partners as $partner)
+            <div x-data="{}"
+                class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 lg:gap-[32px] place-items-center text-center mb-10 md:mb-16 lg:mb-20">
+                <div class="flex flex-col items-center">
+                    <div id="counter1"
+                        class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        0+</div>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px] text-center">International
+                        Partner Universities</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="counter2"
+                        class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        0+</div>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px] text-center">Active
+                        Cooperation Agreements (MoUs & MoAs)</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="counter3"
+                        class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        0+</div>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px] text-center">Global
+                        Mobility Programs</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="counter4"
+                        class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        0+</div>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px] text-center">Cross-cultural
+                        & International Community Projects</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="counter5"
+                        class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
+                        0+</div>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px] text-center">Joint
+                        Research Initiatives with Global Institutions</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            @foreach ($partners as $partner)
+                <div
+                    class="w-full max-w-full sm:max-w-[384px] mx-auto h-auto md:h-[420px] bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col gap-4 md:gap-6">
                     <div
-                        class="w-full max-w-full sm:max-w-[384px] mx-auto h-auto md:h-[420px] bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col gap-4 md:gap-6">
-                        <div
-                            class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                            <img src="{{ asset('storage/' . $partner->icon->icon) }}" alt="Program Icon"
-                                class="w-6 h-6 md:w-8 md:h-8">
-                        </div>
+                        class="w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
+                        <img src="{{ asset('storage/' . $partner->icon->icon) }}" alt="Program Icon"
+                            class="w-6 h-6 md:w-8 md:h-8">
+                    </div>
 
-                        <h3
-                            class="font-playfair font-bold text-lg md:text-xl lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303D]">
-                            {{ $partner->title }}
-                        </h3>
+                    <h3
+                        class="font-playfair font-bold text-lg md:text-xl lg:text-[20px] leading-6 md:leading-7 lg:leading-[28px] text-[#29303D]">
+                        {{ $partner->title }}
+                    </h3>
 
-                        <p class="font-inter font-normal text-sm md:text-base leading-5 md:leading-6 text-[#29303DB2]">
-                            {{ $partner->description }}
-                        </p>
+                    <p class="font-inter font-normal text-sm md:text-base leading-5 md:leading-6 text-[#29303DB2]">
+                        {{ $partner->description }}
+                    </p>
 
-                        <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
-                            <span class="flex items-center gap-2 text-[#29303DB2]">
-                                <img src="{{ asset('icons-site/user-black.svg') }}" class="w-4 h-4" alt="user">
-                                {{ number_format($partner->students_count) }} students
-                            </span>
-                            <span class="text-[#0000FF] font-medium">{{ $partner->program_duration }}</span>
-                        </div>
+                    <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
+                        <span class="flex items-center gap-2 text-[#29303DB2]">
+                            <img src="{{ asset('icons-site/user-black.svg') }}" class="w-4 h-4" alt="user">
+                            {{ number_format($partner->students_count) }} students
+                        </span>
+                        <span class="text-[#0000FF] font-medium">{{ $partner->program_duration }}</span>
+                    </div>
 
-                        {{-- <a href="#"
+                    {{-- <a href="#"
                             class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px]">
                             Collaborate
                             <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a> --}}
-                    </div>
-                @endforeach
-            </div>
-
-            <div class="w-full flex justify-center items-center py-8">
-                <div class="flex items-center gap-4">
-                    @if ($partners->onFirstPage())
-                        <button
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
-                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
-                        </button>
-                    @else
-                        <a href="{{ $partners->previousPageUrl() }}"
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
-                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
-                        </a>
-                    @endif
-
-                    <div class="flex items-center gap-2 md:gap-4 bg-[#FFFFFF] rounded-full p-1 md:p-2">
-                        @foreach ($partners->getUrlRange(1, $partners->lastPage()) as $page => $url)
-                            <a href="{{ $url }}"
-                                class="w-7 h-7 md:w-9 md:h-9 {{ $partners->currentPage() == $page ? 'bg-[#1D4ED8] text-white' : 'text-[#1D4ED8]' }} rounded-full flex justify-center items-center text-xs md:text-sm">
-                                {{ $page }}
-                            </a>
-                        @endforeach
-                    </div>
-
-
-                    @if ($partners->hasMorePages())
-                        <a href="{{ $partners->nextPageUrl() }}"
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
-                        </a>
-                    @else
-                        <button
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
-                        </button>
-                    @endif
                 </div>
-            </div>
+            @endforeach
+        </div>
 
-            <div
-                class="w-full max-w-full md:max-w-[1216px] h-auto md:h-[264px] mx-auto bg-white rounded-2xl md:rounded-[24px] p-6 md:p-12 flex flex-col justify-between items-center text-center shadow-lg backdrop-blur-[4px]">
-                <h3
-                    class="text-xl md:text-2xl lg:text-[30px] font-playfair font-bold leading-7 md:leading-8 lg:leading-[36px] text-black">
-                    Let’s Collaborate
-                </h3>
-                <p
-                    class="text-base md:text-lg lg:text-[20px] text-[#29303DB2] font-light font-inter leading-6 md:leading-7 lg:leading-[28px] opacity-90 max-w-full md:max-w-[672px] mt-4">
-                    Together with UB, let’s shape the future of education through meaningful partnership
-                </p>
-
-                <div class="flex flex-col sm:flex-row gap-3 md:gap-4 mt-6">
-                    <a href="#"
-                        class="w-full sm:w-[180px] h-11 font-inter font-normal px-4 md:px-8 py-2 md:py-3 rounded-xl bg-gradient-to-r from-[#0000FF] to-[#6699FF] shadow-md backdrop-blur-[4px] text-white text-sm md:text-[13px] font-medium flex items-center justify-center">
-                        Become a Partner
+        <div class="w-full flex justify-center items-center py-8">
+            <div class="flex items-center gap-4">
+                @if ($partners->onFirstPage())
+                    <button class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                        <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                            class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
+                    </button>
+                @else
+                    <a href="{{ $partners->previousPageUrl() }}"
+                        class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                        <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                            class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                     </a>
+                @endif
 
-                    <a href="#"
-                        class="w-full sm:w-[198px] h-11 font-inter font-normal px-4 md:px-8 py-2 md:py-3 rounded-xl bg-white border border-[#E2E4E9] text-sm md:text-[13px] font-medium flex items-center justify-center">
-                        Explore Collaboration
-                    </a>
+                <div class="flex items-center gap-2 md:gap-4 bg-[#FFFFFF] rounded-full p-1 md:p-2">
+                    @foreach ($partners->getUrlRange(1, $partners->lastPage()) as $page => $url)
+                        <a href="{{ $url }}"
+                            class="w-7 h-7 md:w-9 md:h-9 {{ $partners->currentPage() == $page ? 'bg-[#1D4ED8] text-white' : 'text-[#1D4ED8]' }} rounded-full flex justify-center items-center text-xs md:text-sm">
+                            {{ $page }}
+                        </a>
+                    @endforeach
                 </div>
+
+
+                @if ($partners->hasMorePages())
+                    <a href="{{ $partners->nextPageUrl() }}"
+                        class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                        <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                    </a>
+                @else
+                    <button class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
+                        <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                    </button>
+                @endif
             </div>
         </div>
-    </section>
 
+        <div
+            class="w-full max-w-full md:max-w-[1216px] h-auto md:h-[264px] mx-auto bg-white rounded-2xl md:rounded-[24px] p-6 md:p-12 flex flex-col justify-between items-center text-center shadow-lg backdrop-blur-[4px]">
+            <h3
+                class="text-xl md:text-2xl lg:text-[30px] font-playfair font-bold leading-7 md:leading-8 lg:leading-[36px] text-black">
+                Let’s Collaborate
+            </h3>
+            <p
+                class="text-base md:text-lg lg:text-[20px] text-[#29303DB2] font-light font-inter leading-6 md:leading-7 lg:leading-[28px] opacity-90 max-w-full md:max-w-[672px] mt-4">
+                Together with UB, let’s shape the future of education through meaningful partnership
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-3 md:gap-4 mt-6">
+                <a href="#"
+                    class="w-full sm:w-[180px] h-11 font-inter font-normal px-4 md:px-8 py-2 md:py-3 rounded-xl bg-gradient-to-r from-[#0000FF] to-[#6699FF] shadow-md backdrop-blur-[4px] text-white text-sm md:text-[13px] font-medium flex items-center justify-center">
+                    Become a Partner
+                </a>
+
+                <a href="#"
+                    class="w-full sm:w-[198px] h-11 font-inter font-normal px-4 md:px-8 py-2 md:py-3 rounded-xl bg-white border border-[#E2E4E9] text-sm md:text-[13px] font-medium flex items-center justify-center">
+                    Explore Collaboration
+                </a>
+            </div>
+        </div>
+        </div>
+    </section>
+    <script>
+        function animateCounter(el, target, duration = 2000) {
+            let start = 0;
+            let startTime = null;
+
+            function update(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                el.textContent = Math.floor(progress * target) + (target > 20 ? '+' : '');
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = target + (target > 20 ? '+' : '');
+                }
+            }
+            requestAnimationFrame(update);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            let section = document.querySelector('.grid.grid-cols-1');
+            let started = false;
+            let observer = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting && !started) {
+                    started = true;
+                    animateCounter(document.getElementById('counter1'), 100, 2000);
+                    animateCounter(document.getElementById('counter2'), 300, 2000);
+                    animateCounter(document.getElementById('counter3'), 50, 2000);
+                    animateCounter(document.getElementById('counter4'), 30, 2000);
+                    animateCounter(document.getElementById('counter5'), 20, 2000);
+                }
+            }, {
+                threshold: 0.3
+            });
+            observer.observe(section);
+        });
+    </script>
 @endsection

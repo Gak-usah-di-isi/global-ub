@@ -35,7 +35,7 @@ return [
 
     'about' => [
         'title' => 'Tentang Globalizing UB',
-        'description' => 'Universitas Brawijaya adalah salah satu universitas terkemuka di Indonesia yang berkomitmen menjadi universitas bertaraf internasional. Melalui program Globalizing UB, kami menyediakan pendidikan berstandar global yang menghubungkan mahasiswa dengan peluang internasional dengan pengalaman lebih dari 60 tahun.',
+        'description' => 'Globalizing UB (GUB) adalah inisiatif strategis yang mempercepat proses internasionalisasi Universitas Brawijaya. Melalui GUB, UB menghubungkan kearifan lokal dengan komunitas global dengan mendorong internasionalisasi akademik, diplomasi budaya, kolaborasi global, serta mobilitas mahasiswa dan staf.',
         'counters' => [
             'students' => 'Mahasiswa',
             'partners' => 'Universitas Mitra',

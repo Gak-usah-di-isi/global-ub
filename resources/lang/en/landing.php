@@ -36,7 +36,7 @@ return [
 
     'about' => [
         'title' => 'About Globalizing UB',
-        'description' => 'Brawijaya University is one of Indonesia\'s leading universities, committed to becoming a world-class university. Through the Globalizing UB program, we provide international-quality education that connects students with global opportunities. With over 60 years of experience in education, UB has produced top-notch graduates who contribute to national and international development.',
+        'description' => 'Globalizing UB (GUB) is a strategic initiative that accelerates Universitas Brawijaya’s internationalization. Through GUB, UB connects local wisdom with global communities by advancing academic internationalization, cultural diplomacy, global collaboration, and student–staff mobility.',
         'counters' => [
             'students' => 'Students',
             'partners' => 'Partner Universities',
