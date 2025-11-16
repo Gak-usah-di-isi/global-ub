@@ -237,9 +237,9 @@
             let observer = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting && !started) {
                     started = true;
-                    animateCounter(document.getElementById('counter1'), 150, 2000);
-                    animateCounter(document.getElementById('counter2'), 15, 2000);
-                    animateCounter(document.getElementById('counter3'), 100, 2000);
+                    animateCounter(document.getElementById('counter1'), 197, 2000);
+                    animateCounter(document.getElementById('counter2'), 18, 2000);
+                    animateCounter(document.getElementById('counter3'), 300, 2000);
                     animateCounter(document.getElementById('counter4'), 4500, 2000);
                 }
             }, {

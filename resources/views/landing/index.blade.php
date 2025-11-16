@@ -32,11 +32,11 @@
                 class="text-container flex flex-col gap-4 sm:gap-6 w-full ipad-pro:w-full lg:w-1/2 xl:w-[779px] max-w-full lg:max-w-[896px] text-center ipad-pro:text-center lg:text-left">
                 <h1
                     class="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold leading-tight md:leading-[72px] tracking-normal text-white font-playfair">
-                    Inspiring Change,<br><span class="text-[#6699FF]">Uniting Civilizations</span>
+                    Turning Insight<br><span class="text-[#6699FF]">Into World Impact</span>
                 </h1>
                 <h2
                     class="text-lg sm:text-xl md:text-[24px] font-light leading-relaxed md:leading-[24px] text-white font-inter tracking-normal">
-                    Leading research and innovation on the global stage
+                    Building pathways for global engagement through <br>education, culture, and innovation
                 </h2>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center ipad-pro:justify-center lg:justify-start">
                     <button
@@ -134,10 +134,10 @@
                     </div>
                     <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
                         Top 5</h3>
-                    <p class="font-inter font-bold text-center mb-2 text-[#29303DCC]">Indonesia Universities</p>
+                    <p class="font-inter font-bold text-center mb-2 text-[#29303DCC]">Indonesian University (Webometric)</p>
                     <p
                         class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
-                        QS World University Rankings
+                        Leading in digital academic visibility
                     </p>
                     <span class="font-medium text-[#0000FF]">2024</span>
                 </div>
@@ -149,11 +149,11 @@
                             class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                     </div>
                     <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
-                        #401-450</h3>
-                    <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">World Universities</p>
+                        #1501+</h3>
+                    <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">The World University Rankings</p>
                     <p
                         class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
-                        QS World University Rankings
+                        Globally recognized university
                     </p>
                     <span class="font-medium text-[#0000FF]">2024</span>
                 </div>
@@ -165,11 +165,11 @@
                             class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                     </div>
                     <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
-                        Top 3</h3>
-                    <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">Research Impact</p>
+                        Top 5</h3>
+                    <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">Indonesian University (4ICU)</p>
                     <p
                         class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
-                        Times Higher Education
+                        Highly trusted by prospective students
                     </p>
                     <span class="font-medium text-[#0000FF]">2024</span>
                 </div>
@@ -182,12 +182,12 @@
                             class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
                     </div>
                     <h3 class="text-xl md:text-[24px] font-inter font-extrabold text-[#29303D] text-center mt-2 mb-2">
-                        5 Stars
+                        #680
                     </h3>
-                    <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">Overall Rating</p>
+                    <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">QS World University Rankings</p>
                     <p
                         class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
-                        QS Stars Rating
+                        Strong international reputation
                     </p>
                     <span class="font-medium text-[#0000FF]">2024</span>
                 </div>
@@ -319,7 +319,7 @@
 
                 <!-- Global Network Card - Positioned relative to the wrapper -->
                 <div
-                    class="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-4 md:-bottom-8 md:-right-6 lg:bottom-16 lg:-right-6 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px] h-[50px] sm:h-[65px] md:h-[70px] lg:h-[80px] rounded-[12px] md:rounded-[16px] bg-white border border-[#E2E4E9] p-2 sm:p-3 md:p-4 z-20 shadow-[0px_4px_20px_-2px_#29303D1A]">
+                    class="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-4 md:-bottom-8 md:-right-6 lg:bottom-10 lg:-right-6 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px] h-[50px] sm:h-[65px] md:h-[70px] lg:h-[80px] rounded-[12px] md:rounded-[16px] bg-white border border-[#E2E4E9] p-2 sm:p-3 md:p-4 z-20 shadow-[0px_4px_20px_-2px_#29303D1A]">
                     <div class="flex items-center gap-2 sm:gap-3 w-full h-full">
                         <div
                             class="w-8 h-8 sm:w-10 sm:h-10 md:w-[48px] md:h-[48px] rounded-full flex items-center justify-center bg-[linear-gradient(135deg,#0000FF_0%,#6699FF_100%)]">
@@ -1072,9 +1072,9 @@
             let observer = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting && !started) {
                     started = true;
-                    animateCounter(document.getElementById('counter1'), 150, 2000);
-                    animateCounter(document.getElementById('counter2'), 15, 2000);
-                    animateCounter(document.getElementById('counter3'), 100, 2000);
+                    animateCounter(document.getElementById('counter1'), 197, 2000);
+                    animateCounter(document.getElementById('counter2'), 18, 2000);
+                    animateCounter(document.getElementById('counter3'), 300, 2000);
                     animateCounter(document.getElementById('counter4'), 4500, 2000);
                 }
             }, {
@@ -1089,9 +1089,9 @@
                 if (entries[0].isIntersecting && !aboutStarted) {
                     aboutStarted = true;
                     animateCounter(document.getElementById('aboutCounter1'), 50000, 3000);
-                    animateCounter(document.getElementById('aboutCounter2'), 150, 3000);
+                    animateCounter(document.getElementById('aboutCounter2'), 190, 3000);
                     animateCounter(document.getElementById('aboutCounter3'), 60, 3000);
-                    animateCounter(document.getElementById('aboutCounter4'), 100, 3000);
+                    animateCounter(document.getElementById('aboutCounter4'), 300, 3000);
                 }
             }, {
                 threshold: 0.3
