@@ -4,7 +4,6 @@
 
 @section('content')
 
-    {{-- Breadcrumbs Section --}}
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
@@ -95,14 +94,11 @@
     </section>
 
 
-    {{-- Related Post Section (FIXED RESPONSIVENESS) --}}
     <section class="lg:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <h1 class="text-3xl font-playfair text-neutral-800 font-bold mb-8">Related Post</h1>
 
-        {{-- Menggunakan grid grid-cols-1 (default), sm:grid-cols-2, dan lg:grid-cols-3 --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach ($relatedNews as $related)
-                {{-- Menggunakan 'block' agar link mengambil lebar penuh kolom --}}
                 <a href="{{ route('news.show', $related->slug) }}" class="my-2 block">
                     <img src="{{ asset('storage/' . $related->image) }}"
                         class="rounded-lg h-40 w-full object-cover bg-center" alt="{{ $related->title }}">
@@ -118,7 +114,8 @@
                                 {{ $related->created_at->format('m/d/Y') }}
                             </span>
                             <span class="flex items-center align-middle gap-x-2">
-                                <img src="{{ asset('icons-site/clock.svg') }}" alt="">{{ $related->created_at->diffForHumans() }}
+                                <img src="{{ asset('icons-site/clock.svg') }}"
+                                    alt="">{{ $related->created_at->diffForHumans() }}
                             </span>
                         </div>
                         <img src="{{ asset('icons-site/arrow-right.svg') }}" class="size-4" alt="">

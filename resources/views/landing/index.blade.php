@@ -241,39 +241,32 @@
             <div class="relative">
                 <div class="w-full lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden relative mt-0 md:mt-12 lg:mt-24"
                     style="box-shadow: 0px 8px 25px -8px #0000FF4D;">
-                    <!-- Background Image -->
                     <div class="absolute inset-0">
                         <img src="{{ asset('/images/about-new.png') }}" alt="UB Image"
                             class="w-full h-full object-cover">
                     </div>
 
-                    <!-- Gradient Overlay -->
                     <div
                         class="absolute inset-0 bg-gradient-to-br from-[rgba(0,0,255,0.6)] to-[rgba(102,153,255,0.6)] rounded-[16px]">
                     </div>
 
-                    <!-- Video Content Container -->
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
-                        <!-- Play Button -->
                         <button
                             class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm mb-6">
                             <img src='{{ asset('icons-site/play.svg') }}' alt="Play"
                                 class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
-                        <!-- Title -->
                         <h3 class="font-playfair font-bold text-lg md:text-xl lg:text-2xl text-white mb-2">
                             {{ __('landing.about.video.title') }}
                         </h3>
 
-                        <!-- Subtitle -->
                         <p class="font-inter font-normal text-sm md:text-base text-white opacity-90">
                             {{ __('landing.about.video.subtitle') }}
                         </p>
                     </div>
                 </div>
 
-                <!-- Global Network Card - Positioned relative to the wrapper -->
                 <div
                     class="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-4 md:-bottom-2 md:-right-6 lg:bottom-2 lg:-right-6 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px] h-[50px] sm:h-[65px] md:h-[70px] lg:h-[80px] rounded-[12px] md:rounded-[16px] bg-white border border-[#E2E4E9] p-2 sm:p-3 md:p-4 z-20 shadow-[0px_4px_20px_-2px_#29303D1A]">
                     <div class="flex items-center gap-2 sm:gap-3 w-full h-full">
@@ -821,7 +814,7 @@
 
             <div
                 class="w-full max-w-[1216px] bg-white rounded-[24px] shadow-[0px_4px_20px_-2px_rgba(41,48,61,0.10)] border border-[#F0F2F4] px-4 md:px-8 lg:px-[48px] py-8 md:py-12 lg:py-[48px] flex flex-col gap-12 md:gap-[48px]">
-                <!-- Heading & Description -->
+
                 <div class="flex flex-col items-center gap-4 max-w-[1120px] mx-auto">
                     <h3
                         class="w-full text-center font-playfair font-bold text-[30px] md:text-[36px] leading-[36px] text-[#29303D]">
@@ -830,27 +823,25 @@
                         class="max-w-[632px] text-center font-inter text-base md:text-lg lg:text-xl font-normal leading-[28px] text-[#29303DB2]">
                         {{ __('landing.story.description') }}</p>
                 </div>
-                <!-- Content: Video & List -->
+
                 <div class="w-full flex flex-col md:flex-row gap-8 md:gap-[32px] max-w-[1120px] mx-auto">
-                    <!-- Left: Video Thumbnail -->
+
                     <div
                         class="w-full md:w-[544px] h-[240px] md:h-[368px] rounded-[16px] overflow-hidden relative flex items-center justify-center bg-gradient-to-br from-[#0000FF] via-[#6699FF] to-[#6699FF]">
                         <img src='{{ asset('images/bromo.png') }}' alt="Alumni Success Stories"
                             class="absolute inset-0 w-full h-full object-cover" />
-                        <!-- Gradient overlay -->
+
                         <div
                             class="absolute inset-0 bg-gradient-to-br from-[#0000FF] to-[#6699FF] opacity-60 rounded-[16px]">
                         </div>
                         <div class="absolute inset-0 bg-black bg-opacity-20 rounded-[16px]"></div>
 
-                        <!-- Play button in center -->
                         <button
                             class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm">
                             <img src='{{ asset('icons-site/play.svg') }}' alt="Play"
                                 class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
-                        <!-- Text overlay at bottom -->
                         <div class="absolute bottom-4 left-4 z-10 w-[calc(100%-32px)] max-w-[512px]">
                             <div class="bg-black bg-opacity-50 backdrop-blur-sm rounded-[12px] p-3">
                                 <h4 class="text-white font-playfair font-semibold text-lg md:text-xl leading-6">
@@ -862,9 +853,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Right: List of Stories -->
+
                     <div class="w-full md:w-[544px] flex flex-col gap-2 md:gap-4 justify-center">
-                        <!-- List Item 1 -->
+
                         <button
                             class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
                             <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
@@ -877,7 +868,7 @@
                                 <span class="font-inter text-xs sm:text-xs text-[#29303DB2]">3-5 min watch</span>
                             </span>
                         </button>
-                        <!-- List Item 2 -->
+
                         <button
                             class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
                             <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
@@ -891,7 +882,7 @@
                                 <span class="font-inter text-xs sm:text-xs text-[#29303DB2]">3-5 min watch</span>
                             </span>
                         </button>
-                        <!-- List Item 3 -->
+
                         <button
                             class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
                             <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
@@ -905,7 +896,7 @@
                                 <span class="font-inter text-xs sm:text-xs text-[#29303DB2]">3-5 min watch</span>
                             </span>
                         </button>
-                        <!-- List Item 4 -->
+
                         <button
                             class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
                             <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
@@ -937,7 +928,6 @@
         class="w-full h-auto bg-[#FFFFFF] py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-[80px] lg:py-[50px]">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6 md:gap-8 lg:gap-[40px]">
 
-            <!-- Header -->
             <div class="w-full flex flex-col items-center gap-4">
                 <h3
                     class="text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
@@ -945,7 +935,6 @@
                 </h3>
             </div>
 
-            <!-- Partners Logo Grid -->
             <div
                 class="w-full grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 md:gap-6 lg:gap-[24px] items-center justify-items-center">
 
@@ -965,7 +954,6 @@
 
             </div>
 
-            <!-- View All Button -->
             <div class="flex justify-center mt-4 md:mt-6">
                 <a href="{{ route('partnership.index') }}"
                     class="flex items-center gap-2 px-6 py-3 bg-white border border-[#E2E4E9] rounded-[10px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition-colors">
@@ -1023,7 +1011,6 @@
             requestAnimationFrame(update);
         }
         document.addEventListener('DOMContentLoaded', function() {
-            // Study in UB counters
             let section = document.querySelector('.grid.grid-cols-2');
             let started = false;
             let observer = new IntersectionObserver(function(entries) {
@@ -1039,7 +1026,6 @@
             });
             observer.observe(section);
 
-            // About Globalizing UB counters
             let aboutSection = document.getElementById('aboutSection');
             let aboutStarted = false;
             let aboutObserver = new IntersectionObserver(function(entries) {
