@@ -108,7 +108,8 @@
                 @else
                     <a href="{{ $downloads->previousPageUrl() }}"
                         class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons-site/arrow-fix.svg" alt="Previous" class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
+                        <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                            class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                     </a>
                 @endif
 
@@ -147,7 +148,7 @@
                 promotional materials in one package
             </p>
 
-            <a href="#"
+            <a href="{{ route('download-center.download-all') }}"
                 class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 transition border border-white/20 text-white px-12 py-3 rounded-lg text-sm font-medium">
                 Download Complete Media Kit
                 <img src="{{ asset('icons-site/arrow-right-white.svg') }}" alt="">

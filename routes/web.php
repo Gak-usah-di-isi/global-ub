@@ -41,6 +41,7 @@ Route::middleware([CountVisitor::class])->group(function () {
     Route::get('/event', [EventController::class, 'index'])->name('event.index');
     Route::get('/event/{slug}', [EventController::class, 'show'])->name('event.show');
     Route::get('/innovation', [InnovationController::class, 'index'])->name('innovation.index');
+    Route::get('/innovation/{slug}', [InnovationController::class, 'show'])->name('innovation.show');
     Route::get('/partnership', [PartnershipController::class, 'index'])->name('partnership.index');
     Route::get('/study', [StudyController::class, 'index'])->name('study.index');
     Route::get('/study/{slug}', [StudyController::class, 'show'])->name('study.show');
@@ -48,6 +49,7 @@ Route::middleware([CountVisitor::class])->group(function () {
     Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
     Route::get('/download-center', [DownloadController::class, 'index'])->name('download-center.index');
     Route::get('/download/{downloadCenter:slug}', [DownloadController::class, 'download'])->name('download-center.download');
+    Route::get('/download-complete-media-kit', [DownloadController::class, 'downloadAll'])->name('download-center.download-all');
     Route::get('/story', [StoryController::class, 'index'])->name('story.index');
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
     Route::get('/gallery/{slug}', [GalleryController::class, 'show'])->name('gallery.show');

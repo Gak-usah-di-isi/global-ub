@@ -69,11 +69,11 @@
                             <div class="ck-content">
                                 {!! $innovation->highlights !!}
                             </div>
-                            {{-- <a href="#"
+                            <a href="{{ route('innovation.show', $innovation->slug) }}"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition">
                                 Learn More
                                 <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                            </a> --}}
+                            </a>
                         </div>
                     </div>
                 @endforeach
