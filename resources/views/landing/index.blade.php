@@ -658,8 +658,8 @@
                 </p>
 
                 <div class="flex justify-center mt-6 md:mt-6">
-                    <a href="#" target="_blank" rel="noopener"
-                        class="w-full h-[48px] font-inter font-normal text-sm md:text-[15px] px-[33px] py-[12px] rounded-[10px] border border-white/20 bg-white/10 text-white flex items-center justify-center">
+                    <a href="{{ route('download-center.download-all') }}" rel="noopener"
+                        class="w-full h-[48px] font-inter font-normal text-sm md:text-[15px] px-[33px] py-[12px] rounded-[10px] border border-white/20 bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
                         Download Complete Media Kit
                     </a>
                 </div>
@@ -707,11 +707,12 @@
                             <div class="ck-content">
                                 {!! $innovation->highlights !!}
                             </div>
-                            {{-- <a href="#"
+                            <a href="{{ route('innovation.show', $innovation->slug) }}"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition">
                                 {{ __('landing.innovation.button.learn_more') }}
-                                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                            </a> --}}
+                                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4"
+                                    alt="">
+                            </a>
                         </div>
                     </div>
                 @endforeach

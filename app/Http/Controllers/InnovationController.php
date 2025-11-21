@@ -12,4 +12,14 @@ class InnovationController extends Controller
         $innovations = Innovation::paginate(6);
         return view('landing.innovation', compact('innovations'));
     }
+
+    public function show($slug)
+    {
+        $innovation = Innovation::where('slug', $slug)->firstOrFail();
+        $relatedInnovations = Innovation::where('id', '!=', $innovation->id)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+        return view('landing.detail-innovation', compact('innovation', 'relatedInnovations'));
+    }
 }
