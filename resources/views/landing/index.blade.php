@@ -129,74 +129,24 @@
                 {{ __('landing.ranking.description') }}
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-8 md:mt-16">
-                <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
+                @foreach ($rankings as $ranking)
                     <div
-                        class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
-                        <img src="{{ asset('icons-site/trophy.svg') }}" alt="Icon 1"
-                            class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
+                        class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
+                        <div
+                            class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
+                            <img src="{{ asset('storage/' . $ranking->icon->icon) }}" alt="{{ $ranking->title }}"
+                                class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
+                        </div>
+                        <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
+                            {{ $ranking->title }}</h3>
+                        <p class="font-inter font-bold text-center mb-2 text-[#29303DCC]">{{ $ranking->subtitle }}</p>
+                        <p
+                            class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
+                            {{ $ranking->description }}
+                        </p>
+                        <span class="font-medium text-[#0000FF]">{{ $ranking->year }}</span>
                     </div>
-                    <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
-                        Top 5</h3>
-                    <p class="font-inter font-bold text-center mb-2 text-[#29303DCC]">Indonesian University (Webometric)
-                    </p>
-                    <p
-                        class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
-                        Leading in digital academic visibility
-                    </p>
-                    <span class="font-medium text-[#0000FF]">2024</span>
-                </div>
-
-                <div
-                    class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
-                    <div
-                        class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
-                        <img src="{{ asset('icons-site/globe-blue.svg') }}" alt="Icon 2"
-                            class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
-                    </div>
-                    <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
-                        #1501+</h3>
-                    <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">The World University Rankings</p>
-                    <p
-                        class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
-                        Globally recognized university
-                    </p>
-                    <span class="font-medium text-[#0000FF]">2024</span>
-                </div>
-
-                <div
-                    class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
-                    <div
-                        class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
-                        <img src="{{ asset('icons-site/up.svg') }}" alt="Icon 3"
-                            class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
-                    </div>
-                    <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
-                        Top 5</h3>
-                    <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">Indonesian University (4ICU)</p>
-                    <p
-                        class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
-                        Highly trusted by prospective students
-                    </p>
-                    <span class="font-medium text-[#0000FF]">2024</span>
-                </div>
-
-                <div
-                    class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
-                    <div
-                        class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
-                        <img src="{{ asset('icons-site/star.svg') }}" alt="Icon 4"
-                            class="w-6 h-6 md:w-[32px] md:h-[32px] opacity-100" />
-                    </div>
-                    <h3 class="text-xl md:text-[24px] font-inter font-extrabold text-[#29303D] text-center mt-2 mb-2">
-                        #680
-                    </h3>
-                    <p class="text-[#29303DCC] font-inter font-bold text-center mb-2">QS World University Rankings</p>
-                    <p
-                        class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
-                        Strong international reputation
-                    </p>
-                    <span class="font-medium text-[#0000FF]">2024</span>
-                </div>
+                @endforeach
             </div>
 
             <div class="flex justify-center mt-8 md:mt-16 rounded-full">
@@ -281,7 +231,7 @@
                         {{ __('landing.about.button.learn_more') }}
                     </a>
 
-                    <a href="#"
+                    <a href="/download-center"
                         class="w-full sm:w-[200px] h-[44px] bg-white text-[#29303D] border border-[#E2E4E9] rounded-[10px] flex items-center justify-center text-center py-[11.5px] px-[33px] text-sm md:text-[14px] font-medium hover:bg-gray-50">
                         {{ __('landing.about.button.download_brochure') }}
                     </a>

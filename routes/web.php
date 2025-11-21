@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminPartnershipController;
 use App\Http\Controllers\Admin\AdminIconController;
 use App\Http\Controllers\Admin\AdminMerchandiseController;
 use App\Http\Controllers\Admin\AdminCarouselController;
+use App\Http\Controllers\Admin\AdminRankingController;
 
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\EventController;
@@ -160,6 +161,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/carousels/{id}/edit', [AdminCarouselController::class, 'edit'])->name('carousels.edit');
     Route::put('/carousels/{id}', [AdminCarouselController::class, 'update'])->name('carousels.update');
     Route::delete('/carousels/{id}', [AdminCarouselController::class, 'destroy'])->name('carousels.destroy');
+
+    Route::get('/rankings', [AdminRankingController::class, 'index'])->name('rankings.index');
+    Route::get('/rankings/create', [AdminRankingController::class, 'create'])->name('rankings.create');
+    Route::post('/rankings', [AdminRankingController::class, 'store'])->name('rankings.store');
+    Route::get('/rankings/{id}/edit', [AdminRankingController::class, 'edit'])->name('rankings.edit');
+    Route::put('/rankings/{id}', [AdminRankingController::class, 'update'])->name('rankings.update');
+    Route::delete('/rankings/{id}', [AdminRankingController::class, 'destroy'])->name('rankings.destroy');
 });
 
 Route::middleware('auth')->group(function () {
