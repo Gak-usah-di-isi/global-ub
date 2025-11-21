@@ -32,7 +32,6 @@
         class="w-full h-auto bg-[#FFFFFF] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-[80px] lg:py-[50px]">
         <div class="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6 md:gap-8 lg:gap-[40px]">
 
-            <!-- Header -->
             <div class="w-full flex flex-col items-center gap-4">
                 <h3
                     class="text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
@@ -45,7 +44,6 @@
                 </p>
             </div>
 
-            <!-- Partners Logo Grid -->
             <div
                 class="w-full grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 md:gap-6 lg:gap-[24px] items-center justify-items-center">
 
@@ -66,7 +64,6 @@
 
             </div>
 
-            <!-- View All Button -->
             <div class="w-full flex justify-center items-center py-6 md:py-8">
                 <div class="flex items-center gap-3 md:gap-4">
                     @if ($partnerships->onFirstPage())
