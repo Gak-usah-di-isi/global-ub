@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\AdminPartnershipController;
 use App\Http\Controllers\Admin\AdminIconController;
 use App\Http\Controllers\Admin\AdminMerchandiseController;
+use App\Http\Controllers\Admin\AdminCarouselController;
 
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\EventController;
@@ -152,6 +153,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/merchandise/{slug}/edit', [AdminMerchandiseController::class, 'edit'])->name('merchandise.edit');
     Route::put('/merchandise/{slug}', [AdminMerchandiseController::class, 'update'])->name('merchandise.update');
     Route::delete('/merchandise/{slug}', [AdminMerchandiseController::class, 'destroy'])->name('merchandise.destroy');
+
+    Route::get('/carousels', [AdminCarouselController::class, 'index'])->name('carousels.index');
+    Route::get('/carousels/create', [AdminCarouselController::class, 'create'])->name('carousels.create');
+    Route::post('/carousels', [AdminCarouselController::class, 'store'])->name('carousels.store');
+    Route::get('/carousels/{id}/edit', [AdminCarouselController::class, 'edit'])->name('carousels.edit');
+    Route::put('/carousels/{id}', [AdminCarouselController::class, 'update'])->name('carousels.update');
+    Route::delete('/carousels/{id}', [AdminCarouselController::class, 'destroy'])->name('carousels.destroy');
 });
 
 Route::middleware('auth')->group(function () {

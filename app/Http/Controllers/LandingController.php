@@ -11,11 +11,13 @@ use App\Models\News;
 use App\Models\Testimonial;
 use App\Models\Innovation;
 use App\Models\DownloadCenter;
+use App\Models\Carousel;
 
 class LandingController extends Controller
 {
     public function index()
     {
+        $carousels = Carousel::where('is_active', true)->orderBy('order', 'asc')->get();
         $studies = Study::with('icon')->latest()->take(3)->get();
         $events = Event::latest()->take(3)->get();
         $partnerships = Partnership::latest()->take(8)->get();
@@ -25,6 +27,6 @@ class LandingController extends Controller
         $testimonials = Testimonial::latest()->take(3)->get();
         $innovations = Innovation::latest()->take(3)->get();
         $downloads = DownloadCenter::with('icon')->latest()->take(3)->get();
-        return view('landing.index', compact('studies', 'events', 'partnerships', 'latestNews', 'news', 'testimonials', 'innovations', 'downloads'));
+        return view('landing.index', compact('carousels', 'studies', 'events', 'partnerships', 'latestNews', 'news', 'testimonials', 'innovations', 'downloads'));
     }
 }
