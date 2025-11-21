@@ -345,14 +345,14 @@
 
                 <div class="flex flex-col gap-6 md:gap-8">
                     @foreach ($news as $newsItem)
-                        <a href="{{ route('news.show', $newsItem->slug) }}" class="flex gap-4">
+                        <a href="{{ route('news.show', $newsItem->slug) }}"
+                            class="flex gap-4 p-3 rounded-lg transition-all duration-200 hover:bg-gray-100">
                             <img src="{{ asset('storage/' . $newsItem->image) }}" alt="{{ $newsItem->title }}"
                                 class="w-16 h-16 sm:w-[96px] sm:h-[86px] rounded-lg object-cover">
                             <div>
                                 <span
                                     class="text-xs font-inter font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full">News</span>
-                                <h4
-                                    class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1 group-hover:text-blue-700 transition-colors">
+                                <h4 class="text-sm sm:text-[16px] font-playfair font-semibold text-[#29303D] mt-1">
                                     {{ $newsItem->title }}
                                 </h4>
                                 <p class="text-xs sm:text-[13px] font-inter font-light text-[#29303DB2] mt-1">
