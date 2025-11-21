@@ -5,11 +5,7 @@
 @section('content')
     <section x-data="{
         currentSlide: 0,
-        slides: [
-            '/images/hero-content.jpg',
-            '/images/hero-content.jpg',
-            '/images/hero-content.jpg'
-        ],
+        slides: @js($carousels),
         nextSlide() {
             this.currentSlide = (this.currentSlide + 1) % this.slides.length;
         },
@@ -30,40 +26,47 @@
 
             <div
                 class="text-container flex flex-col gap-4 sm:gap-6 w-full ipad-pro:w-full lg:w-1/2 xl:w-[779px] max-w-full lg:max-w-[896px] text-center ipad-pro:text-center lg:text-left">
-                <h1
-                    class="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold leading-tight md:leading-[72px] tracking-normal text-white font-playfair">
-                    Turning Insight<br><span class="text-[#6699FF]">Into World Impact</span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-bold leading-tight md:leading-[72px] tracking-normal text-white font-playfair relative"
+                    style="min-height: 160px;">
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <span x-show="currentSlide === index" x-transition:enter="transition ease-in-out duration-500"
+                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                            x-transition:leave="transition ease-in-out duration-500" x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0" class="absolute inset-0" x-html="slide.title"></span>
+                    </template>
                 </h1>
-                <h2
-                    class="text-lg sm:text-xl md:text-[24px] font-light leading-relaxed md:leading-[24px] text-white font-inter tracking-normal">
-                    Building pathways for global engagement through <br>education, culture, and innovation
+                <h2 class="text-lg sm:text-xl md:text-[24px] font-light leading-relaxed md:leading-[24px] text-white font-inter tracking-normal relative"
+                    style="min-height: 60px;">
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <span x-show="currentSlide === index" x-transition:enter="transition ease-in-out duration-500"
+                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                            x-transition:leave="transition ease-in-out duration-500" x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0" class="absolute inset-0" x-html="slide.subtitle"></span>
+                    </template>
                 </h2>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center ipad-pro:justify-center lg:justify-start">
-                    <button
+                    <a href="{{ route('event.index') }}"
                         class="bg-[#FFFFFF1A] border border-[#FFFFFF33] shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px] text-[#0000FF] py-2 px-4 sm:px-[33px] rounded-[12px] w-full sm:w-[220px] h-[56px] flex items-center justify-center gap-2">
                         <span class="font-medium font-inter text-sm sm:text-[14px] leading-[24px] text-white">Explore
                             Programs</span>
-                        <img src="{{ asset('icons-site/play.svg') }}" alt="Play Icon" class="w-4 h-4">
-                    </button>
+                    </a>
 
-                    <button
-                        class="bg-[#FFFFFF1A] border border-[#FFFFFF4D] shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px] text-[#0000FF] py-2 px-4 sm:px-[41px] rounded-[12px] w-full sm:w-[179px] h-[56px]">
+                    <a href="{{ route('story.index') }}"
+                        class="bg-[#FFFFFF1A] border border-[#FFFFFF4D] shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px] text-[#0000FF] py-2 px-4 sm:px-[41px] rounded-[12px] w-full sm:w-[179px] h-[56px] flex items-center justify-center gap-2">
                         <span class="font-medium font-inter text-sm sm:text-[14px] leading-[24px] text-white">Watch
                             Video</span>
-                    </button>
+                    </a>
                 </div>
             </div>
 
             <div
                 class="image-container relative w-full ipad-pro:w-full lg:w-1/2 xl:w-[440px] h-[440px] sm:h-[380px] ipad-pro:h-[440px] lg:h-[440px] rounded-[20px] overflow-hidden mt-4 ipad-pro:mt-6 lg:mt-0">
                 <template x-for="(slide, index) in slides" :key="index">
-                    <div x-show="currentSlide === index" x-transition:enter="transition ease-out duration-500"
-                        x-transition:enter-start="opacity-0 transform translate-x-full"
-                        x-transition:enter-end="opacity-100 transform translate-x-0"
-                        x-transition:leave="transition ease-in duration-500"
-                        x-transition:leave-start="opacity-100 transform translate-x-0"
-                        x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0">
-                        <img :src="slide" alt="Slider Image" class="w-full h-full object-cover">
+                    <div x-show="currentSlide === index" x-transition:enter="transition ease-in-out duration-700"
+                        x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                        x-transition:leave="transition ease-in-out duration-700" x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0" class="absolute inset-0">
+                        <img :src="'/storage/' + slide.image" alt="Slider Image" class="w-full h-full object-cover">
                     </div>
                 </template>
             </div>
@@ -134,7 +137,8 @@
                     </div>
                     <h3 class="text-xl md:text-[24px] font-inter font-bold text-[#29303D] text-center mt-2 mb-2">
                         Top 5</h3>
-                    <p class="font-inter font-bold text-center mb-2 text-[#29303DCC]">Indonesian University (Webometric)</p>
+                    <p class="font-inter font-bold text-center mb-2 text-[#29303DCC]">Indonesian University (Webometric)
+                    </p>
                     <p
                         class="text-[#29303D99] text-center mb-2 font-bold font-normal text-sm md:text-[14px] leading-[20px] tracking-normal">
                         Leading in digital academic visibility
@@ -142,7 +146,8 @@
                     <span class="font-medium text-[#0000FF]">2024</span>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
+                <div
+                    class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
                         <img src="{{ asset('icons-site/globe-blue.svg') }}" alt="Icon 2"
@@ -158,7 +163,8 @@
                     <span class="font-medium text-[#0000FF]">2024</span>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
+                <div
+                    class="bg-white rounded-lg shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-8 flex flex-col items-center">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[64px] bg-[#F9FAFB] rounded-full flex justify-center items-center mb-4">
                         <img src="{{ asset('icons-site/up.svg') }}" alt="Icon 3"
