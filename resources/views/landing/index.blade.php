@@ -337,7 +337,7 @@
                     </div>
                 </a>
 
-                <div class="flex flex-col gap-6 md:gap-8">
+                <div class="flex flex-col">
                     @foreach ($news as $newsItem)
                         <a href="{{ route('news.show', $newsItem->slug) }}"
                             class="flex gap-4 p-3 rounded-lg transition-all duration-200 hover:bg-gray-100">
