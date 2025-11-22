@@ -43,7 +43,7 @@ class AdminAboutSectionController extends Controller
         if (!empty($validated['video_url'])) {
             $videoUrl = $validated['video_url'];
 
-            if (preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/', $videoUrl, $matches)) {
+            if (preg_match('/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/|youtube\.com\/v\/)([a-zA-Z0-9_-]{11})/', $videoUrl, $matches)) {
                 $videoId = $matches[1];
                 $validated['video_url'] = 'https://www.youtube.com/embed/' . $videoId;
             }

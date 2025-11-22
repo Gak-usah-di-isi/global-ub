@@ -23,6 +23,14 @@ class AdminStoryController extends Controller
     {
         $data = $request->only(['title', 'description', 'category_story', 'video_url']);
 
+        if (!empty($data['video_url'])) {
+            $videoUrl = $data['video_url'];
+            if (preg_match('/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/|youtube\.com\/v\/)([a-zA-Z0-9_-]{11})/', $videoUrl, $matches)) {
+                $videoId = $matches[1];
+                $data['video_url'] = 'https://www.youtube.com/embed/' . $videoId;
+            }
+        }
+
         if ($request->hasFile('thumbnail')) {
             $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
         }
@@ -42,6 +50,14 @@ class AdminStoryController extends Controller
     {
         $story = Story::where('slug', $slug)->firstOrFail();
         $data = $request->only(['title', 'description', 'category_story', 'video_url']);
+
+        if (!empty($data['video_url'])) {
+            $videoUrl = $data['video_url'];
+            if (preg_match('/(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/|youtube\.com\/v\/)([a-zA-Z0-9_-]{11})/', $videoUrl, $matches)) {
+                $videoId = $matches[1];
+                $data['video_url'] = 'https://www.youtube.com/embed/' . $videoId;
+            }
+        }
 
         if ($request->hasFile('thumbnail')) {
             $data['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');

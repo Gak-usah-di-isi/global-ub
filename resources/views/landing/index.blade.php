@@ -1039,9 +1039,34 @@
             const closeModalBtn = document.getElementById('about-close-modal');
             const playButton = document.getElementById('about-play-button');
 
+            function convertToYouTubeEmbed(url) {
+                if (!url) return '';
+
+                let videoId = '';
+
+                const patterns = [
+                    /(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
+                    /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+                    /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+                    /(?:youtube\.com\/v\/)([a-zA-Z0-9_-]{11})/
+                ];
+
+                for (let pattern of patterns) {
+                    const match = url.match(pattern);
+                    if (match && match[1]) {
+                        videoId = match[1];
+                        break;
+                    }
+                }
+
+                return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+            }
+
             function openVideoModal() {
-                const embedUrl =
-                    '{{ $aboutSection->video_url ?? 'https://www.youtube.com/embed/Xg0r7XJ4lSY' }}?autoplay=1&rel=0';
+                const rawUrl = '{{ $aboutSection->video_url ?? 'https://www.youtube.com/embed/Xg0r7XJ4lSY' }}';
+                const embedBaseUrl = convertToYouTubeEmbed(rawUrl);
+                const embedUrl = embedBaseUrl + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+
                 videoIframe.src = embedUrl;
                 videoModal.classList.remove('hidden');
                 videoModal.classList.add('flex');
@@ -1098,8 +1123,10 @@
 
                 let videoId = '';
                 const patterns = [
-                    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/,
-                    /youtube\.com\/watch\?.*v=([a-zA-Z0-9_-]+)/
+                    /(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
+                    /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+                    /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+                    /(?:youtube\.com\/v\/)([a-zA-Z0-9_-]{11})/
                 ];
 
                 for (let pattern of patterns) {
@@ -1141,7 +1168,8 @@
                     return;
                 }
 
-                const embedUrl = convertYouTubeUrl(videoUrl) + '?autoplay=1&rel=0';
+                const embedBaseUrl = convertYouTubeUrl(videoUrl);
+                const embedUrl = embedBaseUrl + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
 
                 storyVideoIframe.src = embedUrl;
                 storyVideoModal.classList.remove('hidden');
