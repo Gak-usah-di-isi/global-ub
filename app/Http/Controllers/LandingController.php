@@ -14,6 +14,7 @@ use App\Models\DownloadCenter;
 use App\Models\Carousel;
 use App\Models\Ranking;
 use App\Models\AboutSection;
+use App\Models\Story;
 
 class LandingController extends Controller
 {
@@ -31,6 +32,11 @@ class LandingController extends Controller
         $innovations = Innovation::latest()->take(3)->get();
         $downloads = DownloadCenter::with('icon')->latest()->take(3)->get();
         $aboutSection = AboutSection::first();
-        return view('landing.index', compact('carousels', 'rankings', 'studies', 'events', 'partnerships', 'latestNews', 'news', 'testimonials', 'innovations', 'downloads', 'aboutSection'));
+
+        $stories = Story::latest()->take(5)->get();
+        $featuredStory = $stories->first();
+        $storyList = $stories->skip(1)->take(4);
+
+        return view('landing.index', compact('carousels', 'rankings', 'studies', 'events', 'partnerships', 'latestNews', 'news', 'testimonials', 'innovations', 'downloads', 'aboutSection', 'featuredStory', 'storyList'));
     }
 }

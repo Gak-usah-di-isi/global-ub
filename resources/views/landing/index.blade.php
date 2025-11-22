@@ -825,11 +825,28 @@
                         {{ __('landing.story.description') }}</p>
                 </div>
 
-                <div class="w-full flex flex-col md:flex-row gap-8 md:gap-[32px] max-w-[1120px] mx-auto">
+                <div class="w-full flex flex-col md:flex-row gap-8 md:gap-[32px] max-w-[1120px] mx-auto"
+                    x-data="{
+                        currentStory: @js(
+    $featuredStory
+        ? [
+            'id' => $featuredStory->id,
+            'title' => $featuredStory->title,
+            'category' => $featuredStory->category_story,
+            'thumbnail' => $featuredStory->thumbnail ? asset('storage/' . $featuredStory->thumbnail) : asset('images/bromo.png'),
+            'video_url' => $featuredStory->video_url,
+        ]
+        : null,
+),
+                        switchStory(story) {
+                            this.currentStory = story;
+                        }
+                    }">
 
-                    <div
-                        class="w-full md:w-[544px] h-[240px] md:h-[368px] rounded-[16px] overflow-hidden relative flex items-center justify-center bg-gradient-to-br from-[#0000FF] via-[#6699FF] to-[#6699FF]">
-                        <img src='{{ asset('images/bromo.png') }}' alt="Alumni Success Stories"
+                    <div id="story-video-trigger"
+                        class="w-full md:w-[544px] h-[240px] md:h-[368px] rounded-[16px] overflow-hidden relative flex items-center justify-center bg-gradient-to-br from-[#0000FF] via-[#6699FF] to-[#6699FF] cursor-pointer">
+                        <img :src="currentStory ? currentStory.thumbnail : '{{ asset('images/bromo.png') }}'"
+                            :alt="currentStory ? currentStory.title : 'Story'"
                             class="absolute inset-0 w-full h-full object-cover" />
 
                         <div
@@ -837,81 +854,48 @@
                         </div>
                         <div class="absolute inset-0 bg-black bg-opacity-20 rounded-[16px]"></div>
 
-                        <button
-                            class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm">
+                        <button type="button" id="story-play-button"
+                            class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm hover:bg-opacity-30 transition-all">
                             <img src='{{ asset('icons-site/play.svg') }}' alt="Play"
                                 class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
                         <div class="absolute bottom-4 left-4 z-10 w-[calc(100%-32px)] max-w-[512px]">
                             <div class="bg-black bg-opacity-50 backdrop-blur-sm rounded-[12px] p-3">
-                                <h4 class="text-white font-playfair font-semibold text-lg md:text-xl leading-6">
-                                    Alumni
-                                    Success Stories</h4>
-                                <p class="text-white font-inter font-light text-xs md:text-sm mt-1 opacity-90">From
-                                    Malang to
-                                    the World</p>
+                                <h4 class="text-white font-playfair font-semibold text-lg md:text-xl leading-6"
+                                    x-text="currentStory ? currentStory.title : 'No Story Available'">
+                                </h4>
+                                <p class="text-white font-inter font-light text-xs md:text-sm mt-1 opacity-90"
+                                    x-text="currentStory ? currentStory.category : ''">
+                                </p>
                             </div>
                         </div>
                     </div>
 
                     <div class="w-full md:w-[544px] flex flex-col gap-2 md:gap-4 justify-center">
-
-                        <button
-                            class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
-                            <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
-                                <img src='{{ asset('icons-site/play.svg') }}' alt="Play" class="w-6 h-6" />
-                            </span>
-                            <span class="flex flex-col items-start justify-center">
-                                <span
-                                    class="font-inter font-semibold text-[11px] sm:text-sm md:text-base text-[#29303D]">International
-                                    Partnership Highlights</span>
-                                <span class="font-inter text-xs sm:text-xs text-[#29303DB2]">3-5 min watch</span>
-                            </span>
-                        </button>
-
-                        <button
-                            class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
-                            <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
-                                <img src='{{ asset('icons-site/play.svg') }}' alt="Play" class="w-6 h-6" />
-                            </span>
-                            <span class="flex flex-col items-start justify-center">
-                                <span
-                                    class="font-inter font-semibold text-[11px] sm:text-sm md:text-base text-[#29303D]">Research
-                                    Collaboration
-                                    Success</span>
-                                <span class="font-inter text-xs sm:text-xs text-[#29303DB2]">3-5 min watch</span>
-                            </span>
-                        </button>
-
-                        <button
-                            class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
-                            <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
-                                <img src='{{ asset('icons-site/play.svg') }}' alt="Play" class="w-6 h-6" />
-                            </span>
-                            <span class="flex flex-col items-start justify-center">
-                                <span
-                                    class="font-inter font-semibold text-[11px] sm:text-sm md:text-base text-[#29303D]">Student
-                                    Exchange
-                                    Experiences</span>
-                                <span class="font-inter text-xs sm:text-xs text-[#29303DB2]">3-5 min watch</span>
-                            </span>
-                        </button>
-
-                        <button
-                            class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition">
-                            <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
-                                <img src='{{ asset('icons-site/play.svg') }}' alt="Play" class="w-6 h-6" />
-                            </span>
-                            <span class="flex flex-col items-start justify-center">
-                                <span
-                                    class="font-inter font-semibold text-[11px] sm:text-sm md:text-base text-[#29303D]">Faculty
-                                    Global
-                                    Impact
-                                    Stories</span>
-                                <span class="font-inter text-xs sm:text-xs text-[#29303DB2]">3-5 min watch</span>
-                            </span>
-                        </button>
+                        @foreach ($storyList as $story)
+                            <button type="button"
+                                @click="switchStory({
+                                id: {{ $story->id }},
+                                title: '{{ addslashes($story->title) }}',
+                                category: '{{ addslashes($story->category_story) }}',
+                                thumbnail: '{{ $story->thumbnail ? asset('storage/' . $story->thumbnail) : asset('images/bromo.png') }}',
+                                video_url: '{{ $story->video_url }}'
+                            })"
+                                class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition cursor-pointer">
+                                <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
+                                    <img src='{{ asset('icons-site/play.svg') }}' alt="Play" class="w-6 h-6" />
+                                </span>
+                                <span class="flex flex-col items-start justify-center">
+                                    <span
+                                        class="font-inter font-semibold text-[11px] sm:text-sm md:text-base text-[#29303D] text-left line-clamp-1">
+                                        {{ $story->title }}
+                                    </span>
+                                    <span
+                                        class="font-inter text-xs sm:text-xs text-[#29303DB2]">{{ $story->category_story }}</span>
+                                </span>
+                            </button>
+                        @endforeach
                     </div>
                 </div>
                 <div class="flex justify-center">
@@ -1094,7 +1078,109 @@
                 if (e.key === 'Escape' && videoModal && !videoModal.classList.contains('hidden')) {
                     closeVideoModal();
                 }
+                const storyModal = document.getElementById('story-video-modal');
+                if (e.key === 'Escape' && storyModal && !storyModal.classList.contains('hidden')) {
+                    closeStoryVideoModal();
+                }
             });
+
+            const storyVideoTrigger = document.getElementById('story-video-trigger');
+            const storyVideoModal = document.getElementById('story-video-modal');
+            const storyVideoIframe = document.getElementById('story-video-iframe');
+            const closeStoryModalBtn = document.getElementById('story-close-modal');
+            const storyPlayButton = document.getElementById('story-play-button');
+
+            function convertYouTubeUrl(url) {
+                if (!url) return '';
+
+                let videoId = '';
+                const patterns = [
+                    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/,
+                    /youtube\.com\/watch\?.*v=([a-zA-Z0-9_-]+)/
+                ];
+
+                for (let pattern of patterns) {
+                    const match = url.match(pattern);
+                    if (match && match[1]) {
+                        videoId = match[1];
+                        break;
+                    }
+                }
+
+                return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+            }
+
+            function openStoryVideoModal() {
+                if (!storyVideoIframe) {
+                    return;
+                }
+
+                if (!storyVideoModal) {
+                    return;
+                }
+
+                const storySection = document.querySelector('[x-data*="currentStory"]');
+                if (!storySection) {
+                    return;
+                }
+
+                let videoUrl = '';
+                try {
+                    if (typeof Alpine !== 'undefined' && Alpine.$data) {
+                        const alpineData = Alpine.$data(storySection);
+                        videoUrl = alpineData?.currentStory?.video_url || '';
+                    }
+                } catch (e) {
+                    return;
+                }
+
+                if (!videoUrl) {
+                    return;
+                }
+
+                const embedUrl = convertYouTubeUrl(videoUrl) + '?autoplay=1&rel=0';
+
+                storyVideoIframe.src = embedUrl;
+                storyVideoModal.classList.remove('hidden');
+                storyVideoModal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                if (storyPlayButton) {
+                    storyPlayButton.style.display = 'none';
+                }
+            }
+
+            function closeStoryVideoModal() {
+                if (storyVideoIframe) {
+                    storyVideoIframe.src = '';
+                }
+                if (storyVideoModal) {
+                    storyVideoModal.classList.add('hidden');
+                    storyVideoModal.classList.remove('flex');
+                }
+                document.body.style.overflow = 'auto';
+                if (storyPlayButton) {
+                    storyPlayButton.style.display = '';
+                }
+            }
+
+            if (storyVideoTrigger) {
+                storyVideoTrigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openStoryVideoModal();
+                });
+            }
+
+            if (closeStoryModalBtn) {
+                closeStoryModalBtn.addEventListener('click', closeStoryVideoModal);
+            }
+
+            if (storyVideoModal) {
+                storyVideoModal.addEventListener('click', function(e) {
+                    if (e.target === storyVideoModal) {
+                        closeStoryVideoModal();
+                    }
+                });
+            }
         });
     </script>
 
@@ -1111,6 +1197,27 @@
             <div class="bg-white rounded-lg overflow-hidden">
                 <div class="aspect-video">
                     <iframe id="about-video-iframe" width="100%" height="100%" src="" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="story-video-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl mx-auto">
+            <button id="story-close-modal"
+                class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="bg-white rounded-lg overflow-hidden">
+                <div class="aspect-video">
+                    <iframe id="story-video-iframe" width="100%" height="100%" src="" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
                     </iframe>
