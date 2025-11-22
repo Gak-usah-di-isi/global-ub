@@ -1040,7 +1040,13 @@
             const playButton = document.getElementById('about-play-button');
 
             function convertToYouTubeEmbed(url) {
-                if (!url) return '';
+                console.log('=== ABOUT SECTION DEBUG ===');
+                console.log('Raw URL from database:', url);
+
+                if (!url) {
+                    console.error('URL is empty or null');
+                    return '';
+                }
 
                 let videoId = '';
 
@@ -1051,28 +1057,52 @@
                     /(?:youtube\.com\/v\/)([a-zA-Z0-9_-]{11})/
                 ];
 
-                for (let pattern of patterns) {
-                    const match = url.match(pattern);
+                for (let i = 0; i < patterns.length; i++) {
+                    const match = url.match(patterns[i]);
                     if (match && match[1]) {
                         videoId = match[1];
+                        console.log(`Pattern ${i} matched! Video ID:`, videoId);
                         break;
                     }
                 }
 
-                return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+                if (!videoId) {
+                    console.error('No video ID extracted from URL:', url);
+                    console.log('Returning original URL');
+                    return url;
+                }
+
+                const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                console.log('Final embed URL:', embedUrl);
+                return embedUrl;
             }
 
             function openVideoModal() {
+                console.log('\n=== OPENING ABOUT VIDEO MODAL ===');
                 const rawUrl = '{{ $aboutSection->video_url ?? 'https://www.youtube.com/embed/Xg0r7XJ4lSY' }}';
-                const embedBaseUrl = convertToYouTubeEmbed(rawUrl);
-                const embedUrl = embedBaseUrl + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                console.log('About Section Video URL:', rawUrl);
 
-                videoIframe.src = embedUrl;
-                videoModal.classList.remove('hidden');
-                videoModal.classList.add('flex');
-                document.body.style.overflow = 'hidden';
-                if (playButton) {
-                    playButton.style.display = 'none';
+                const embedBaseUrl = convertToYouTubeEmbed(rawUrl);
+                console.log('After conversion:', embedBaseUrl);
+
+                const embedUrl = embedBaseUrl + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                console.log('Final URL with parameters:', embedUrl);
+
+                try {
+                    videoIframe.src = embedUrl;
+                    console.log('Video iframe src set successfully');
+
+                    videoModal.classList.remove('hidden');
+                    videoModal.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+
+                    if (playButton) {
+                        playButton.style.display = 'none';
+                    }
+
+                    console.log('Modal opened successfully');
+                } catch (error) {
+                    console.error('Error opening video modal:', error);
                 }
             }
 
@@ -1119,7 +1149,13 @@
             const storyPlayButton = document.getElementById('story-play-button');
 
             function convertYouTubeUrl(url) {
-                if (!url) return '';
+                console.log('=== STORY SECTION DEBUG ===');
+                console.log('Raw story URL:', url);
+
+                if (!url) {
+                    console.error('Story URL is empty or null');
+                    return '';
+                }
 
                 let videoId = '';
                 const patterns = [
@@ -1129,28 +1165,42 @@
                     /(?:youtube\.com\/v\/)([a-zA-Z0-9_-]{11})/
                 ];
 
-                for (let pattern of patterns) {
-                    const match = url.match(pattern);
+                for (let i = 0; i < patterns.length; i++) {
+                    const match = url.match(patterns[i]);
                     if (match && match[1]) {
                         videoId = match[1];
+                        console.log(`Story pattern ${i} matched! Video ID:`, videoId);
                         break;
                     }
                 }
 
-                return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+                if (!videoId) {
+                    console.error('No video ID extracted from story URL:', url);
+                    console.log('Returning original story URL');
+                    return url;
+                }
+
+                const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                console.log('Final story embed URL:', embedUrl);
+                return embedUrl;
             }
 
             function openStoryVideoModal() {
+                console.log('\n=== OPENING STORY VIDEO MODAL ===');
+
                 if (!storyVideoIframe) {
+                    console.error('Story video iframe not found');
                     return;
                 }
 
                 if (!storyVideoModal) {
+                    console.error('Story video modal not found');
                     return;
                 }
 
                 const storySection = document.querySelector('[x-data*="currentStory"]');
                 if (!storySection) {
+                    console.error('Story section element not found');
                     return;
                 }
 
@@ -1158,25 +1208,44 @@
                 try {
                     if (typeof Alpine !== 'undefined' && Alpine.$data) {
                         const alpineData = Alpine.$data(storySection);
+                        console.log('Alpine data:', alpineData);
+                        console.log('Current story data:', alpineData?.currentStory);
                         videoUrl = alpineData?.currentStory?.video_url || '';
+                        console.log('Extracted video URL:', videoUrl);
+                    } else {
+                        console.error('Alpine is not defined or Alpine.$data is not available');
                     }
                 } catch (e) {
+                    console.error('Error getting Alpine data:', e);
                     return;
                 }
 
                 if (!videoUrl) {
+                    console.error('Video URL is empty after extraction');
                     return;
                 }
 
                 const embedBaseUrl = convertYouTubeUrl(videoUrl);
-                const embedUrl = embedBaseUrl + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                console.log('After story conversion:', embedBaseUrl);
 
-                storyVideoIframe.src = embedUrl;
-                storyVideoModal.classList.remove('hidden');
-                storyVideoModal.classList.add('flex');
-                document.body.style.overflow = 'hidden';
-                if (storyPlayButton) {
-                    storyPlayButton.style.display = 'none';
+                const embedUrl = embedBaseUrl + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                console.log('Final story URL with parameters:', embedUrl);
+
+                try {
+                    storyVideoIframe.src = embedUrl;
+                    console.log('Story video iframe src set successfully');
+
+                    storyVideoModal.classList.remove('hidden');
+                    storyVideoModal.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+
+                    if (storyPlayButton) {
+                        storyPlayButton.style.display = 'none';
+                    }
+
+                    console.log('Story modal opened successfully');
+                } catch (error) {
+                    console.error('Error opening story video modal:', error);
                 }
             }
 
@@ -1212,6 +1281,53 @@
                     }
                 });
             }
+
+            // Add iframe error listeners for debugging
+            if (videoIframe) {
+                videoIframe.addEventListener('load', function() {
+                    console.log('About video iframe loaded successfully');
+                });
+
+                videoIframe.addEventListener('error', function(e) {
+                    console.error('About video iframe error:', e);
+                });
+            }
+
+            if (storyVideoIframe) {
+                storyVideoIframe.addEventListener('load', function() {
+                    console.log('Story video iframe loaded successfully');
+                });
+
+                storyVideoIframe.addEventListener('error', function(e) {
+                    console.error('Story video iframe error:', e);
+                });
+            }
+
+            // Listen for YouTube player errors via postMessage
+            window.addEventListener('message', function(event) {
+                console.log('=== MESSAGE EVENT RECEIVED ===');
+                console.log('Origin:', event.origin);
+                console.log('Data:', event.data);
+
+                // YouTube sends errors via postMessage
+                if (event.origin === 'https://www.youtube.com') {
+                    try {
+                        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+                        console.log('YouTube message data:', data);
+
+                        if (data.event === 'onError' || data.error) {
+                            console.error('YouTube Player Error:', data);
+                            alert('YouTube Error: ' + JSON.stringify(data));
+                        }
+                    } catch (e) {
+                        console.log('Could not parse YouTube message:', e);
+                    }
+                }
+            });
+
+            console.log('=== DEBUGGING SETUP COMPLETE ===');
+            console.log('About video iframe element:', videoIframe);
+            console.log('Story video iframe element:', storyVideoIframe);
         });
     </script>
 
