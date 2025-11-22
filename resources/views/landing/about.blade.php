@@ -26,19 +26,15 @@
     </div>
 
     <div class="w-full h-auto bg-white pt-8 md:pt-10 px-4 sm:px-6 md:px-8 lg:px-[112px] pb-0 sm:pb-0 lg:pb-12">
-        <div class="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-[64px]">
+        <div id="aboutPageSection" class="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-8 md:gap-12 lg:gap-[64px]">
             <div class="w-full lg:w-1/2 xl:w-[576px]">
                 <h2
                     class="text-2xl sm:text-3xl md:text-[36px] font-playfair font-extrabold leading-tight md:leading-[48px] text-[#29303D]">
-                    About Globalizing UB
+                    {{ __('landing.about.title') }}
                 </h2>
                 <p
                     class="mt-4 text-base sm:text-lg md:text-[18px] font-light font-inter leading-relaxed md:leading-[29.25px] text-[#29303DB2]">
-                    Brawijaya University is one of Indonesia's leading universities, committed to becoming a
-                    world-class university. Through the Globalizing UB program, we provide international-quality
-                    education that connects students with global opportunities. With over 60 years of experience in
-                    education, UB has produced top-notch graduates who contribute to national and international
-                    development.
+                    {{ __('landing.about.description') }}
                 </p>
 
                 <div class="mt-6 md:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -48,7 +44,7 @@
                             <img src="{{ asset('icons-site/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">50,000+</p>
+                            <p id="aboutPageCounter1" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Students</p>
                         </div>
                     </div>
@@ -58,7 +54,7 @@
                             <img src="{{ asset('icons-site/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">160+</p>
+                            <p id="aboutPageCounter2" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Study Programs</p>
                         </div>
                     </div>
@@ -69,7 +65,7 @@
                                 class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">60+</p>
+                            <p id="aboutPageCounter3" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Years of Excellence</p>
                         </div>
                     </div>
@@ -80,7 +76,7 @@
                                 class="w-[24px] h-[24px]" />
                         </div>
                         <div>
-                            <p class="font-semibold text-sm md:text-[16px] text-[#29303D]">300+</p>
+                            <p id="aboutPageCounter4" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
                             <p class="text-xs md:text-[14px] text-[#29303DB2]">Partner Universities</p>
                         </div>
                     </div>
@@ -99,14 +95,37 @@
                 </div>
             </div>
 
-            <div
-                class="w-full lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden flex justify-center items-center mt-0 md:mt-12 lg:mt-24 relative">
-                <div class="right-0 lg:pr-[20px]">
-                    <img src="{{ asset('/images/about-shadow.png') }}" alt="UB Image" class="w-full h-full object-cover">
+            <div class="relative">
+                <div id="about-video-trigger"
+                    class="w-full lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden relative mt-0 md:mt-12 lg:mt-24 cursor-pointer"
+                    style="box-shadow: 0px 8px 25px -8px #0000FF4D;">
+                    <div class="absolute inset-0">
+                        <img src="{{ asset('/images/about-new.png') }}" alt="UB Image" class="w-full h-full object-cover">
+                    </div>
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[rgba(0,0,255,0.6)] to-[rgba(102,153,255,0.6)] rounded-[16px]">
+                    </div>
+
+                    <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
+                        <button id="about-play-button" type="button"
+                            class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm mb-6 hover:bg-opacity-30 transition-all">
+                            <img src='{{ asset('icons-site/play.svg') }}' alt="Play"
+                                class="w-6 h-6 md:w-8 md:h-8 text-white" />
+                        </button>
+
+                        <h3 class="font-playfair font-bold text-lg md:text-xl lg:text-2xl text-white mb-2">
+                            Watch Our Story
+                        </h3>
+
+                        <p class="font-inter font-normal text-sm md:text-base text-white opacity-90">
+                            Discover what makes UB special
+                        </p>
+                    </div>
                 </div>
 
                 <div
-                    class="absolute border border-[#E2E4E9] border-1 -buttom-0 sm:bottom-0 md:-bottom-0 lg:-bottom-0 right-4 sm:right-6 md:right-8 lg:-right-0 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px] h-[60px] sm:h-[65px] md:h-[70px] lg:h-[80px] rounded-[12px] md:rounded-[16px] bg-white p-2 sm:p-3 md:p-4 bottom-1">
+                    class="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-4 md:-bottom-2 md:-right-6 lg:bottom-2 lg:-right-6 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px] h-[50px] sm:h-[65px] md:h-[70px] lg:h-[80px] rounded-[12px] md:rounded-[16px] bg-white border border-[#E2E4E9] p-2 sm:p-3 md:p-4 z-20 shadow-[0px_4px_20px_-2px_#29303D1A]">
                     <div class="flex items-center gap-2 sm:gap-3 w-full h-full">
                         <div
                             class="w-8 h-8 sm:w-10 sm:h-10 md:w-[48px] md:h-[48px] rounded-full flex items-center justify-center bg-[linear-gradient(135deg,#0000FF_0%,#6699FF_100%)]">
@@ -120,7 +139,7 @@
                             </p>
                             <p
                                 class="font-inter font-normal text-[10px] sm:text-[11px] md:text-[12px] leading-[1.1] sm:leading-[1.2] md:leading-[20px] text-[#29303DB2] truncate">
-                                Connected worldwide
+                                Worldwide Connections
                             </p>
                         </div>
                     </div>
@@ -147,44 +166,46 @@
                 <div class="flex flex-col items-center text-center">
                     <div
                         class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
-                        57
+                        {{ $aboutSection->achievement_1_value ?? '57' }}
                     </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">Countries Represented</span>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">{{ $aboutSection->achievement_1_label ?? 'Countries Represented' }}</span>
                 </div>
 
                 <div class="flex flex-col items-center text-center">
                     <div
                         class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
-                        100+
+                        {{ $aboutSection->achievement_2_value ?? '100+' }}
                     </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">International Partner
-                        Institutions</span>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">{{ $aboutSection->achievement_2_label ?? 'International Partner Institutions' }}</span>
                 </div>
 
                 <div class="flex flex-col items-center text-center">
                     <div
                         class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
-                        Top 700
+                        {{ $aboutSection->achievement_3_value ?? 'Top 700' }}
                     </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">QS World University
-                        Rankings</span>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">{{ $aboutSection->achievement_3_label ?? 'QS World University Rankings' }}</span>
                 </div>
 
                 <div class="flex flex-col items-center text-center">
                     <div
                         class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
-                        50+
+                        {{ $aboutSection->achievement_4_value ?? '50+' }}
                     </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">Global Mobility Programs</span>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">{{ $aboutSection->achievement_4_label ?? 'Global Mobility Programs' }}</span>
                 </div>
 
                 <div class="flex flex-col items-center text-center">
                     <div
                         class="w-full text-center font-inter font-bold text-2xl md:text-[36px] leading-tight text-[#0000FF]">
-                        Top 150
+                        {{ $aboutSection->achievement_5_value ?? 'Top 150' }}
                     </div>
-                    <span class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">UI GreenMetric World
-                        University</span>
+                    <span
+                        class="mt-1 text-[#29303DB2] font-inter text-sm md:text-[14px]">{{ $aboutSection->achievement_5_label ?? 'UI GreenMetric World University' }}</span>
                 </div>
             </div>
         </div>
@@ -269,6 +290,123 @@
                         class="w-full sm:w-[163px] h-[44px] font-inter font-normal px-[33px] py-[12px] rounded-[10px] border border-white/20 bg-white/10 text-white flex items-center justify-center">
                         Learn More
                     </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function animateCounter(element, target, duration) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        element.textContent = target.toLocaleString() + '+';
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(start).toLocaleString() + '+';
+                    }
+                }, 16);
+            }
+
+            let aboutPageStarted = false;
+            const aboutPageSection = document.getElementById('aboutPageSection');
+
+            const aboutPageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !aboutPageStarted) {
+                        aboutPageStarted = true;
+
+                        const counter1 = document.getElementById('aboutPageCounter1');
+                        const counter2 = document.getElementById('aboutPageCounter2');
+                        const counter3 = document.getElementById('aboutPageCounter3');
+                        const counter4 = document.getElementById('aboutPageCounter4');
+
+                        animateCounter(counter1, {{ $aboutSection->students_count ?? 50000 }},
+                            3000);
+                        animateCounter(counter2, {{ $aboutSection->programs_count ?? 190 }}, 3000);
+                        animateCounter(counter3, {{ $aboutSection->years_count ?? 60 }}, 3000);
+                        animateCounter(counter4, {{ $aboutSection->partners_count ?? 300 }}, 3000);
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
+
+            if (aboutPageSection) {
+                aboutPageObserver.observe(aboutPageSection);
+            }
+
+            const videoTrigger = document.getElementById('about-video-trigger');
+            const videoModal = document.getElementById('about-video-modal');
+            const videoIframe = document.getElementById('about-video-iframe');
+            const closeModalBtn = document.getElementById('about-close-modal');
+            const playButton = document.getElementById('about-play-button');
+
+            function openVideoModal() {
+                if (!videoIframe) {
+                    console.error('Video iframe not found');
+                    return;
+                }
+                const embedUrl =
+                    '{{ $aboutSection->video_url ?? 'https://www.youtube.com/embed/Xg0r7XJ4lSY' }}?autoplay=1&rel=0';
+                videoIframe.src = embedUrl;
+                videoModal.classList.remove('hidden');
+                videoModal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                if (playButton) {
+                    playButton.style.display = 'none';
+                }
+            }
+
+            function closeVideoModal() {
+                if (videoIframe) {
+                    videoIframe.src = '';
+                }
+                videoModal.classList.add('hidden');
+                videoModal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+                if (playButton) {
+                    playButton.style.display = '';
+                }
+            }
+
+            if (videoTrigger) {
+                videoTrigger.addEventListener('click', openVideoModal);
+            }
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeVideoModal);
+            }
+
+            if (videoModal) {
+                videoModal.addEventListener('click', function(e) {
+                    if (e.target === videoModal) {
+                        closeVideoModal();
+                    }
+                });
+            }
+        });
+    </script>
+
+    <div id="about-video-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl mx-auto">
+            <button id="about-close-modal"
+                class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="bg-white rounded-lg overflow-hidden">
+                <div class="aspect-video">
+                    <iframe id="about-video-iframe" width="100%" height="100%" src="" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
