@@ -1074,6 +1074,12 @@
 
                 const embedUrl = `https://www.youtube.com/embed/${videoId}`;
                 console.log('Final embed URL:', embedUrl);
+
+                // Test if video can be embedded
+                console.log('Testing video embed capability...');
+                console.log('Try opening this URL in new tab to check if video exists and can be embedded:');
+                console.log(`https://www.youtube.com/watch?v=${videoId}`);
+
                 return embedUrl;
             }
 
@@ -1085,8 +1091,21 @@
                 const embedBaseUrl = convertToYouTubeEmbed(rawUrl);
                 console.log('After conversion:', embedBaseUrl);
 
-                const embedUrl = embedBaseUrl + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                // Tambahkan parameter lengkap untuk menghindari Error 153
+                const currentOrigin = window.location.origin;
+                const embedUrl = embedBaseUrl +
+                    '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(
+                        currentOrigin) + '&widget_referrer=' + encodeURIComponent(currentOrigin);
                 console.log('Final URL with parameters:', embedUrl);
+                console.log('Current origin:', currentOrigin);
+                console.log('\\n=== TROUBLESHOOTING INFO ===');
+                console.log('If you still get Error 153, possible causes:');
+                console.log('1. Video owner has disabled embedding');
+                console.log('2. Video is age-restricted or has regional restrictions');
+                console.log('3. Video is private or deleted');
+                console.log('4. Domain not whitelisted by video owner');
+                console.log('Test video directly: https://www.youtube.com/watch?v=' + embedBaseUrl.split('/')
+            .pop());
 
                 try {
                     videoIframe.src = embedUrl;
@@ -1228,7 +1247,11 @@
                 const embedBaseUrl = convertYouTubeUrl(videoUrl);
                 console.log('After story conversion:', embedBaseUrl);
 
-                const embedUrl = embedBaseUrl + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                // Tambahkan parameter lengkap untuk menghindari Error 153
+                const currentOrigin = window.location.origin;
+                const embedUrl = embedBaseUrl +
+                    '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(
+                        currentOrigin) + '&widget_referrer=' + encodeURIComponent(currentOrigin);
                 console.log('Final story URL with parameters:', embedUrl);
 
                 try {
@@ -1344,8 +1367,8 @@
             <div class="bg-white rounded-lg overflow-hidden">
                 <div class="aspect-video">
                     <iframe id="about-video-iframe" width="100%" height="100%" src="" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
                     </iframe>
                 </div>
             </div>
@@ -1365,8 +1388,8 @@
             <div class="bg-white rounded-lg overflow-hidden">
                 <div class="aspect-video">
                     <iframe id="story-video-iframe" width="100%" height="100%" src="" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
                     </iframe>
                 </div>
             </div>
