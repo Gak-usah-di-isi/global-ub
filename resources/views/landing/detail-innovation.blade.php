@@ -38,7 +38,7 @@
 
     <section class="innovation-section py-10 md:py-20 px-4 md:px-8 lg:px-28 bg-white">
         <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
-            <div class="w-full lg:w-[450px] h-[350px] md:h-[400px] lg:h-[550px] rounded-lg overflow-hidden">
+            <div class="w-full lg:w-[450px] h-[370px] md:h-[400px] lg:h-[550px] rounded-lg overflow-hidden">
                 <img src="{{ asset('storage/' . $innovation->image) }}" alt="{{ $innovation->title }}"
                     class="w-full h-full object-cover object-center">
             </div>
