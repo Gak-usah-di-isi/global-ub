@@ -655,7 +655,12 @@
                 </p>
 
                 <div class="flex justify-center mt-6 md:mt-6">
-                    <a href="{{ route('download-center.download-all') }}" rel="noopener"
+                    {{-- <a href="{{ route('download-center.download-all') }}" rel="noopener"
+                        class="w-full h-[48px] font-inter font-normal text-sm md:text-[15px] px-[33px] py-[12px] rounded-[10px] border border-white/20 bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
+                        Download Complete Media Kit
+                    </a> --}}
+                    <a href="https://drive.google.com/file/d/1IIVEOYoDyZEeKxY9upktommAga9J2VSW/view" target="_blank"
+                        rel="noopener"
                         class="w-full h-[48px] font-inter font-normal text-sm md:text-[15px] px-[33px] py-[12px] rounded-[10px] border border-white/20 bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
                         Download Complete Media Kit
                     </a>
