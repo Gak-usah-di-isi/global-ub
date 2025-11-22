@@ -148,10 +148,14 @@
                 promotional materials in one package
             </p>
 
-            <a href="{{ route('download-center.download-all') }}"
+            {{-- <a href="{{ route('download-center.download-all') }}"
                 class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 transition border border-white/20 text-white px-12 py-3 rounded-lg text-sm font-medium">
                 Download Complete Media Kit
                 <img src="{{ asset('icons-site/arrow-right-white.svg') }}" alt="">
+            </a> --}}
+            <a href="https://drive.google.com/file/d/1IIVEOYoDyZEeKxY9upktommAga9J2VSW/view" target="_blank" rel="noopener"
+                class="w-full h-[48px] font-inter font-normal text-sm md:text-[15px] px-[33px] py-[12px] rounded-[10px] border border-white/20 bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-colors">
+                Download Complete Media Kit
             </a>
         </div>
     </div>
