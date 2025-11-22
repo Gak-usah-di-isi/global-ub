@@ -345,17 +345,42 @@
             const closeModalBtn = document.getElementById('about-close-modal');
             const playButton = document.getElementById('about-play-button');
 
-            function openVideoModal() {
-                if (!videoIframe) {
-                    console.error('Video iframe not found');
-                    return;
+            function convertToYouTubeEmbed(url) {
+                if (!url) return '';
+
+                let videoId = '';
+
+                const patterns = [
+                    /(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
+                    /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+                    /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+                    /(?:youtube\.com\/v\/)([a-zA-Z0-9_-]{11})/
+                ];
+
+                for (let i = 0; i < patterns.length; i++) {
+                    const match = url.match(patterns[i]);
+                    if (match && match[1]) {
+                        videoId = match[1];
+                        break;
+                    }
                 }
-                const embedUrl =
-                    '{{ $aboutSection->video_url ?? 'https://www.youtube.com/embed/Xg0r7XJ4lSY' }}?autoplay=1&rel=0';
+
+                return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+            }
+
+            function openVideoModal() {
+                const rawUrl = '{{ $aboutSection->video_url ?? 'https://www.youtube.com/embed/Xg0r7XJ4lSY' }}';
+                const embedBaseUrl = convertToYouTubeEmbed(rawUrl);
+                const currentOrigin = window.location.origin;
+                const embedUrl = embedBaseUrl +
+                    '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(
+                        currentOrigin) + '&widget_referrer=' + encodeURIComponent(currentOrigin);
+
                 videoIframe.src = embedUrl;
                 videoModal.classList.remove('hidden');
                 videoModal.classList.add('flex');
                 document.body.style.overflow = 'hidden';
+
                 if (playButton) {
                     playButton.style.display = 'none';
                 }
@@ -404,8 +429,8 @@
             <div class="bg-white rounded-lg overflow-hidden">
                 <div class="aspect-video">
                     <iframe id="about-video-iframe" width="100%" height="100%" src="" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
                     </iframe>
                 </div>
             </div>
