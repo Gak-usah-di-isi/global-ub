@@ -36,46 +36,69 @@
         </div>
     </div>
 
-    <section id="innovation-detail"
-        class="w-full bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] px-4 sm:px-8 md:px-16 lg:px-28 py-10 md:py-16 lg:py-20">
-        <div class="max-w-[1280px] mx-auto flex flex-col gap-8 md:gap-12 lg:gap-16">
+    <section class="innovation-section py-10 md:py-20 px-4 md:px-8 lg:px-28 bg-white">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+            <div class="w-full lg:w-[450px] h-[300px] md:h-[400px] lg:h-[465px] rounded-lg overflow-hidden">
+                <img src="{{ asset('storage/' . $innovation->image) }}" alt="{{ $innovation->title }}"
+                    class="w-full h-full object-cover object-center">
+            </div>
 
-            <div class="bg-white rounded-[16px] p-[32px] shadow-[0px_4px_20px_-2px_#29303D1A] flex flex-col gap-[24px]">
-                <div class="w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-[16px] overflow-hidden">
-                    <img src="{{ asset('storage/' . $innovation->image) }}" alt="{{ $innovation->title }}"
-                        class="w-full h-full object-cover">
-                </div>
-
-                <div class="flex flex-col gap-[12px]">
+            <div class="w-full lg:w-[669px]">
+                <div class="flex flex-col gap-[12px] mb-4">
                     <span
                         class="inline-flex items-center rounded-full px-3 py-1 text-sm leading-[20px] font-medium bg-[#6699FF33] text-[#1D4ED8] w-fit">
                         {{ $innovation->innovation_type }}
                     </span>
-                    <h3
-                        class="font-playfair font-bold text-[24px] leading-[32px] text-[#29303D] md:text-[32px] md:leading-[40px]">
-                        {{ $innovation->title }}
-                    </h3>
                 </div>
 
-                <p
-                    class="font-inter font-normal text-[16px] leading-[28px] text-[#29303DB2] md:text-[18px] md:leading-[32px]">
-                    {{ $innovation->description }}
-                </p>
+                <h2 class="text-[#29303D] font-playfair text-2xl md:text-3xl lg:text-[36px] font-bold mb-4">
+                    {{ $innovation->title }}
+                </h2>
 
-                <div class="ck-content highlight-content">
+                <div
+                    class="text-[#29303DB2] font-inter text-base md:text-[18px] leading-relaxed md:leading-[29.25px] mb-6 md:mb-8 space-y-4">
+                    <p>{{ $innovation->description }}</p>
+                </div>
+
+                <div class="ck-content highlight-content mb-6">
                     {!! $innovation->highlights !!}
                 </div>
+
+                <div class="flex gap-4 mt-6 md:mt-8">
+                    <div class="w-[41px] h-[41px] bg-[#E2E4E9] flex items-center justify-center rounded-full shadow-md">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
+                            target="_blank">
+                            <img src="{{ asset('icons-site/fb.svg') }}" class="w-5 h-5" alt="Facebook">
+                        </a>
+                    </div>
+                    <div class="w-[41px] h-[41px] bg-[#E2E4E9] flex items-center justify-center rounded-full shadow-md">
+                        <a href="https://www.instagram.com" target="_blank">
+                            <img src="{{ asset('icons-site/ig.svg') }}" class="w-5 h-5" alt="Instagram">
+                        </a>
+                    </div>
+                    <div class="w-[41px] h-[41px] bg-[#E2E4E9] flex items-center justify-center rounded-full shadow-md">
+                        <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($innovation->title) }}"
+                            target="_blank">
+                            <img src="{{ asset('icons-site/tweet.svg') }}" class="w-5 h-5" alt="Twitter">
+                        </a>
+                    </div>
+                    <div class="w-[41px] h-[41px] bg-[#E2E4E9] flex items-center justify-center rounded-full shadow-md">
+                        <a href="{{ url()->current() }}" target="_blank" title="Click to Copy URL">
+                            <img src="{{ asset('icons-site/link.svg') }}" class="w-5 h-5" alt="Copy Link">
+                        </a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
+    <section class="py-10 md:py-20 px-4 md:px-8 lg:px-28 bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4]">
+        <div class="max-w-[1280px] mx-auto">
+            <h2 class="text-2xl md:text-3xl font-playfair font-extrabold text-[#29303D] mb-8 md:mb-14">
+                Related Innovations
+            </h2>
 
-            <div class="w-full flex flex-col gap-2">
-                <h2
-                    class="w-full font-playfair font-bold text-2xl md:text-3xl lg:text-[30px] leading-[36px] text-[#29303D]">
-                    Related Innovations
-                </h2>
-            </div>
-
-            <div class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach ($relatedInnovations as $relatedInnovation)
                     <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
                         <div class="w-full h-48 sm:h-64 md:h-[288px]">
@@ -111,6 +134,7 @@
             </div>
         </div>
     </section>
+
     <style>
         .ck-content ul {
             display: flex;
