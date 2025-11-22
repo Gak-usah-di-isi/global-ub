@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminIconController;
 use App\Http\Controllers\Admin\AdminMerchandiseController;
 use App\Http\Controllers\Admin\AdminCarouselController;
 use App\Http\Controllers\Admin\AdminRankingController;
+use App\Http\Controllers\Admin\AdminAboutSectionController;
 
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\EventController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\InnovationController;
 use App\Http\Controllers\StudyController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GalleryController;
@@ -33,9 +35,7 @@ use App\Http\Middleware\CountVisitor;
 
 Route::middleware([CountVisitor::class])->group(function () {
     Route::get('/', [LandingController::class, 'index']);
-    Route::get('/about', function () {
-        return view('landing.about');
-    });
+    Route::get('/about', [AboutController::class, 'index']);
     Route::get('/news', [NewsController::class, 'index']);
     Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
     Route::get('/event', [EventController::class, 'index'])->name('event.index');
@@ -170,6 +170,10 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/rankings/{id}/edit', [AdminRankingController::class, 'edit'])->name('rankings.edit');
     Route::put('/rankings/{id}', [AdminRankingController::class, 'update'])->name('rankings.update');
     Route::delete('/rankings/{id}', [AdminRankingController::class, 'destroy'])->name('rankings.destroy');
+
+    Route::get('/about-section', [AdminAboutSectionController::class, 'index'])->name('about-section.index');
+    Route::get('/about-section/edit', [AdminAboutSectionController::class, 'edit'])->name('about-section.edit');
+    Route::put('/about-section', [AdminAboutSectionController::class, 'update'])->name('about-section.update');
 });
 
 Route::middleware('auth')->group(function () {

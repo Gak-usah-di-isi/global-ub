@@ -239,7 +239,8 @@
             </div>
 
             <div class="relative">
-                <div class="w-full lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden relative mt-0 md:mt-12 lg:mt-24"
+                <div id="about-video-trigger"
+                    class="w-full lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden relative mt-0 md:mt-12 lg:mt-24 cursor-pointer"
                     style="box-shadow: 0px 8px 25px -8px #0000FF4D;">
                     <div class="absolute inset-0">
                         <img src="{{ asset('/images/about-new.png') }}" alt="UB Image"
@@ -251,8 +252,8 @@
                     </div>
 
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
-                        <button
-                            class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm mb-6">
+                        <button id="about-play-button"
+                            class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm mb-6 hover:bg-opacity-30 transition-all">
                             <img src='{{ asset('icons-site/play.svg') }}' alt="Play"
                                 class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
@@ -1031,15 +1032,90 @@
             let aboutObserver = new IntersectionObserver(function(entries) {
                 if (entries[0].isIntersecting && !aboutStarted) {
                     aboutStarted = true;
-                    animateCounter(document.getElementById('aboutCounter1'), 50000, 3000);
-                    animateCounter(document.getElementById('aboutCounter2'), 190, 3000);
-                    animateCounter(document.getElementById('aboutCounter3'), 60, 3000);
-                    animateCounter(document.getElementById('aboutCounter4'), 300, 3000);
+                    animateCounter(document.getElementById('aboutCounter1'),
+                        {{ $aboutSection->students_count ?? 50000 }}, 3000);
+                    animateCounter(document.getElementById('aboutCounter2'),
+                        {{ $aboutSection->programs_count ?? 190 }}, 3000);
+                    animateCounter(document.getElementById('aboutCounter3'),
+                        {{ $aboutSection->years_count ?? 60 }}, 3000);
+                    animateCounter(document.getElementById('aboutCounter4'),
+                        {{ $aboutSection->partners_count ?? 300 }}, 3000);
                 }
             }, {
                 threshold: 0.3
             });
             if (aboutSection) aboutObserver.observe(aboutSection);
+
+            const videoTrigger = document.getElementById('about-video-trigger');
+            const videoModal = document.getElementById('about-video-modal');
+            const videoIframe = document.getElementById('about-video-iframe');
+            const closeModalBtn = document.getElementById('about-close-modal');
+            const playButton = document.getElementById('about-play-button');
+
+            function openVideoModal() {
+                const embedUrl =
+                    '{{ $aboutSection->video_url ?? 'https://www.youtube.com/embed/Xg0r7XJ4lSY' }}?autoplay=1&rel=0';
+                videoIframe.src = embedUrl;
+                videoModal.classList.remove('hidden');
+                videoModal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+                if (playButton) {
+                    playButton.style.display = 'none';
+                }
+            }
+
+            function closeVideoModal() {
+                videoIframe.src = '';
+                videoModal.classList.add('hidden');
+                videoModal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+                if (playButton) {
+                    playButton.style.display = 'flex';
+                }
+            }
+
+            if (videoTrigger) {
+                videoTrigger.addEventListener('click', openVideoModal);
+            }
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeVideoModal);
+            }
+
+            if (videoModal) {
+                videoModal.addEventListener('click', function(e) {
+                    if (e.target === videoModal) {
+                        closeVideoModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && videoModal && !videoModal.classList.contains('hidden')) {
+                    closeVideoModal();
+                }
+            });
         });
     </script>
+
+    <div id="about-video-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl mx-auto">
+            <button id="about-close-modal"
+                class="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <div class="bg-white rounded-lg overflow-hidden">
+                <div class="aspect-video">
+                    <iframe id="about-video-iframe" width="100%" height="100%" src="" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

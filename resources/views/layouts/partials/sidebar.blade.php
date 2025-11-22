@@ -66,6 +66,17 @@
                 <span class="nav-label">Rankings</span>
             </a>
 
+            <a href="{{ route('about-section.index') }}"
+                class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
+            {{ request()->routeIs('about-section.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
+                <svg class="w-5 h-5 {{ request()->routeIs('about-section.*') ? 'text-primary-600' : 'text-slate-600' }}"
+                    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                </svg>
+                <span class="nav-label">About Section</span>
+            </a>
+
             <a href="{{ route('innovations.index') }}"
                 class="sidebar-menu-item w-full h-10 flex items-center gap-3 text-left text-[15px] font-semibold px-2 rounded-[4px] transition duration-150 
             {{ request()->routeIs('innovations.*') ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500' : 'text-slate-800 hover:bg-slate-50' }}">
@@ -154,7 +165,7 @@
    {{ request()->routeIs('events.*')
        ? 'bg-primary-50 text-primary-700 border-l-2 border-primary-500'
        : 'text-slate-800 hover:bg-s  
-                                                                                                         late-50' }}">
+                                                                                                            late-50' }}">
                 <svg class="w-5 h-5 {{ request()->routeIs('events.*') ? 'text-primary-600' : 'text-slate-600' }}"
                     fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round"
