@@ -75,6 +75,18 @@ return [
         'button' => 'Learn More',
     ],
 
+    'program' => [
+        'title' => 'Our Programs',
+        'description' => 'Discover world-class education opportunities and join our diverse international academic community',
+        'counters' => [
+            'programs' => 'Programs',
+            'partners' => 'Partner Universities',
+            'students' => 'International Students',
+            'faculty' => 'Faculties',
+        ],
+        'button' => 'Learn More',
+    ],
+
     'events' => [
         'title' => 'Upcoming Events',
         'description' => 'Join our international events and connect with the global academic community',
