@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Study;
+use App\Models\Program;
 use App\Models\Icon;
 use App\Models\Event;
 use App\Models\Partnership;
@@ -22,7 +22,7 @@ class LandingController extends Controller
     {
         $carousels = Carousel::where('is_active', true)->orderBy('order', 'asc')->get();
         $rankings = Ranking::with('icon')->where('is_active', true)->orderBy('order', 'asc')->get();
-        $studies = Study::with('icon')->latest()->take(3)->get();
+        $programs = Program::latest()->take(3)->get();
         $events = Event::latest()->take(3)->get();
         $partnerships = Partnership::latest()->take(8)->get();
         $latestNews = News::latest()->first();
@@ -37,6 +37,6 @@ class LandingController extends Controller
         $featuredStory = $stories->first();
         $storyList = $stories->skip(1)->take(4);
 
-        return view('landing.index', compact('carousels', 'rankings', 'studies', 'events', 'partnerships', 'latestNews', 'news', 'testimonials', 'innovations', 'downloads', 'aboutSection', 'featuredStory', 'storyList'));
+        return view('landing.index', compact('carousels', 'rankings', 'programs', 'events', 'partnerships', 'latestNews', 'news', 'testimonials', 'innovations', 'downloads', 'aboutSection', 'featuredStory', 'storyList'));
     }
 }

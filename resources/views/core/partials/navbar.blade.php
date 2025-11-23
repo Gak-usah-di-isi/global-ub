@@ -15,9 +15,8 @@
             class="{{ request()->is('news') ? 'font-medium text-[#29303D]' : 'font-light text-[#29303D99]' }} text-[15px] leading-[24px] tracking-normal hover:text-[#29303D] transition-colors">News</a>
         <a href="/event"
             class="{{ request()->is('event') ? 'font-medium text-[#29303D]' : 'font-light text-[#29303D99]' }} text-[15px] leading-[24px] tracking-normal hover:text-[#29303D] transition-colors">Event</a>
-        <a href="/study"
-            class="{{ request()->is('study') ? 'font-medium text-[#29303D]' : 'font-light text-[#29303D99]' }} text-[15px] leading-[24px] tracking-normal hover:text-[#29303D] transition-colors">Study
-            in UB</a>
+        <a href="/program"
+            class="{{ request()->is('program') ? 'font-medium text-[#29303D]' : 'font-light text-[#29303D99]' }} text-[15px] leading-[24px] tracking-normal hover:text-[#29303D] transition-colors">Program</a>
         <a href="/partner"
             class="{{ request()->is('partner') ? 'font-medium text-[#29303D]' : 'font-light text-[#29303D99]' }} text-[15px] leading-[24px] tracking-normal hover:text-[#29303D] transition-colors">Partner</a>
         <a href="/gallery"
@@ -69,9 +68,8 @@
                 class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">News</a>
             <a href="/event"
                 class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Event</a>
-            <a href="/study"
-                class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Study
-                in UB</a>
+            <a href="/program"
+                class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Program</a>
             <a href="/partner"
                 class="text-[#29303D] font-medium text-[16px] text-center leading-[24px] tracking-normal hover:text-[#0000FF] transition-colors py-2">Partner</a>
             <a href="/gallery"

@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\AdminMerchandiseController;
 use App\Http\Controllers\Admin\AdminCarouselController;
 use App\Http\Controllers\Admin\AdminRankingController;
 use App\Http\Controllers\Admin\AdminAboutSectionController;
+use App\Http\Controllers\Admin\AdminProgramController;
 
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\EventController;
@@ -31,6 +32,7 @@ use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MerchandiseController;
 use App\Http\Controllers\StoryController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Middleware\CountVisitor;
 
 Route::middleware([CountVisitor::class])->group(function () {
@@ -43,8 +45,10 @@ Route::middleware([CountVisitor::class])->group(function () {
     Route::get('/innovation', [InnovationController::class, 'index'])->name('innovation.index');
     Route::get('/innovation/{slug}', [InnovationController::class, 'show'])->name('innovation.show');
     Route::get('/partnership', [PartnershipController::class, 'index'])->name('partnership.index');
-    Route::get('/study', [StudyController::class, 'index'])->name('study.index');
-    Route::get('/study/{slug}', [StudyController::class, 'show'])->name('study.show');
+    // Route::get('/study', [StudyController::class, 'index'])->name('study.index');
+    // Route::get('/study/{slug}', [StudyController::class, 'show'])->name('study.show');
+    Route::get('/program', [ProgramController::class, 'index'])->name('program.index');
+    Route::get('/program/{slug}', [ProgramController::class, 'show'])->name('program.show');
     Route::get('/partner', [PartnerController::class, 'index'])->name('partner.index');
     Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
     Route::get('/download-center', [DownloadController::class, 'index'])->name('download-center.index');
@@ -94,12 +98,12 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/events/{slug}', [AdminEventController::class, 'update'])->name('events.update');
     Route::delete('/events/{slug}', [AdminEventController::class, 'destroy'])->name('events.destroy');
 
-    Route::get('/studies', [AdminStudyController::class, 'index'])->name('studies.index');
-    Route::get('/studies/create', [AdminStudyController::class, 'create'])->name('studies.create');
-    Route::post('/studies', [AdminStudyController::class, 'store'])->name('studies.store');
-    Route::get('/studies/{slug}/edit', [AdminStudyController::class, 'edit'])->name('studies.edit');
-    Route::put('/studies/{slug}', [AdminStudyController::class, 'update'])->name('studies.update');
-    Route::delete('/studies/{slug}', [AdminStudyController::class, 'destroy'])->name('studies.destroy');
+    // Route::get('/studies', [AdminStudyController::class, 'index'])->name('studies.index');
+    // Route::get('/studies/create', [AdminStudyController::class, 'create'])->name('studies.create');
+    // Route::post('/studies', [AdminStudyController::class, 'store'])->name('studies.store');
+    // Route::get('/studies/{slug}/edit', [AdminStudyController::class, 'edit'])->name('studies.edit');
+    // Route::put('/studies/{slug}', [AdminStudyController::class, 'update'])->name('studies.update');
+    // Route::delete('/studies/{slug}', [AdminStudyController::class, 'destroy'])->name('studies.destroy');
 
     Route::get('/innovations', [AdminInnovationController::class, 'index'])->name('innovations.index');
     Route::get('/innovations/create', [AdminInnovationController::class, 'create'])->name('innovations.create');
@@ -107,6 +111,13 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/innovations/{slug}/edit', [AdminInnovationController::class, 'edit'])->name('innovations.edit');
     Route::put('/innovations/{slug}', [AdminInnovationController::class, 'update'])->name('innovations.update');
     Route::delete('/innovations/{slug}', [AdminInnovationController::class, 'destroy'])->name('innovations.destroy');
+
+    Route::get('/programs', [AdminProgramController::class, 'index'])->name('programs.index');
+    Route::get('/programs/create', [AdminProgramController::class, 'create'])->name('programs.create');
+    Route::post('/programs', [AdminProgramController::class, 'store'])->name('programs.store');
+    Route::get('/programs/{slug}/edit', [AdminProgramController::class, 'edit'])->name('programs.edit');
+    Route::put('/programs/{slug}', [AdminProgramController::class, 'update'])->name('programs.update');
+    Route::delete('/programs/{slug}', [AdminProgramController::class, 'destroy'])->name('programs.destroy');
 
     Route::get('/galleries', [AdminGalleryController::class, 'index'])->name('galleries.index');
     Route::get('/galleries/create', [AdminGalleryController::class, 'create'])->name('galleries.create');

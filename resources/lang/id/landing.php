@@ -74,6 +74,18 @@ return [
         'button' => 'Pelajari Lebih Lanjut',
     ],
 
+    'program' => [
+        'title' => 'Program Kami',
+        'description' => 'Temukan peluang pendidikan kelas dunia dan bergabung dengan komunitas akademik internasional yang beragam',
+        'counters' => [
+            'programs' => 'Program',
+            'partners' => 'Universitas Mitra',
+            'students' => 'Mahasiswa Internasional',
+            'faculty' => 'Fakultas',
+        ],
+        'button' => 'Pelajari Lebih Lanjut',
+    ],
+
     'events' => [
         'title' => 'Acara Mendatang',
         'description' => 'Bergabunglah dengan acara internasional kami dan terhubung dengan komunitas akademik global',

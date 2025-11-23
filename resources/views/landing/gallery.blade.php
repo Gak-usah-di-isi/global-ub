@@ -58,7 +58,7 @@
                         </h2>
                         <p
                             class="font-inter font-light text-[13px] md:text-[16px] lg:text-[17px] leading-[18px] md:leading-[24px] lg:leading-[29.25px] text-[#F9FAFB] pr-12 break-words">
-                            {{ $gallery->description }}
+                            {{ Str::limit($gallery->description, 110) }}
                         </p>
                     </div>
                 </div>
@@ -111,7 +111,8 @@
                 @else
                     <a href="{{ $images->previousPageUrl() }}"
                         class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons-site/arrow-fix.svg" alt="Previous" class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
+                        <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                            class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                     </a>
                 @endif
 

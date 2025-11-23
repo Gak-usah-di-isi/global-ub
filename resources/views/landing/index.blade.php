@@ -374,17 +374,17 @@
         </div>
     </section>
 
-    <section id="study-in-ub"
+    <section id="program"
         class="w-full h-auto bg-gradient-to-b from-[#F9FAFB] to-[#F0F2F4] sm:px-6 md:px-8 lg:px-[80px] py-8 md:py-[100px] lg:py-20">
         <div class="max-w-[1280px] h-auto mx-auto px-4 sm:px-6 md:px-8 lg:px-[32px] flex flex-col gap-8 md:gap-[64px]">
             <div class="w-full flex flex-col items-center gap-4">
                 <h2
                     class="w-full text-center font-playfair font-bold text-2xl sm:text-3xl md:text-[36px] leading-tight md:leading-[40px] text-[#29303D]">
-                    {{ __('landing.study.title') }}
+                    {{ __('landing.program.title') }}
                 </h2>
                 <p
                     class="max-w-full md:max-w-[768px] text-center font-inter font-light text-base sm:text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303DB2]">
-                    {{ __('landing.study.description') }}
+                    {{ __('landing.program.description') }}
                 </p>
             </div>
 
@@ -395,7 +395,7 @@
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                         0+</div>
                     <span class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">
-                        {{ __('landing.study.counters.programs') }}</span>
+                        {{ __('landing.program.counters.programs') }}</span>
                 </div>
 
                 <div class="flex flex-col items-center">
@@ -403,7 +403,7 @@
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                         0</div>
                     <span
-                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.study.counters.faculty') }}</span>
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.program.counters.faculty') }}</span>
                 </div>
 
                 <div class="flex flex-col items-center">
@@ -411,7 +411,7 @@
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                         0+</div>
                     <span
-                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.study.counters.partners') }}</span>
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.program.counters.partners') }}</span>
                 </div>
 
                 <div class="flex flex-col items-center">
@@ -419,47 +419,47 @@
                         class="w-full text-center font-inter font-bold text-xl sm:text-2xl md:text-[36px] leading-tight md:leading-[40px] text-[#0000FF]">
                         0+</div>
                     <span
-                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.study.counters.students') }}</span>
+                        class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.program.counters.students') }}</span>
                 </div>
             </div>
 
             <div class="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[32px]">
-                @foreach ($studies as $study)
+                @foreach ($programs as $program)
                     <div
-                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] p-6 md:p-[32px] flex flex-col gap-4 md:gap-[24px]">
-                        <div
-                            class="w-12 h-12 md:w-[64px] md:h-[64px] rounded-[16px] flex items-center justify-center bg-gradient-to-br from-[#0000FF] to-[#6699FF]">
-                            <img src="{{ asset('storage/' . $study->icon->icon) }}" alt="{{ $study->icon->name }}"
-                                class="w-6 h-6 md:w-8 md:h-8">
+                        class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                        <div class="w-full h-48 sm:h-64 md:h-[288px]">
+                            <img src="{{ asset('storage/' . $program->image) }}" alt="{{ $program->title }}"
+                                class="w-full h-full object-cover">
                         </div>
+                        <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
+                            <div class="w-full flex items-center justify-between">
+                                <span
+                                    class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#6699FF33] text-[#1D4ED8]">
+                                    {{ $program->program_type }}
+                                </span>
+                            </div>
 
-                        <h3
-                            class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                            {{ $study->title }}
-                        </h3>
+                            <h3
+                                class="font-playfair font-bold text-lg md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
+                                {{ $program->title }}
+                            </h3>
 
-                        <p
-                            class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                            {{ Str::limit($study->tagline, 80) }}
-                        </p>
+                            <p
+                                class="font-inter font-normal text-sm md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
+                                {{ Str::limit($program->description, 80) }}
+                            </p>
 
-                        <div class="flex justify-between items-center text-xs md:text-[14px] leading-[20px]">
-                            <span class="flex items-center gap-2 text-[#29303DB2]">
-                                <img src="{{ asset('icons-site/user-black.svg') }}" class="w-4 h-4" alt="user">
-                                {{ number_format($study->students_count) }} students
-                            </span>
-                            <span class="text-[#0000FF] font-medium">{{ $study->duration }}</span>
+                            <div class="ck-content">
+                                {!! $program->highlights !!}
+                            </div>
+
+                            <a href="{{ route('program.show', $program->slug) }}"
+                                class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
+                                {{ __('landing.program.button') }}
+                                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4"
+                                    alt="">
+                            </a>
                         </div>
-
-                        <div class="ck-content">
-                            {!! $study->highlights !!}
-                        </div>
-
-                        <a href="{{ route('study.show', $study->slug) }}"
-                            class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
-                            {{ __('landing.study.button') }}
-                            <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                        </a>
                     </div>
                 @endforeach
             </div>
