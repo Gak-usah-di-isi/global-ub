@@ -44,12 +44,18 @@
             <div class="w-full mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach ($stories as $story)
                     @php
-                        preg_match(
-                            '/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([\w-]+)/',
-                            $story->video_url,
-                            $matches,
-                        );
-                        $videoId = $matches[1] ?? '';
+                        $videoId = '';
+                        if ($story->video_url) {
+                            if (
+                                preg_match(
+                                    '/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/v\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/',
+                                    $story->video_url,
+                                    $matches,
+                                )
+                            ) {
+                                $videoId = $matches[1];
+                            }
+                        }
                     @endphp
                     <div class="story-card w-full max-w-[380px] h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden cursor-pointer"
                         data-video="{{ $videoId }}" data-title="{{ $story->title }}"
@@ -156,6 +162,29 @@
         const videoIframe = document.getElementById('video-iframe');
         const closeModalBtn = document.getElementById('close-modal');
 
+        function convertYouTubeUrl(url) {
+            if (!url) return '';
+
+            let videoId = '';
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/,
+                /(?:youtu\.be\/)([a-zA-Z0-9_-]{11})/,
+                /(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+                /(?:youtube\.com\/v\/)([a-zA-Z0-9_-]{11})/,
+                /(?:youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/
+            ];
+
+            for (let i = 0; i < patterns.length; i++) {
+                const match = url.match(patterns[i]);
+                if (match && match[1]) {
+                    videoId = match[1];
+                    break;
+                }
+            }
+
+            return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+        }
+
         function openVideoModal(videoId, title, description) {
             const currentOrigin = window.location.origin;
             const embedUrl =
@@ -178,7 +207,9 @@
                 const videoId = this.dataset.video;
                 const title = this.dataset.title;
                 const description = this.dataset.description;
-                openVideoModal(videoId, title, description);
+                if (videoId) {
+                    openVideoModal(videoId, title, description);
+                }
             });
         });
 
