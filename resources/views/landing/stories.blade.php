@@ -186,9 +186,14 @@
         }
 
         function openVideoModal(videoId, title, description) {
-            const currentOrigin = window.location.origin;
-            const embedUrl =
-                `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&origin=${currentOrigin}&enablejsapi=1`;
+            console.log('Opening video modal');
+            console.log('Video ID:', videoId);
+            console.log('Title:', title);
+            console.log('Description:', description);
+
+            const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            console.log('Embed URL:', embedUrl);
+
             videoIframe.src = embedUrl;
             videoModal.classList.remove('hidden');
             videoModal.classList.add('flex');
@@ -196,6 +201,7 @@
         }
 
         function closeVideoModal() {
+            console.log('Closing video modal');
             videoIframe.src = '';
             videoModal.classList.add('hidden');
             videoModal.classList.remove('flex');
@@ -207,8 +213,14 @@
                 const videoId = this.dataset.video;
                 const title = this.dataset.title;
                 const description = this.dataset.description;
+
+                console.log('Card clicked');
+                console.log('Video ID from dataset:', videoId);
+
                 if (videoId) {
                     openVideoModal(videoId, title, description);
+                } else {
+                    console.error('No video ID found');
                 }
             });
         });
