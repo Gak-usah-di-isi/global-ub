@@ -146,8 +146,8 @@
             <div class="bg-white rounded-lg overflow-hidden">
                 <div class="aspect-video">
                     <iframe id="video-iframe" width="100%" height="100%" src="" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen referrerpolicy="strict-origin-when-cross-origin">
                     </iframe>
                 </div>
             </div>
