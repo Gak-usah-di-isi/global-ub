@@ -191,9 +191,7 @@
             console.log('Title:', title);
             console.log('Description:', description);
 
-            const currentOrigin = window.location.origin;
-            const embedUrl =
-                `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=${encodeURIComponent(currentOrigin)}&widget_referrer=${encodeURIComponent(currentOrigin)}`;
+            const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
             console.log('Embed URL:', embedUrl);
 
             videoIframe.src = embedUrl;
