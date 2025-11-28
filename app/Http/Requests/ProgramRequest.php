@@ -27,6 +27,8 @@ class ProgramRequest extends FormRequest
             'program_type' => 'required|string|max:255',
             'highlights' => 'nullable|string',
             'link' => 'nullable|url|max:500',
+            'report_link' => 'nullable|url|max:500',
+            'video_link' => 'nullable|url|max:500',
         ];
 
         if ($this->isMethod('post')) {
@@ -57,6 +59,10 @@ class ProgramRequest extends FormRequest
             'highlights.string' => 'Highlights must be a string.',
             'link.url' => 'Link must be a valid URL.',
             'link.max' => 'Link cannot exceed 500 characters.',
+            'report_link.url' => 'Report link must be a valid URL.',
+            'report_link.max' => 'Report link cannot exceed 500 characters.',
+            'video_link.url' => 'Video link must be a valid URL.',
+            'video_link.max' => 'Video link cannot exceed 500 characters.',
             'image.required' => 'Image upload is required.',
             'image.image' => 'The uploaded file must be an image.',
             'image.mimes' => 'Image must be a file of type: jpeg, png, jpg, gif.',
@@ -77,6 +83,8 @@ class ProgramRequest extends FormRequest
             'program_type' => 'program type',
             'highlights' => 'highlights',
             'link' => 'program link',
+            'report_link' => 'report link',
+            'video_link' => 'video link',
             'image' => 'image',
         ];
     }

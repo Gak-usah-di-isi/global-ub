@@ -22,7 +22,7 @@ class AdminProgramController extends Controller
 
     public function store(ProgramRequest $request)
     {
-        $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link']);
+        $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
 
         if (empty($data['slug'])) {
             $data['slug'] = \Illuminate\Support\Str::slug($data['title']);
@@ -49,7 +49,7 @@ class AdminProgramController extends Controller
     public function update(ProgramRequest $request, $slug)
     {
         $program = Program::where('slug', $slug)->firstOrFail();
-        $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link']);
+        $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
 
         if ($request->hasFile('image')) {
             if ($program->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($program->image)) {

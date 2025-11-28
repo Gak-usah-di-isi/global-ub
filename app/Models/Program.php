@@ -18,6 +18,8 @@ class Program extends Model
         'program_type',
         'highlights',
         'link',
+        'report_link',
+        'video_link',
     ];
 
     protected static function boot()

@@ -103,6 +103,38 @@
                 </div>
 
                 <div>
+                    <label for="report_link" class="field-label">
+                        Report Link
+                    </label>
+                    <input id="report_link" name="report_link" type="url"
+                        value="{{ old('report_link', $program->report_link) }}"
+                        placeholder="https://example.com/report.pdf"
+                        class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('report_link') border-red-300 @enderror" />
+                    @error('report_link')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                    <p class="help-text">
+                        Optional: Link to report file or page (opens in new tab)
+                    </p>
+                </div>
+
+                <div>
+                    <label for="video_link" class="field-label">
+                        YouTube Video Link
+                    </label>
+                    <input id="video_link" name="video_link" type="url"
+                        value="{{ old('video_link', $program->video_link) }}"
+                        placeholder="https://www.youtube.com/watch?v=..."
+                        class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('video_link') border-red-300 @enderror" />
+                    @error('video_link')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                    <p class="help-text">
+                        Optional: YouTube URL to showcase the program (opens in new tab)
+                    </p>
+                </div>
+
+                <div>
                     <label for="description" class="field-label">
                         Description
                     </label>
