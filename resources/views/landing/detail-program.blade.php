@@ -64,12 +64,34 @@
                     {!! $program->highlights !!}
                 </div>
 
+                @if ($program->report_link || $program->video_link)
+                    <div class="flex items-end mt-8 align-bottom gap-x-2">
+                        @if ($program->report_link)
+                            <div
+                                class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2">
+                                <a href="{{ $program->report_link }}" target="_blank" rel="noopener noreferrer"
+                                    title="Open Report">
+                                    <img src="/icons-site/file.svg" class="w-5 h-5" alt="Report">
+                                </a>
+                            </div>
+                        @endif
+                        @if ($program->video_link)
+                            <div
+                                class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2">
+                                <a href="{{ $program->video_link }}" target="_blank" rel="noopener noreferrer"
+                                    title="Watch on YouTube">
+                                    <img src="/icons-site/yt-blue.svg" class="w-5 h-5" alt="YouTube">
+                                </a>
+                            </div>
+                        @endif
+                    </div>
+                @endif
+
                 @if ($program->link)
                     <div class="mt-8">
                         <a href="{{ $program->link }}" target="_blank"
                             class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-[10px] font-medium text-base hover:shadow-lg transition-all">
                             Apply Now
-                            <img src="{{ asset('icons-site/arrow-right.svg') }}" class="w-5 h-5" alt="">
                         </a>
                     </div>
                 @endif
