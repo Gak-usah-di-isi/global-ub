@@ -24,6 +24,12 @@ class AdminProgramController extends Controller
     {
         $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
 
+        if ($request->has('references')) {
+            $data['references'] = array_values(array_filter($request->input('references'), function ($value) {
+                return !empty($value);
+            }));
+        }
+
         if (empty($data['slug'])) {
             $data['slug'] = \Illuminate\Support\Str::slug($data['title']);
         }
@@ -50,6 +56,14 @@ class AdminProgramController extends Controller
     {
         $program = Program::where('slug', $slug)->firstOrFail();
         $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
+
+        if ($request->has('references')) {
+            $data['references'] = array_values(array_filter($request->input('references'), function ($value) {
+                return !empty($value);
+            }));
+        } else {
+            $data['references'] = [];
+        }
 
         if ($request->hasFile('image')) {
             if ($program->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($program->image)) {
