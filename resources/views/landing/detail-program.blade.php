@@ -64,11 +64,11 @@
                     {!! $program->highlights !!}
                 </div>
 
-                @if ($program->report_link || $program->video_link)
-                    <div class="flex items-end mt-8 align-bottom gap-x-2">
+                @if ($program->report_link || $program->video_link || ($program->references && count($program->references) > 0))
+                    <div class="flex items-center mt-8 gap-x-2 flex-wrap">
                         @if ($program->report_link)
                             <div
-                                class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2">
+                                class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2 hover:bg-neutral-300 transition">
                                 <a href="{{ $program->report_link }}" target="_blank" rel="noopener noreferrer"
                                     title="Open Report">
                                     <img src="/icons-site/file.svg" class="w-5 h-5" alt="Report">
@@ -77,12 +77,25 @@
                         @endif
                         @if ($program->video_link)
                             <div
-                                class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2">
+                                class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2 hover:bg-neutral-300 transition">
                                 <a href="{{ $program->video_link }}" target="_blank" rel="noopener noreferrer"
                                     title="Watch on YouTube">
                                     <img src="/icons-site/yt-blue.svg" class="w-5 h-5" alt="YouTube">
                                 </a>
                             </div>
+                        @endif
+                        @if ($program->references && count($program->references) > 0)
+                            @foreach ($program->references as $reference)
+                                @if (!empty($reference))
+                                    <div
+                                        class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2 hover:bg-neutral-300 transition">
+                                        <a href="{{ $reference }}" target="_blank" rel="noopener noreferrer"
+                                            title="Reference Link">
+                                            <img src="/icons-site/link.svg" class="w-5 h-5" alt="Reference">
+                                        </a>
+                                    </div>
+                                @endif
+                            @endforeach
                         @endif
                     </div>
                 @endif

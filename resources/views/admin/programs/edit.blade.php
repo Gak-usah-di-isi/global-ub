@@ -135,6 +135,58 @@
                 </div>
 
                 <div>
+                    <label class="field-label">
+                        Reference Links (Maximum 5)
+                    </label>
+                    <div id="references-container" class="space-y-3 mt-2">
+                        @php
+                            $existingReferences = old('references', $program->references ?? []);
+                            $existingReferences = is_array($existingReferences)
+                                ? array_filter($existingReferences)
+                                : [];
+                        @endphp
+                        @if (count($existingReferences) > 0)
+                            @foreach ($existingReferences as $index => $reference)
+                                <div class="reference-item flex gap-2">
+                                    <input name="references[]" type="url" value="{{ $reference }}"
+                                        placeholder="https://example.com/reference-{{ $index + 1 }}"
+                                        class="h-11 flex-1 rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
+                                    @if ($index > 0)
+                                        <button type="button"
+                                            class="remove-reference h-11 px-3 rounded-lg border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 transition">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    @endif
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="reference-item flex gap-2">
+                                <input name="references[]" type="url" value=""
+                                    placeholder="https://example.com/reference-1"
+                                    class="h-11 flex-1 rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
+                            </div>
+                        @endif
+                    </div>
+                    <button type="button" id="add-reference"
+                        class="mt-3 inline-flex items-center gap-1.5 px-3 py-2 text-[13px] font-medium text-primary-600 hover:text-primary-700 hover:bg-primary-50 rounded-md transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        Add Reference Link
+                    </button>
+                    @error('references')
+                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                    <p class="help-text">
+                        Optional: Add up to 5 reference links that will appear below the Apply Now button
+                    </p>
+                </div>
+
+                <div>
                     <label for="description" class="field-label">
                         Description
                     </label>
@@ -216,6 +268,55 @@
                         console.error(error);
                     });
             }
+
+            // Reference links dynamic add/remove
+            const referencesContainer = document.getElementById('references-container');
+            const addReferenceBtn = document.getElementById('add-reference');
+            let referenceCount = referencesContainer.querySelectorAll('.reference-item').length;
+
+            addReferenceBtn.addEventListener('click', function() {
+                if (referenceCount >= 5) {
+                    alert('Maximum 5 reference links allowed');
+                    return;
+                }
+
+                const newItem = document.createElement('div');
+                newItem.className = 'reference-item flex gap-2';
+                newItem.innerHTML = `
+                    <input name="references[]" type="url" placeholder="https://example.com/reference-${referenceCount + 1}"
+                        class="h-11 flex-1 rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
+                    <button type="button" class="remove-reference h-11 px-3 rounded-lg border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 transition">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                `;
+
+                referencesContainer.appendChild(newItem);
+                referenceCount++;
+
+                updateAddButtonVisibility();
+            });
+
+            // Event delegation for remove buttons
+            referencesContainer.addEventListener('click', function(e) {
+                if (e.target.closest('.remove-reference')) {
+                    e.target.closest('.reference-item').remove();
+                    referenceCount--;
+                    updateAddButtonVisibility();
+                }
+            });
+
+            function updateAddButtonVisibility() {
+                if (referenceCount >= 5) {
+                    addReferenceBtn.style.display = 'none';
+                } else {
+                    addReferenceBtn.style.display = 'inline-flex';
+                }
+            }
+
+            // Initial visibility check
+            updateAddButtonVisibility();
         });
     </script>
 @endsection

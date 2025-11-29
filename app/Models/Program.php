@@ -20,6 +20,11 @@ class Program extends Model
         'link',
         'report_link',
         'video_link',
+        'references',
+    ];
+
+    protected $casts = [
+        'references' => 'array',
     ];
 
     protected static function boot()
