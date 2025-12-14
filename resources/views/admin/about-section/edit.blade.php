@@ -47,7 +47,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label for="students_count" class="field-label req">
-                                Students Count
+                                Partners Count
                             </label>
                             <div class="relative mt-2">
                                 <input id="students_count" name="students_count" type="number"
@@ -59,7 +59,7 @@
                             @error('students_count')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
-                            <p class="mt-1 text-xs text-slate-500">Number of students (will show as 50,000+)</p>
+                            <p class="mt-1 text-xs text-slate-500">Number of partners (will show as 50,000+)</p>
                         </div>
 
                         <div>
@@ -76,12 +76,12 @@
                             @error('programs_count')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
-                            <p class="mt-1 text-xs text-slate-500">Number of study programs (will show as 190+)</p>
+                            <p class="mt-1 text-xs text-slate-500">Number of programs (will show as 190+)</p>
                         </div>
 
                         <div>
                             <label for="years_count" class="field-label req">
-                                Years Count
+                                Prototype/Product Count
                             </label>
                             <div class="relative mt-2">
                                 <input id="years_count" name="years_count" type="number"
@@ -92,7 +92,7 @@
                             @error('years_count')
                                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                             @enderror
-                            <p class="mt-1 text-xs text-slate-500">Years of excellence (will show as 60+)</p>
+                            <p class="mt-1 text-xs text-slate-500">Number of prototypes/products (will show as 60+)</p>
                         </div>
 
                         <div>

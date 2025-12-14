@@ -37,10 +37,10 @@ return [
         'title' => 'Tentang Globalizing UB',
         'description' => 'Globalizing UB (GUB) adalah inisiatif strategis yang mempercepat proses internasionalisasi Universitas Brawijaya. Melalui GUB, UB menghubungkan kearifan lokal dengan komunitas global dengan mendorong internasionalisasi akademik, diplomasi budaya, kolaborasi global, serta mobilitas mahasiswa dan staf.',
         'counters' => [
-            'students' => 'Mahasiswa',
+            'students' => 'Mitra',
             'partners' => 'Universitas Mitra',
-            'programs' => 'Program Studi',
-            'years' => 'Tahun Keunggulan',
+            'programs' => 'Program',
+            'years' => 'Purwarupa/Produk',
         ],
         'button' => [
             'learn_more' => 'Pelajari Lebih Lanjut',

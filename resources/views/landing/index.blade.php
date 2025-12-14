@@ -345,7 +345,7 @@
                         <a href="{{ route('news.show', $newsItem->slug) }}"
                             class="flex gap-4 p-3 rounded-lg transition-all duration-200 hover:bg-gray-100">
                             <img src="{{ asset('storage/' . $newsItem->image) }}" alt="{{ $newsItem->title }}"
-                                class="w-16 h-16 sm:w-[96px] sm:h-[86px] rounded-lg object-cover">
+                                class="w-16 h-16 sm:w-[96px] sm:h-[86px] rounded-lg object-cover flex-shrink-0">
                             <div>
                                 <span
                                     class="text-xs font-inter font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full">News</span>

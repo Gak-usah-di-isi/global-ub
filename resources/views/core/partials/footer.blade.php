@@ -8,8 +8,8 @@
                         <img src="{{ asset('icons-site/gub.svg') }}" alt="Globalizing Logo"
                             class="h-10 max-w-[120px] sm:max-w-[150px] lg:max-w-[200px]">
                     </div>
-                    <p class="text-[#FFFFFF] text-sm mt-2 font-inter font-light">Inspiring Change, Uniting
-                        Civilizations</p>
+                    <p class="text-[#FFFFFF] text-sm mt-2 font-inter font-light">Turning Insight
+                        Into World Impact</p>
                 </div>
 
                 <div class="flex flex-col gap-4 mt-4">
@@ -37,14 +37,15 @@
             <div class="flex flex-col gap-6 w-full lg:w-1/3">
                 <h4 class="text-white text-lg font-playfair ">Connect With Us</h4>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a href="#" target="_blank"
+                    <a href="mailto:gub@ub.ac.id"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
-                        <img src="{{ asset('icons-site/fb-blue.svg') }}" alt="Facebook Icon" class="w-[20px] h-[20px]">
-                        <p class="text-white text-sm font-inter font-light leading-[20px]">Facebook</p>
+                        <img src="{{ asset('icons-site/email-blue.svg') }}" alt="Email Icon" class="w-[20px] h-[20px]">
+                        <p class="text-white text-sm font-inter font-light leading-[20px]">Email</p>
                     </a>
                     <a href="https://www.linkedin.com/in/globalizing-ub-94b519385/" target="_blank"
                         class="w-full h-[44px] bg-[#FFFFFF1A] rounded-[12px] flex items-center gap-[12px] px-[12px]">
-                        <img src="{{ asset('icons-site/linkedin-blue.svg') }}" alt="LinkedIn Icon" class="w-[20px] h-[20px]">
+                        <img src="{{ asset('icons-site/linkedin-blue.svg') }}" alt="LinkedIn Icon"
+                            class="w-[20px] h-[20px]">
                         <p class="text-white text-sm font-inter font-light leading-[20px]">LinkedIn</p>
                     </a>
                     <a href="https://www.instagram.com/globalizingub/" target="_blank"
@@ -98,7 +99,7 @@
 
         <div class="flex flex-col sm:flex-row justify-between items-center mt-6 gap-4">
             <div class="text-white text-sm font-inter font-light leading-[20px] text-center sm:text-left">
-                © 2024 Universitas Brawijaya Direktorat Kerjasama, All Right Reserved.
+                © 2025 Universitas Brawijaya Direktorat Kerjasama, All Right Reserved.
             </div>
             <div class="flex flex-wrap justify-center sm:justify-end gap-[20px]">
                 <a href="#" class="text-white text-sm font-inter font-light leading-[20px]">Privacy

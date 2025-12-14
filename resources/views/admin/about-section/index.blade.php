@@ -41,7 +41,7 @@
                     </div>
                     <div class="text-3xl font-bold text-slate-800 mb-1">{{ number_format($aboutSection->students_count) }}+
                     </div>
-                    <div class="text-sm text-slate-600 font-medium">Students</div>
+                    <div class="text-sm text-slate-600 font-medium">Partners</div>
                 </div>
 
                 <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 border border-blue-200">
@@ -56,7 +56,7 @@
                     </div>
                     <div class="text-3xl font-bold text-slate-800 mb-1">{{ number_format($aboutSection->programs_count) }}+
                     </div>
-                    <div class="text-sm text-slate-600 font-medium">Study Programs</div>
+                    <div class="text-sm text-slate-600 font-medium">Programs</div>
                 </div>
 
                 <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 border border-blue-200">
@@ -72,7 +72,7 @@
                     </div>
                     <div class="text-3xl font-bold text-slate-800 mb-1">{{ number_format($aboutSection->years_count) }}+
                     </div>
-                    <div class="text-sm text-slate-600 font-medium">Years of Excellence</div>
+                    <div class="text-sm text-slate-600 font-medium">Prototype/Product</div>
                 </div>
 
                 <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 border border-blue-200">

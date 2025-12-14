@@ -38,10 +38,10 @@ return [
         'title' => 'About Globalizing UB',
         'description' => 'Globalizing UB (GUB) is a strategic initiative that accelerates Universitas Brawijaya’s internationalization. Through GUB, UB connects local wisdom with global communities by advancing academic internationalization, cultural diplomacy, global collaboration, and student–staff mobility.',
         'counters' => [
-            'students' => 'Students',
+            'students' => 'Partners',
             'partners' => 'Partner Universities',
-            'programs' => 'Study Programs',
-            'years' => 'Years of Excellence',
+            'programs' => 'Programs',
+            'years' => 'Prototype/Product',
         ],
         'button' => [
             'learn_more' => 'Learn More',

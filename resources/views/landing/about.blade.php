@@ -45,7 +45,7 @@
                         </div>
                         <div>
                             <p id="aboutPageCounter1" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
-                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Students</p>
+                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Partners</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -55,7 +55,7 @@
                         </div>
                         <div>
                             <p id="aboutPageCounter2" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
-                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Study Programs</p>
+                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Programs</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
@@ -66,7 +66,7 @@
                         </div>
                         <div>
                             <p id="aboutPageCounter3" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
-                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Years of Excellence</p>
+                            <p class="text-xs md:text-[14px] text-[#29303DB2]">Prototype/Product</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
