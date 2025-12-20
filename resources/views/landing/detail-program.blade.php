@@ -64,7 +64,7 @@
                     {!! $program->highlights !!}
                 </div>
 
-                @if ($program->report_link || $program->video_link || ($program->references && count($program->references) > 0))
+                @if ($program->report_link || $program->video_link)
                     <div class="flex items-center mt-8 gap-x-2 flex-wrap">
                         @if ($program->report_link)
                             <div
@@ -84,19 +84,43 @@
                                 </a>
                             </div>
                         @endif
-                        @if ($program->references && count($program->references) > 0)
-                            @foreach ($program->references as $reference)
+                    </div>
+                @endif
+
+                @if ($program->references && count($program->references) > 0)
+                    <div class="mt-8">
+                        <h3 class="text-[#29303D] font-playfair text-base md:text-[18px] font-normal mb-4">
+                            Reference Related Program
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            @foreach ($program->references as $index => $reference)
                                 @if (!empty($reference))
-                                    <div
-                                        class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2 hover:bg-neutral-300 transition">
-                                        <a href="{{ $reference }}" target="_blank" rel="noopener noreferrer"
-                                            title="Reference Link">
-                                            <img src="/icons-site/link.svg" class="w-5 h-5" alt="Reference">
-                                        </a>
-                                    </div>
+                                    <a href="{{ $reference }}" target="_blank" rel="noopener noreferrer"
+                                        class="group flex items-center gap-2 p-3 bg-[#F9FAFB] hover:bg-[#F0F2F4] rounded-[10px] border border-[#E2E4E9] hover:border-[#0000FF] transition-all duration-200">
+                                        <div
+                                            class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-[#E2E4E9] group-hover:bg-gradient-to-r group-hover:from-[#0000FF] group-hover:to-[#6699FF] group-hover:border-transparent transition-all duration-200 flex-shrink-0">
+                                            <img src="/icons-site/link.svg"
+                                                class="w-4 h-4 group-hover:brightness-0 group-hover:invert transition-all duration-200"
+                                                alt="Link">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p
+                                                class="text-[#29303D] font-inter text-xs md:text-[13px] font-medium group-hover:text-[#0000FF] transition-colors truncate">
+                                                {{ isset($program->reference_titles[$index]) && !empty($program->reference_titles[$index]) ? $program->reference_titles[$index] : 'Reference Link ' . ($index + 1) }}
+                                            </p>
+                                            <p class="text-[#29303DB2] font-inter text-[10px] md:text-[11px] truncate">
+                                                {{ $reference }}
+                                            </p>
+                                        </div>
+                                        <svg class="w-4 h-4 text-[#29303DB2] group-hover:text-[#0000FF] transition-colors flex-shrink-0"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                        </svg>
+                                    </a>
                                 @endif
                             @endforeach
-                        @endif
+                        </div>
                     </div>
                 @endif
 

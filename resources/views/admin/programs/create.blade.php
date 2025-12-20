@@ -144,13 +144,16 @@
 
                     <div>
                         <label class="field-label">
-                            Reference Links (Maximum 5)
+                            Reference Links & Sources (Maximum 5)
                         </label>
                         <div id="references-container" class="space-y-3 mt-2">
-                            <div class="reference-item flex gap-2">
+                            <div class="reference-item space-y-2">
+                                <input name="reference_titles[]" type="text" value="{{ old('reference_titles.0') }}"
+                                    placeholder="Source Title (e.g., University of Brawijaya Official Website)"
+                                    class="h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
                                 <input name="references[]" type="url" value="{{ old('references.0') }}"
                                     placeholder="https://example.com/reference-1"
-                                    class="h-11 flex-1 rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
+                                    class="h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
                             </div>
                         </div>
                         <button type="button" id="add-reference"
@@ -165,7 +168,8 @@
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                         <p class="help-text">
-                            Optional: Add up to 5 reference links that will appear below the Apply Now button
+                            Optional: Add up to 5 reference links with source titles that will appear below the Apply Now
+                            button
                         </p>
                     </div>
 
@@ -236,12 +240,15 @@
                 }
 
                 const newItem = document.createElement('div');
-                newItem.className = 'reference-item flex gap-2';
+                newItem.className =
+                    'reference-item space-y-2 p-3 border border-slate-200 rounded-lg relative';
                 newItem.innerHTML = `
+                    <input name="reference_titles[]" type="text" placeholder="Source Title (e.g., News Article Title)"
+                        class="h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
                     <input name="references[]" type="url" placeholder="https://example.com/reference-${referenceCount + 1}"
-                        class="h-11 flex-1 rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
-                    <button type="button" class="remove-reference h-11 px-3 rounded-lg border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 transition">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        class="h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 placeholder:text-slate-400 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors" />
+                    <button type="button" class="remove-reference absolute -top-2 -right-2 w-6 h-6 rounded-full border border-red-200 bg-red-50 text-red-600 hover:bg-red-100 transition flex items-center justify-center">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
