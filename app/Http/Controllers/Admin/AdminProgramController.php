@@ -30,6 +30,12 @@ class AdminProgramController extends Controller
             }));
         }
 
+        if ($request->has('reference_titles')) {
+            $data['reference_titles'] = array_values(array_filter($request->input('reference_titles'), function ($value) {
+                return !empty($value);
+            }));
+        }
+
         if (empty($data['slug'])) {
             $data['slug'] = \Illuminate\Support\Str::slug($data['title']);
         }
@@ -63,6 +69,14 @@ class AdminProgramController extends Controller
             }));
         } else {
             $data['references'] = [];
+        }
+
+        if ($request->has('reference_titles')) {
+            $data['reference_titles'] = array_values(array_filter($request->input('reference_titles'), function ($value) {
+                return !empty($value);
+            }));
+        } else {
+            $data['reference_titles'] = [];
         }
 
         if ($request->hasFile('image')) {
