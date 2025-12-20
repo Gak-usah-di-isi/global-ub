@@ -246,7 +246,7 @@
                     class="w-full lg:w-[576px] h-[250px] sm:h-[300px] md:h-[324px] rounded-[16px] overflow-hidden relative mt-0 md:mt-12 lg:mt-24 cursor-pointer"
                     style="box-shadow: 0px 8px 25px -8px #0000FF4D;">
                     <div class="absolute inset-0">
-                        <img src="{{ asset('/images/about-new.png') }}" alt="UB Image"
+                        <img src="{{ asset('/images/thumbnail-about.jpg') }}" alt="UB Image"
                             class="w-full h-full object-cover">
                     </div>
 
