@@ -388,6 +388,7 @@
                 </p>
             </div>
 
+            {{-- COUNTER SECTION - TEMPORARILY DISABLED
             <div x-data="{}"
                 class="w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-[32px] place-items-center">
                 <div class="flex flex-col items-center">
@@ -422,6 +423,7 @@
                         class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.program.counters.students') }}</span>
                 </div>
             </div>
+            --}}
 
             <div class="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[32px]">
                 @foreach ($programs as $program)
@@ -987,37 +989,44 @@
         }
     </style>
     <script>
-        function animateCounter(el, target, duration = 2000) {
-            let start = 0;
-            let startTime = null;
+        /* 
+            function animateCounter(el, target, duration = 2000) {
+                let start = 0;
+                let startTime = null;
 
-            function update(timestamp) {
-                if (!startTime) startTime = timestamp;
-                const progress = Math.min((timestamp - startTime) / duration, 1);
-                el.textContent = Math.floor(progress * target) + (target > 20 ? '+' : '');
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                } else {
-                    el.textContent = target + (target > 20 ? '+' : '');
+                function update(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const progress = Math.min((timestamp - startTime) / duration, 1);
+                    el.textContent = Math.floor(progress * target) + (target > 20 ? '+' : '');
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        el.textContent = target + (target > 20 ? '+' : '');
+                    }
                 }
+                requestAnimationFrame(update);
             }
-            requestAnimationFrame(update);
-        }
+            */
+
         document.addEventListener('DOMContentLoaded', function() {
+            /* 
             let section = document.querySelector('.grid.grid-cols-2');
             let started = false;
-            let observer = new IntersectionObserver(function(entries) {
-                if (entries[0].isIntersecting && !started) {
-                    started = true;
-                    animateCounter(document.getElementById('counter1'), 197, 2000);
-                    animateCounter(document.getElementById('counter2'), 18, 2000);
-                    animateCounter(document.getElementById('counter3'), 300, 2000);
-                    animateCounter(document.getElementById('counter4'), 4500, 2000);
-                }
-            }, {
-                threshold: 0.3
-            });
-            observer.observe(section);
+            if (section) {
+                let observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting && !started) {
+                        started = true;
+                        animateCounter(document.getElementById('counter1'), 197, 2000);
+                        animateCounter(document.getElementById('counter2'), 18, 2000);
+                        animateCounter(document.getElementById('counter3'), 300, 2000);
+                        animateCounter(document.getElementById('counter4'), 4500, 2000);
+                    }
+                }, {
+                    threshold: 0.3
+                });
+                observer.observe(section);
+            }
+            */
 
             let aboutSection = document.getElementById('aboutSection');
             let aboutStarted = false;
@@ -1097,6 +1106,11 @@
 
             if (videoTrigger) {
                 videoTrigger.addEventListener('click', openVideoModal);
+                // Touch support for mobile
+                videoTrigger.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    openVideoModal();
+                });
             }
 
             if (closeModalBtn) {
@@ -1199,6 +1213,11 @@
 
             if (storyVideoTrigger) {
                 storyVideoTrigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openStoryVideoModal();
+                });
+                // Touch support for mobile
+                storyVideoTrigger.addEventListener('touchend', function(e) {
                     e.preventDefault();
                     openStoryVideoModal();
                 });
