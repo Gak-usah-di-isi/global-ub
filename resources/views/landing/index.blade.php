@@ -989,24 +989,23 @@
         }
     </style>
     <script>
-        /* 
-            function animateCounter(el, target, duration = 2000) {
-                let start = 0;
-                let startTime = null;
+        function animateCounter(el, target, duration = 2000) {
+            if (!el) return;
+            let start = 0;
+            let startTime = null;
 
-                function update(timestamp) {
-                    if (!startTime) startTime = timestamp;
-                    const progress = Math.min((timestamp - startTime) / duration, 1);
-                    el.textContent = Math.floor(progress * target) + (target > 20 ? '+' : '');
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
-                    } else {
-                        el.textContent = target + (target > 20 ? '+' : '');
-                    }
+            function update(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                el.textContent = Math.floor(progress * target) + (target > 20 ? '+' : '');
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    el.textContent = target + (target > 20 ? '+' : '');
                 }
-                requestAnimationFrame(update);
             }
-            */
+            requestAnimationFrame(update);
+        }
 
         document.addEventListener('DOMContentLoaded', function() {
             /* 
@@ -1079,10 +1078,10 @@
             function openVideoModal() {
                 const rawUrl = '{{ $aboutSection->video_url ?? 'https://www.youtube.com/embed/Xg0r7XJ4lSY' }}';
                 const embedBaseUrl = convertToYouTubeEmbed(rawUrl);
-                const currentOrigin = window.location.origin;
+
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
                 const embedUrl = embedBaseUrl +
-                    '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(
-                        currentOrigin) + '&widget_referrer=' + encodeURIComponent(currentOrigin);
+                    '?rel=0&modestbranding=1&playsinline=1' + (isMobile ? '' : '&autoplay=1');
 
                 videoIframe.src = embedUrl;
                 videoModal.classList.remove('hidden');
@@ -1182,10 +1181,10 @@
                 if (!videoUrl) return;
 
                 const embedBaseUrl = convertYouTubeUrl(videoUrl);
-                const currentOrigin = window.location.origin;
+
+                const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
                 const embedUrl = embedBaseUrl +
-                    '?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin=' + encodeURIComponent(
-                        currentOrigin) + '&widget_referrer=' + encodeURIComponent(currentOrigin);
+                    '?rel=0&modestbranding=1&playsinline=1' + (isMobile ? '' : '&autoplay=1');
 
                 storyVideoIframe.src = embedUrl;
                 storyVideoModal.classList.remove('hidden');
