@@ -7,14 +7,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-28">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="{{ asset('icons-site/home.svg') }}" alt="Home Icon" class="w-full h-full">
+                <img src="{{ asset(config('app.icon_path') . '/home.svg') }}" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -99,7 +99,7 @@
 
                         <div class="flex justify-between items-center text-sm md:text-[14px] leading-5 md:leading-[20px]">
                             <span class="flex items-center gap-2 text-[#29303DB2]">
-                                <img src="{{ asset('icons-site/user-black.svg') }}" class="w-4 h-4" alt="user">
+                                <img src="{{ asset(config('app.icon_path') . '/user-black.svg') }}" class="w-4 h-4" alt="user">
                                 {{ number_format($study->students_count) }} students
                             </span>
                             <span class="text-[#0000FF] font-medium">{{ $study->duration }}</span>
@@ -112,7 +112,7 @@
                         <a href="{{ route('study.show', $study->slug) }}"
                             class="mt-auto w-full h-10 border border-[#E2E4E9] rounded-xl flex items-center justify-center gap-2 px-4 py-2 font-medium text-[#29303D] text-sm md:text-[14px] leading-5 md:leading-[20px] hover:bg-gray-50 transition">
                             Learn More
-                            <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
                         </a>
                     </div>
                 @endforeach
@@ -123,13 +123,13 @@
                     @if ($studies->onFirstPage())
                         <button
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Previous"
                                 class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
                         </button>
                     @else
                         <a href="{{ $studies->previousPageUrl() }}"
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Previous"
                                 class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                         </a>
                     @endif
@@ -147,12 +147,12 @@
                     @if ($studies->hasMorePages())
                         <a href="{{ $studies->nextPageUrl() }}"
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
                         </a>
                     @else
                         <button
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#FFFFFF] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
                         </button>
                     @endif
                 </div>

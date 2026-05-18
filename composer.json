@@ -11,7 +11,9 @@
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "predis/predis": "^3.2",
-        "santigarcor/laratrust": "^8.5"
+        "santigarcor/laratrust": "^8.5",
+        "spatie/laravel-translatable": "^6.14",
+        "stichoza/google-translate-php": "^5.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

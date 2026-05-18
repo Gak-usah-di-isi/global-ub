@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\DownloadCenter;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
+use App\Helpers\TranslationHelper;
 use ZipArchive;
 
 class DownloadController extends Controller
@@ -13,6 +14,7 @@ class DownloadController extends Controller
     public function index()
     {
         $downloads = DownloadCenter::with('icon')->latest()->paginate(6);
+        $downloads->getCollection()->transform(fn($item) => TranslationHelper::translateModel($item, ['title', 'description']));
         return view('landing.download-center', compact('downloads'));
     }
 

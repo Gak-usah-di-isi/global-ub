@@ -62,16 +62,7 @@ Route::middleware([CountVisitor::class])->group(function () {
 
 // Language Switcher
 
-Route::get('/lang/{locale}', function ($locale) {
-    $supportedLocales = ['en', 'id'];
-
-    if (in_array($locale, $supportedLocales)) {
-        app()->setLocale($locale);
-        session()->put('locale', $locale);
-    }
-
-    return redirect()->back();
-})->name('lang.switch');
+Route::get('/lang/{locale}', [\App\Http\Controllers\LanguageController::class, 'switch'])->name('lang.switch');
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', function () {

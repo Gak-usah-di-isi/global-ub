@@ -6,14 +6,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="/icons-site/home.svg" alt="Home Icon" class="w-full h-full">
+                <img src="{{ asset(config('app.icon_path') . '/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons-site/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset(config('app.icon_path') . '/user.svg') }}" alt="Students Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutPageCounter1" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
@@ -51,7 +51,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons-site/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
+                            <img src="{{ asset(config('app.icon_path') . '/book.svg') }}" alt="Programs Icon" class="w-[24px] h-[24px]" />
                         </div>
                         <div>
                             <p id="aboutPageCounter2" class="font-semibold text-sm md:text-[16px] text-[#29303D]">0+</p>
@@ -61,7 +61,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons-site/achievement.svg') }}" alt="Years Icon"
+                            <img src="{{ asset(config('app.icon_path') . '/achievement.svg') }}" alt="Years Icon"
                                 class="w-[24px] h-[24px]" />
                         </div>
                         <div>
@@ -72,7 +72,7 @@
                     <div class="flex items-center gap-2">
                         <div
                             class="w-10 h-10 md:w-[48px] md:h-[48px] bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-[12px] flex items-center justify-center">
-                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Partners Icon"
+                            <img src="{{ asset(config('app.icon_path') . '/partner.svg') }}" alt="Partners Icon"
                                 class="w-[24px] h-[24px]" />
                         </div>
                         <div>
@@ -111,7 +111,7 @@
                     <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
                         <button id="about-play-button" type="button"
                             class="relative z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white bg-opacity-20 backdrop-blur-sm mb-6 hover:bg-opacity-30 transition-all">
-                            <img src='{{ asset('icons-site/play.svg') }}' alt="Play"
+                            <img src='{{ asset(config('app.icon_path') . '/play.svg') }}' alt="Play"
                                 class="w-6 h-6 md:w-8 md:h-8 text-white" />
                         </button>
 
@@ -130,7 +130,7 @@
                     <div class="flex items-center gap-2 sm:gap-3 w-full h-full">
                         <div
                             class="w-8 h-8 sm:w-10 sm:h-10 md:w-[48px] md:h-[48px] rounded-full flex items-center justify-center bg-[linear-gradient(135deg,#0000FF_0%,#6699FF_100%)]">
-                            <img src="{{ asset('icons-site/partner.svg') }}" alt="Global Network Icon"
+                            <img src="{{ asset(config('app.icon_path') . '/partner.svg') }}" alt="Global Network Icon"
                                 class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6">
                         </div>
                         <div class="flex-1 min-w-0">
@@ -228,7 +228,7 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons-site/editor_choice.svg') }}" alt="Programs Icon"
+                        <img src="{{ asset(config('app.icon_path') . '/editor_choice.svg') }}" alt="Programs Icon"
                             class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
@@ -239,7 +239,7 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons-site/globe_book.svg') }}" alt="Programs Icon"
+                        <img src="{{ asset(config('app.icon_path') . '/globe_book.svg') }}" alt="Programs Icon"
                             class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
@@ -250,7 +250,7 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons-site/emoji_language.svg') }}" alt="Programs Icon"
+                        <img src="{{ asset(config('app.icon_path') . '/emoji_language.svg') }}" alt="Programs Icon"
                             class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">
@@ -261,7 +261,7 @@
                 <div class="bg-white shadow-md p-6 md:p-[32px] rounded-[16px]">
                     <div
                         class="w-12 h-12 md:w-[64px] md:h-[68px] bg-[#F9FAFB] rounded-full flex justify-center items-center mx-auto mb-4 md:mb-[16px]">
-                        <img src="{{ asset('icons-site/diversity_2.svg') }}" alt="Programs Icon"
+                        <img src="{{ asset(config('app.icon_path') . '/diversity_2.svg') }}" alt="Programs Icon"
                             class="w-[24px] h-[24px]" />
                     </div>
                     <p class="text-center font-inter font-light text-sm md:text-[14px] text-[#29303D]">

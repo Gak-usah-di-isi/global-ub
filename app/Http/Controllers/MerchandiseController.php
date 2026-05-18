@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Merchandise;
 use Illuminate\Http\Request;
+use App\Helpers\TranslationHelper;
 
 class MerchandiseController extends Controller
 {
@@ -24,6 +25,7 @@ class MerchandiseController extends Controller
         }
 
         $merchandise = $query->paginate(12);
+        $merchandise->getCollection()->transform(fn($item) => TranslationHelper::translateModel($item, ['name', 'description']));
         $total = $merchandise->total();
 
         return view('landing.merchandise', compact('merchandise', 'total', 'sort'));

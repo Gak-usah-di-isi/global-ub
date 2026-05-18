@@ -6,14 +6,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="/icons-site/home.svg" alt="Home Icon" class="w-full h-full">
+                <img src="{{ asset(config('app.icon_path') . '/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -101,14 +101,14 @@
                     @if ($merchandise->onFirstPage())
                         <button class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F3F4F6] text-gray-500"
                             aria-label="Previous" disabled>
-                            <img src="{{ asset('/icons-site/righ-arrow2.svg') }}" alt="right-arrow"
+                            <img src="{{ asset(config('app.icon_path') . '/righ-arrow2.svg') }}" alt="right-arrow"
                                 class="transform rotate-180 opacity-50">
                         </button>
                     @else
                         <a href="{{ $merchandise->previousPageUrl() }}"
                             class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F3F4F6] text-gray-500 hover:bg-gray-200"
                             aria-label="Previous">
-                            <img src="{{ asset('/icons-site/righ-arrow2.svg') }}" alt="right-arrow"
+                            <img src="{{ asset(config('app.icon_path') . '/righ-arrow2.svg') }}" alt="right-arrow"
                                 class="transform rotate-180">
                         </a>
                     @endif
@@ -126,12 +126,12 @@
                         <a href="{{ $merchandise->nextPageUrl() }}"
                             class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F3F4F6] text-gray-500 hover:bg-gray-200"
                             aria-label="Next">
-                            <img src="{{ asset('/icons-site/righ-arrow2.svg') }}" alt="right-arrow">
+                            <img src="{{ asset(config('app.icon_path') . '/righ-arrow2.svg') }}" alt="right-arrow">
                         </a>
                     @else
                         <button class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F3F4F6] text-gray-500"
                             aria-label="Next" disabled>
-                            <img src="{{ asset('/icons-site/righ-arrow2.svg') }}" alt="right-arrow" class="opacity-50">
+                            <img src="{{ asset(config('app.icon_path') . '/righ-arrow2.svg') }}" alt="right-arrow" class="opacity-50">
                         </button>
                     @endif
                 </nav>

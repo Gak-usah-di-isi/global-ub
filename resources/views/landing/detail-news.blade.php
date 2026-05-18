@@ -7,14 +7,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="/icons-site/home.svg" alt="Home Icon" class="w-full h-full">
+                <img src="{{ asset(config('app.icon_path') . '/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -46,11 +46,11 @@
         </div>
         <div class="flex w-full text-xs mt-12 mb-4 text-neutral-400">
             <span class="flex items-center align-middle gap-x-1 mr-4">
-                <img src="{{ asset('icons-site/calender.svg') }}" alt="">
+                <img src="{{ asset(config('app.icon_path') . '/calender.svg') }}" alt="">
                 {{ $news->created_at->format('m/d/Y') }}
             </span>
             <span class="flex items-center align-middle gap-x-1">
-                <img src="{{ asset('icons-site/clock.svg') }}" alt="">
+                <img src="{{ asset(config('app.icon_path') . '/clock.svg') }}" alt="">
                 {{ $news->created_at_human }}
             </span>
         </div>
@@ -68,26 +68,26 @@
             <div
                 class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2">
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" target="_blank">
-                    <img src="/icons-site/fb.svg" class="w-5 h-5" alt="Facebook">
+                    <img src="{{ asset(config('app.icon_path') . '/fb.svg" class="w-5 h-5" alt="Facebook">
                 </a>
             </div>
             <div
                 class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2">
                 <a href="https://www.instagram.com" target="_blank">
-                    <img src="/icons-site/ig.svg" class="w-5 h-5" alt="Instagram">
+                    <img src="{{ asset(config('app.icon_path') . '/ig.svg" class="w-5 h-5" alt="Instagram">
                 </a>
             </div>
             <div
                 class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2">
                 <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($news->title) }}"
                     target="_blank">
-                    <img src="/icons-site/tweet.svg" class="w-5 h-5" alt="Twitter">
+                    <img src="{{ asset(config('app.icon_path') . '/tweet.svg" class="w-5 h-5" alt="Twitter">
                 </a>
             </div>
             <div
                 class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2">
                 <a href="{{ url()->current() }}" target="_blank" title="Click to Copy URL">
-                    <img src="/icons-site/link.svg" class="w-5 h-5" alt="Copy Link">
+                    <img src="{{ asset(config('app.icon_path') . '/link.svg" class="w-5 h-5" alt="Copy Link">
                 </a>
             </div>
         </div>
@@ -110,15 +110,15 @@
                         class="flex items-center align-middle justify-between font-inter w-full text-xs mb-2 text-neutral-500">
                         <div class="flex items-center align-middle w-full">
                             <span class="flex items-center align-middle gap-x-2 mr-4">
-                                <img src="{{ asset('icons-site/calender.svg') }}" alt="">
+                                <img src="{{ asset(config('app.icon_path') . '/calender.svg') }}" alt="">
                                 {{ $related->created_at->format('m/d/Y') }}
                             </span>
                             <span class="flex items-center align-middle gap-x-2">
-                                <img src="{{ asset('icons-site/clock.svg') }}"
+                                <img src="{{ asset(config('app.icon_path') . '/clock.svg') }}"
                                     alt="">{{ $related->created_at->diffForHumans() }}
                             </span>
                         </div>
-                        <img src="{{ asset('icons-site/arrow-right.svg') }}" class="size-4" alt="">
+                        <img src="{{ asset(config('app.icon_path') . '/arrow-right.svg') }}" class="size-4" alt="">
                     </div>
                 </a>
             @endforeach

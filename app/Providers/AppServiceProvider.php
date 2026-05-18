@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redis;
 
@@ -21,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Blade::directive('icon', function ($expression) {
+            return "<?php echo asset(config('app.icon_path') . '/' . {$expression}); ?>";
+        });
+
         // Visitor statistics for footer
         View::composer('core.partials.footer', function ($view) {
             $date = now()->format('Y-m-d');

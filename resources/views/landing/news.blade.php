@@ -6,14 +6,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="/icons-site/home.svg" alt="Home Icon" class="w-full h-full">
+                <img src="{{ asset(config('app.icon_path') . '/home.svg" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="/icons-site/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -35,11 +35,11 @@
             <div class="w-full lg:w-[669px]">
                 <div class="flex gap-3 mb-4">
                     <span class="flex items-center gap-1 text-[#29303D99] text-[14px]">
-                        <img src="/icons-site/calender.svg" class="w-4 h-4" alt="calendar icon">
+                        <img src="{{ asset(config('app.icon_path') . '/calender.svg" class="w-4 h-4" alt="calendar icon">
                         {{ $latestNews->created_at->format('m/d/Y') }}
                     </span>
                     <span class="flex items-center gap-1 text-[#29303D99] text-[14px]">
-                        <img src="/icons-site/clock.svg" class="w-4 h-4" alt="clock icon">
+                        <img src="{{ asset(config('app.icon_path') . '/clock.svg" class="w-4 h-4" alt="clock icon">
                         {{ $latestNews->created_at_human }}
                     </span>
                 </div>
@@ -68,23 +68,23 @@
                     <div class="w-[41px] h-[41px] bg-[#E2E4E9] flex items-center justify-center rounded-full shadow-md">
                         <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}"
                             target="_blank">
-                            <img src="/icons-site/fb.svg" class="w-5 h-5" alt="Facebook">
+                            <img src="{{ asset(config('app.icon_path') . '/fb.svg" class="w-5 h-5" alt="Facebook">
                         </a>
                     </div>
                     <div class="w-[41px] h-[41px] bg-[#E2E4E9] flex items-center justify-center rounded-full shadow-md">
                         <a href="https://www.instagram.com" target="_blank">
-                            <img src="/icons-site/ig.svg" class="w-5 h-5" alt="Instagram">
+                            <img src="{{ asset(config('app.icon_path') . '/ig.svg" class="w-5 h-5" alt="Instagram">
                         </a>
                     </div>
                     <div class="w-[41px] h-[41px] bg-[#E2E4E9] flex items-center justify-center rounded-full shadow-md">
                         <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($latestNews->title) }}"
                             target="_blank">
-                            <img src="/icons-site/tweet.svg" class="w-5 h-5" alt="Twitter">
+                            <img src="{{ asset(config('app.icon_path') . '/tweet.svg" class="w-5 h-5" alt="Twitter">
                         </a>
                     </div>
                     <div class="w-[41px] h-[41px] bg-[#E2E4E9] flex items-center justify-center rounded-full shadow-md">
                         <a href="{{ url()->current() }}" target="_blank" title="Click to Copy URL">
-                            <img src="/icons-site/link.svg" class="w-5 h-5" alt="Copy Link">
+                            <img src="{{ asset(config('app.icon_path') . '/link.svg" class="w-5 h-5" alt="Copy Link">
                         </a>
                     </div>
                 </div>
@@ -117,16 +117,16 @@
                     <div class="flex items-center justify-between text-sm md:text-[14px] text-[#29303DB2]">
                         <div class="flex gap-2 md:gap-4">
                             <span class="flex items-center gap-1">
-                                <img src="/icons-site/calender.svg" class="w-4 h-4" alt="">
+                                <img src="{{ asset(config('app.icon_path') . '/calender.svg" class="w-4 h-4" alt="">
                                 {{ $newsItem->created_at->format('m/d/Y') }}
                             </span>
                             <span class="flex items-center gap-1">
-                                <img src="/icons-site/clock.svg" class="w-4 h-4" alt="">
+                                <img src="{{ asset(config('app.icon_path') . '/clock.svg" class="w-4 h-4" alt="">
                                 {{ $newsItem->created_at->diffForHumans() }}
                             </span>
                         </div>
                         <span>
-                            <img src="/icons-site/arrow-right.svg" class="w-5 h-5 hover:scale-110 transition-transform"
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-right.svg" class="w-5 h-5 hover:scale-110 transition-transform"
                                 alt="">
                         </span>
                     </div>
@@ -138,13 +138,13 @@
             <div class="flex items-center gap-3 md:gap-4">
                 @if ($news->onFirstPage())
                     <button class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                        <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Previous"
                             class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
                     </button>
                 @else
                     <a href="{{ $news->previousPageUrl() }}"
                         class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                        <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Previous"
                             class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                     </a>
                 @endif
@@ -161,11 +161,11 @@
                 @if ($news->hasMorePages())
                     <a href="{{ $news->nextPageUrl() }}"
                         class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                        <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
                     </a>
                 @else
                     <button class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                        <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                        <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
                     </button>
                 @endif
             </div>
