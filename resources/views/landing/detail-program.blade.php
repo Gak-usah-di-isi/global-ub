@@ -14,7 +14,7 @@
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
                                 class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2 hover:bg-neutral-300 transition">
                                 <a href="{{ $program->report_link }}" target="_blank" rel="noopener noreferrer"
                                     title="Open Report">
-                                    <img src="{{ asset(config('app.icon_path') . '/file.svg" class="w-5 h-5" alt="Report">
+                                    <img src="{{ asset(config('app.icon_path') . '/file.svg') }}" class="w-5 h-5" alt="Report">
                                 </a>
                             </div>
                         @endif
@@ -80,7 +80,7 @@
                                 class="flex items-center align-middle justify-center size-10 rounded-full text-neutral-600 bg-neutral-200 p-2 hover:bg-neutral-300 transition">
                                 <a href="{{ $program->video_link }}" target="_blank" rel="noopener noreferrer"
                                     title="Watch on YouTube">
-                                    <img src="{{ asset(config('app.icon_path') . '/yt-blue.svg" class="w-5 h-5" alt="YouTube">
+                                    <img src="{{ asset(config('app.icon_path') . '/yt-blue.svg') }}" class="w-5 h-5" alt="YouTube">
                                 </a>
                             </div>
                         @endif
@@ -99,7 +99,7 @@
                                         class="group flex items-center gap-2 p-3 bg-[#F9FAFB] hover:bg-[#F0F2F4] rounded-[10px] border border-[#E2E4E9] hover:border-[#0000FF] transition-all duration-200">
                                         <div
                                             class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-[#E2E4E9] group-hover:bg-gradient-to-r group-hover:from-[#0000FF] group-hover:to-[#6699FF] group-hover:border-transparent transition-all duration-200 flex-shrink-0">
-                                            <img src="{{ asset(config('app.icon_path') . '/link.svg"
+                                            <img src="{{ asset(config('app.icon_path') . '/link.svg') }}"
                                                 class="w-4 h-4 group-hover:brightness-0 group-hover:invert transition-all duration-200"
                                                 alt="Link">
                                         </div>

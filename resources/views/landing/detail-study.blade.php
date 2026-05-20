@@ -14,7 +14,7 @@
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>

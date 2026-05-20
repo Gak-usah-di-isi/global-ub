@@ -7,14 +7,14 @@
     <div class="bg-[#F0F2F4] w-full h-[80px] flex items-center px-4 md:px-8 lg:px-[112px]">
         <div class="flex items-center space-x-4">
             <div class="w-[16px] h-[16px]">
-                <img src="{{ asset(config('app.icon_path') . '/home.svg" alt="Home Icon" class="w-full h-full">
+                <img src="{{ asset(config('app.icon_path') . '/home.svg') }}" alt="Home Icon" class="w-full h-full">
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
                 Home
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>

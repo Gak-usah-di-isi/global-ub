@@ -8,7 +8,7 @@
         <div class="flex items-center space-x-2 md:space-x-4">
             <div class="w-4 h-4 md:w-[16px] md:h-[16px]">
                 <div class="w-[16px] h-[16px]">
-                    <img src="{{ asset(config('app.icon_path') . '/home.svg" alt="Home Icon" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/home.svg') }}" alt="Home Icon" class="w-full h-full">
                 </div>
             </div>
             <a href="/" class="text-[#29303D] text-xs md:text-[14px] font-light hover:text-[#0000FF] transition-colors">
@@ -16,7 +16,7 @@
             </a>
             <div class="w-[16px] h-[16px]">
                 <div class="w-[14px] h-[14px]">
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg" alt="Right Arrow" class="w-full h-full">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-chevron.svg') }}" alt="Right Arrow" class="w-full h-full">
                 </div>
             </div>
         </div>
@@ -83,13 +83,13 @@
                     @if ($innovations->onFirstPage())
                         <button
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Previous"
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg') }}" alt="Previous"
                                 class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
                         </button>
                     @else
                         <a href="{{ $innovations->previousPageUrl() }}"
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Previous"
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg') }}" alt="Previous"
                                 class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
                         </a>
                     @endif
@@ -106,12 +106,12 @@
                     @if ($innovations->hasMorePages())
                         <a href="{{ $innovations->nextPageUrl() }}"
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg') }}" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
                         </a>
                     @else
                         <button
                             class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-fix.svg') }}" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
                         </button>
                     @endif
                 </div>
