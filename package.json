@@ -19,6 +19,11 @@
         "vite": "^7.0.4"
     },
     "dependencies": {
-        "@ckeditor/ckeditor5-build-classic": "^41.4.2"
+        "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+        "@radix-ui/react-icons": "^1.3.2",
+        "@radix-ui/themes": "^3.3.0",
+        "@vitejs/plugin-react": "^5.2.0",
+        "react": "^19.2.6",
+        "react-dom": "^19.2.6"
     }
 }

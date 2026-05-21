@@ -33,6 +33,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MerchandiseController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\TestingPageController;
 use App\Http\Middleware\CountVisitor;
 
 Route::middleware([CountVisitor::class])->group(function () {
@@ -183,6 +184,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Testing page — React + API demo, isolated dari project utama
+Route::get('/testing', [TestingPageController::class, 'index'])->name('testing.index');
 
 require __DIR__ . '/auth.php';
 
