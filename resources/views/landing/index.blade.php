@@ -388,7 +388,7 @@
                 </p>
             </div>
 
-            {{-- COUNTER SECTION - TEMPORARILY DISABLED
+            COUNTER SECTION - TEMPORARILY DISABLED
             <div x-data="{}"
                 class="w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-[32px] place-items-center">
                 <div class="flex flex-col items-center">
@@ -423,7 +423,7 @@
                         class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.program.counters.students') }}</span>
                 </div>
             </div>
-            --}}
+           
 
             <div class="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[32px]">
                 @foreach ($programs as $program)
@@ -1008,7 +1008,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            /* 
+            
             let section = document.querySelector('.grid.grid-cols-2');
             let started = false;
             if (section) {
@@ -1025,7 +1025,6 @@
                 });
                 observer.observe(section);
             }
-            */
 
             let aboutSection = document.getElementById('aboutSection');
             let aboutStarted = false;
