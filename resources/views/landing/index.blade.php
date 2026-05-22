@@ -155,7 +155,8 @@
             <div class="flex justify-center mt-8 md:mt-16 rounded-full">
                 <button
                     class="bg-[#FFFFFFB2] text-[#29303D] py-10 px-4 md:py-[12px] md:px-[24px] rounded-full w-full max-w-[504px] h-12 md:h-[48px] flex items-center justify-center gap-2">
-                    <img src="{{ asset(config('app.icon_path') . '/up.svg') }}" alt="Arrow Right Icon" class="w-4 h-4 md:w-5 md:h-5">
+                    <img src="{{ asset(config('app.icon_path') . '/up.svg') }}" alt="Arrow Right Icon"
+                        class="w-4 h-4 md:w-5 md:h-5">
                     <span class="font-medium font-inter text-sm md:text-[14px] leading-[24px]">
                         Consistently improving in global rankings year over year
                     </span>
@@ -326,16 +327,19 @@
                     <div class="flex items-center justify-between text-sm md:text-[14px] text-[#29303DB2]">
                         <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
                             <span class="flex items-center gap-1">
-                                <img src="{{ asset(config('app.icon_path') . '/calender.svg') }}" class="w-4 h-4" alt="">
+                                <img src="{{ asset(config('app.icon_path') . '/calender.svg') }}" class="w-4 h-4"
+                                    alt="">
                                 {{ $latestNews->created_at->format('m/d/Y') }}
                             </span>
                             <span class="flex items-center gap-1">
-                                <img src="{{ asset(config('app.icon_path') . '/clock.svg') }}" class="w-4 h-4" alt="">
+                                <img src="{{ asset(config('app.icon_path') . '/clock.svg') }}" class="w-4 h-4"
+                                    alt="">
                                 {{ $latestNews->created_at_human }}
                             </span>
                         </div>
                         <div>
-                            <img src="{{ asset(config('app.icon_path') . '/arrow-right.svg') }}" class="w-5 h-5" alt="">
+                            <img src="{{ asset(config('app.icon_path') . '/arrow-right.svg') }}" class="w-5 h-5"
+                                alt="">
                         </div>
                     </div>
                 </a>
@@ -367,7 +371,8 @@
                 <a href="/news"
                     class="w-full max-w-[193px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     {{ __('landing.news.button') }}
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4"
+                        alt="">
                 </a>
             </div>
 
@@ -388,7 +393,6 @@
                 </p>
             </div>
 
-            COUNTER SECTION - TEMPORARILY DISABLED
             <div x-data="{}"
                 class="w-full mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-[32px] place-items-center">
                 <div class="flex flex-col items-center">
@@ -423,7 +427,7 @@
                         class="mt-1 text-[#29303DB2] font-inter text-xs sm:text-sm md:text-[14px] leading-[20px]">{{ __('landing.program.counters.students') }}</span>
                 </div>
             </div>
-           
+
 
             <div class="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[32px]">
                 @foreach ($programs as $program)
@@ -458,8 +462,8 @@
                             <a href="{{ route('program.show', $program->slug) }}"
                                 class="mt-4 md:mt-auto w-full h-10 border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-2 px-[17px] py-[10px] font-medium text-[#29303D] text-xs md:text-[14px] leading-[20px] hover:bg-gray-50">
                                 {{ __('landing.program.button') }}
-                                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4"
-                                    alt="">
+                                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}"
+                                    class="w-4 h-4" alt="">
                             </a>
                         </div>
                     </div>
@@ -514,28 +518,32 @@
                             <div
                                 class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset(config('app.icon_path') . '/calender.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset(config('app.icon_path') . '/calender.svg') }}" class="w-4 h-4"
+                                        alt="">
                                     {{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset(config('app.icon_path') . '/clock.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset(config('app.icon_path') . '/clock.svg') }}" class="w-4 h-4"
+                                        alt="">
                                     {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} -
                                     {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset(config('app.icon_path') . '/location.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset(config('app.icon_path') . '/location.svg') }}" class="w-4 h-4"
+                                        alt="">
                                     {{ $event->location }}
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <img src="{{ asset(config('app.icon_path') . '/user-black.svg') }}" class="w-4 h-4" alt="">
+                                    <img src="{{ asset(config('app.icon_path') . '/user-black.svg') }}" class="w-4 h-4"
+                                        alt="">
                                     {{ $event->expected_attendees }} expected attendees
                                 </div>
                             </div>
                             <a href="{{ route('event.show', $event->slug) }}"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                                 {{ __('landing.events.button.learn_more') }}
-                                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4"
-                                    alt="">
+                                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}"
+                                    class="w-4 h-4" alt="">
                             </a>
                         </div>
                     </div>
@@ -547,7 +555,8 @@
             <a href="{{ route('event.index') }}"
                 class="w-full max-w-[195px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                 {{ __('landing.events.button.view_all') }}
-                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4"
+                    alt="">
             </a>
         </div>
     </section>
@@ -625,8 +634,8 @@
 
                             <a href="{{ route('download-center.download', $download->slug) }}"
                                 class="w-full px-3 sm:px-[17px] justify-center items-center border border-[#E2E4E9] rounded-[10px] flex gap-2 sm:gap-[8px] py-2 sm:py-[10px] bg-white text-[#29303D] font-medium text-xs sm:text-sm leading-[18px] sm:leading-[20px] hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
-                                <img src="{{ asset(config('app.icon_path') . '/download.svg') }}" class="w-3 h-3 sm:w-4 sm:h-4"
-                                    alt="Download">
+                                <img src="{{ asset(config('app.icon_path') . '/download.svg') }}"
+                                    class="w-3 h-3 sm:w-4 sm:h-4" alt="Download">
                                 <span
                                     class="text-xs sm:text-sm font-medium font-inter leading-tight text-[#29303D]">{{ __('landing.download.button.download') }}</span>
                             </a>
@@ -638,7 +647,8 @@
                 <a href="/download-center"
                     class=" w-full max-w-[270px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     {{ __('landing.download.button.view_all') }}
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4"
+                        alt="">
                 </a>
             </div>
         </div>
@@ -714,8 +724,8 @@
                             <a href="{{ route('innovation.show', $innovation->slug) }}"
                                 class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition">
                                 {{ __('landing.innovation.button.learn_more') }}
-                                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4"
-                                    alt="">
+                                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}"
+                                    class="w-4 h-4" alt="">
                             </a>
                         </div>
                     </div>
@@ -727,7 +737,8 @@
             <a href="{{ route('innovation.index') }}"
                 class="mt-8 md:mt-16 w-full max-w-[240px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                 {{ __('landing.innovation.button.view_all') }}
-                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4"
+                    alt="">
             </a>
         </div>
     </section>
@@ -819,7 +830,8 @@
                 <a href="{{ route('testimonial.index') }}"
                     class="mt-4 md:mt-6 w-full max-w-[250px] h-[44px] bg-white border border-[#E2E4E9] rounded-[10px] flex items-center justify-center gap-[8px] px-[33px] pt-[11.5px] pb-[12.5px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50">
                     {{ __('landing.testimonials.button') }}
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4"
+                        alt="">
                 </a>
             </div>
 
@@ -894,7 +906,8 @@
                             })"
                                 class="flex items-center gap-2 w-full h-[80px] p-4 rounded-[12px] bg-[#F9FAFB] hover:bg-[#F0F2F4] transition cursor-pointer">
                                 <span class="flex items-center justify-center w-12 h-12 rounded-[12px] bg-[#0000FF1A]">
-                                    <img src='{{ asset(config('app.icon_path') . '/play.svg') }}' alt="Play" class="w-6 h-6" />
+                                    <img src='{{ asset(config('app.icon_path') . '/play.svg') }}' alt="Play"
+                                        class="w-6 h-6" />
                                 </span>
                                 <span class="flex flex-col items-start justify-center">
                                     <span
@@ -953,7 +966,8 @@
                 <a href="{{ route('partnership.index') }}"
                     class="flex items-center gap-2 px-6 py-3 bg-white border border-[#E2E4E9] rounded-[10px] text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition-colors">
                     {{ __('landing.partnership.button') }}
-                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4" alt="Arrow">
+                    <img src="{{ asset(config('app.icon_path') . '/arrow-right-black.svg') }}" class="w-4 h-4"
+                        alt="Arrow">
                 </a>
             </div>
 
@@ -1008,7 +1022,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            
+
             let section = document.querySelector('.grid.grid-cols-2');
             let started = false;
             if (section) {
