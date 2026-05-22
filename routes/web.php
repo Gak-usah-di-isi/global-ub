@@ -1,6 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+
+Route::get('/debug-path', function () {
+    return response()->json([
+        'public_path' => public_path(),
+        'manifest' => public_path('build/manifest.json'),
+        'exists' => file_exists(public_path('build/manifest.json')),
+    ]);
+});
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDownloadCenterController;
 use App\Http\Controllers\Admin\AdminNewsController;
