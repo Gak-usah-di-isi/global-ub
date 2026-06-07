@@ -80,7 +80,11 @@
                                     class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">
                                     @php
                                         $redisKey = 'download_center:' . $download->id;
-                                        $downloadCount = \Illuminate\Support\Facades\Redis::get($redisKey) ?? 0;
+                                        try {
+                                            $downloadCount = \Illuminate\Support\Facades\Redis::get($redisKey) ?? 0;
+                                        } catch (\Throwable $e) {
+                                            $downloadCount = 0;
+                                        }
                                     @endphp
                                     {{ number_format($downloadCount) }}
                                 </span>

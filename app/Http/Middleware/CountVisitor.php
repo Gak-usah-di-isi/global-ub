@@ -16,12 +16,17 @@ class CountVisitor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $date = now()->format('Y-m-d');
-        $ip = $request->ip();
-        Redis::incr("visits:$date");
-        Redis::incr("visits:total");
-        Redis::sadd("visitors:$date", $ip);
-        Redis::sadd("visitors:all", $ip);
+        try {
+            $date = now()->format('Y-m-d');
+            $ip = $request->ip();
+            Redis::incr("visits:$date");
+            Redis::incr("visits:total");
+            Redis::sadd("visitors:$date", $ip);
+            Redis::sadd("visitors:all", $ip);
+        } catch (\Throwable $e) {
+            // Redis unavailable — skip tracking
+        }
+
         return $next($request);
     }
 }

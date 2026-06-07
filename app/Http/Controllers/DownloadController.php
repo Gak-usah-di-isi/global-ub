@@ -20,7 +20,7 @@ class DownloadController extends Controller
 
     public function download(DownloadCenter $downloadCenter)
     {
-        Redis::incr('download_center:' . $downloadCenter->id);
+        try { Redis::incr('download_center:' . $downloadCenter->id); } catch (\Throwable $e) {}
         return response()->download(storage_path('app/public/' . $downloadCenter->file));
     }
 
@@ -53,7 +53,7 @@ class DownloadController extends Controller
 
             $zip->close();
 
-            Redis::incr('download_center:complete_media_kit');
+            try { Redis::incr('download_center:complete_media_kit'); } catch (\Throwable $e) {}
 
             return response()->download($zipFilePath)->deleteFileAfterSend(true);
         }
