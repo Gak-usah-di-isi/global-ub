@@ -39,6 +39,7 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MerchandiseController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\ProgramController;
@@ -68,6 +69,7 @@ Route::middleware([CountVisitor::class])->group(function () {
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
     Route::get('/gallery/{slug}', [GalleryController::class, 'show'])->name('gallery.show');
     Route::get('/merchandise', [MerchandiseController::class, 'index'])->name('merchandise');
+    Route::get('/country', [CountryController::class, 'index'])->name('country.index');
     Route::get('/social-media', [SocialMediaController::class, 'index'])->name('social-media.index');
 });
 
