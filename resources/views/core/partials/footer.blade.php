@@ -106,6 +106,7 @@
                     Policy</a>
                 <a href="#" class="text-white text-sm font-inter font-light leading-[20px]">Terms of
                     Service</a>
+                <a href="/social-media" class="text-white text-sm font-inter font-light leading-[20px]">Social Media</a>
                 <a href="#" class="text-white text-sm font-inter font-light leading-[20px]">Sitemap</a>
             </div>
         </div>

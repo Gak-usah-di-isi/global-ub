@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('download_centers', function (Blueprint $table) {
-            $table->unsignedBigInteger('icon_id')->nullable()->after('icon_class');
+            $table->unsignedBigInteger('icon_id')->nullable()->after('file');
             $table->foreign('icon_id')->references('id')->on('icons')->onDelete('set null');
         });
     }

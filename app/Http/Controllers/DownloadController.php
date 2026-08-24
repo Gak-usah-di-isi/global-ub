@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DownloadCenter;
-use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use ZipArchive;
 
@@ -18,7 +18,7 @@ class DownloadController extends Controller
 
     public function download(DownloadCenter $downloadCenter)
     {
-        Redis::incr('download_center:' . $downloadCenter->id);
+        Cache::increment('download_center:' . $downloadCenter->id);
         return response()->download(storage_path('app/public/' . $downloadCenter->file));
     }
 
@@ -51,7 +51,7 @@ class DownloadController extends Controller
 
             $zip->close();
 
-            Redis::incr('download_center:complete_media_kit');
+            Cache::increment('download_center:complete_media_kit');
 
             return response()->download($zipFilePath)->deleteFileAfterSend(true);
         }

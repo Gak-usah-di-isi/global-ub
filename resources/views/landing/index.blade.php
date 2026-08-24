@@ -309,36 +309,38 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-                <a href="{{ route('news.show', $latestNews->slug) }}" class="flex flex-col gap-4">
-                    <div class="w-full h-[200px] sm:h-[239px] rounded-[12px] overflow-hidden">
-                        <img src="{{ asset('storage/' . $latestNews->image) }}" alt="{{ $latestNews->title }}"
-                            class="w-full h-full object-cover">
-                    </div>
-
-                    <h3 class="text-xl sm:text-2xl md:text-[24px] text-[#29303D] font-playfair font-extrabold">
-                        {{ $latestNews->title }}
-                    </h3>
-
-                    <p
-                        class="text-base sm:text-lg md:text-[18px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
-                        {{ Str::limit($latestNews->content, 120) }}
-                    </p>
-                    <div class="flex items-center justify-between text-sm md:text-[14px] text-[#29303DB2]">
-                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                            <span class="flex items-center gap-1">
-                                <img src="{{ asset('icons-site/calender.svg') }}" class="w-4 h-4" alt="">
-                                {{ $latestNews->created_at->format('m/d/Y') }}
-                            </span>
-                            <span class="flex items-center gap-1">
-                                <img src="{{ asset('icons-site/clock.svg') }}" class="w-4 h-4" alt="">
-                                {{ $latestNews->created_at_human }}
-                            </span>
+                @if ($latestNews)
+                    <a href="{{ route('news.show', $latestNews->slug) }}" class="flex flex-col gap-4">
+                        <div class="w-full h-[200px] sm:h-[239px] rounded-[12px] overflow-hidden">
+                            <img src="{{ asset('storage/' . $latestNews->image) }}" alt="{{ $latestNews->title }}"
+                                class="w-full h-full object-cover">
                         </div>
-                        <div>
-                            <img src="{{ asset('icons-site/arrow-right.svg') }}" class="w-5 h-5" alt="">
+
+                        <h3 class="text-xl sm:text-2xl md:text-[24px] text-[#29303D] font-playfair font-extrabold">
+                            {{ $latestNews->title }}
+                        </h3>
+
+                        <p
+                            class="text-base sm:text-lg md:text-[18px] font-inter font-light leading-relaxed md:leading-[29px] text-[#29303DB2]">
+                            {{ Str::limit($latestNews->content, 120) }}
+                        </p>
+                        <div class="flex items-center justify-between text-sm md:text-[14px] text-[#29303DB2]">
+                            <div class="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                                <span class="flex items-center gap-1">
+                                    <img src="{{ asset('icons-site/calender.svg') }}" class="w-4 h-4" alt="">
+                                    {{ $latestNews->created_at->format('m/d/Y') }}
+                                </span>
+                                <span class="flex items-center gap-1">
+                                    <img src="{{ asset('icons-site/clock.svg') }}" class="w-4 h-4" alt="">
+                                    {{ $latestNews->created_at_human }}
+                                </span>
+                            </div>
+                            <div>
+                                <img src="{{ asset('icons-site/arrow-right.svg') }}" class="w-5 h-5" alt="">
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                @endif
 
                 <div class="flex flex-col">
                     @foreach ($news as $newsItem)

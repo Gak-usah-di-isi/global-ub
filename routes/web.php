@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminCarouselController;
 use App\Http\Controllers\Admin\AdminRankingController;
 use App\Http\Controllers\Admin\AdminAboutSectionController;
 use App\Http\Controllers\Admin\AdminProgramController;
+use App\Http\Controllers\Admin\AdminVisitorStatisticController;
 
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\EventController;
@@ -189,6 +190,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/about-section', [AdminAboutSectionController::class, 'index'])->name('about-section.index');
     Route::get('/about-section/edit', [AdminAboutSectionController::class, 'edit'])->name('about-section.edit');
     Route::put('/about-section', [AdminAboutSectionController::class, 'update'])->name('about-section.update');
+
+    Route::get('/visitor-statistics', [AdminVisitorStatisticController::class, 'index'])->name('visitor-statistics.index');
 });
 
 Route::middleware('auth')->group(function () {

@@ -26,7 +26,9 @@ class LandingController extends Controller
         $events = Event::latest()->take(3)->get();
         $partnerships = Partnership::latest()->take(8)->get();
         $latestNews = News::latest()->first();
-        $latestNews->created_at_human = $latestNews->created_at->diffForHumans();
+        if ($latestNews) {
+            $latestNews->created_at_human = $latestNews->created_at->diffForHumans();
+        }
         $news = News::latest()->take(4)->get();
         $testimonials = Testimonial::latest()->take(3)->get();
         $innovations = Innovation::latest()->take(3)->get();
