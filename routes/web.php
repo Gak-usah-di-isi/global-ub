@@ -37,6 +37,53 @@ use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\StoryController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Middleware\CountVisitor;
+use App\Models\Event;
+use App\Models\Gallery;
+use App\Models\Innovation;
+use App\Models\News;
+use App\Models\Program;
+
+Route::get('/sitemap.xml', function () {
+    $urls = collect([
+        '/',
+        '/about',
+        '/news',
+        '/event',
+        '/innovation',
+        '/partnership',
+        '/program',
+        '/partner',
+        '/testimonial',
+        '/download-center',
+        '/story',
+        '/gallery',
+        '/merchandise',
+        '/country',
+        '/social-media',
+    ])->map(fn (string $path) => [
+        'loc' => url($path),
+        'lastmod' => null,
+    ]);
+
+    foreach ([
+        [News::class, 'news'],
+        [Event::class, 'event'],
+        [Innovation::class, 'innovation'],
+        [Program::class, 'program'],
+        [Gallery::class, 'gallery'],
+    ] as [$model, $path]) {
+        $urls = $urls->merge(
+            $model::query()->get(['slug', 'updated_at'])->map(fn ($item) => [
+                'loc' => url("/{$path}/{$item->slug}"),
+                'lastmod' => $item->updated_at,
+            ])
+        );
+    }
+
+    return response()
+        ->view('sitemap', ['urls' => $urls])
+        ->header('Content-Type', 'application/xml');
+});
 
 Route::middleware([CountVisitor::class])->group(function () {
     Route::get('/', [LandingController::class, 'index']);
