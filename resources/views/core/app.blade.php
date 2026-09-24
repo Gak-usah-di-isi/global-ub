@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="{{ asset('/images/ub.png') }}">
     <title>@yield('title')</title>
+    @include('core.partials.analytics')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @include('core.partials.link')
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
