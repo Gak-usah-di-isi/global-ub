@@ -18,7 +18,7 @@ class DownloadController extends Controller
 
     public function download(DownloadCenter $downloadCenter)
     {
-        Cache::increment('download_center:' . $downloadCenter->id);
+        $downloadCenter->increment('download_count');
         return response()->download(storage_path('app/public/' . $downloadCenter->file));
     }
 

@@ -78,11 +78,7 @@
                                     alt="Download">
                                 <span
                                     class="text-xs sm:text-sm font-inter font-normal leading-tight text-[#29303D] opacity-[0.6]">
-                                    @php
-                                        $redisKey = 'download_center:' . $download->id;
-                                        $downloadCount = \Illuminate\Support\Facades\Redis::get($redisKey) ?? 0;
-                                    @endphp
-                                    {{ number_format($downloadCount) }}
+                                    {{ number_format($download->download_count ?? 0) }}
                                 </span>
                             </div>
                         </div>

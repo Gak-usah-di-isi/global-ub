@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\CountryVisit;
+use App\Models\DailyVisit;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -20,29 +21,33 @@ class CountVisitor
     public function handle(Request $request, Closure $next): Response
     {
         $date = now()->format('Y-m-d');
-        $ip = $request->ip();
+        $ip = $request->ip() ?? '127.0.0.1';
 
-        Cache::increment("visits:$date");
-        Cache::increment('visits:total');
+        $hasVisitedTodayCookie = $request->cookie('visited_today') === $date;
+        $isNewTodayByIp = Cache::add("visited_today:{$date}:{$ip}", 1, now()->endOfDay());
+        $isNewToday = !$hasVisitedTodayCookie && $isNewTodayByIp;
 
-        $dailyVisitors = (array) Cache::get("visitors:$date", []);
-        $allVisitors = (array) Cache::get('visitors:all', []);
+        $isNewAllTime = Cache::add("visited_all:{$ip}", 1, now()->addYear());
 
-        $isNewVisitor = !in_array($ip, $allVisitors, true);
+        $daily = DailyVisit::firstOrCreate(
+            ['date' => $date],
+            ['total_visits' => 0, 'unique_visitors' => 0]
+        );
+        $daily->increment('total_visits');
 
-        if (!in_array($ip, $dailyVisitors, true)) {
-            $dailyVisitors[] = $ip;
-            Cache::forever("visitors:$date", array_values($dailyVisitors));
+        if ($isNewToday) {
+            $daily->increment('unique_visitors');
         }
 
-        if ($isNewVisitor) {
-            $allVisitors[] = $ip;
-            Cache::forever('visitors:all', array_values($allVisitors));
+        $this->recordCountryVisit($ip, $isNewAllTime);
+
+        $response = $next($request);
+
+        if (!$hasVisitedTodayCookie && method_exists($response, 'cookie')) {
+            $response->cookie('visited_today', $date, 1440);
         }
 
-        $this->recordCountryVisit($ip, $isNewVisitor);
-
-        return $next($request);
+        return $response;
     }
 
     /**

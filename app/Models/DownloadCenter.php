@@ -17,6 +17,11 @@ class DownloadCenter extends Model
         'description',
         'file',
         'icon_id',
+        'download_count',
+    ];
+
+    protected $casts = [
+        'download_count' => 'integer',
     ];
 
     protected static function boot()

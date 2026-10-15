@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('studies', function (Blueprint $table) {
-            $table->unsignedBigInteger('icon_id')->nullable()->after('icon_class');
-            $table->foreign('icon_id')->references('id')->on('icons')->onDelete('set null');
+            if (!Schema::hasColumn('studies', 'icon_id')) {
+                $table->unsignedBigInteger('icon_id')->nullable()->after('icon_class');
+                $table->foreign('icon_id')->references('id')->on('icons')->onDelete('set null');
+            }
         });
     }
 
