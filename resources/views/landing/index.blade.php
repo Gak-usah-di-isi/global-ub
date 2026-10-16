@@ -517,7 +517,7 @@
                                 class="flex flex-col gap-2 text-xs sm:text-sm md:text-[14px] leading-relaxed md:leading-[20px] text-[#29303D99] font-inter">
                                 <div class="flex items-center gap-2">
                                     <img src="{{ asset('icons-site/calender.svg') }}" class="w-4 h-4" alt="">
-                                    {{ \Carbon\Carbon::parse($event->date)->format('F j, Y') }}
+                                    {{ \Carbon\Carbon::parse($event->event_date)->format('F j, Y') }}
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="{{ asset('icons-site/clock.svg') }}" class="w-4 h-4" alt="">
