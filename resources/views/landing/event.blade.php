@@ -39,39 +39,34 @@
                     Join our international events and connect with the global academic community
                 </p>
 
-                <!-- Search Form -->
-                <form action="{{ route('event.index') }}" method="GET" class="w-full max-w-[540px] mt-2">
-                    <div class="relative flex items-center bg-[#F8FAFE] border border-[#E2E4E9] rounded-full p-1.5 focus-within:border-[#0000FF] focus-within:ring-2 focus-within:ring-[#0000FF]/15 transition-all shadow-xs">
-                        <div class="pl-3.5 pr-2 flex items-center pointer-events-none text-slate-400">
-                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                <!-- Compact Live Search Bar -->
+                <div class="w-full max-w-[340px] mt-2">
+                    <div class="relative flex items-center bg-[#F8FAFE] border border-[#E2E4E9] rounded-lg h-[38px] px-3 focus-within:border-[#0000FF] focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0000FF]/15 transition-all shadow-xs">
+                        <svg class="w-4 h-4 text-slate-400 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                        </svg>
+                        <input type="text" id="live-search-input" value="{{ request('search') }}"
+                            placeholder="Search events..."
+                            autocomplete="off"
+                            class="w-full bg-transparent border-none text-[13px] text-[#29303D] placeholder:text-slate-400 focus:outline-none focus:ring-0 p-0">
+                        <button type="button" id="live-search-clear" class="p-1 text-slate-400 hover:text-slate-600 transition {{ request('search') ? '' : 'hidden' }}" title="Clear search">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
-                        </div>
-                        <input type="text" name="search" value="{{ request('search') }}"
-                            placeholder="Search events by title, type, or keyword..."
-                            class="w-full bg-transparent border-none text-[14px] text-[#29303D] placeholder:text-slate-400 focus:outline-none focus:ring-0 pr-2">
-                        @if (request('search'))
-                            <a href="{{ route('event.index') }}" class="p-1.5 text-slate-400 hover:text-slate-600 mr-1 transition" title="Clear search">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </a>
-                        @endif
-                        <button type="submit"
-                            class="px-5 py-2 bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-full text-[13px] font-medium hover:shadow-md transition-all flex items-center gap-1.5 flex-shrink-0">
-                            Search
                         </button>
                     </div>
-                </form>
+                </div>
 
-                @if (request('search'))
-                    <div class="flex items-center gap-2 text-sm text-[#29303DB2]">
-                        <span>Showing results for "<strong>{{ request('search') }}</strong>" ({{ $events->total() }} found)</span>
-                        <a href="{{ route('event.index') }}" class="text-[#0000FF] hover:underline text-xs font-medium">Reset</a>
-                    </div>
-                @endif
+                <div id="event-search-summary">
+                    @if (request('search'))
+                        <div class="flex items-center gap-2 text-sm text-[#29303DB2]">
+                            <span>Showing results for "<strong>{{ request('search') }}</strong>" ({{ $events->total() }} found)</span>
+                        </div>
+                    @endif
+                </div>
             </div>
 
+            <div id="event-results-container" class="transition-opacity duration-200">
             @if ($events->isEmpty())
                 <div class="w-full py-16 flex flex-col items-center justify-center text-center">
                     <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-4 text-slate-400">
@@ -80,10 +75,7 @@
                         </svg>
                     </div>
                     <h4 class="font-playfair text-xl font-bold text-[#29303D] mb-1">No Events Found</h4>
-                    <p class="text-sm text-[#29303DB2] max-w-md">We couldn't find any events matching "{{ request('search') }}". Please try different keywords or reset the filter.</p>
-                    <a href="{{ route('event.index') }}" class="mt-4 px-5 py-2 rounded-lg bg-[#E0E6F2] text-slate-700 text-sm font-medium hover:bg-[#d6deec] transition">
-                        View All Events
-                    </a>
+                    <p class="text-sm text-[#29303DB2] max-w-md">We couldn't find any events matching your search. Please try different keywords.</p>
                 </div>
             @else
                 <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -184,6 +176,7 @@
                     </div>
                 @endif
             @endif
+            </div>
 
             <div
                 class="w-full max-w-[1216px] h-auto md:h-[264px] mx-auto bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-2xl md:rounded-[24px] p-6 md:p-8 lg:p-[48px] flex flex-col justify-between items-center text-center shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">
@@ -209,4 +202,71 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('live-search-input');
+            const clearBtn = document.getElementById('live-search-clear');
+            const container = document.getElementById('event-results-container');
+            const summaryEl = document.getElementById('event-search-summary');
+            let timer = null;
+
+            function performSearch(query) {
+                const url = new URL(window.location.origin + window.location.pathname);
+                if (query.trim()) {
+                    url.searchParams.set('search', query.trim());
+                }
+
+                if (container) container.style.opacity = '0.5';
+
+                fetch(url.toString(), {
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                })
+                .then(res => res.text())
+                .then(html => {
+                    const doc = new DOMParser().parseFromString(html, 'text/html');
+                    const newContent = doc.getElementById('event-results-container');
+                    if (newContent && container) {
+                        container.innerHTML = newContent.innerHTML;
+                        container.style.opacity = '1';
+                    }
+                    const newSummary = doc.getElementById('event-search-summary');
+                    if (newSummary && summaryEl) {
+                        summaryEl.innerHTML = newSummary.innerHTML;
+                    }
+                    window.history.replaceState({}, '', url.toString());
+                })
+                .catch(err => {
+                    console.error(err);
+                    if (container) container.style.opacity = '1';
+                });
+            }
+
+            if (input) {
+                input.addEventListener('input', function() {
+                    const val = this.value;
+                    if (clearBtn) {
+                        if (val.trim()) {
+                            clearBtn.classList.remove('hidden');
+                        } else {
+                            clearBtn.classList.add('hidden');
+                        }
+                    }
+
+                    clearTimeout(timer);
+                    timer = setTimeout(() => {
+                        performSearch(val);
+                    }, 250);
+                });
+            }
+
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function() {
+                    if (input) input.value = '';
+                    clearBtn.classList.add('hidden');
+                    performSearch('');
+                });
+            }
+        });
+    </script>
 @endsection
