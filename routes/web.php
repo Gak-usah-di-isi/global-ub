@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\AdminCarouselController;
 use App\Http\Controllers\Admin\AdminRankingController;
 use App\Http\Controllers\Admin\AdminAboutSectionController;
 use App\Http\Controllers\Admin\AdminProgramController;
+use App\Http\Controllers\Admin\AdminPartnershipMapController;
+use App\Http\Controllers\Admin\AdminSdgController;
 use App\Http\Controllers\Admin\AdminVisitorStatisticController;
 
 use App\Http\Controllers\PartnershipController;
@@ -109,6 +111,7 @@ Route::middleware([CountVisitor::class])->group(function () {
     Route::get('/gallery/{slug}', [GalleryController::class, 'show'])->name('gallery.show');
     Route::get('/merchandise', [MerchandiseController::class, 'index'])->name('merchandise');
     Route::get('/country', [CountryController::class, 'index'])->name('country.index');
+    Route::get('/partnership-map', [CountryController::class, 'index'])->name('partnership-map.index');
     Route::get('/social-media', [SocialMediaController::class, 'index'])->name('social-media.index');
 });
 
@@ -171,6 +174,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/programs/{slug}', [AdminProgramController::class, 'update'])->name('programs.update');
     Route::delete('/programs/{slug}', [AdminProgramController::class, 'destroy'])->name('programs.destroy');
 
+    Route::resource('sdgs', AdminSdgController::class);
+
     Route::get('/galleries', [AdminGalleryController::class, 'index'])->name('galleries.index');
     Route::get('/galleries/create', [AdminGalleryController::class, 'create'])->name('galleries.create');
     Route::post('/galleries', [AdminGalleryController::class, 'store'])->name('galleries.store');
@@ -191,6 +196,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/partnerships/{slug}/edit', [AdminPartnershipController::class, 'edit'])->name('partnerships.edit');
     Route::put('/partnerships/{slug}', [AdminPartnershipController::class, 'update'])->name('partnerships.update');
     Route::delete('/partnerships/{slug}', [AdminPartnershipController::class, 'destroy'])->name('partnerships.destroy');
+
+    Route::resource('partnership-maps', AdminPartnershipMapController::class);
 
     Route::get('/stories', [AdminStoryController::class, 'index'])->name('stories.index');
     Route::get('/stories/create', [AdminStoryController::class, 'create'])->name('stories.create');

@@ -22,6 +22,7 @@ class ProgramRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
+            'partnership_id' => 'nullable|exists:partnerships,id',
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:2000',
             'program_type' => 'required|string|max:255',
@@ -32,7 +33,7 @@ class ProgramRequest extends FormRequest
             'references' => 'nullable|array|max:5',
             'references.*' => 'nullable|url|max:500',
             'sdgs' => 'nullable|array',
-            'sdgs.*' => 'integer|between:1,17',
+            'sdgs.*' => 'integer',
         ];
 
         if ($this->isMethod('post')) {

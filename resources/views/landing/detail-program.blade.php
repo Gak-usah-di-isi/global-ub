@@ -101,11 +101,11 @@
                             @foreach ($program->sdg_details as $sdg)
                                 <a href="https://indonesia.un.org/en/sdgs/{{ $sdg['id'] }}" target="_blank" rel="noopener noreferrer"
                                     class="group flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#F0F2F4] rounded-[12px] border border-[#E2E4E9] hover:border-[#0000FF] transition-all duration-200 shadow-xs hover:shadow-sm">
-                                    <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                    <img src="{{ $sdg['icon_url'] ?? asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
                                         class="w-12 h-12 object-contain rounded-md flex-shrink-0 group-hover:scale-105 transition-transform" />
                                     <div class="min-w-0 flex-1">
                                         <span class="block text-[10px] font-semibold uppercase tracking-wider text-[#1D4ED8]">
-                                            Goal {{ $sdg['id'] }}
+                                            Goal {{ $sdg['order_number'] ?? $sdg['id'] }}
                                         </span>
                                         <p class="text-[#29303D] font-inter text-xs font-semibold leading-tight line-clamp-2 group-hover:text-[#0000FF] transition-colors">
                                             {{ $sdg['name'] }}
@@ -191,8 +191,8 @@
                                 @if (!empty($relatedProgram->sdg_details))
                                     <div class="flex items-center gap-1 flex-wrap justify-end">
                                         @foreach (array_slice($relatedProgram->sdg_details, 0, 3) as $sdg)
-                                            <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
-                                                title="{{ $sdg['id'] }}. {{ $sdg['name'] }}" class="w-6 h-6 object-contain rounded" />
+                                            <img src="{{ $sdg['icon_url'] ?? asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                                title="{{ $sdg['order_number'] ?? $sdg['id'] }}. {{ $sdg['name'] }}" class="w-6 h-6 object-contain rounded" />
                                         @endforeach
                                         @if (count($relatedProgram->sdg_details) > 3)
                                             <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 rounded px-1.5 py-0.5" title="{{ count($relatedProgram->sdg_details) }} SDGs">

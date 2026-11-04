@@ -96,8 +96,8 @@
                                     @if (!empty($program->sdg_details))
                                         <div class="flex items-center gap-1 flex-wrap justify-end">
                                             @foreach (array_slice($program->sdg_details, 0, 3) as $sdg)
-                                                <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
-                                                    title="{{ $sdg['id'] }}. {{ $sdg['name'] }}" class="w-6 h-6 object-contain rounded" />
+                                                <img src="{{ $sdg['icon_url'] ?? asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                                    title="{{ $sdg['order_number'] ?? $sdg['id'] }}. {{ $sdg['name'] }}" class="w-6 h-6 object-contain rounded" />
                                             @endforeach
                                             @if (count($program->sdg_details) > 3)
                                                 <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 rounded px-1.5 py-0.5" title="{{ count($program->sdg_details) }} SDGs">

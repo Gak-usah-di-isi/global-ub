@@ -17,6 +17,16 @@ class Partnership extends Model
         'website',
     ];
 
+    public function programs()
+    {
+        return $this->hasMany(Program::class);
+    }
+
+    public function partnershipMaps()
+    {
+        return $this->hasMany(PartnershipMap::class);
+    }
+
     protected static function boot()
     {
         parent::boot();

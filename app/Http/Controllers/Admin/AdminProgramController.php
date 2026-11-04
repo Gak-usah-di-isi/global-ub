@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProgramRequest;
+use App\Models\Partnership;
 use App\Models\Program;
 
 class AdminProgramController extends Controller
 {
     public function index()
     {
-        $programs = Program::latest()->paginate(10);
+        $programs = Program::with('partnership')->latest()->paginate(10);
 
         return view('admin.programs.index', compact('programs'));
     }
@@ -18,12 +19,13 @@ class AdminProgramController extends Controller
     public function create()
     {
         $allSdgs = Program::getAllSdgs();
-        return view('admin.programs.create', compact('allSdgs'));
+        $partnerships = Partnership::orderBy('name')->get(['id', 'name']);
+        return view('admin.programs.create', compact('allSdgs', 'partnerships'));
     }
 
     public function store(ProgramRequest $request)
     {
-        $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
+        $data = $request->only(['partnership_id', 'title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
 
         $data['sdgs'] = $request->has('sdgs') ? array_map('intval', $request->input('sdgs')) : [];
 
@@ -59,13 +61,14 @@ class AdminProgramController extends Controller
     {
         $program = Program::where('slug', $slug)->firstOrFail();
         $allSdgs = Program::getAllSdgs();
-        return view('admin.programs.edit', compact('program', 'allSdgs'));
+        $partnerships = Partnership::orderBy('name')->get(['id', 'name']);
+        return view('admin.programs.edit', compact('program', 'allSdgs', 'partnerships'));
     }
 
     public function update(ProgramRequest $request, $slug)
     {
         $program = Program::where('slug', $slug)->firstOrFail();
-        $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
+        $data = $request->only(['partnership_id', 'title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
 
         $data['sdgs'] = $request->has('sdgs') ? array_map('intval', $request->input('sdgs')) : [];
 

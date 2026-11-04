@@ -11,6 +11,7 @@ class Program extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'partnership_id',
         'title',
         'slug',
         'description',
@@ -24,6 +25,16 @@ class Program extends Model
         'reference_titles',
         'sdgs',
     ];
+
+    public function partnership()
+    {
+        return $this->belongsTo(Partnership::class);
+    }
+
+    public function partnershipMaps()
+    {
+        return $this->hasMany(PartnershipMap::class);
+    }
 
     protected $casts = [
         'references' => 'array',
@@ -53,6 +64,27 @@ class Program extends Model
 
     public static function getAllSdgs(): array
     {
+        try {
+            if (\Illuminate\Support\Facades\Schema::hasTable('sdgs')) {
+                $dbSdgs = Sdg::orderBy('order_number')->orderBy('id')->get();
+                if ($dbSdgs->isNotEmpty()) {
+                    return $dbSdgs->keyBy('id')->map(function ($item) {
+                        return [
+                            'id' => $item->id,
+                            'order_number' => $item->order_number,
+                            'name' => $item->name,
+                            'icon' => $item->icon,
+                            'icon_url' => $item->icon_url,
+                            'color' => $item->color,
+                            'description' => $item->description,
+                        ];
+                    })->toArray();
+                }
+            }
+        } catch (\Throwable $e) {
+            // fallback to constant below
+        }
+
         return self::SDGS;
     }
 
@@ -62,11 +94,16 @@ class Program extends Model
             return [];
         }
 
+        $all = self::getAllSdgs();
         $result = [];
         foreach ($this->sdgs as $sdgId) {
             $id = (int) $sdgId;
-            if (isset(self::SDGS[$id])) {
-                $result[] = self::SDGS[$id];
+            if (isset($all[$id])) {
+                $item = $all[$id];
+                if (empty($item['icon_url'])) {
+                    $item['icon_url'] = asset('images/sgds/' . $item['icon']);
+                }
+                $result[] = $item;
             }
         }
         return $result;

@@ -61,6 +61,27 @@
                     </div>
 
                     <div>
+                        <label for="partnership_id" class="field-label">
+                            Mitra Kolaborasi (Partnership)
+                        </label>
+                        <select id="partnership_id" name="partnership_id"
+                            class="mt-2 h-11 w-full rounded-lg border border-[#E3E9F2] bg-[#F8FAFE] px-4 text-[13px] text-slate-800 focus:border-primary-500 focus:bg-white focus:ring-primary-500/15 outline-none transition-colors @error('partnership_id') border-red-300 @enderror">
+                            <option value="">-- Tidak ada / Pilih Mitra Kolaborasi (Opsional) --</option>
+                            @foreach ($partnerships as $partner)
+                                <option value="{{ $partner->id }}" {{ old('partnership_id') == $partner->id ? 'selected' : '' }}>
+                                    {{ $partner->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('partnership_id')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                        <p class="help-text">
+                            Opsional: Pilih mitra kolaborasi yang terhubung dengan program ini untuk ditampilkan pada Partnership Map.
+                        </p>
+                    </div>
+
+                    <div>
                         <label for="program_type" class="field-label req">
                             Program Type
                         </label>
@@ -192,10 +213,10 @@
                                 <label class="sdg-card cursor-pointer relative flex flex-col items-center text-center p-2.5 rounded-xl border border-[#E3E9F2] bg-[#F8FAFE] hover:border-primary-400 hover:bg-white transition-all group">
                                     <input type="checkbox" name="sdgs[]" value="{{ $sdg['id'] }}" {{ $isSelected ? 'checked' : '' }}
                                         class="absolute top-2 right-2 w-4 h-4 text-primary-600 rounded border-slate-300 focus:ring-primary-500 accent-primary-600" />
-                                    <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                    <img src="{{ $sdg['icon_url'] ?? asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
                                         class="w-16 h-16 object-contain rounded-md shadow-sm mb-2 group-hover:scale-105 transition-transform" />
                                     <span class="text-[11px] font-semibold text-slate-700 leading-snug line-clamp-2">
-                                        {{ $sdg['id'] }}. {{ $sdg['name'] }}
+                                        {{ $sdg['order_number'] ?? $sdg['id'] }}. {{ $sdg['name'] }}
                                     </span>
                                 </label>
                             @endforeach

@@ -49,14 +49,22 @@
                                     <span class="text-slate-400">No image</span>
                                 @endif
                             </td>
-                            <td>{{ $program->title }}</td>
+                            <td>
+                                <div class="font-medium text-slate-800">{{ $program->title }}</div>
+                                @if ($program->partnership)
+                                    <div class="text-[11px] text-primary-600 flex items-center gap-1 mt-0.5">
+                                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                                        {{ $program->partnership->name }}
+                                    </div>
+                                @endif
+                            </td>
                             <td>{{ $program->program_type }}</td>
                             <td>
                                 @if (!empty($program->sdg_details))
                                     <div class="flex items-center gap-1 flex-wrap max-w-[140px]">
                                         @foreach (array_slice($program->sdg_details, 0, 4) as $sdg)
-                                            <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
-                                                title="{{ $sdg['id'] }}. {{ $sdg['name'] }}" class="w-6 h-6 rounded object-contain shadow-xs" />
+                                            <img src="{{ $sdg['icon_url'] ?? asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                                title="{{ $sdg['order_number'] ?? $sdg['id'] }}. {{ $sdg['name'] }}" class="w-6 h-6 rounded object-contain shadow-xs" />
                                         @endforeach
                                         @if (count($program->sdg_details) > 4)
                                             <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 rounded px-1 py-0.5" title="{{ count($program->sdg_details) }} SDGs">
