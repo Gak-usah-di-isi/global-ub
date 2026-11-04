@@ -33,6 +33,7 @@
                         <th class="rounded-tl-lg">Image</th>
                         <th>Program Title</th>
                         <th>Type</th>
+                        <th>SDGs</th>
                         <th>Description</th>
                         <th class="rounded-tr-lg">Actions</th>
                     </tr>
@@ -50,6 +51,23 @@
                             </td>
                             <td>{{ $program->title }}</td>
                             <td>{{ $program->program_type }}</td>
+                            <td>
+                                @if (!empty($program->sdg_details))
+                                    <div class="flex items-center gap-1 flex-wrap max-w-[140px]">
+                                        @foreach (array_slice($program->sdg_details, 0, 4) as $sdg)
+                                            <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                                title="{{ $sdg['id'] }}. {{ $sdg['name'] }}" class="w-6 h-6 rounded object-contain shadow-xs" />
+                                        @endforeach
+                                        @if (count($program->sdg_details) > 4)
+                                            <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 rounded px-1 py-0.5" title="{{ count($program->sdg_details) }} SDGs">
+                                                +{{ count($program->sdg_details) - 4 }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                @else
+                                    <span class="text-xs text-slate-400">-</span>
+                                @endif
+                            </td>
                             <td>{{ Str::limit($program->description, 50) }}</td>
                             <td>
                                 <div class="flex items-center gap-2">

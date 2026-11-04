@@ -31,6 +31,8 @@ class ProgramRequest extends FormRequest
             'video_link' => 'nullable|url|max:500',
             'references' => 'nullable|array|max:5',
             'references.*' => 'nullable|url|max:500',
+            'sdgs' => 'nullable|array',
+            'sdgs.*' => 'integer|between:1,17',
         ];
 
         if ($this->isMethod('post')) {

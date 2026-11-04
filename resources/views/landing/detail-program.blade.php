@@ -87,6 +87,39 @@
                     </div>
                 @endif
 
+                @if (!empty($program->sdg_details))
+                    <div class="mt-8 pt-6 border-t border-[#E2E4E9]">
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 class="text-[#29303D] font-playfair text-lg md:text-[20px] font-bold">
+                                Sustainable Development Goals (SDGs)
+                            </h3>
+                        </div>
+                        <p class="text-[#29303DB2] font-inter text-xs md:text-[13px] mb-4">
+                            This program contributes to the following UN Sustainable Development Goals:
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                            @foreach ($program->sdg_details as $sdg)
+                                <a href="https://indonesia.un.org/en/sdgs/{{ $sdg['id'] }}" target="_blank" rel="noopener noreferrer"
+                                    class="group flex items-center gap-3 p-2.5 bg-[#F9FAFB] hover:bg-[#F0F2F4] rounded-[12px] border border-[#E2E4E9] hover:border-[#0000FF] transition-all duration-200 shadow-xs hover:shadow-sm">
+                                    <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                        class="w-12 h-12 object-contain rounded-md flex-shrink-0 group-hover:scale-105 transition-transform" />
+                                    <div class="min-w-0 flex-1">
+                                        <span class="block text-[10px] font-semibold uppercase tracking-wider text-[#1D4ED8]">
+                                            Goal {{ $sdg['id'] }}
+                                        </span>
+                                        <p class="text-[#29303D] font-inter text-xs font-semibold leading-tight line-clamp-2 group-hover:text-[#0000FF] transition-colors">
+                                            {{ $sdg['name'] }}
+                                        </p>
+                                    </div>
+                                    <svg class="w-4 h-4 text-slate-400 group-hover:text-[#0000FF] transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
                 @if ($program->references && count($program->references) > 0)
                     <div class="mt-8">
                         <h3 class="text-[#29303D] font-playfair text-base md:text-[18px] font-normal mb-4">
@@ -150,11 +183,24 @@
                                 class="w-full h-full object-cover">
                         </div>
                         <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                            <div class="w-full flex items-center justify-between">
+                            <div class="w-full flex items-center justify-between gap-2">
                                 <span
                                     class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#6699FF33] text-[#1D4ED8]">
                                     {{ $relatedProgram->program_type }}
                                 </span>
+                                @if (!empty($relatedProgram->sdg_details))
+                                    <div class="flex items-center gap-1 flex-wrap justify-end">
+                                        @foreach (array_slice($relatedProgram->sdg_details, 0, 3) as $sdg)
+                                            <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                                title="{{ $sdg['id'] }}. {{ $sdg['name'] }}" class="w-6 h-6 object-contain rounded" />
+                                        @endforeach
+                                        @if (count($relatedProgram->sdg_details) > 3)
+                                            <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 rounded px-1.5 py-0.5" title="{{ count($relatedProgram->sdg_details) }} SDGs">
+                                                +{{ count($relatedProgram->sdg_details) - 3 }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                @endif
                             </div>
                             <h3
                                 class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">

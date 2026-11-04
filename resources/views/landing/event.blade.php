@@ -38,9 +38,55 @@
                     class="max-w-full md:max-w-[672px] text-center font-inter text-base sm:text-lg md:text-[18px] lg:text-[20px] leading-6 sm:leading-7 md:leading-[24px] lg:leading-[28px] font-light text-[#29303DB2] px-2 sm:px-0">
                     Join our international events and connect with the global academic community
                 </p>
+
+                <!-- Search Form -->
+                <form action="{{ route('event.index') }}" method="GET" class="w-full max-w-[540px] mt-2">
+                    <div class="relative flex items-center bg-[#F8FAFE] border border-[#E2E4E9] rounded-full p-1.5 focus-within:border-[#0000FF] focus-within:ring-2 focus-within:ring-[#0000FF]/15 transition-all shadow-xs">
+                        <div class="pl-3.5 pr-2 flex items-center pointer-events-none text-slate-400">
+                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                            </svg>
+                        </div>
+                        <input type="text" name="search" value="{{ request('search') }}"
+                            placeholder="Search events by title, type, or keyword..."
+                            class="w-full bg-transparent border-none text-[14px] text-[#29303D] placeholder:text-slate-400 focus:outline-none focus:ring-0 pr-2">
+                        @if (request('search'))
+                            <a href="{{ route('event.index') }}" class="p-1.5 text-slate-400 hover:text-slate-600 mr-1 transition" title="Clear search">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </a>
+                        @endif
+                        <button type="submit"
+                            class="px-5 py-2 bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-full text-[13px] font-medium hover:shadow-md transition-all flex items-center gap-1.5 flex-shrink-0">
+                            Search
+                        </button>
+                    </div>
+                </form>
+
+                @if (request('search'))
+                    <div class="flex items-center gap-2 text-sm text-[#29303DB2]">
+                        <span>Showing results for "<strong>{{ request('search') }}</strong>" ({{ $events->total() }} found)</span>
+                        <a href="{{ route('event.index') }}" class="text-[#0000FF] hover:underline text-xs font-medium">Reset</a>
+                    </div>
+                @endif
             </div>
 
-            <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            @if ($events->isEmpty())
+                <div class="w-full py-16 flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-4 text-slate-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                        </svg>
+                    </div>
+                    <h4 class="font-playfair text-xl font-bold text-[#29303D] mb-1">No Events Found</h4>
+                    <p class="text-sm text-[#29303DB2] max-w-md">We couldn't find any events matching "{{ request('search') }}". Please try different keywords or reset the filter.</p>
+                    <a href="{{ route('event.index') }}" class="mt-4 px-5 py-2 rounded-lg bg-[#E0E6F2] text-slate-700 text-sm font-medium hover:bg-[#d6deec] transition">
+                        View All Events
+                    </a>
+                </div>
+            @else
+                <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 @foreach ($events as $event)
                     <article
                         class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
@@ -97,44 +143,47 @@
                 @endforeach
             </div>
 
-            <div class="w-full flex justify-center items-center py-6 md:py-8">
-                <div class="flex items-center gap-3 md:gap-4">
-                    @if ($events->onFirstPage())
-                        <button
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
-                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
-                        </button>
-                    @else
-                        <a href="{{ $events->previousPageUrl() }}"
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
-                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
-                        </a>
-                    @endif
+                @if ($events->hasPages())
+                    <div class="w-full flex justify-center items-center py-6 md:py-8">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            @if ($events->onFirstPage())
+                                <button
+                                    class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
+                                    <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                                        class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
+                                </button>
+                            @else
+                                <a href="{{ $events->previousPageUrl() }}"
+                                    class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
+                                    <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                                        class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
+                                </a>
+                            @endif
 
-                    <div class="flex items-center gap-2 md:gap-4 bg-[#F3F4F6] rounded-full p-1 md:p-2">
-                        @foreach ($events->getUrlRange(1, $events->lastPage()) as $page => $url)
-                            <a href="{{ $url }}"
-                                class="w-7 h-7 md:w-9 md:h-9 {{ $events->currentPage() == $page ? 'bg-[#1D4ED8] text-white' : 'text-[#1D4ED8]' }} rounded-full flex justify-center items-center text-xs md:text-sm">
-                                {{ $page }}
-                            </a>
-                        @endforeach
+                            <div class="flex items-center gap-2 md:gap-4 bg-[#F3F4F6] rounded-full p-1 md:p-2">
+                                @foreach ($events->getUrlRange(1, $events->lastPage()) as $page => $url)
+                                    <a href="{{ $url }}"
+                                        class="w-7 h-7 md:w-9 md:h-9 {{ $events->currentPage() == $page ? 'bg-[#1D4ED8] text-white' : 'text-[#1D4ED8]' }} rounded-full flex justify-center items-center text-xs md:text-sm">
+                                        {{ $page }}
+                                    </a>
+                                @endforeach
+                            </div>
+
+                            @if ($events->hasMorePages())
+                                <a href="{{ $events->nextPageUrl() }}"
+                                    class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
+                                    <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                                </a>
+                            @else
+                                <button
+                                    class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
+                                    <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                                </button>
+                            @endif
+                        </div>
                     </div>
-
-                    @if ($events->hasMorePages())
-                        <a href="{{ $events->nextPageUrl() }}"
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
-                        </a>
-                    @else
-                        <button
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
-                        </button>
-                    @endif
-                </div>
-            </div>
+                @endif
+            @endif
 
             <div
                 class="w-full max-w-[1216px] h-auto md:h-[264px] mx-auto bg-gradient-to-r from-[#0000FF] to-[#6699FF] rounded-2xl md:rounded-[24px] p-6 md:p-8 lg:p-[48px] flex flex-col justify-between items-center text-center shadow-[0px_8px_25px_-8px_#0000FF4D] backdrop-blur-[4px]">

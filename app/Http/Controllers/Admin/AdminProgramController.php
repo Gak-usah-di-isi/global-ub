@@ -17,12 +17,15 @@ class AdminProgramController extends Controller
 
     public function create()
     {
-        return view('admin.programs.create');
+        $allSdgs = Program::getAllSdgs();
+        return view('admin.programs.create', compact('allSdgs'));
     }
 
     public function store(ProgramRequest $request)
     {
         $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
+
+        $data['sdgs'] = $request->has('sdgs') ? array_map('intval', $request->input('sdgs')) : [];
 
         if ($request->has('references')) {
             $data['references'] = array_values(array_filter($request->input('references'), function ($value) {
@@ -55,13 +58,16 @@ class AdminProgramController extends Controller
     public function edit($slug)
     {
         $program = Program::where('slug', $slug)->firstOrFail();
-        return view('admin.programs.edit', compact('program'));
+        $allSdgs = Program::getAllSdgs();
+        return view('admin.programs.edit', compact('program', 'allSdgs'));
     }
 
     public function update(ProgramRequest $request, $slug)
     {
         $program = Program::where('slug', $slug)->firstOrFail();
         $data = $request->only(['title', 'description', 'program_type', 'highlights', 'link', 'report_link', 'video_link']);
+
+        $data['sdgs'] = $request->has('sdgs') ? array_map('intval', $request->input('sdgs')) : [];
 
         if ($request->has('references')) {
             $data['references'] = array_values(array_filter($request->input('references'), function ($value) {

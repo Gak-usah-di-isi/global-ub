@@ -7,10 +7,21 @@ use App\Models\Program;
 
 class ProgramController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $programs = Program::paginate(6);
-        return view('landing.program', compact('programs'));
+        $search = $request->query('search');
+
+        $query = Program::query();
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhere('program_type', 'like', "%{$search}%");
+            });
+        }
+
+        $programs = $query->paginate(6)->withQueryString();
+        return view('landing.program', compact('programs', 'search'));
     }
 
     public function show($slug)

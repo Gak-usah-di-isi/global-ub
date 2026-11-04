@@ -7,13 +7,28 @@ use App\Models\News;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->query('search');
+
+        $query = News::latest();
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('content', 'like', "%{$search}%");
+            });
+        }
+
+        $news = $query->paginate(6)->withQueryString();
+
         $latestNews = News::latest()->first();
-        $latestNews->created_at_human = $latestNews->created_at->diffForHumans();
-        $latestNewsParagraphs = explode("\n", $latestNews->content);
-        $news = News::latest()->paginate(6);
-        return view('landing.news', compact('latestNews', 'latestNewsParagraphs', 'news'));
+        $latestNewsParagraphs = [];
+        if ($latestNews) {
+            $latestNews->created_at_human = $latestNews->created_at->diffForHumans();
+            $latestNewsParagraphs = explode("\n", $latestNews->content);
+        }
+
+        return view('landing.news', compact('latestNews', 'latestNewsParagraphs', 'news', 'search'));
     }
 
     public function show($slug)

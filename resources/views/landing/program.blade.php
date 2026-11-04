@@ -40,81 +40,143 @@
                     class="max-w-full sm:max-w-[672px] text-center font-inter text-sm sm:text-base md:text-[20px] leading-relaxed md:leading-[28px] font-light text-[#29303DB2]">
                     {{ __('landing.program.description') }}
                 </p>
+
+                <!-- Search Form -->
+                <form action="{{ route('program.index') }}" method="GET" class="w-full max-w-[540px] mt-2">
+                    <div class="relative flex items-center bg-[#F8FAFE] border border-[#E2E4E9] rounded-full p-1.5 focus-within:border-[#0000FF] focus-within:ring-2 focus-within:ring-[#0000FF]/15 transition-all shadow-xs">
+                        <div class="pl-3.5 pr-2 flex items-center pointer-events-none text-slate-400">
+                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                            </svg>
+                        </div>
+                        <input type="text" name="search" value="{{ request('search') }}"
+                            placeholder="Search programs by title, type, or keyword..."
+                            class="w-full bg-transparent border-none text-[14px] text-[#29303D] placeholder:text-slate-400 focus:outline-none focus:ring-0 pr-2">
+                        @if (request('search'))
+                            <a href="{{ route('program.index') }}" class="p-1.5 text-slate-400 hover:text-slate-600 mr-1 transition" title="Clear search">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </a>
+                        @endif
+                        <button type="submit"
+                            class="px-5 py-2 bg-gradient-to-r from-[#0000FF] to-[#6699FF] text-white rounded-full text-[13px] font-medium hover:shadow-md transition-all flex items-center gap-1.5 flex-shrink-0">
+                            Search
+                        </button>
+                    </div>
+                </form>
+
+                @if (request('search'))
+                    <div class="flex items-center gap-2 text-sm text-[#29303DB2]">
+                        <span>Showing results for "<strong>{{ request('search') }}</strong>" ({{ $programs->total() }} found)</span>
+                        <a href="{{ route('program.index') }}" class="text-[#0000FF] hover:underline text-xs font-medium">Reset</a>
+                    </div>
+                @endif
             </div>
 
-            <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                @foreach ($programs as $program)
-                    <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
-                        <div class="w-full h-48 sm:h-64 md:h-[288px]">
-                            <img src="{{ asset('storage/' . $program->image) }}" alt="{{ $program->title }}"
-                                class="w-full h-full object-cover">
-                        </div>
-                        <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
-                            <div class="w-full flex items-center justify-between">
-                                <span
-                                    class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#6699FF33] text-[#1D4ED8]">
-                                    {{ $program->program_type }}
-                                </span>
-                            </div>
-                            <h3
-                                class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
-                                {{ $program->title }}
-                            </h3>
-                            <p
-                                class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
-                                {{ Str::limit($program->description, 80) }}
-                            </p>
-                            <div class="ck-content">
-                                {!! $program->highlights !!}
-                            </div>
-                            <a href="{{ route('program.show', $program->slug) }}"
-                                class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition">
-                                Learn More
-                                <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
-                            </a>
-                        </div>
+            @if ($programs->isEmpty())
+                <div class="w-full py-16 flex flex-col items-center justify-center text-center">
+                    <div class="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-4 text-slate-400">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                        </svg>
                     </div>
-                @endforeach
-            </div>
-
-            <div class="w-full flex justify-center items-center py-6 md:py-8">
-                <div class="flex items-center gap-3 md:gap-4">
-                    @if ($programs->onFirstPage())
-                        <button
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
-                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
-                        </button>
-                    @else
-                        <a href="{{ $programs->previousPageUrl() }}"
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Previous"
-                                class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
-                        </a>
-                    @endif
-
-                    <div class="flex items-center gap-2 md:gap-4 bg-[#F3F4F6] rounded-full p-1 md:p-2">
-                        @foreach ($programs->getUrlRange(1, $programs->lastPage()) as $page => $url)
-                            <a href="{{ $url }}"
-                                class="w-7 h-7 md:w-9 md:h-9 {{ $programs->currentPage() == $page ? 'bg-[#1D4ED8] text-white' : 'text-[#1D4ED8]' }} rounded-full flex justify-center items-center text-xs md:text-sm">
-                                {{ $page }}
-                            </a>
-                        @endforeach
-                    </div>
-
-                    @if ($programs->hasMorePages())
-                        <a href="{{ $programs->nextPageUrl() }}"
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
-                        </a>
-                    @else
-                        <button
-                            class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
-                            <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
-                        </button>
-                    @endif
+                    <h4 class="font-playfair text-xl font-bold text-[#29303D] mb-1">No Programs Found</h4>
+                    <p class="text-sm text-[#29303DB2] max-w-md">We couldn't find any programs matching "{{ request('search') }}". Please try different keywords or reset the filter.</p>
+                    <a href="{{ route('program.index') }}" class="mt-4 px-5 py-2 rounded-lg bg-[#E0E6F2] text-slate-700 text-sm font-medium hover:bg-[#d6deec] transition">
+                        View All Programs
+                    </a>
                 </div>
-            </div>
+            @else
+                <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    @foreach ($programs as $program)
+                        <div class="w-full h-auto bg-white rounded-[16px] shadow-[0px_4px_20px_-2px_#29303D1A] overflow-hidden">
+                            <div class="w-full h-48 sm:h-64 md:h-[288px]">
+                                <img src="{{ asset('storage/' . $program->image) }}" alt="{{ $program->title }}"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div class="w-full h-auto p-4 sm:p-6 flex flex-col gap-4">
+                                <div class="w-full flex items-center justify-between gap-2">
+                                    <span
+                                        class="inline-flex items-center rounded-full px-2 py-1 text-xs leading-[16px] font-medium bg-[#6699FF33] text-[#1D4ED8]">
+                                        {{ $program->program_type }}
+                                    </span>
+                                    @if (!empty($program->sdg_details))
+                                        <div class="flex items-center gap-1 flex-wrap justify-end">
+                                            @foreach (array_slice($program->sdg_details, 0, 3) as $sdg)
+                                                <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                                    title="{{ $sdg['id'] }}. {{ $sdg['name'] }}" class="w-6 h-6 object-contain rounded" />
+                                            @endforeach
+                                            @if (count($program->sdg_details) > 3)
+                                                <span class="text-[10px] font-semibold text-slate-500 bg-slate-100 rounded px-1.5 py-0.5" title="{{ count($program->sdg_details) }} SDGs">
+                                                    +{{ count($program->sdg_details) - 3 }}
+                                                </span>
+                                            @endif
+                                        </div>
+                                    @endif
+                                </div>
+                                <h3
+                                    class="font-playfair font-bold text-lg sm:text-xl md:text-[20px] leading-relaxed md:leading-[28px] text-[#29303D]">
+                                    {{ $program->title }}
+                                </h3>
+                                <p
+                                    class="font-inter text-sm sm:text-base md:text-[16px] leading-relaxed md:leading-[24px] text-[#29303DB2]">
+                                    {{ Str::limit($program->description, 80) }}
+                                </p>
+                                <div class="ck-content">
+                                    {!! $program->highlights !!}
+                                </div>
+                                <a href="{{ route('program.show', $program->slug) }}"
+                                    class="mt-4 w-full h-10 rounded-[10px] border border-[#E2E4E9] flex items-center justify-center gap-2 px-4 bg-white text-[#29303D] font-medium text-sm md:text-[14px] leading-[20px] hover:bg-gray-50 transition">
+                                    Learn More
+                                    <img src="{{ asset('icons-site/arrow-right-black.svg') }}" class="w-4 h-4" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                @if ($programs->hasPages())
+                    <div class="w-full flex justify-center items-center py-6 md:py-8">
+                        <div class="flex items-center gap-3 md:gap-4">
+                            @if ($programs->onFirstPage())
+                                <button
+                                    class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
+                                    <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                                        class="w-3 h-3 md:w-4 md:h-4 transform rotate-180 opacity-20">
+                                </button>
+                            @else
+                                <a href="{{ $programs->previousPageUrl() }}"
+                                    class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
+                                    <img src="/icons-site/arrow-fix.svg" alt="Previous"
+                                        class="w-3 h-3 md:w-4 md:h-4 transform rotate-180">
+                                </a>
+                            @endif
+
+                            <div class="flex items-center gap-2 md:gap-4 bg-[#F3F4F6] rounded-full p-1 md:p-2">
+                                @foreach ($programs->getUrlRange(1, $programs->lastPage()) as $page => $url)
+                                    <a href="{{ $url }}"
+                                        class="w-7 h-7 md:w-9 md:h-9 {{ $programs->currentPage() == $page ? 'bg-[#1D4ED8] text-white' : 'text-[#1D4ED8]' }} rounded-full flex justify-center items-center text-xs md:text-sm">
+                                        {{ $page }}
+                                    </a>
+                                @endforeach
+                            </div>
+
+                            @if ($programs->hasMorePages())
+                                <a href="{{ $programs->nextPageUrl() }}"
+                                    class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
+                                    <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4">
+                                </a>
+                            @else
+                                <button
+                                    class="w-10 h-10 md:w-12 md:h-12 bg-[#F3F4F6] rounded-full flex justify-center items-center">
+                                    <img src="/icons-site/arrow-fix.svg" alt="Next" class="w-3 h-3 md:w-4 md:h-4 opacity-20">
+                                </button>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+            @endif
         </div>
     </section>
 

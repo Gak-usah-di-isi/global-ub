@@ -174,6 +174,38 @@
                     </div>
 
                     <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <label class="field-label">
+                                Sustainable Development Goals (SDGs)
+                            </label>
+                            <span class="text-xs text-slate-500">Select one or more SDGs</span>
+                        </div>
+                        <p class="help-text mb-3">
+                            Check the SDGs that this program contributes to. The selected SDG icons will be displayed on the program page.
+                        </p>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                            @foreach ($allSdgs as $sdg)
+                                @php
+                                    $isSelected = is_array(old('sdgs')) && in_array($sdg['id'], old('sdgs'));
+                                @endphp
+                                <label class="sdg-card cursor-pointer relative flex flex-col items-center text-center p-2.5 rounded-xl border border-[#E3E9F2] bg-[#F8FAFE] hover:border-primary-400 hover:bg-white transition-all group">
+                                    <input type="checkbox" name="sdgs[]" value="{{ $sdg['id'] }}" {{ $isSelected ? 'checked' : '' }}
+                                        class="absolute top-2 right-2 w-4 h-4 text-primary-600 rounded border-slate-300 focus:ring-primary-500 accent-primary-600" />
+                                    <img src="{{ asset('images/sgds/' . $sdg['icon']) }}" alt="{{ $sdg['name'] }}"
+                                        class="w-16 h-16 object-contain rounded-md shadow-sm mb-2 group-hover:scale-105 transition-transform" />
+                                    <span class="text-[11px] font-semibold text-slate-700 leading-snug line-clamp-2">
+                                        {{ $sdg['id'] }}. {{ $sdg['name'] }}
+                                    </span>
+                                </label>
+                            @endforeach
+                        </div>
+                        @error('sdgs')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
                         <label for="image" class="field-label">
                             Program Image
                         </label>
@@ -216,6 +248,12 @@
             font-size: 11px;
             color: #64748b;
             margin-top: 6px;
+        }
+
+        .sdg-card:has(input:checked) {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
         }
     </style>
     <script>
