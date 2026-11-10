@@ -24,4 +24,14 @@ class AdminVisitorStatisticController extends Controller
             'topCountry'
         ));
     }
+
+    public function destroy($id)
+    {
+        $country = CountryVisit::findOrFail($id);
+        $name = $country->country_name ?? $country->country_code;
+        $country->delete();
+
+        return redirect()->route('visitor-statistics.index')
+            ->with('success', "Statistik pengunjung untuk {$name} berhasil dihapus.");
+    }
 }

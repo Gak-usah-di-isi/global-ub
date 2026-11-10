@@ -88,7 +88,8 @@
                         <th>Total Visits</th>
                         <th>Unique Visitors</th>
                         <th>Share</th>
-                        <th class="rounded-tr-lg">Last Visit</th>
+                        <th>Last Visit</th>
+                        <th class="rounded-tr-lg text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -129,10 +130,27 @@
                                     {{ $country->last_visited_at?->format('d M Y, H:i') ?? '—' }}
                                 </span>
                             </td>
+                            <td class="text-center">
+                                <form action="{{ route('visitor-statistics.destroy', $country->id) }}" method="POST"
+                                    class="inline-block"
+                                    onsubmit="return confirm('Apakah Anda yakin ingin menghapus data statistik pengunjung negara {{ $country->country_name }}?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="p-1.5 rounded-md hover:bg-red-50 text-red-600 transition"
+                                        title="Hapus statistik {{ $country->country_name }}">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="text-center py-8 text-slate-500">
+                            <td colspan="7" class="text-center py-8 text-slate-500">
                                 <svg class="w-12 h-12 mx-auto mb-3 text-slate-400" fill="none" stroke="currentColor"
                                     stroke-width="1.5" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round"

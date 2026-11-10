@@ -246,6 +246,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/about-section', [AdminAboutSectionController::class, 'update'])->name('about-section.update');
 
     Route::get('/visitor-statistics', [AdminVisitorStatisticController::class, 'index'])->name('visitor-statistics.index');
+    Route::delete('/visitor-statistics/{id}', [AdminVisitorStatisticController::class, 'destroy'])->name('visitor-statistics.destroy');
 });
 
 Route::middleware('auth')->group(function () {

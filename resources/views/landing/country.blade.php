@@ -140,8 +140,42 @@
                         </div>
                     </div>
 
-                    <div class="relative bg-[#F9FAFB] px-3 sm:px-4 pb-4">
+                    <div class="relative bg-[#F9FAFB] px-3 sm:px-4 pb-4 overflow-hidden rounded-b-[28px]" id="map-container-wrapper">
                         <div id="country-map"></div>
+
+                        {{-- Floating Interactive Popup Card --}}
+                        <div id="map-interactive-popup"
+                            class="absolute z-30 hidden bg-white rounded-2xl shadow-[0px_10px_35px_-5px_rgba(41,48,61,0.22)] border border-[#E2E4E9] p-4 min-w-[250px] max-w-[320px] pointer-events-auto transition-all duration-150 ease-out text-left"
+                            style="opacity: 0; transform: translateY(4px);">
+                            <div class="flex items-start justify-between gap-2">
+                                <div class="flex-1 pr-1">
+                                    <h4 id="popup-partner-name" class="font-playfair font-bold text-[#0F172A] text-sm md:text-[15px] leading-tight"></h4>
+                                    <p id="popup-location" class="text-xs text-slate-500 font-inter mt-0.5"></p>
+                                </div>
+                                <button type="button" id="popup-close-btn" class="text-slate-400 hover:text-slate-600 p-1 -mr-1 -mt-1 rounded-lg hover:bg-slate-100 transition" title="Tutup">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div id="popup-meta" class="mt-2.5 flex items-center gap-1.5 flex-wrap">
+                                <span id="popup-status-badge" class="px-2 py-0.5 text-[10px] font-semibold rounded-full"></span>
+                                <span id="popup-role" class="text-[11px] text-[#0000FF] font-medium"></span>
+                            </div>
+
+                            <div id="popup-program-section" class="mt-3 pt-2.5 border-t border-slate-100 hidden">
+                                <div class="text-[10px] uppercase tracking-wider font-semibold text-slate-400 font-inter">Program Kolaborasi:</div>
+                                <div id="popup-program-title" class="text-xs font-semibold text-slate-800 mt-1 leading-snug"></div>
+                                <a id="popup-program-btn" href="#"
+                                    class="mt-2.5 inline-flex items-center justify-center gap-1.5 w-full px-3 py-2 bg-[#0000FF] hover:bg-blue-700 active:bg-blue-800 text-white text-xs font-medium rounded-xl shadow-sm transition-colors duration-150">
+                                    <span>Lihat Program</span>
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -169,7 +203,8 @@
                                 $partner = $map->partnership;
                                 $isHighlighted = in_array($map->status, ['Highlighted', 'Strategic']);
                             @endphp
-                            <div class="rounded-[16px] border border-[#E2E4E9] bg-[#F9FAFB] hover:bg-slate-50 p-3.5 transition">
+                            <div class="collaboration-list-item rounded-[16px] border border-[#E2E4E9] hover:border-primary-300 bg-[#F9FAFB] hover:bg-slate-50 p-3.5 transition cursor-pointer"
+                                data-marker-index="{{ $loop->index + 1 }}">
                                 <div class="flex items-start justify-between gap-2">
                                     <div class="flex items-start gap-2.5">
                                         @if ($partner && $partner->logo)
@@ -273,15 +308,31 @@
 @push('scripts')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap/dist/jsvectormap.min.css">
 
+    <style>
+        /* Matikan tooltip bawaan jsvectormap yang menyebabkan kedip-kedip */
+        .jvm-tooltip {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        #map-interactive-popup {
+            will-change: transform, opacity;
+        }
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/maps/world.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mapElement = document.querySelector('#country-map');
+            const mapWrapper = document.querySelector('#map-container-wrapper');
+            const popup = document.querySelector('#map-interactive-popup');
 
-            if (!mapElement) {
-                console.error('Element #country-map tidak ditemukan.');
+            if (!mapElement || !popup || !mapWrapper) {
+                console.error('Map elements tidak lengkap.');
                 return;
             }
 
@@ -293,6 +344,129 @@
             const rawMarkers = @json($markers ?? []);
             const rawLines = @json($lines ?? []);
 
+            const popupPartnerName = document.querySelector('#popup-partner-name');
+            const popupLocation = document.querySelector('#popup-location');
+            const popupStatusBadge = document.querySelector('#popup-status-badge');
+            const popupRole = document.querySelector('#popup-role');
+            const popupProgSection = document.querySelector('#popup-program-section');
+            const popupProgTitle = document.querySelector('#popup-program-title');
+            const popupProgBtn = document.querySelector('#popup-program-btn');
+            const popupCloseBtn = document.querySelector('#popup-close-btn');
+
+            let hideTimer = null;
+            let isPinned = false;
+            let activeIndex = null;
+            let activeTargetEl = null;
+
+            function positionPopup(targetEl) {
+                if (!targetEl || !popup || !mapWrapper) return;
+
+                const targetRect = targetEl.getBoundingClientRect();
+                const wrapperRect = mapWrapper.getBoundingClientRect();
+
+                const markerCenterX = targetRect.left - wrapperRect.left + (targetRect.width / 2);
+                const markerCenterY = targetRect.top - wrapperRect.top + (targetRect.height / 2);
+
+                popup.classList.remove('hidden');
+                popup.style.display = 'block';
+
+                const popupW = popup.offsetWidth || 280;
+                const popupH = popup.offsetHeight || 160;
+
+                // Tempatkan di samping kanan titik
+                let left = markerCenterX + 14;
+                let top = markerCenterY - (popupH / 2);
+
+                // Jika overflow ke kanan, tempatkan di sebelah kiri titik
+                if (left + popupW > wrapperRect.width - 12) {
+                    left = markerCenterX - popupW - 14;
+                }
+                // Batas kiri
+                if (left < 12) {
+                    left = 12;
+                }
+                // Batas bawah
+                if (top + popupH > wrapperRect.height - 12) {
+                    top = wrapperRect.height - popupH - 12;
+                }
+                // Batas atas
+                if (top < 12) {
+                    top = 12;
+                }
+
+                popup.style.left = `${Math.round(left)}px`;
+                popup.style.top = `${Math.round(top)}px`;
+                popup.style.opacity = '1';
+                popup.style.transform = 'translateY(0)';
+            }
+
+            function showPopup(index, targetEl, pinned = false) {
+                const m = rawMarkers[index];
+                if (!m) return;
+
+                clearTimeout(hideTimer);
+                activeIndex = index;
+                activeTargetEl = targetEl;
+
+                if (pinned) {
+                    isPinned = true;
+                }
+
+                // Isi Konten Popup
+                popupPartnerName.textContent = m.partnerName || m.name;
+                popupLocation.textContent = m.location || '';
+
+                if (m.isOrigin) {
+                    popupStatusBadge.textContent = 'Origin Hub';
+                    popupStatusBadge.className = 'px-2.5 py-0.5 text-[10px] font-semibold rounded-full bg-amber-100 text-amber-700';
+                    popupRole.textContent = m.role || 'Main Campus';
+                    popupRole.className = 'text-[11px] text-amber-600 font-medium';
+                    popupProgSection.classList.add('hidden');
+                } else {
+                    const isHighlight = m.status === 'Highlighted' || m.status === 'Strategic';
+                    popupStatusBadge.textContent = m.status || 'Partner';
+                    popupStatusBadge.className = isHighlight
+                        ? 'px-2.5 py-0.5 text-[10px] font-semibold rounded-full bg-red-100 text-red-600'
+                        : 'px-2.5 py-0.5 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-600';
+
+                    popupRole.textContent = m.role || 'Cooperation Partner';
+                    popupRole.className = 'text-[11px] text-[#0000FF] font-medium';
+
+                    if (m.programTitle && m.programUrl) {
+                        popupProgSection.classList.remove('hidden');
+                        popupProgTitle.textContent = m.programTitle;
+                        popupProgBtn.href = m.programUrl;
+                    } else {
+                        popupProgSection.classList.add('hidden');
+                    }
+                }
+
+                positionPopup(targetEl);
+            }
+
+            function scheduleHide() {
+                if (isPinned) return;
+                clearTimeout(hideTimer);
+                hideTimer = setTimeout(() => {
+                    hidePopup();
+                }, 400); // Buffer 400ms agar user leluasa menggerakkan mouse ke arah popup tanpa takut hilang
+            }
+
+            function hidePopup() {
+                isPinned = false;
+                activeIndex = null;
+                activeTargetEl = null;
+                popup.style.opacity = '0';
+                popup.style.transform = 'translateY(4px)';
+                setTimeout(() => {
+                    if (!isPinned && activeIndex === null) {
+                        popup.classList.add('hidden');
+                        popup.style.display = 'none';
+                    }
+                }, 150);
+            }
+
+            // Inisialisasi jsVectorMap
             const map = new jsVectorMap({
                 selector: '#country-map',
                 map: 'world',
@@ -301,6 +475,7 @@
                 zoomOnScroll: false,
                 zoomButtons: true,
                 draggable: true,
+                showTooltip: false, // Matikan tooltip bawaan jsvectormap
 
                 markers: rawMarkers,
                 lines: rawLines,
@@ -354,58 +529,82 @@
                     curvature: -0.4
                 },
 
-                onMarkerTooltipShow: function(event, tooltip, index) {
-                    const m = rawMarkers[index];
-                    if (!m) return;
-
-                    if (m.isOrigin) {
-                        tooltip.text(`
-                            <div style="padding: 6px 10px; font-family: inherit; text-align: left;">
-                                <div style="display: flex; align-items: center; gap: 6px;">
-                                    <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #F59E0B; display: inline-block;"></span>
-                                    <strong style="color: #0f172a; font-size: 13px;">${m.partnerName}</strong>
-                                </div>
-                                <div style="color: #64748b; font-size: 11px; margin-top: 3px;">${m.location}</div>
-                                <div style="color: #d97706; font-size: 11px; font-weight: 500; margin-top: 4px;">${m.role}</div>
-                            </div>
-                        `, true);
-                        return;
-                    }
-
-                    const isHighlight = m.status === 'Highlighted' || m.status === 'Strategic';
-                    const badgeBg = isHighlight ? '#FEE2E2' : '#EFF6FF';
-                    const badgeColor = isHighlight ? '#DC2626' : '#2563EB';
-
-                    let programHtml = '';
-                    if (m.programTitle) {
-                        programHtml = `
-                            <div style="margin-top: 8px; padding-top: 6px; border-top: 1px solid #E2E8F0; text-align: left;">
-                                <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; font-weight: 600;">Program Kolaborasi:</div>
-                                <div style="font-size: 12px; color: #059669; font-weight: 600; margin-top: 2px; line-height: 1.3;">${m.programTitle}</div>
-                                <div style="font-size: 10px; color: #0000FF; font-weight: 500; margin-top: 4px;">&rarr; Klik titik ini untuk membuka program</div>
-                            </div>
-                        `;
-                    }
-
-                    tooltip.text(`
-                        <div style="padding: 8px 12px; font-family: inherit; min-width: 200px; max-width: 290px; text-align: left;">
-                            <div style="font-weight: 700; color: #0f172a; font-size: 14px; line-height: 1.3;">${m.partnerName}</div>
-                            <div style="color: #64748b; font-size: 12px; margin-top: 2px;">${m.location}</div>
-                            <div style="margin-top: 6px; display: flex; align-items: center; gap: 6px;">
-                                <span style="background-color: ${badgeBg}; color: ${badgeColor}; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 9999px;">${m.status}</span>
-                                ${m.role ? `<span style="font-size: 11px; color: #475569;">${m.role}</span>` : ''}
-                            </div>
-                            ${programHtml}
-                        </div>
-                    `, true);
-                },
-
-                onMarkerClick: function(event, index) {
-                    const m = rawMarkers[index];
-                    if (m && m.programUrl) {
-                        window.location.href = m.programUrl;
+                onViewportChange: function() {
+                    if (isPinned && activeTargetEl) {
+                        positionPopup(activeTargetEl);
+                    } else {
+                        hidePopup();
                     }
                 }
+            });
+
+            // Delegate event listeners pada SVG markers
+            mapElement.addEventListener('mouseover', function(e) {
+                const markerEl = e.target.closest('.jvm-element[data-index], circle[data-index]');
+                if (markerEl) {
+                    const index = parseInt(markerEl.getAttribute('data-index'), 10);
+                    if (!isNaN(index)) {
+                        showPopup(index, markerEl, false);
+                    }
+                }
+            });
+
+            mapElement.addEventListener('mouseout', function(e) {
+                const markerEl = e.target.closest('.jvm-element[data-index], circle[data-index]');
+                if (markerEl) {
+                    scheduleHide();
+                }
+            });
+
+            mapElement.addEventListener('click', function(e) {
+                const markerEl = e.target.closest('.jvm-element[data-index], circle[data-index]');
+                if (markerEl) {
+                    const index = parseInt(markerEl.getAttribute('data-index'), 10);
+                    if (!isNaN(index)) {
+                        showPopup(index, markerEl, true); // Klik = Pin popup terbuka
+                        e.stopPropagation();
+                    }
+                }
+            });
+
+            // Saat cursor masuk ke popup card, jangan sembunyikan (batalkan hideTimer)
+            popup.addEventListener('mouseenter', function() {
+                clearTimeout(hideTimer);
+            });
+
+            // Saat cursor keluar dari popup card, jalankan timer sembunyikan
+            popup.addEventListener('mouseleave', function() {
+                scheduleHide();
+            });
+
+            // Tombol Tutup (X) pada popup
+            if (popupCloseBtn) {
+                popupCloseBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    isPinned = false;
+                    hidePopup();
+                });
+            }
+
+            // Klik di luar popup dan marker akan menutup popup
+            document.addEventListener('click', function(e) {
+                if (!popup.contains(e.target) && !e.target.closest('.jvm-element[data-index]')) {
+                    isPinned = false;
+                    hidePopup();
+                }
+            });
+
+            // Interaksi klik pada Sidebar Collaboration List
+            document.querySelectorAll('.collaboration-list-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const markerIndex = parseInt(this.getAttribute('data-marker-index'), 10);
+                    if (!isNaN(markerIndex)) {
+                        const markerEl = mapElement.querySelector(`[data-index="${markerIndex}"]`);
+                        if (markerEl) {
+                            showPopup(markerIndex, markerEl, true);
+                        }
+                    }
+                });
             });
 
             /*
@@ -435,6 +634,9 @@
 
             window.addEventListener('resize', function() {
                 setTimeout(forceMapSize, 100);
+                if (isPinned && activeTargetEl) {
+                    positionPopup(activeTargetEl);
+                }
             });
         });
     </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DownloadCenter;
+use App\Helpers\TranslationHelper;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use ZipArchive;
@@ -13,6 +14,7 @@ class DownloadController extends Controller
     public function index()
     {
         $downloads = DownloadCenter::with('icon')->latest()->paginate(6);
+        $downloads->getCollection()->transform(fn($item) => TranslationHelper::translateModel($item, ['title', 'description']));
         return view('landing.download-center', compact('downloads'));
     }
 
