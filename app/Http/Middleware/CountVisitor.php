@@ -21,11 +21,11 @@ class CountVisitor
     public function handle(Request $request, Closure $next): Response
     {
         $date = now()->format('Y-m-d');
-        $ip = $request->ip() ?? '127.0.0.1';
+        $ip = $request->ip() ?? 'unknown';
 
         $hasVisitedTodayCookie = $request->cookie('visited_today') === $date;
         $isNewTodayByIp = Cache::add("visited_today:{$date}:{$ip}", 1, now()->endOfDay());
-        $isNewToday = !$hasVisitedTodayCookie && $isNewTodayByIp;
+        $isNewToday = ! $hasVisitedTodayCookie && $isNewTodayByIp;
 
         $isNewAllTime = Cache::add("visited_all:{$ip}", 1, now()->addYear());
 
@@ -43,7 +43,7 @@ class CountVisitor
 
         $response = $next($request);
 
-        if (!$hasVisitedTodayCookie && method_exists($response, 'cookie')) {
+        if (! $hasVisitedTodayCookie && method_exists($response, 'cookie')) {
             $response->cookie('visited_today', $date, 1440);
         }
 
@@ -57,10 +57,17 @@ class CountVisitor
     {
         [$code, $name] = Cache::remember("geoip:$ip", now()->addDay(), function () use ($ip) {
             try {
-                $position = Location::get($ip);
+                $lookupIp = filter_var(
+                    $ip,
+                    FILTER_VALIDATE_IP,
+                    FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+                ) ?: null;
+                $position = Location::get($lookupIp);
 
-                if ($position && $position->countryCode) {
-                    return [$position->countryCode, $position->countryName];
+                $code = strtoupper((string) ($position->countryCode ?? ''));
+
+                if ($position && preg_match('/^[A-Z]{2}$/', $code)) {
+                    return [$code, $position->countryName ?: $code];
                 }
             } catch (\Throwable $e) {
                 Log::warning("GeoIP lookup failed for {$ip}: {$e->getMessage()}");
@@ -75,5 +82,7 @@ class CountVisitor
         $visit->unique_visitors = ($visit->unique_visitors ?? 0) + ($isNewVisitor ? 1 : 0);
         $visit->last_visited_at = now();
         $visit->save();
+
+        Cache::forget('site_visit_totals');
     }
 }
